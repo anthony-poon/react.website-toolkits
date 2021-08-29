@@ -35,7 +35,12 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
             ]);
             onFinish && onFinish(rtn[0]);
         } catch (e) {
-            onError(e);
+            if (onError) {
+                onError(e)
+            } else {
+                setIsUnhandledError(true);
+                console.error(e);
+            }
         } finally {
             setIsRunning(false);
         }
