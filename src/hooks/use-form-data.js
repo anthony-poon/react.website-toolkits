@@ -1,5 +1,5 @@
-const {useState, useCallback} = require("react");
-
+import {useState, useCallback} from "react";
+import _ from "lodash";
 export const useFormData = (init) => {
     const [ formData, setFormData ] = useState({ ...init });
     const handleFormChange = useCallback((evt) => {
@@ -7,8 +7,8 @@ export const useFormData = (init) => {
         const value = evt.target.value;
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: _.cloneDeep(value),
         })
-    }, [ formData ])
-    return [ formData, handleFormChange ]
+    }, [ formData ]);
+    return { formData, handleFormChange, setFormData }
 }

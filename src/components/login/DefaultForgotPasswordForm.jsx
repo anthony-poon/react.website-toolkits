@@ -23,7 +23,7 @@ const useStyle = makeStyles(theme => ({
 
 export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
     const classes = useStyle();
-    const [ formData, handleFormChange ] = useFormData({
+    const { formData, handleFormChange } = useFormData({
         email: "",
     });
     const {

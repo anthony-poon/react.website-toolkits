@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import {Button, CircularProgress} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,13 +13,20 @@ const useStyles = makeStyles({
     }
 })
 
-const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, variant, type, className, ...rest }) => {
+const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, variant, type, className, disabled, ...rest }) => {
     const [isRunning, setIsRunning] = useState(false);
     const [isUnhandledError, setIsUnhandledError] = useState(false);
     let indicator = isUnhandledError ? <UnhandledErrorIndicator/>
         : isRunning ? <LoadingIndicator/>
         : null
     const classes = useStyles();
+    const mountRef = useRef(true);
+    useEffect(() => {
+        // On dismount
+        return () => {
+            mountRef.current = false;
+        }
+    }, []);
 
     const handleClick = async (evt) => {
         if (isRunning) {
@@ -34,15 +41,18 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
                 }))
             ]);
             onFinish && onFinish(rtn[0]);
+            if (mountRef.current) {
+                setIsRunning(false);
+            }
         } catch (e) {
             if (onError) {
                 onError(e)
             } else {
-                setIsUnhandledError(true);
                 console.error(e);
+                if (mountRef.current) {
+                    setIsUnhandledError(true);
+                }
             }
-        } finally {
-            setIsRunning(false);
         }
     }
 
@@ -50,7 +60,7 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
         <Button
             color={color}
             className={`${classes.container} ${className}`}
-            disabled={isUnhandledError || isRunning}
+            disabled={disabled || isUnhandledError || isRunning}
             onClick={evt => handleClick(evt)}
             type={type}
             variant={variant}

@@ -28,11 +28,11 @@ const useStyles = props => {
 };
 
 
-export const ResponsiveMenu = ({ children, isOpen, onClose, width }) => {
+export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
     const classes = useStyles({ width })();
     return (
         <nav className={classes.drawer}>
-            <Hidden mdUp implementation={"css"}>
+            <Hidden mdUp implementation={"js"}>
                 <Drawer
                     classes={{
                         paper: classes.drawerPaper,
@@ -55,7 +55,7 @@ export const ResponsiveMenu = ({ children, isOpen, onClose, width }) => {
                     </div>
                 </Drawer>
             </Hidden>
-            <Hidden smDown implementation={"css"}>
+            <Hidden smDown implementation={"js"}>
                 <Drawer
                     classes={{
                         paper: classes.drawerPaper,

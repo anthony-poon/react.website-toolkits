@@ -17,18 +17,18 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-export const ClippedAppBar = ({ children, handleDrawerToggle }) => {
+export const ClippedAppBar = ({ children, onDrawerToggle }) => {
     const classes = useStyle();
     return (
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
                 {
-                    handleDrawerToggle && (
+                    onDrawerToggle && (
                         <IconButton
                             color="inherit"
                             aria-label="open drawer"
                             edge="start"
-                            onClick={handleDrawerToggle}
+                            onClick={onDrawerToggle}
                             className={classes.menuButton}
                         >
                             <MenuIcon />
