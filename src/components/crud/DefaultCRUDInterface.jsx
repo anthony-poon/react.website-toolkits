@@ -1,38 +1,228 @@
-import React from "react";
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import {makeStyles} from "@material-ui/core/styles";
+import React, {useEffect, useRef, useState} from "react"
+import {CustomCRUDInterface} from "./CustomCRUDInterface";
+import {Index} from "flexsearch";
+import _ from "lodash";
+import Add from "@material-ui/icons/Add";
+import Edit from "@material-ui/icons/Edit";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import Delete from "@material-ui/icons/Delete";
+import PropTypes from "prop-types";
 
-const useStyle = makeStyles(theme => ({
-    itemContainer: {
+// TODO: consider caching this. If use _.momoize, need to figure out how to override resolver func
+const sortItems = (items, sortBy, isAsc) => {
+    return _.orderBy(items, [ sortBy ], [ isAsc ? "asc" : "desc" ]);
+}
 
-    },
-    lhs: {
+const filterItems = (searchIndex, items, query) => {
+    const indexes = searchIndex.search(query);
+    return indexes.map(i => items[i]);
+}
 
-    },
-    rhs: {
+const paginateItems = (items, limit, currPage) => {
+    const chunks = _.chunk(items, limit);
+    return {
+        currItems: _.isEmpty(chunks) ? [] : chunks[currPage - 1],
+        pageCount: chunks.length,
+    };
+}
 
+const getSortOptions = _.memoize(schema => {
+    return _.filter(schema, schema => Boolean(schema.sortable))
+        .map(schema => ({
+            display: schema.label,
+            value: schema.key
+        }))
+})
+
+const getToolbarActions = ({ hasCreate, extraButtons }) => {
+    if (!hasCreate) {
+        return [];
     }
-}))
+    return [
+        {
+            "display": "Add",
+            "value": "create",
+            "icon": <Add color={"primary"}/>
+        },
+        ...extraButtons
+    ]
+}
 
-const ItemContainer = ({ item, children }) => {
+const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons }) => {
+    const rtn = [];
+    if (hasRead) {
+        rtn.push({
+            "display": "View",
+            "value": "read",
+            "icon": <VisibilityIcon color={"primary"}/>
+        });
+    }
+    if (hasUpdate) {
+        rtn.push({
+            "display": "Edit",
+            "value": "update",
+            "icon": <Edit color={"primary"}/>
+        });
+    }
+    if (hasDelete) {
+        rtn.push({
+            "display": "Delete",
+            "value": "delete",
+            "icon": <Delete color={"secondary"}/>,
+            "color": "secondary"
+        });
+    }
+
+    return [
+        ...rtn,
+        ...extraButtons
+    ];
+}
+
+export const DefaultCRUDInterface = ({
+    items,
+    schema,
+    countPerPage,
+    toolbarOptions,
+    actionOptions,
+    onCreate,
+    onRead,
+    onUpdate,
+    onDelete,
+    onOtherAction,
+}) => {
+    const [ sortBy, setSortBy ] = useState("");
+    const [ isSortAsc, setSortAsc ] = useState(false);
+    const [ query, setQuery ] = useState("");
+    const [ currPage, setCurrPage ] = useState(1);
+    const mountRef = useRef({
+        searchIndex: null
+    });
+
+    const sortOptions = getSortOptions(schema);
+    useEffect(() => {
+        const searchIndex = new Index({
+            "tokenize": "full"
+        })
+        const sortBy = sortOptions[0].value;
+        setSortBy(sortBy);
+        items.forEach((item, index) => {
+            _.forEach(item, (value, key) => {
+                searchIndex.add(index, value)
+            })
+        });
+        mountRef.current.searchIndex = searchIndex;
+    }, [items, sortOptions, countPerPage]);
+
+    const handleSortChange = ({ value, isAsc }) => {
+        setCurrPage(1);
+        setSortBy(value);
+        setSortAsc(isAsc);
+    }
+
+    const handleSearchChange = value => {
+        setCurrPage(1);
+        setQuery(value)
+    };
+    const handlePageChange = (evt, value) => setCurrPage(value);
+
+    const handleAction = (action, payload) => {
+        switch (action) {
+            case "create":
+                onCreate();
+                break;
+            case "read":
+                onRead(payload);
+                break;
+            case "update":
+                onUpdate(payload);
+                break;
+            case "delete":
+                onDelete(payload);
+                break;
+            default:
+                onOtherAction && onOtherAction(action, payload);
+                break;
+        }
+    }
+
+    const {
+        buttons: toolbarButtons
+    } = toolbarOptions;
+
+    const {
+        buttons: actionButtons
+    } = actionOptions;
+    const { searchIndex } = mountRef.current;
+    const filtered = query ? filterItems(searchIndex, items, query) : items
+    const sorted = sortItems(filtered, sortBy, isSortAsc);
+    const {
+        currItems,
+        pageCount,
+    } = paginateItems(sorted, countPerPage, currPage);
+
     return (
-        <Grid container>
-            <Grid item xs={9}>
-                { children }
-            </Grid>
-
-        </Grid>
+        <CustomCRUDInterface
+            items={currItems}
+            schema={schema}
+            search={query}
+            sortBy={sortBy}
+            isSortAsc={isSortAsc}
+            pageCount={pageCount}
+            currPage={currPage}
+            sortOptions={sortOptions}
+            toolbarOptions={getToolbarActions({
+                hasCreate: Boolean(onCreate),
+                extraButtons: toolbarButtons
+            })}
+            actionOptions={getActionColumnAction({
+                hasRead: Boolean(onRead),
+                hasUpdate: Boolean(onUpdate),
+                hasDelete: Boolean(onDelete),
+                extraButtons: actionButtons
+            })}
+            onSearchChange={handleSearchChange}
+            onSortChange={handleSortChange}
+            onPageChange={handlePageChange}
+            onEntityAction={handleAction}
+            onToolbarAction={handleAction}
+        />
     )
 }
 
-export const DefaultCRUDInterface = ({ items, children }) => {
-    const classes = useStyle();
-    return (
-        <div>
-            <div>
-                { children(items) }
-            </div>
-        </div>
-    )
+DefaultCRUDInterface.defaultProps = {
+    items: [],
+    schema: [],
+    countPerPage: 5,
+    toolbarOptions: {},
+    actionOptions: {},
+}
+
+DefaultCRUDInterface.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    schema: PropTypes.arrayOf(PropTypes.shape({
+        "size": PropTypes.oneOf(["small", "medium", "large", "xlarge"]).isRequired,
+        "label": PropTypes.string.isRequired,
+        "key": PropTypes.string.isRequired,
+        "sortable": PropTypes.bool
+    })).isRequired,
+    countPerPage: PropTypes.number,
+    onCreate: PropTypes.func,
+    onRead: PropTypes.func,
+    onUpdate: PropTypes.func,
+    onDelete: PropTypes.func,
+    toolbarOptions: PropTypes.shape({
+        buttons: PropTypes.arrayOf(PropTypes.shape({
+            display: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired,
+            color: PropTypes.string
+        }))
+    }),
+    actionOptions: PropTypes.shape({
+        buttons: PropTypes.arrayOf(PropTypes.shape({
+            display: PropTypes.string.isRequired,
+            value: PropTypes.string.isRequired,
+            color: PropTypes.string
+        }))
+    })
 }
