@@ -4,6 +4,7 @@ import Hidden from "@material-ui/core/Hidden";
 import {makeStyles} from "@material-ui/core/styles";
 import {DualLineLabel} from "./DualLineLabel";
 import {FormFieldWrapper} from "./FormFieldWrapper";
+import Box from "@material-ui/core/Box";
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -35,10 +36,12 @@ export const ResponsiveTextField = ({ error, label, subLabel, ...rest }) => {
                 <Hidden smDown implementation={"js"} >
                     <Grid container>
                         <Grid item sm={3}>
-                            <DualLineLabel
-                                title={label}
-                                subtitle={subLabel}
-                            />
+                            <Box pr={2} pt={2}>
+                                <DualLineLabel
+                                    title={label}
+                                    subtitle={subLabel}
+                                />
+                            </Box>
                         </Grid>
                         <Grid item sm={9}>
                             <TextField

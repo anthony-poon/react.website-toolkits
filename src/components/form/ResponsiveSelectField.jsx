@@ -30,10 +30,12 @@ export const ResponsiveSelectField = ({children, label, subLabel, ...rest}) => {
                 <Hidden smDown implementation={"js"}>
                     <Grid container>
                         <Grid item sm={3}>
-                            <DualLineLabel
-                                title={label}
-                                subtitle={subLabel}
-                            />
+                            <Box pt={2}>
+                                <DualLineLabel
+                                    title={label}
+                                    subtitle={subLabel}
+                                />
+                            </Box>
                         </Grid>
                         <Grid item sm={9}>
                             <Box mt={2} mb={1}>

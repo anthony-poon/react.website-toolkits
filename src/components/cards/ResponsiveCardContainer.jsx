@@ -6,8 +6,8 @@ const useStyle = makeStyles(theme => ({
         minHeight: "100%",
         [theme.breakpoints.up("sm")]: {
             height: "initial",
-            paddingTop: theme.spacing(5),
-            paddingBottom: theme.spacing(5),
+            paddingTop: ({ noGutter }) => theme.spacing(noGutter ? 0 : 5),
+            paddingBottom: ({ noGutter }) => theme.spacing(noGutter ? 0 : 5),
         },
         display: "flex",
         alignItems: ({ isCentered }) => isCentered ? "center" : "start",
@@ -15,8 +15,8 @@ const useStyle = makeStyles(theme => ({
     },
 }))
 
-export const ResponsiveCardContainer = ({ isCentered = false, children }) => {
-    const classes = useStyle({ isCentered })
+export const ResponsiveCardContainer = ({ isCentered = false, noGutter = false, children }) => {
+    const classes = useStyle({ isCentered, noGutter })
     return (
         <div className={classes.container}>
             {children}
