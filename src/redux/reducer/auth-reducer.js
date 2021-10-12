@@ -38,7 +38,6 @@ export const authReducer = ( state = {...initState}, action ) => {
                 };
             }
         case APP_LOGIN:
-            console.log(action.payload);
             return {
                 isLoggedIn: true,
                 ...action.payload

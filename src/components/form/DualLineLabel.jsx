@@ -4,7 +4,6 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyle = makeStyles(theme => ({
     container: {
-        paddingTop: theme.spacing(2),
         height: "100%",
     },
     subtitle: {
@@ -13,11 +12,11 @@ const useStyle = makeStyles(theme => ({
 }))
 
 export const DualLineLabel = (props) => {
-    const { title = "", subtitle = "", classes: outerClasses = {}, inverted = false, ...rest } = props
+    const { title = "", subtitle = "", classes: outerClasses = {}, inverted = false, textAlign = "left", ...rest } = props
     const classes = useStyle();
     return (
         <Box className={classes.container}>
-            <Box>
+            <Box textAlign={textAlign}>
                 <Typography
                     className={outerClasses.title}
                     variant={inverted ? "caption" : "body1" }
@@ -27,7 +26,7 @@ export const DualLineLabel = (props) => {
                     { title }
                 </Typography>
             </Box>
-            <Box>
+            <Box textAlign={textAlign}>
                 <Typography
                     className={`${outerClasses.subtitle}
                     ${classes.subtitle}`}
