@@ -2,13 +2,11 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import {AsyncButton} from "../async-button";
+import {AsyncButton, CardWithIcon, FormContent, FormFieldWrapper} from "../../components";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Link from '@material-ui/core/Link';
 import {Link as RouterLink} from 'react-router-dom';
-import {CardWithIcon} from "../cards";
 import {useFormData} from "../../hooks";
-import {FormContent, FormFieldWrapper} from "../form";
 
 const useStyle = makeStyles(theme => ({
     errors: {

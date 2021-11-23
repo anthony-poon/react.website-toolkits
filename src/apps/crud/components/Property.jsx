@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import {DualLineLabel} from "../../form";
+import {DualLineLabel} from "../../../components";
 import PropTypes from "prop-types";
 
 
