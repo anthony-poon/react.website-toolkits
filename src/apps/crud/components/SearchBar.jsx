@@ -1,5 +1,4 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Search from "@material-ui/icons/Search";

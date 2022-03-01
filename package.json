@@ -11,20 +11,20 @@
   "author": "Anthony Poon",
   "license": "ISC",
   "dependencies": {
-    "lunr": "^2.3.9",
     "joi": "^17.4.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "lunr": "^2.3.9"
   },
   "peerDependencies": {
     "@fontsource/roboto": "^4.0.0",
     "@material-ui/core": "^4.0.0",
     "@material-ui/icons": "^4.0.0",
     "@material-ui/lab": "^4.0.0-alpha.60",
+    "@reduxjs/toolkit": "^1.6.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-router-dom": "^5.0.0",
-    "@reduxjs/toolkit": "^1.6.1",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.1.1"
   },
   "devDependencies": {

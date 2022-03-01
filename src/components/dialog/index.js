@@ -1,7 +1,2 @@
-import {
-    ConfirmationDialog
-} from "./ConfirmationDialog";
-
-export {
-    ConfirmationDialog
-}
+export * from "./FullScreenDialog";
+export * from "./ConfirmationDialog";

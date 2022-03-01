@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import {ResponsiveCardContainer} from "../cards";
 import _ from "lodash";
 import { LoremIpsum } from "lorem-ipsum";
-import { Index } from "flexsearch";
 import {makeStyles} from "@material-ui/core/styles";
 import {CustomCRUDInterface} from "./CustomCRUDInterface";
 import Add from "@material-ui/icons/Add";
