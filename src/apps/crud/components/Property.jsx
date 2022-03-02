@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import {DualLineLabel} from "../../../components";
 import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
 
 
 const SIZE_MAPPING = {
@@ -27,11 +28,13 @@ const PropertyLabel = ({ size, label, value }) => {
     const sizing = SIZE_MAPPING[size];
     return (
         <Grid item {...sizing}>
-            <DualLineLabel
-                title={label}
-                subtitle={value}
-                inverted
-            />
+            <Box mb={1}>
+                <DualLineLabel
+                    title={label}
+                    subtitle={value}
+                    inverted
+                />
+            </Box>
         </Grid>
     )
 }
