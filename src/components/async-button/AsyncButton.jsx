@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
-import {Button, CircularProgress} from "@material-ui/core";
+import {Button} from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import {LoadingIndicator} from "./components/LoadingIndicator";
 import {UnhandledErrorIndicator} from "./components/UnhandledErrorIndicator";

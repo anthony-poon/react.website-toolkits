@@ -2,7 +2,6 @@ import React from "react";
 import {FormFieldWrapper} from "./FormFieldWrapper";
 import {DualLineLabel} from "./DualLineLabel";
 import {makeStyles} from "@material-ui/core/styles";
-import {Box} from "@material-ui/core";
 
 const useStyle = makeStyles(theme => ({
     title: {

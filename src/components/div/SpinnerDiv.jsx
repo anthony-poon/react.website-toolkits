@@ -36,35 +36,36 @@ const CSSImplementation = ({ display, children }) => {
 }
 
 
-export const SpinnerDiv = ({ state, children, implementation = "js" }) => {
+export const SpinnerDiv = ({ isLoading, isError, children, implementation = "js" }) => {
     const classes = useStyle();
-    const Implementation =
+    const display =
         implementation === "js" ? (
             <JSImplementation
-                display={state === "none"}
+                display={!isLoading && !isError}
             >
                 { children }
             </JSImplementation>
         ) : implementation === "css" ? (
             <CSSImplementation
-                display={state === "none"}
+                display={!isLoading && !isError}
             >
                 { children }
             </CSSImplementation>
         ) : null;
+    const spinner =
+        isError ? (
+            <div className={classes.spinnerContainer}>
+                <ErrorIcon/>
+            </div>
+        ) : isLoading ? (
+            <div className={classes.spinnerContainer}>
+                <CircularProgress/>
+            </div>
+        ) : null
     return (
         <>
-            { Implementation }
-            { state === "loading" && (
-                <div className={classes.spinnerContainer}>
-                    <CircularProgress/>
-                </div>
-            ) }
-            { state === "error" && (
-                <div className={classes.spinnerContainer}>
-                    <ErrorIcon/>
-                </div>
-            ) }
+            { display }
+            { spinner }
         </>
     )
 }

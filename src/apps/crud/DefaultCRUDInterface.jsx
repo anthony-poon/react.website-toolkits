@@ -171,11 +171,6 @@ export const DefaultCRUDInterface = ({
         pageCount,
     } = paginateItems(sorted, countPerPage, currPage);
 
-    const toolbar = getToolbarActions({
-        hasCreate: Boolean(onCreate),
-        extraButtons: toolbarButtons
-    })
-
     return (
         <CustomCRUDInterface
             title={title}

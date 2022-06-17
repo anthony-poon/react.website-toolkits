@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState} from "react";
 import {SpinnerDiv} from "./SpinnerDiv";
 
 export const AsyncDiv = ({ onMount, children, duration = 1500, implementation = "js" }) => {
-    const [loadingState, setLoadingState] = useState("loading");
+    const [ isLoading, setLoading ] = useState(true);
+    const [ isError ] = useState(false);
     const mountRef = useRef(true);
     useEffect(() => {
         (async () => {
@@ -13,7 +14,7 @@ export const AsyncDiv = ({ onMount, children, duration = 1500, implementation = 
                 }))
             ])
             if (mountRef.current) {
-                setLoadingState("none");
+                setLoading(false);
             }
         })()
         return () => {
@@ -26,7 +27,8 @@ export const AsyncDiv = ({ onMount, children, duration = 1500, implementation = 
             {
                 <SpinnerDiv
                     implementation={implementation}
-                    state={loadingState}
+                    isLoading={isLoading}
+                    isError={isError}
                 >
                     { children }
                 </SpinnerDiv>

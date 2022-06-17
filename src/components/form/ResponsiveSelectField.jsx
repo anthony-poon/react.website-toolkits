@@ -1,4 +1,4 @@
-import {Box, FormControl, Grid, Select} from "@material-ui/core";
+import {Box, Grid, Select} from "@material-ui/core";
 import React from "react";
 import Hidden from "@material-ui/core/Hidden";
 import {makeStyles} from "@material-ui/core/styles";
