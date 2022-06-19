@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, makeStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import {AsyncButton, CardWithIcon} from "../../components";
+import {CardWithIcon, AsyncButton} from "../../components"
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
 import {useFormData} from "../../hooks";
@@ -29,7 +29,7 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
         email,
     } = formData;
     const handleCancel = () => onCancel();
-    const handleSubmit = () => onSubmit({ email })
+    const handleSubmit = () => onSubmit(email)
     return (
         <CardWithIcon
             icon={
@@ -38,7 +38,7 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
             title={"Password Recovery"}
             subtitle={"Recover your password with email"}
         >
-            <form>
+            <form onSubmit={handleSubmit}>
                 { errors && (
                     <Typography className={classes.errors} color={"error"}>
                         <ul>
@@ -67,7 +67,7 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
                             <Button
                                 fullWidth
                                 size={"large"}
-                                type={"cancel"}
+                                type={"button"}
                                 variant={"outlined"}
                                 onClick={handleCancel}
                             >

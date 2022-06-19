@@ -1,25 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
-import {Button} from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import {LoadingIndicator} from "./components/LoadingIndicator";
-import {UnhandledErrorIndicator} from "./components/UnhandledErrorIndicator";
-const useStyles = makeStyles({
-    container: {
-        position: "relative"
-    },
-    children: {
-        zIndex: 1
-    }
-})
+import {SpinnerButton} from "../spinner-button";
 
-const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, variant, type, className, disabled, ...rest }) => {
-    const [isRunning, setIsRunning] = useState(false);
+const AsyncButton = ({ onClick, onFinish, onError, duration, children, ...rest }) => {
+    const [isLoading, setLoading] = useState(false);
     const [isUnhandledError, setIsUnhandledError] = useState(false);
-    let indicator = isUnhandledError ? <UnhandledErrorIndicator/>
-        : isRunning ? <LoadingIndicator/>
-        : null
-    const classes = useStyles();
+
     const mountRef = useRef(true);
     useEffect(() => {
         // On dismount
@@ -29,10 +15,10 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
     }, []);
 
     const handleClick = async (evt) => {
-        if (isRunning) {
+        if (isLoading) {
             return;
         }
-        setIsRunning(true);
+        setLoading(true);
         try {
             const rtn = await Promise.all([
                 onClick && onClick(evt),
@@ -42,7 +28,7 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
             ]);
             onFinish && onFinish(rtn[0]);
             if (mountRef.current) {
-                setIsRunning(false);
+                setLoading(false);
             }
         } catch (e) {
             if (onError) {
@@ -57,20 +43,14 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, color, va
     }
 
     return (
-        <Button
-            color={color}
-            className={`${classes.container} ${className}`}
-            disabled={disabled || isUnhandledError || isRunning}
-            onClick={evt => handleClick(evt)}
-            type={type}
-            variant={variant}
+        <SpinnerButton
+            isLoading={isLoading}
+            isError={isUnhandledError}
+            onClick={handleClick}
             {...rest}
         >
-            {indicator}
-            <div className={classes.children}>
-                { children }
-            </div>
-        </Button>
+            { children }
+        </SpinnerButton>
     );
 }
 
