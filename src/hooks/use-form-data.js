@@ -1,33 +1,34 @@
-import {useState, useCallback, useEffect} from "react";
-import _ from "lodash";
-export const useFormData = (init) => {
-    const [ formData, setFormData ] = useState({ ...init });
-    const handleFormChange = useCallback((evt) => {
-        const name = evt.target.name;
-        const value = evt.target.value;
-        setFormData({
-            ...formData,
-            [name]: _.cloneDeep(value),
-        })
-    }, [ formData ]);
-    return { formData, handleFormChange, setFormData }
-}
+import { useEffect, useState } from 'react';
+import _ from 'lodash';
 
+// Merge 2 object only if key exist in target
+const merge = (target, input) => {
+    return _.assign(target, _.pick(input, _.keys(target)));
+};
+
+// Convenience hook and handles onChange of controlled input component
 export const makeFormData = (init) => {
     return (update = {}) => {
-        const [ formData, setFormData ] = useState({ ...init });
-        const handleFormChange = (evt) => {
-            const name = evt.target.name;
-            const value = evt.target.value;
-            setFormData({
-                ...formData,
-                [name]: _.cloneDeep(value),
-            })
-        }
-        update = _.assign(init, _.pick(update, _.keys(init)));
+        const [formData, setFormData] = useState({ ...init });
+        const [hasChange, setHasChange] = useState(false);
+        const handleFormChange = evt => {
+            const { name, value } = evt.target;
+            setFormData((prev) => {
+                return { ...merge(prev, { [name]: value }) };
+            });
+        };
+        update = merge(init, update);
         useEffect(() => {
-            setFormData({...update});
-        }, [...Object.values(update)])
-        return { formData, handleFormChange, setFormData }
-    }
-}
+            setFormData((prev) => ({
+                ...prev,
+                ...update
+            }));
+        }, [...Object.values(update)]);
+        const isEqual = _.isEqual(update, formData);
+        useEffect(() => {
+            setHasChange(!isEqual);
+        }, [isEqual]);
+        const resetFormData = () => setFormData({ ...init });
+        return { formData, handleFormChange, setFormData, resetFormData, hasChange };
+    };
+};

@@ -12,7 +12,7 @@ const useStyle = makeStyles(theme => ({
     },
 }))
 
-export const ResponsiveSelectField = ({children, label, subLabel, ...rest}) => {
+export const ResponsiveSelectField = ({children, label, subLabel, value, ...rest}) => {
     const classes = useStyle();
     return (
         <FormFieldWrapper
@@ -22,6 +22,7 @@ export const ResponsiveSelectField = ({children, label, subLabel, ...rest}) => {
                 <Hidden mdUp implementation={"js"}>
                     <Select
                         fullWidth
+                        value={value ? value : ""}
                         {...rest}
                     >
                         { children }
@@ -41,6 +42,7 @@ export const ResponsiveSelectField = ({children, label, subLabel, ...rest}) => {
                             <Box mt={2} mb={1}>
                                 <Select
                                     fullWidth
+                                    value={value ? value : ""}
                                     {...rest}
                                 >
                                     { children }

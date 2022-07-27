@@ -3,10 +3,10 @@ import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import {AsyncButton, CardWithIcon, FormContent, FormFieldWrapper} from "../../components";
+import { makeFormData } from "../../hooks";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Link from '@material-ui/core/Link';
 import {Link as RouterLink} from 'react-router-dom';
-import {useFormData} from "../../hooks";
 
 const useStyle = makeStyles(theme => ({
     errors: {
@@ -21,14 +21,16 @@ const useStyle = makeStyles(theme => ({
         display: "flex",
         justifyContent: "space-between",
     }
-}))
+}));
+
+const useFormData = makeFormData({
+    username: "",
+    password: "",
+});
 
 export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {
     const classes = useStyle();
-    const { formData, handleFormChange } = useFormData({
-        username: "",
-        password: "",
-    });
+    const { formData, handleFormChange } = useFormData();
     const {
         username,
         password

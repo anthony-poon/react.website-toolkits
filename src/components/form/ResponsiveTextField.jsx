@@ -17,7 +17,7 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-export const ResponsiveTextField = ({ error, label, subLabel, ...rest }) => {
+export const ResponsiveTextField = ({ error, label, subLabel, value, ...rest }) => {
     const classes = useStyle();
     const isError = Boolean(error);
     return (
@@ -29,7 +29,8 @@ export const ResponsiveTextField = ({ error, label, subLabel, ...rest }) => {
                         error={isError}
                         helperText={isError ? error : subLabel}
                         label={label}
-                        margin="normal"
+                        value={value ? value : ""}
+                        margin={"normal"}
                         {...rest}
                     />
                 </Hidden>
@@ -48,6 +49,7 @@ export const ResponsiveTextField = ({ error, label, subLabel, ...rest }) => {
                                 error={isError}
                                 fullWidth
                                 margin="normal"
+                                value={value ? value : ""}
                                 helperText={error}
                                 {...rest}
                             />

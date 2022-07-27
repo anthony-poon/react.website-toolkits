@@ -80,7 +80,8 @@ AsyncButton.propTypes = {
     children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
     variant: PropTypes.oneOf([
         "contained",
-        "outlined"
+        "outlined",
+        "text"
     ]),
 };
 

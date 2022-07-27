@@ -1,10 +1,10 @@
 import React from "react";
 import {Button, makeStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import {CardWithIcon, AsyncButton} from "../../components"
+import { CardWithIcon, AsyncButton } from "../../components";
+import { makeFormData } from "../../hooks";
 import Grid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/Help";
-import {useFormData} from "../../hooks";
 import Typography from "@material-ui/core/Typography";
 
 const useStyle = makeStyles(theme => ({
@@ -19,6 +19,10 @@ const useStyle = makeStyles(theme => ({
         justifyContent: "space-between",
     }
 }))
+
+const useFormData = makeFormData({
+    email: "",
+})
 
 export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
     const classes = useStyle();
