@@ -57,7 +57,7 @@ SpinnerButton.propTypes = {
         "submit"
     ]),
     onClick: PropTypes.func,
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     variant: PropTypes.oneOf([
         "contained",
         "outlined"

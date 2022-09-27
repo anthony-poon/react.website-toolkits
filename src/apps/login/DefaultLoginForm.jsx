@@ -41,7 +41,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             icon={
                 <LockOpenIcon style={{ fontSize: 60 }} color={"primary"}/>
             }
-            title={"Login"}
+            title={"LOGIN"}
             subtitle={"Using your email and password"}
         >
             <form>
@@ -73,7 +73,6 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
                             margin="normal"
                         />
                     </FormFieldWrapper>
-
                 </FormContent>
                 <div className={classes.buttons}>
                     <AsyncButton
@@ -81,6 +80,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
                         size={"large"}
                         type={"submit"}
                         onClick={handleSubmit}
+                        style={{textTransform: 'none'}}
                     >
                         Sign In
                     </AsyncButton>
@@ -97,7 +97,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
                 {
                     signUpLink && (
                         <Link component={RouterLink} to={signUpLink}>
-                            Sign Up
+                            Create Account
                         </Link>
                     )
                 }

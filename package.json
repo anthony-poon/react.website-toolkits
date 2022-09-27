@@ -11,6 +11,8 @@
   "author": "Anthony Poon",
   "license": "ISC",
   "dependencies": {
+    "@date-io/date-fns": "^2.16.0",
+    "@material-ui/pickers": "^3.3.10",
     "joi": "^17.4.2",
     "lodash": "^4.17.21",
     "lunr": "^2.3.9"
