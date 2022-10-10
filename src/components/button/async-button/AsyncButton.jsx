@@ -77,7 +77,7 @@ AsyncButton.propTypes = {
     onClick: PropTypes.func,
     onFinish: PropTypes.func,
     onError: PropTypes.func,
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     variant: PropTypes.oneOf([
         "contained",
         "outlined",

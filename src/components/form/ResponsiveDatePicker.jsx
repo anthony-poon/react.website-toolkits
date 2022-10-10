@@ -5,8 +5,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import {DualLineLabel} from "./DualLineLabel";
 import {FormFieldWrapper} from "./FormFieldWrapper";
 import Box from "@material-ui/core/Box";
-import DateFnsUtils from '@date-io/date-fns';
-import {KeyboardDatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -19,25 +17,24 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-export const ResponsiveDatePicker = ({ error, label, subLabel, value, ...rest }) => {
+export const ResponsiveDatePicker = ({ error, label, subLabel, value, name, onChange, ...rest }) => {
     const classes = useStyle();
     const isError = Boolean(error);
+    const handleChange = evt => onChange(name, evt.target.value);
     return (
         <FormFieldWrapper>
             <div className={classes.container}>
                 <Hidden mdUp implementation={"js"}>
                     <TextField
-                        fullWidth
                         error={isError}
                         helperText={isError ? error : subLabel}
-                        label={label}
                         value={value ? value : ""}
                         margin={"normal"}
                         {...rest}
+                        onChange={handleChange}
                     />
                 </Hidden>
                 <Hidden smDown implementation={"js"} >
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <Grid container>
                             <Grid item sm={3}>
                                 <Box pr={2} pt={2}>
@@ -48,20 +45,20 @@ export const ResponsiveDatePicker = ({ error, label, subLabel, value, ...rest })
                                 </Box>
                             </Grid>
                             <Grid item sm={9}>
-                                <KeyboardDatePicker
-                                    disableToolbar
-                                    variant="inline"
-                                    format="MM/dd/yyyy"
-                                    margin="normal"
-                                    id="date-picker-inline"
-                                    label="Date picker inline"
+                                <TextField
+                                    error={isError}
+                                    helperText={isError ? error : subLabel}
+                                    type={"date"}
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
                                     value={value ? value : ""}
+                                    margin={"normal"}
+                                    onChange={handleChange}
                                     {...rest}
                                 />
                             </Grid>
                         </Grid>
-                    </MuiPickersUtilsProvider>
-
                 </Hidden>
             </div>
         </FormFieldWrapper>
