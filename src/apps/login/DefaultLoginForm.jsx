@@ -82,7 +82,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
                         onClick={handleSubmit}
                         style={{textTransform: 'none'}}
                     >
-                        Sign In
+                        Login
                     </AsyncButton>
                 </div>
             </form>

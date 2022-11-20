@@ -122,7 +122,7 @@ export const DefaultCRUDInterface = ({
         const sortBy = sortOptions[0].value;
         setSortBy(sortBy);
         mountRef.current.searchIndex = searchIndex;
-    }, [items, sortOptions, countPerPage]);
+    }, [items, sortOptions, countPerPage, schema]);
 
     const handleSortChange = ({ value, isAsc }) => {
         setCurrPage(1);
