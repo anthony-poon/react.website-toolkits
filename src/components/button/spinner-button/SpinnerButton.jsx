@@ -4,6 +4,7 @@ import {Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {UnhandledErrorIndicator} from "../components/UnhandledErrorIndicator";
 import {LoadingIndicator} from "../components/LoadingIndicator";
+import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles({
     container: {
@@ -14,13 +15,14 @@ const useStyles = makeStyles({
     }
 })
 
-export const SpinnerButton = ({ type, variant, color, className, children , isDisabled, isError, isLoading, onClick, ...rest }) => {
+export const SpinnerButton = ({ type, variant, color, className, children , isDisabled, isError, isLoading, onClick, isIcon, ...rest }) => {
     const classes = useStyles();
     let indicator = isError ? <UnhandledErrorIndicator/>
         : isLoading ? <LoadingIndicator/>
         : null
+    const ButtonImpl = isIcon ? IconButton : Button;
     return (
-        <Button
+        <ButtonImpl
             color={color}
             className={`${classes.container} ${className}`}
             disabled={isDisabled || isError || isLoading}
@@ -33,7 +35,7 @@ export const SpinnerButton = ({ type, variant, color, className, children , isDi
             <div className={classes.children}>
                 { children }
             </div>
-        </Button>
+        </ButtonImpl>
     );
 }
 
@@ -57,7 +59,7 @@ SpinnerButton.propTypes = {
         "submit"
     ]),
     onClick: PropTypes.func,
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
     variant: PropTypes.oneOf([
         "contained",
         "outlined"

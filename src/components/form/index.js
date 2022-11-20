@@ -1,5 +1,6 @@
 export * from "./ResponsiveTextField";
 export * from "./ResponsiveSelectField";
+export * from "./ResponsiveDatePicker";
 export * from "./DualLineLabel";
 export * from "./RedirectField";
 export * from "./FormFieldWrapper";

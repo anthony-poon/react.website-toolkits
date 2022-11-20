@@ -11,11 +11,18 @@ export const makeFormData = (init) => {
     return (update = {}) => {
         const [formData, setFormData] = useState({ ...init });
         const [hasChange, setHasChange] = useState(false);
-        const handleFormChange = evt => {
-            const { name, value } = evt.target;
-            setFormData((prev) => {
-                return { ...merge(prev, { [name]: value }) };
-            });
+        const handleFormChange = (...args) => {
+            if (args[0].target) {
+                const { name, value } = args[0].target;
+                setFormData((prev) => {
+                    return { ...merge(prev, { [name]: value }) };
+                });
+            } else {
+                setFormData((prev) => {
+                    return { ...merge(prev, { [args[0]]: args[1] }) };
+                });
+            }
+
         };
         update = merge(init, update);
         useEffect(() => {

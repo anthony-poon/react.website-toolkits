@@ -1,9 +1,10 @@
-import {Box, Grid, Select} from "@material-ui/core";
+import {Box, FormHelperText, Grid, Select} from "@material-ui/core";
 import React from "react";
 import Hidden from "@material-ui/core/Hidden";
 import {makeStyles} from "@material-ui/core/styles";
 import {FormFieldWrapper} from "./FormFieldWrapper";
 import {DualLineLabel} from "./DualLineLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyle = makeStyles(theme => ({
     container: {
@@ -12,21 +13,31 @@ const useStyle = makeStyles(theme => ({
     },
 }))
 
-export const ResponsiveSelectField = ({children, label, subLabel, value, ...rest}) => {
+export const ResponsiveSelectField = ({ error, children, label, subLabel, value, name, onChange, ...rest}) => {
     const classes = useStyle();
+    const handleChange = evt => onChange(name, evt.target.value);
+    const isError = Boolean(error);
     return (
         <FormFieldWrapper
             gutterY={false}
         >
             <div className={classes.container}>
                 <Hidden mdUp implementation={"js"}>
-                    <Select
-                        fullWidth
-                        value={value ? value : ""}
-                        {...rest}
-                    >
-                        { children }
-                    </Select>
+                    <FormControl error={isError} style={{ width: "100%" }}>
+                        <Select
+                            fullWidth
+                            value={value ? value : ""}
+                            name={name}
+                            onChange={handleChange}
+                            isErr
+                            {...rest}
+                        >
+                            { children }
+                        </Select>
+                        { error && (
+                            <FormHelperText>{error}</FormHelperText>
+                        ) }
+                    </FormControl>
                 </Hidden>
                 <Hidden smDown implementation={"js"}>
                     <Grid container>
@@ -40,13 +51,20 @@ export const ResponsiveSelectField = ({children, label, subLabel, value, ...rest
                         </Grid>
                         <Grid item sm={9}>
                             <Box mt={2} mb={1}>
-                                <Select
-                                    fullWidth
-                                    value={value ? value : ""}
-                                    {...rest}
-                                >
-                                    { children }
-                                </Select>
+                                <FormControl error={isError} style={{ width: "100%" }}>
+                                    <Select
+                                        fullWidth
+                                        value={value ? value : ""}
+                                        name={name}
+                                        onChange={handleChange}
+                                        {...rest}
+                                    >
+                                        { children }
+                                    </Select>
+                                    { error && (
+                                        <FormHelperText>{error}</FormHelperText>
+                                    ) }
+                                </FormControl>
                             </Box>
                         </Grid>
                     </Grid>
