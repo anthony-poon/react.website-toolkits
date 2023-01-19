@@ -51,14 +51,20 @@ PropertyLabel.propTypes = {
 export const Property = ({ item, schema }) => {
     return (
         <Grid container>
-            { schema.map(s => (
-                <PropertyLabel
+            { schema.map(s => {
+                const value = item[s.key];
+                if (!value && s.skipIfEmpty) {
+                    return null;
+                }
+                return (
+                  <PropertyLabel
                     key={s.key}
                     size={s.size}
                     label={s.label}
                     value={item[s.key]}
-                />
-            )) }
+                  />
+                )
+            }) }
         </Grid>
     )
 }
