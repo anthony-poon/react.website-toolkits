@@ -36,16 +36,16 @@ const getSortOptions = _.memoize(schema => {
 })
 
 const getToolbarActions = ({ hasCreate, extraButtons = [] }) => {
-    if (!hasCreate) {
-        return [];
-    }
-    return [
-        {
+    const btns = [];
+    if (hasCreate) {
+        btns.push({
             "display": "Add",
             "value": "create",
             "icon": <Add color={"primary"}/>
-        },
-        ...extraButtons
+        });
+    }
+    return [
+      ...btns, ...extraButtons
     ]
 }
 
@@ -92,9 +92,11 @@ export const DefaultCRUDInterface = ({
     onUpdate,
     onDelete,
     onOtherAction,
+    initSortBy = 'id',
+    initIsSortAsc,
 }) => {
-    const [ sortBy, setSortBy ] = useState("");
-    const [ isSortAsc, setSortAsc ] = useState(false);
+    const [ sortBy, setSortBy ] = useState(initSortBy);
+    const [ isSortAsc, setSortAsc ] = useState(initIsSortAsc);
     const [ query, setQuery ] = useState("");
     const [ currPage, setCurrPage ] = useState(1);
     const mountRef = useRef({
@@ -119,8 +121,8 @@ export const DefaultCRUDInterface = ({
                 });
             });
         })
-        const sortBy = sortOptions[0].value;
-        setSortBy(sortBy);
+        // const sortBy = initSortBy || sortOptions[0].value;
+        // setSortBy(sortBy || sortOptions[0].value);
         mountRef.current.searchIndex = searchIndex;
     }, [items, sortOptions, countPerPage, schema]);
 

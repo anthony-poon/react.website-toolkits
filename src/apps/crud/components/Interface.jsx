@@ -39,12 +39,16 @@ export const Interface = ({ items, title, toolbar, sortBar, searchBar, renderPro
     return (
         <div>
             <Box mb={4} mt={2}>
-                <Typography variant={"h4"}>
-                    { title }
-                </Typography>
-            </Box>
-            <Box mb={toolbar ? 2 : 0}>
-                { toolbar }
+                <Grid container>
+                    <Grid item xs={9}>
+                        <Typography variant={"h4"}>
+                            { title }
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={3}>
+                        { toolbar }
+                    </Grid>
+                </Grid>
             </Box>
             <Box mb={2}>
                 <Grid container>

@@ -1,7 +1,6 @@
 import { REHYDRATE } from "redux-persist";
 import {APP_LOGIN, APP_LOGOUT} from "../action";
 import Joi from "joi";
-import {DateTime} from "luxon";
 
 const schema = Joi.object().keys({
     isLoggedIn: Joi.boolean().optional(),
@@ -23,7 +22,8 @@ export const authReducer = ( state = {...initState}, action ) => {
             try {
                 Joi.attempt(action.payload.authorization, schema);
                 const {expireAt} = action.payload.authorization;
-                if (DateTime.fromISO(expireAt) < DateTime.now()) {
+                if (expireAt < ((new Date()).getTime() / 1000)) {
+                    console.log("refreshToken expired");
                     return {
                         ...initState
                     }
