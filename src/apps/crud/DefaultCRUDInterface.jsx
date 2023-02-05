@@ -4,7 +4,6 @@ import lunr from "lunr";
 import _ from "lodash";
 import Add from "@material-ui/icons/Add";
 import Edit from "@material-ui/icons/Edit";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import Delete from "@material-ui/icons/Delete";
 import PropTypes from "prop-types";
 
@@ -40,8 +39,7 @@ const getToolbarActions = ({ hasCreate, extraButtons = [] }) => {
     if (hasCreate) {
         btns.push({
             "display": "Add",
-            "value": "create",
-            "icon": <Add color={"primary"}/>
+            "value": "create"
         });
     }
     return [
@@ -55,21 +53,18 @@ const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [
         rtn.push({
             "display": "View",
             "value": "read",
-            "icon": <VisibilityIcon color={"primary"}/>
         });
     }
     if (hasUpdate) {
         rtn.push({
             "display": "Edit",
-            "value": "update",
-            "icon": <Edit color={"primary"}/>
+            "value": "update"
         });
     }
     if (hasDelete) {
         rtn.push({
             "display": "Delete",
             "value": "delete",
-            "icon": <Delete color={"secondary"}/>,
             "color": "secondary"
         });
     }

@@ -156,8 +156,7 @@ Default.args = {
     toolbarOptions: [
         {
             "display": "Testing 1",
-            "value": "t_testing_1",
-            "icon": <Add color={"primary"}/>
+            "value": "t_testing_1"
         },{
             "display": "Testing 2",
             "value": "t_testing_2",
@@ -170,8 +169,7 @@ Default.args = {
     actionOptions: [
         {
             "display": "Testing 1",
-            "value": "e_testing_1",
-            "icon": <Add color={"primary"}/>
+            "value": "e_testing_1"
         },{
             "display": "Testing 2",
             "value": "e_testing_2",
