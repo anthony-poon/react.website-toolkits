@@ -1,11 +1,11 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import _ from "lodash";
 
 export const ActionButton = ({ component = Button, ...rest }) => {
     const button = React.createElement(component, {
+        fullWidth: true,
         size: "small",
         variant: "outlined",
         color: "primary",
@@ -23,7 +23,7 @@ export const Toolbar = ({ component = Button, options, onClick }) => {
         return null
     }
     return (
-        <Box display={"flex"} flexDirection={"column"}>
+        <Box ml={3}>
             { options.map(option => {
                 const {
                     value,
@@ -33,10 +33,10 @@ export const Toolbar = ({ component = Button, options, onClick }) => {
                 } = option;
                 return (
                     <ActionButton
-                        fullWidth
                         key={value}
                         onClick={() => onClick(value)}
                         startIcon={icon}
+                        component={component}
                         { ...rest }
                     >
                         { display }

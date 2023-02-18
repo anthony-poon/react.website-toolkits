@@ -96,9 +96,11 @@ export const DefaultCRUDInterface = ({
     onUpdate,
     onDelete,
     onOtherAction,
+    initSortBy = 'id',
+    initIsSortAsc,
 }) => {
-    const [ sortBy, setSortBy ] = useState("");
-    const [ isSortAsc, setSortAsc ] = useState(false);
+    const [ sortBy, setSortBy ] = useState(initSortBy);
+    const [ isSortAsc, setSortAsc ] = useState(initIsSortAsc);
     const [ query, setQuery ] = useState("");
     const [ currPage, setCurrPage ] = useState(1);
     const mountRef = useRef({
@@ -123,8 +125,6 @@ export const DefaultCRUDInterface = ({
                 });
             });
         })
-        const sortBy = sortOptions[0].value;
-        setSortBy(sortBy);
         mountRef.current.searchIndex = searchIndex;
     }, [items, sortOptions, countPerPage, schema]);
 

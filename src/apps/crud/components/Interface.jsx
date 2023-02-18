@@ -38,19 +38,18 @@ export const Interface = ({ items, title, toolbar, sortBar, searchBar, renderPro
     const classes = useStyle({ hasActions });
     return (
         <div>
-            <Grid container mt={2}>
-                <Grid item xs={9}>
-                    <Typography variant={"h4"}>
-                        { title }
-                    </Typography>
-                </Grid>
-                <Grid item xs={3}>
-                    <Box mb={toolbar ? 2 : 0}>
+            <Box mb={4} mt={2}>
+                <Grid container>
+                    <Grid item xs={9}>
+                        <Typography variant={"h4"}>
+                            { title }
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={3}>
                         { toolbar }
-                    </Box>
+                    </Grid>
                 </Grid>
-            </Grid>
-
+            </Box>
             <Box mb={2}>
                 <Grid container>
                     <Grid item xs={12} md={8} className={classes.searchBarContainer}>
