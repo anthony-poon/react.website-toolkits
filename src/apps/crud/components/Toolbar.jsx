@@ -4,34 +4,26 @@ import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import _ from "lodash";
 
-const useStyle = makeStyles(theme => ({
-    button: {
-        width: 120
-    }
-}))
-
-export const ActionButton = ({ component = Button, classes, ...rest }) => {
+export const ActionButton = ({ component = Button, ...rest }) => {
     const button = React.createElement(component, {
         size: "small",
         variant: "outlined",
         color: "primary",
-        className: classes.button,
         ...rest
     });
     return (
-        <Box mr={1}>
+        <Box mb={1}>
             { button }
         </Box>
     )
 }
 
 export const Toolbar = ({ component = Button, options, onClick }) => {
-    const classes = useStyle();
     if (_.isEmpty(options)) {
         return null
     }
     return (
-        <Box display={"flex"}>
+        <Box display={"flex"} flexDirection={"column"}>
             { options.map(option => {
                 const {
                     value,
@@ -41,7 +33,7 @@ export const Toolbar = ({ component = Button, options, onClick }) => {
                 } = option;
                 return (
                     <ActionButton
-                        classes={classes}
+                        fullWidth
                         key={value}
                         onClick={() => onClick(value)}
                         startIcon={icon}

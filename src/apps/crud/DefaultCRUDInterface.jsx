@@ -37,16 +37,20 @@ const getSortOptions = _.memoize(schema => {
 
 const getToolbarActions = ({ hasCreate, extraButtons = [] }) => {
     if (!hasCreate) {
-        return [];
+        return [
+            {
+                "display": "Add",
+                "value": "create",
+                "icon": <Add color={"primary"}/>
+            },
+            ...extraButtons
+        ];
+    } else {
+        return [
+            ...extraButtons
+        ]
     }
-    return [
-        {
-            "display": "Add",
-            "value": "create",
-            "icon": <Add color={"primary"}/>
-        },
-        ...extraButtons
-    ]
+
 }
 
 const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [] }) => {
