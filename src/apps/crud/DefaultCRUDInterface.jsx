@@ -36,7 +36,7 @@ const getSortOptions = _.memoize(schema => {
 })
 
 const getToolbarActions = ({ hasCreate, extraButtons = [] }) => {
-    if (!hasCreate) {
+    if (hasCreate) {
         return [
             {
                 "display": "Add",
