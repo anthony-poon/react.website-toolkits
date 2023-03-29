@@ -54,7 +54,7 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, naVa
                                 error={isError}
                                 helperText={isError ? error : subLabel}
                                 label={label}
-                                value={value ? value : ""}
+                                value={value === undefined || value === null  ? value : ""}
                                 margin={"normal"}
                                 name={name}
                                 disabled={isNA}
