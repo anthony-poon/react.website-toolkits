@@ -18,7 +18,7 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, naValue = "N/A", name, onChange, ref, ...rest }) => {
+export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name, onChange, naLabel = "N/A", naValue = "N/A", ...rest }) => {
     const classes = useStyle();
     const isError = Boolean(error);
     const isNA = hasNA && value === naValue;
@@ -44,7 +44,7 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, naVa
                                         checked={isNA}
                                         onChange={handeNAChecked}
                                     />
-                                    <Box flex={1}>N/A</Box>
+                                    <Box flex={1}>{naLabel}</Box>
                                 </Box>
                             </Grid>
                         ) }
@@ -81,7 +81,7 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, naVa
                                         checked={isNA}
                                         onChange={handeNAChecked}
                                     />
-                                    <Box flex={1}>N/A</Box>
+                                    <Box flex={1}>{naLabel}</Box>
                                 </Box>
                             </Grid>
                         ) }
@@ -90,7 +90,7 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, naVa
                                 error={isError}
                                 fullWidth
                                 margin={"normal"}
-                                value={value ? value : ""}
+                                value={value === undefined || value === null  ? value : ""}
                                 helperText={error}
                                 name={name}
                                 disabled={isNA}
