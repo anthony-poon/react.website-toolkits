@@ -37,17 +37,6 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name
             <div className={classes.container}>
                 <Hidden mdUp implementation={"js"}>
                     <Grid container>
-                        { hasNA && (
-                            <Grid item xs={4}>
-                                <Box display={"flex"} alignItems={"center"} style={{ height: "100%"}} pt={2}>
-                                    <Checkbox
-                                        checked={isNA}
-                                        onChange={handeNAChecked}
-                                    />
-                                    <Box flex={1}>{naLabel}</Box>
-                                </Box>
-                            </Grid>
-                        ) }
                         <Grid item xs>
                             <TextField
                                 fullWidth
@@ -62,6 +51,17 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name
                                 {...rest}
                             />
                         </Grid>
+                        { hasNA && (
+                            <Grid item xs={4}>
+                                <Box display={"flex"} alignItems={"center"} style={{ height: "100%"}} pt={2}>
+                                    <Checkbox
+                                        checked={isNA}
+                                        onChange={handeNAChecked}
+                                    />
+                                    <Box flex={1}>{naLabel}</Box>
+                                </Box>
+                            </Grid>
+                        ) }
                     </Grid>
                 </Hidden>
                 <Hidden smDown implementation={"js"} >
@@ -74,17 +74,6 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name
                                 />
                             </Box>
                         </Grid>
-                        { hasNA && (
-                            <Grid item xs={2}>
-                                <Box display={"flex"} alignItems={"center"} style={{ height: "100%"}} pt={2} mr={2}>
-                                    <Checkbox
-                                        checked={isNA}
-                                        onChange={handeNAChecked}
-                                    />
-                                    <Box flex={1}>{naLabel}</Box>
-                                </Box>
-                            </Grid>
-                        ) }
                         <Grid item xs>
                             <TextField
                                 error={isError}
@@ -98,6 +87,17 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name
                                 {...rest}
                             />
                         </Grid>
+                        { hasNA && (
+                            <Grid item xs={2}>
+                                <Box display={"flex"} alignItems={"center"} style={{ height: "100%"}} pt={2} ml={2}>
+                                    <Checkbox
+                                        checked={isNA}
+                                        onChange={handeNAChecked}
+                                    />
+                                    <Box flex={1}>{naLabel}</Box>
+                                </Box>
+                            </Grid>
+                        ) }
                     </Grid>
                 </Hidden>
             </div>
