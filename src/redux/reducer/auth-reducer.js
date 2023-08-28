@@ -7,13 +7,15 @@ const schema = Joi.object().keys({
     role: Joi.string().required().allow(null),
     expireAt: Joi.date().required().allow(null),
     userInfo: Joi.object().required(),
+    isTesting: Joi.boolean().default(false)
 })
 
 const initState = Object.freeze({
     isLoggedIn: false,
     role: null,
     expireAt: null,
-    userInfo: {}
+    userInfo: {},
+    isTesting: false,
 });
 
 export const authReducer = ( state = {...initState}, action ) => {
