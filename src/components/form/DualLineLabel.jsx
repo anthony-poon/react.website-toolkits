@@ -12,7 +12,7 @@ const useStyle = makeStyles(theme => ({
 }))
 
 export const DualLineLabel = (props) => {
-    const { title = "", subtitle = "", classes: outerClasses = {}, inverted = false, textAlign = "left", ...rest } = props
+    const { required, title = "", subtitle = "", classes: outerClasses = {}, inverted = false, textAlign = "left", ...rest } = props
     const classes = useStyle();
     return (
         <Box className={classes.container}>
@@ -23,7 +23,14 @@ export const DualLineLabel = (props) => {
                     color={inverted ? "textSecondary" : "inherit"}
                     {...rest}
                 >
-                    { title }
+                    <Box display={"flex"}>
+                        { title }
+                        { required && (
+                          <Box ml={1} color={"red"}>
+                              <span>*</span>
+                          </Box>
+                        ) }
+                    </Box>
                 </Typography>
             </Box>
             <Box textAlign={textAlign}>

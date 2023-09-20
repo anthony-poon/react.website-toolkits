@@ -13,7 +13,7 @@ const useStyle = makeStyles(theme => ({
     },
 }))
 
-export const ResponsiveSelectField = ({ error, children, label, subLabel, value, name, onChange, ...rest}) => {
+export const ResponsiveSelectField = ({ required, error, children, label, subLabel, value, name, onChange, ...rest}) => {
     const classes = useStyle();
     const handleChange = evt => onChange(name, evt.target.value);
     const isError = Boolean(error);
@@ -46,6 +46,7 @@ export const ResponsiveSelectField = ({ error, children, label, subLabel, value,
                                 <DualLineLabel
                                     title={label}
                                     subtitle={subLabel}
+                                    required={required}
                                 />
                             </Box>
                         </Grid>

@@ -18,7 +18,7 @@ const useStyle = makeStyles(theme => ({
     }
 }))
 
-export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name, onChange, naLabel = "N/A", naValue = "N/A", ...rest }) => {
+export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name, required, onChange, naLabel = "N/A", naValue = "N/A", ...rest }) => {
     const classes = useStyle();
     const isError = Boolean(error);
     const isNA = hasNA && value === naValue;
@@ -68,10 +68,13 @@ export const ResponsiveTextField = ({ error, label, subLabel, value, hasNA, name
                     <Grid container>
                         <Grid item xs={3}>
                             <Box pr={2} pt={2}>
-                                <DualLineLabel
-                                    title={label}
-                                    subtitle={subLabel}
-                                />
+                                <Box display={"flex"}>
+                                    <DualLineLabel
+                                      title={label}
+                                      subtitle={subLabel}
+                                      required={required}
+                                    />
+                                </Box>
                             </Box>
                         </Grid>
                         <Grid item xs>
