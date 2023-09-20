@@ -1,17 +1,13 @@
-import React from 'react';
-import {AsyncButton} from "./AsyncButton";
+import React from "react";
+
+import { AsyncButton } from "./AsyncButton";
 
 export default {
-    component: AsyncButton,
-    title: 'AsyncButton',
+  component: AsyncButton,
+  title: "AsyncButton"
 };
 
-const Template = args => (
-    <AsyncButton {...args} >
-        Submit
-    </AsyncButton>
-);
+const Template = (args) => <AsyncButton {...args}>Submit</AsyncButton>;
 
 export const Default = Template.bind({});
-Default.args = {
-};
+Default.args = {};

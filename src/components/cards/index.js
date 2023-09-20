@@ -1,3 +1,3 @@
 export * from "./CardWithIcon";
 export * from "./ResponsiveCard";
-export * from "./ResponsiveCardContainer"
+export * from "./ResponsiveCardContainer";

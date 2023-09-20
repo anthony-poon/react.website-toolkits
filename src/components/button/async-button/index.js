@@ -1,5 +1,3 @@
 import { AsyncButton } from "./AsyncButton";
 
-export {
-    AsyncButton
-}
+export { AsyncButton };

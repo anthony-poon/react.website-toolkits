@@ -1,107 +1,96 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import {makeStyles} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
-import {AsyncButton, CardWithIcon, FormContent, FormFieldWrapper} from "../../components";
-import { makeFormData } from "../../hooks";
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import Link from '@material-ui/core/Link';
-import {Link as RouterLink} from 'react-router-dom';
+import Typography from "@material-ui/core/Typography";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-const useStyle = makeStyles(theme => ({
-    errors: {
-    },
-    content: {
-        paddingBottom: theme.spacing(4)
-    },
-    buttons: {
-        marginBottom: theme.spacing(2)
-    },
-    links: {
-        display: "flex",
-        justifyContent: "space-between",
-    }
+import { AsyncButton, CardWithIcon, FormContent, FormFieldWrapper } from "../../components";
+import { makeFormData } from "../../hooks";
+
+const useStyle = makeStyles((theme) => ({
+  errors: {},
+  content: {
+    paddingBottom: theme.spacing(4)
+  },
+  buttons: {
+    marginBottom: theme.spacing(2)
+  },
+  links: {
+    display: "flex",
+    justifyContent: "space-between"
+  }
 }));
 
 const useFormData = makeFormData({
-    username: "",
-    password: "",
+  username: "",
+  password: ""
 });
 
 export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {
-    const classes = useStyle();
-    const { formData, handleFormChange } = useFormData();
-    const {
-        username,
-        password
-    } = formData;
-    const handleSubmit = () => onSubmit({ username, password });
-    return (
-        <CardWithIcon
-            icon={
-                <LockOpenIcon style={{ fontSize: 60 }} color={"primary"}/>
-            }
-            title={"LOGIN"}
-            subtitle={"Using your email and password"}
-        >
-            <form>
-                { error && (
-                    <Typography className={classes.errors} color={"error"} key={error}>
-                        { error }
-                    </Typography>
-                )}
-                <FormContent>
-                    <FormFieldWrapper>
-                        <TextField
-                            label="Email Address"
-                            fullWidth
-                            margin="normal"
-                            value={username}
-                            name={"username"}
-                            type={"email"}
-                            onChange={handleFormChange}
-                        />
-                    </FormFieldWrapper>
-                    <FormFieldWrapper>
-                        <TextField
-                            label="Password"
-                            fullWidth
-                            type={"password"}
-                            value={password}
-                            name={"password"}
-                            onChange={handleFormChange}
-                            margin="normal"
-                        />
-                    </FormFieldWrapper>
-                </FormContent>
-                <div className={classes.buttons}>
-                    <AsyncButton
-                        fullWidth
-                        size={"large"}
-                        type={"submit"}
-                        onClick={handleSubmit}
-                        style={{textTransform: 'none'}}
-                    >
-                        Login
-                    </AsyncButton>
-                </div>
-            </form>
-            <div className={classes.links}>
-                {
-                    forgotPasswordLink && (
-                        <Link component={RouterLink} to={forgotPasswordLink}>
-                            Forgot password?
-                        </Link>
-                    )
-                }
-                {
-                    signUpLink && (
-                        <Link component={RouterLink} to={signUpLink}>
-                            Create Account
-                        </Link>
-                    )
-                }
-            </div>
-        </CardWithIcon>
-    )
-}
+  const classes = useStyle();
+  const { formData, handleFormChange } = useFormData();
+  const { username, password } = formData;
+  const handleSubmit = () => onSubmit({ username, password });
+  return (
+    <CardWithIcon
+      icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
+      title={"LOGIN"}
+      subtitle={"Using your email and password"}>
+      <form>
+        {error && (
+          <Typography className={classes.errors} color={"error"} key={error}>
+            {error}
+          </Typography>
+        )}
+        <FormContent>
+          <FormFieldWrapper>
+            <TextField
+              label="Email Address"
+              fullWidth
+              margin="normal"
+              value={username}
+              name={"username"}
+              type={"email"}
+              onChange={handleFormChange}
+            />
+          </FormFieldWrapper>
+          <FormFieldWrapper>
+            <TextField
+              label="Password"
+              fullWidth
+              type={"password"}
+              value={password}
+              name={"password"}
+              onChange={handleFormChange}
+              margin="normal"
+            />
+          </FormFieldWrapper>
+        </FormContent>
+        <div className={classes.buttons}>
+          <AsyncButton
+            fullWidth
+            size={"large"}
+            type={"submit"}
+            onClick={handleSubmit}
+            style={{ textTransform: "none" }}>
+            Login
+          </AsyncButton>
+        </div>
+      </form>
+      <div className={classes.links}>
+        {forgotPasswordLink && (
+          <Link component={RouterLink} to={forgotPasswordLink}>
+            Forgot password?
+          </Link>
+        )}
+        {signUpLink && (
+          <Link component={RouterLink} to={signUpLink}>
+            Create Account
+          </Link>
+        )}
+      </div>
+    </CardWithIcon>
+  );
+};

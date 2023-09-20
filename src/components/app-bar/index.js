@@ -1,2 +1,2 @@
-export { ClippedAppBar } from "./ClippedAppBar"
+export { ClippedAppBar } from "./ClippedAppBar";
 export { AppBarButton } from "./AppBarButton";
