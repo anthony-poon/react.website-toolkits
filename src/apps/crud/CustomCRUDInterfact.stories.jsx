@@ -9,16 +9,16 @@ import { CustomCRUDInterface } from "./CustomCRUDInterface";
 
 export default {
   component: CustomCRUDInterface,
-  title: "CustomCRUDInterface"
+  title: "CustomCRUDInterface",
 };
 
 const useStyle = makeStyles((theme) => ({
   container: {
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 800
-    }
-  }
+      width: 800,
+    },
+  },
 }));
 
 // TODO: consider caching this. If use _.momoize, need to figure out how to override resolver func
@@ -35,19 +35,19 @@ const paginateItems = (items, limit, currPage) => {
   const chunks = _.chunk(items, limit);
   return {
     currItems: _.isEmpty(chunks) ? [] : chunks[currPage - 1],
-    pageCount: chunks.length
+    pageCount: chunks.length,
   };
 };
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 8,
-    min: 4
+    min: 4,
   },
   wordsPerSentence: {
     max: 16,
-    min: 4
-  }
+    min: 4,
+  },
 });
 
 const Template = ({ items, render, countPerPage = 5, schema, toolbarOptions, sortOptions, actionOptions, ...rest }) => {
@@ -56,11 +56,11 @@ const Template = ({ items, render, countPerPage = 5, schema, toolbarOptions, sor
   const [query, setQuery] = useState("");
   const [currPage, setCurrPage] = useState(1);
   const mountRef = useRef({
-    searchIndex: null
+    searchIndex: null,
   });
   useEffect(() => {
     const searchIndex = new Index({
-      tokenize: "full"
+      tokenize: "full",
     });
     const sortBy = sortOptions[0].value;
     setSortBy(sortBy);
@@ -121,7 +121,7 @@ const getPlaceholderItems = (count = 100) => {
     firstName: lorem.generateWords(1),
     lastName: lorem.generateWords(1),
     address: lorem.generateSentences(1),
-    description: lorem.generateParagraphs(1)
+    description: lorem.generateParagraphs(1),
   }));
 };
 
@@ -132,71 +132,71 @@ Default.args = {
     {
       size: "small",
       label: "ID",
-      key: "id"
+      key: "id",
     },
     {
       size: "medium",
       label: "First Name",
-      key: "firstName"
+      key: "firstName",
     },
     {
       size: "medium",
       label: "Last Name",
-      key: "lastName"
+      key: "lastName",
     },
     {
       size: "large",
       label: "Address",
-      key: "address"
+      key: "address",
     },
     {
       size: "xlarge",
       label: "Description",
-      key: "description"
-    }
+      key: "description",
+    },
   ],
   toolbarOptions: [
     {
       display: "Testing 1",
-      value: "t_testing_1"
+      value: "t_testing_1",
     },
     {
       display: "Testing 2",
-      value: "t_testing_2"
+      value: "t_testing_2",
     },
     {
       display: "Testing 3",
       value: "t_testing_3",
-      color: "secondary"
-    }
+      color: "secondary",
+    },
   ],
   actionOptions: [
     {
       display: "Testing 1",
-      value: "e_testing_1"
+      value: "e_testing_1",
     },
     {
       display: "Testing 2",
-      value: "e_testing_2"
+      value: "e_testing_2",
     },
     {
       display: "Testing 3",
       value: "e_testing_3",
-      color: "secondary"
-    }
+      color: "secondary",
+    },
   ],
   sortOptions: [
     {
       display: "ID",
-      value: "id"
+      value: "id",
     },
     {
       display: "First Name",
-      value: "firstName"
+      value: "firstName",
     },
     {
       display: "Last Name",
-      value: "lastName"
-    }
-  ]
+      value: "lastName",
+    },
+  ],
 };

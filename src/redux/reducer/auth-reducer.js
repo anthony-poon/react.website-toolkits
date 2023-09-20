@@ -8,7 +8,7 @@ const schema = Joi.object().keys({
   role: Joi.string().required().allow(null),
   expireAt: Joi.date().required().allow(null),
   userInfo: Joi.object().required(),
-  isTesting: Joi.boolean().default(false)
+  isTesting: Joi.boolean().default(false),
 });
 
 const initState = Object.freeze({
@@ -16,7 +16,7 @@ const initState = Object.freeze({
   role: null,
   expireAt: null,
   userInfo: {},
-  isTesting: false
+  isTesting: false,
 });
 
 export const authReducer = (state = { ...initState }, action) => {
@@ -28,26 +28,26 @@ export const authReducer = (state = { ...initState }, action) => {
         if (expireAt < new Date().getTime() / 1000) {
           console.log("refreshToken expired");
           return {
-            ...initState
+            ...initState,
           };
         }
         return {
-          ...action.payload.authorization
+          ...action.payload.authorization,
         };
       } catch (e) {
         console.error(`Schema error when rehydrating authorization. message=${e.message}`);
         return {
-          ...initState
+          ...initState,
         };
       }
     case APP_LOGIN:
       return {
         isLoggedIn: true,
-        ...action.payload
+        ...action.payload,
       };
     case APP_LOGOUT:
       return {
-        ...initState
+        ...initState,
       };
     default:
       return state;

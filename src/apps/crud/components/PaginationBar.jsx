@@ -8,9 +8,9 @@ const useStyle = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     [theme.breakpoints.up("md")]: {
-      justifyContent: "flex-end"
-    }
-  }
+      justifyContent: "flex-end",
+    },
+  },
 }));
 
 export const PaginationBar = ({ pageCount, currPage, onChange }) => {

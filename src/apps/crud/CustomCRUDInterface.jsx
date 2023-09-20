@@ -18,7 +18,7 @@ export const CustomCRUDInterface = ({
   toolbarOptions,
   actionOptions,
   onToolbarAction,
-  onEntityAction
+  onEntityAction,
 }) => {
   return (
     <CRUD.Interface

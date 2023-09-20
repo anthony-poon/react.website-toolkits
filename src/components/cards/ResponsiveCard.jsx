@@ -7,8 +7,8 @@ import React from "react";
 const useStyle = makeStyles((theme) => ({
   card: {
     width: "100%",
-    padding: theme.spacing(4)
-  }
+    padding: theme.spacing(4),
+  },
 }));
 
 export const ResponsiveCard = ({ variant = "sm", children }) => {
@@ -21,5 +21,5 @@ export const ResponsiveCard = ({ variant = "sm", children }) => {
 };
 
 ResponsiveCard.propTypes = {
-  variant: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
+  variant: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 };

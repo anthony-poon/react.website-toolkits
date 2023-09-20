@@ -9,20 +9,20 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    display: "flex"
+    display: "flex",
   },
   label: {
     height: "100%",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   input: {
-    display: "none"
+    display: "none",
   },
   image: {
     maxWidth: 300,
-    maxHeight: 300
-  }
+    maxHeight: 300,
+  },
 }));
 
 export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled, ...rest }) => {

@@ -8,20 +8,20 @@ import { DualLineLabel } from "../../../components";
 const SIZE_MAPPING = {
   small: {
     xs: 2,
-    md: 2
+    md: 2,
   },
   medium: {
     xs: 5,
-    md: 5
+    md: 5,
   },
   large: {
     xs: 12,
-    md: 5
+    md: 5,
   },
   xlarge: {
     xs: 12,
-    md: 12
-  }
+    md: 12,
+  },
 };
 
 const PropertyLabel = ({ size, label, value }) => {
@@ -36,7 +36,7 @@ const PropertyLabel = ({ size, label, value }) => {
 };
 
 PropertyLabel.propTypes = {
-  size: PropTypes.oneOf(["small", "medium", "large", "xlarge"])
+  size: PropTypes.oneOf(["small", "medium", "large", "xlarge"]),
 };
 
 export const Property = ({ item, schema }) => {

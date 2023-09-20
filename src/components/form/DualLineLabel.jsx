@@ -4,11 +4,11 @@ import React from "react";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    height: "100%"
+    height: "100%",
   },
   subtitle: {
     // lineHeight: "1rem"
-  }
+  },
 }));
 
 export const DualLineLabel = (props) => {

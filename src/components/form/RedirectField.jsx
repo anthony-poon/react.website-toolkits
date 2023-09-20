@@ -10,8 +10,8 @@ const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
     justifyContent: "space-between",
-    width: "100%"
-  }
+    width: "100%",
+  },
 }));
 
 const DefaultLink = ({ to, children, className }) => {
@@ -28,7 +28,7 @@ export const RedirectField = ({
   title,
   subtitle,
   to = "#",
-  component = DefaultLink
+  component = DefaultLink,
 }) => {
   const classes = useStyle();
   return (

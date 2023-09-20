@@ -10,25 +10,25 @@ import { makeFormData } from "../../hooks";
 
 const useStyle = makeStyles((theme) => ({
   contentContainer: {
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
   },
   buttonsContainer: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   linkContainer: {
     display: "flex",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
 }));
 
 const useFormData = makeFormData({
-  email: ""
+  email: "",
 });
 
 export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
   const classes = useStyle();
   const { formData, handleFormChange } = useFormData({
-    email: ""
+    email: "",
   });
   const { email } = formData;
   const handleCancel = () => onCancel();

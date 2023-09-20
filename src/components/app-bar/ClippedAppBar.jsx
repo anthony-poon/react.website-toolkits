@@ -7,14 +7,14 @@ import React from "react";
 
 const useStyle = makeStyles((theme) => ({
   appBar: {
-    zIndex: theme.zIndex.drawer + 1
+    zIndex: theme.zIndex.drawer + 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 }));
 
 export const ClippedAppBar = ({ children, onDrawerToggle }) => {

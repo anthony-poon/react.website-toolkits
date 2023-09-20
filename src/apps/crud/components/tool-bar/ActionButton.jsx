@@ -5,8 +5,8 @@ import React from "react";
 
 const useStyle = makeStyles((theme) => ({
   button: {
-    width: 120
-  }
+    width: 120,
+  },
 }));
 
 export const ActionButton = ({ component = Button, ...rest }) => {
@@ -16,7 +16,7 @@ export const ActionButton = ({ component = Button, ...rest }) => {
     variant: "outlined",
     color: "primary",
     className: classes.button,
-    ...rest
+    ...rest,
   });
   return <Box mr={1}>{button}</Box>;
 };

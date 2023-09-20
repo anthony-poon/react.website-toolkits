@@ -27,7 +27,7 @@ export const makeFormData = (init) => {
     useEffect(() => {
       setFormData((prev) => ({
         ...prev,
-        ...update
+        ...update,
       }));
     }, [...Object.values(update)]);
     const isEqual = _.isEqual(update, formData);

@@ -8,7 +8,7 @@ export const ActionButton = ({ component = Button, ...rest }) => {
     size: "small",
     color: "primary",
     variant: "outlined",
-    ...rest
+    ...rest,
   });
   return <Box mb={1}>{button}</Box>;
 };

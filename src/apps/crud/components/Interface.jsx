@@ -9,8 +9,8 @@ const useStyle = makeStyles((theme) => ({
   propertyContainer: {
     [theme.breakpoints.up("md")]: {
       paddingRight: (hasActions) => (hasActions ? theme.spacing(3) : 0),
-      borderRight: `1px solid ${theme.palette.divider}`
-    }
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
   },
   actionContainer: {
     paddingTop: theme.spacing(3),
@@ -18,18 +18,18 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       paddingLeft: (hasActions) => (hasActions ? theme.spacing(3) : 0),
       paddingTop: 0,
-      paddingBottom: 0
-    }
+      paddingBottom: 0,
+    },
   },
   sortBarContainer: {
     paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2)
+    paddingBottom: theme.spacing(2),
   },
   searchBarContainer: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
-    paddingRight: theme.spacing(2)
-  }
+    paddingRight: theme.spacing(2),
+  },
 }));
 
 export const Interface = ({
@@ -40,7 +40,7 @@ export const Interface = ({
   searchBar,
   renderProperties,
   renderActions,
-  paginationBar
+  paginationBar,
 }) => {
   const hasActions = Boolean(renderActions);
   const classes = useStyle({ hasActions });

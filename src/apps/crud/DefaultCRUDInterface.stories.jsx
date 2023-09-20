@@ -10,27 +10,27 @@ import { DefaultCRUDInterface } from "./DefaultCRUDInterface";
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 8,
-    min: 4
+    min: 4,
   },
   wordsPerSentence: {
     max: 16,
-    min: 4
-  }
+    min: 4,
+  },
 });
 
 export default {
   component: DefaultCRUDInterface,
   title: "DefaultCRUDInterface",
-  argTypes: { onCreate: { action: "clicked" } }
+  argTypes: { onCreate: { action: "clicked" } },
 };
 
 const useStyle = makeStyles((theme) => ({
   container: {
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 800
-    }
-  }
+      width: 800,
+    },
+  },
 }));
 
 const Template = (args) => {
@@ -50,7 +50,7 @@ const getPlaceholderItems = (count = 10) => {
     firstName: lorem.generateWords(1),
     lastName: lorem.generateWords(1),
     address: lorem.generateSentences(1),
-    description: lorem.generateParagraphs(1)
+    description: lorem.generateParagraphs(1),
   }));
 };
 
@@ -63,61 +63,61 @@ Default.args = {
       size: "small",
       label: "ID",
       key: "id",
-      sortable: true
+      sortable: true,
     },
     {
       size: "medium",
       label: "First Name",
       key: "firstName",
-      sortable: true
+      sortable: true,
     },
     {
       size: "medium",
       label: "Last Name",
       key: "lastName",
-      sortable: true
+      sortable: true,
     },
     {
       size: "large",
       label: "Address",
       key: "address",
-      sortable: false
+      sortable: false,
     },
     {
       size: "xlarge",
       label: "Description",
       key: "description",
-      sortable: false
-    }
+      sortable: false,
+    },
   ],
   toolbarOptions: {
     buttons: [
       {
         display: "Extra 1",
-        value: "t_extra_1"
+        value: "t_extra_1",
       },
       {
         display: "Extra 2",
-        value: "t_extra_2"
-      }
-    ]
+        value: "t_extra_2",
+      },
+    ],
   },
   actionOptions: {
     buttons: [
       {
         display: "Extra 1",
-        value: "a_extra_1"
+        value: "a_extra_1",
       },
       {
         display: "Extra 2",
         value: "a_extra_2",
-        color: "secondary"
-      }
-    ]
+        color: "secondary",
+      },
+    ],
   },
   onCreate: () => console.log("create"),
   onRead: (payload) => console.log("read", payload),
   onUpdate: (payload) => console.log("update", payload),
   onDelete: (payload) => console.log("delete", payload),
-  onOtherAction: (action, payload) => console.log(action, payload)
+  onOtherAction: (action, payload) => console.log(action, payload),
 };

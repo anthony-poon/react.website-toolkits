@@ -13,5 +13,5 @@ export const CRUD = {
   SearchBar,
   Toolbar,
   PaginationBar,
-  ActionColumn
+  ActionColumn,
 };

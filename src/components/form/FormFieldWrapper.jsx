@@ -7,17 +7,17 @@ const useStyle = makeStyles((theme) => ({
     borderTop: ({ borderTop }) => (borderTop ? `1px solid ${theme.palette.divider}` : 0),
     borderBottom: ({ borderBottom }) => (borderBottom ? `1px solid ${theme.palette.divider}` : 0),
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   lhs: {
     height: 48,
     width: 48,
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
   },
   rhs: {
-    flexGrow: 1
-  }
+    flexGrow: 1,
+  },
 }));
 
 export const FormFieldWrapper = (props) => {
@@ -34,7 +34,7 @@ export const FormFieldWrapper = (props) => {
   const classes = useStyle({
     borderBottom,
     borderTop,
-    gutter
+    gutter,
   });
   return (
     <Box

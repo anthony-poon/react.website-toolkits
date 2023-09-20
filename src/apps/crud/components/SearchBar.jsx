@@ -17,7 +17,7 @@ export const SearchBar = ({ value, onChange }) => {
           <InputAdornment position="start">
             <Search fontSize={"small"} />
           </InputAdornment>
-        )
+        ),
       }}
     />
   );

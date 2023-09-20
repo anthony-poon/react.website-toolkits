@@ -24,14 +24,14 @@ const paginateItems = (items, limit, currPage) => {
   const chunks = _.chunk(items, limit);
   return {
     currItems: _.isEmpty(chunks) ? [] : chunks[currPage - 1],
-    pageCount: chunks.length
+    pageCount: chunks.length,
   };
 };
 
 const getSortOptions = _.memoize((schema) => {
   return _.filter(schema, (schema) => Boolean(schema.sortable)).map((schema) => ({
     display: schema.label,
-    value: schema.key
+    value: schema.key,
   }));
 });
 
@@ -41,9 +41,9 @@ const getToolbarActions = ({ hasCreate, extraButtons = [] }) => {
       {
         display: "Add",
         value: "create",
-        icon: <Add color={"primary"} />
+        icon: <Add color={"primary"} />,
       },
-      ...extraButtons
+      ...extraButtons,
     ];
   } else {
     return [...extraButtons];
@@ -56,14 +56,14 @@ const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [
     rtn.push({
       display: "View",
       value: "read",
-      icon: <VisibilityIcon color={"primary"} />
+      icon: <VisibilityIcon color={"primary"} />,
     });
   }
   if (hasUpdate) {
     rtn.push({
       display: "Edit",
       value: "update",
-      icon: <Edit color={"primary"} />
+      icon: <Edit color={"primary"} />,
     });
   }
   if (hasDelete) {
@@ -71,7 +71,7 @@ const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [
       display: "Delete",
       value: "delete",
       icon: <Delete color={"secondary"} />,
-      color: "secondary"
+      color: "secondary",
     });
   }
 
@@ -91,14 +91,14 @@ export const DefaultCRUDInterface = ({
   onDelete,
   onOtherAction,
   initSortBy = "id",
-  initIsSortAsc
+  initIsSortAsc,
 }) => {
   const [sortBy, setSortBy] = useState(initSortBy);
   const [isSortAsc, setSortAsc] = useState(initIsSortAsc);
   const [query, setQuery] = useState("");
   const [currPage, setCurrPage] = useState(1);
   const mountRef = useRef({
-    searchIndex: null
+    searchIndex: null,
   });
 
   const sortOptions = getSortOptions(schema);
@@ -115,7 +115,7 @@ export const DefaultCRUDInterface = ({
       items.forEach((item, index) => {
         this.add({
           ...item,
-          __idx: index
+          __idx: index,
         });
       });
     });
@@ -175,13 +175,13 @@ export const DefaultCRUDInterface = ({
       sortOptions={sortOptions}
       toolbarOptions={getToolbarActions({
         hasCreate: Boolean(onCreate),
-        extraButtons: toolbarButtons
+        extraButtons: toolbarButtons,
       })}
       actionOptions={getActionColumnAction({
         hasRead: Boolean(onRead),
         hasUpdate: Boolean(onUpdate),
         hasDelete: Boolean(onDelete),
-        extraButtons: actionButtons
+        extraButtons: actionButtons,
       })}
       onSearchChange={handleSearchChange}
       onSortChange={handleSortChange}
@@ -197,7 +197,7 @@ DefaultCRUDInterface.defaultProps = {
   schema: [],
   countPerPage: 5,
   toolbarOptions: {},
-  actionOptions: {}
+  actionOptions: {},
 };
 
 DefaultCRUDInterface.propTypes = {
@@ -207,7 +207,7 @@ DefaultCRUDInterface.propTypes = {
       size: PropTypes.oneOf(["small", "medium", "large", "xlarge"]).isRequired,
       label: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
-      sortable: PropTypes.bool
+      sortable: PropTypes.bool,
     })
   ).isRequired,
   countPerPage: PropTypes.number,
@@ -220,17 +220,17 @@ DefaultCRUDInterface.propTypes = {
       PropTypes.shape({
         display: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        color: PropTypes.string
+        color: PropTypes.string,
       })
-    )
+    ),
   }),
   actionOptions: PropTypes.shape({
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         display: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        color: PropTypes.string
+        color: PropTypes.string,
       })
-    )
-  })
+    ),
+  }),
 };

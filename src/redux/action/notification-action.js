@@ -6,14 +6,14 @@ export const setNotificationAction = ({ message = null, type = "info" }) => {
     type: SET_NOTIFICATION,
     payload: {
       message,
-      type
-    }
+      type,
+    },
   };
 };
 
 export const unsetNotificationAction = () => {
   return {
-    type: UNSET_NOTIFICATION
+    type: UNSET_NOTIFICATION,
   };
 };
 
@@ -22,8 +22,8 @@ export const setSuccessMsg = (message) => {
     type: SET_NOTIFICATION,
     payload: {
       message,
-      type: "success"
-    }
+      type: "success",
+    },
   };
 };
 
@@ -32,8 +32,8 @@ export const setErrorMsg = (error) => {
     type: SET_NOTIFICATION,
     payload: {
       message: error instanceof Error ? error.message : error,
-      type: "error"
-    }
+      type: "error",
+    },
   };
 };
 
@@ -42,8 +42,8 @@ export const setInfoMsg = (message) => {
     type: SET_NOTIFICATION,
     payload: {
       message,
-      type: "info"
-    }
+      type: "info",
+    },
   };
 };
 
@@ -52,7 +52,7 @@ export const setWarnMsg = (message) => {
     type: SET_NOTIFICATION,
     payload: {
       message,
-      type: "warning"
-    }
+      type: "warning",
+    },
   };
 };

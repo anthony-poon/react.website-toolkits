@@ -25,7 +25,7 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, ...rest }
         onClick && onClick(evt),
         new Promise((resolve) => {
           setTimeout(resolve, duration);
-        })
+        }),
       ]);
       onFinish && onFinish(rtn[0]);
       if (mountRef.current) {
@@ -54,7 +54,7 @@ AsyncButton.defaultProps = {
   duration: 1500,
   type: "button",
   color: "primary",
-  variant: "contained"
+  variant: "contained",
 };
 
 AsyncButton.propTypes = {
@@ -66,7 +66,7 @@ AsyncButton.propTypes = {
   onFinish: PropTypes.func,
   onError: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  variant: PropTypes.oneOf(["contained", "outlined", "text"])
+  variant: PropTypes.oneOf(["contained", "outlined", "text"]),
 };
 
 export { AsyncButton };

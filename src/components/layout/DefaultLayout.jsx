@@ -6,17 +6,17 @@ import React from "react";
 const useStyle = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
-    display: "flex"
+    display: "flex",
   },
   rhs: {
     flexGrow: 1,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   content: {
     flexGrow: 1,
-    overflow: "auto"
-  }
+    overflow: "auto",
+  },
 }));
 
 export const DefaultLayout = ({ appBar, drawer, children }) => {

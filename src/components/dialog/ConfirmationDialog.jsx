@@ -24,7 +24,7 @@ const ConfirmationDialog = ({ onClose, isOpen, title, children, ...rest }) => {
 ConfirmationDialog.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   title: PropTypes.string,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
 };
 
 export { ConfirmationDialog };

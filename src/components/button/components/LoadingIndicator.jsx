@@ -12,8 +12,8 @@ const useStyles = makeStyles({
     right: 0,
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
 
 export const LoadingIndicator = () => {

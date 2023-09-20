@@ -3,8 +3,8 @@ import React from "react";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    paddingBottom: theme.spacing(3)
-  }
+    paddingBottom: theme.spacing(3),
+  },
 }));
 
 export const FormContent = ({ children }) => {

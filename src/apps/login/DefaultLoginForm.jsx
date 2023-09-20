@@ -12,20 +12,20 @@ import { makeFormData } from "../../hooks";
 const useStyle = makeStyles((theme) => ({
   errors: {},
   content: {
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
   },
   buttons: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   links: {
     display: "flex",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+  },
 }));
 
 const useFormData = makeFormData({
   username: "",
-  password: ""
+  password: "",
 });
 
 export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {

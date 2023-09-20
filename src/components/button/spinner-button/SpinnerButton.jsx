@@ -9,11 +9,11 @@ import { UnhandledErrorIndicator } from "../components/UnhandledErrorIndicator";
 
 const useStyles = makeStyles({
   container: {
-    position: "relative"
+    position: "relative",
   },
   children: {
-    zIndex: 1
-  }
+    zIndex: 1,
+  },
 });
 
 export const SpinnerButton = ({
@@ -50,7 +50,7 @@ export const SpinnerButton = ({
 SpinnerButton.defaultProps = {
   type: "button",
   color: "primary",
-  variant: "contained"
+  variant: "contained",
 };
 
 SpinnerButton.propTypes = {
@@ -59,5 +59,5 @@ SpinnerButton.propTypes = {
   type: PropTypes.oneOf(["button", "submit"]),
   onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  variant: PropTypes.oneOf(["contained", "outlined"])
+  variant: PropTypes.oneOf(["contained", "outlined"]),
 };

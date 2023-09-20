@@ -12,7 +12,7 @@ export const AsyncDiv = ({ onMount, children, duration = 1500, implementation = 
         onMount && onMount(),
         new Promise((resolve) => {
           setTimeout(resolve, duration);
-        })
+        }),
       ]);
       if (mountRef.current) {
         setLoading(false);

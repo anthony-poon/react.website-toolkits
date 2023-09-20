@@ -10,13 +10,13 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    display: "flex"
+    display: "flex",
   },
   label: {
     height: "100%",
     display: "flex",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 export const ResponsiveTextField = ({

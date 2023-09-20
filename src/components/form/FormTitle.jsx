@@ -7,8 +7,8 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 const useStyle = makeStyles((theme) => ({
   title: {
     color: theme.palette.primary.main,
-    ...theme.typography.h5
-  }
+    ...theme.typography.h5,
+  },
 }));
 
 export const FormTitle = ({ borderBottom = false, borderTop = false, title, subtitle }) => {

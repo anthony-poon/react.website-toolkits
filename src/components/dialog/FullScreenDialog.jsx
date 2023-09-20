@@ -12,12 +12,12 @@ import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: "relative"
+    position: "relative",
   },
   title: {
     marginLeft: theme.spacing(2),
-    flex: 1
-  }
+    flex: 1,
+  },
 }));
 
 export const FullScreenDialog = ({ title, isOpen = false, onClose, onSubmit, children, containerSize = "md" }) => {
@@ -45,5 +45,5 @@ export const FullScreenDialog = ({ title, isOpen = false, onClose, onSubmit, chi
 };
 
 FullScreenDialog.propTypes = {
-  containerSize: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"])
+  containerSize: PropTypes.oneOf(["xs", "sm", "md", "lg", "xl"]),
 };

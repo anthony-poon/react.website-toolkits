@@ -10,8 +10,8 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 const useStyle = makeStyles((theme) => ({
   container: {
     display: "flex",
-    width: "100%"
-  }
+    width: "100%",
+  },
 }));
 
 export const ResponsiveSelectField = ({

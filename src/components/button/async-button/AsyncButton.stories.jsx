@@ -4,7 +4,7 @@ import { AsyncButton } from "./AsyncButton";
 
 export default {
   component: AsyncButton,
-  title: "AsyncButton"
+  title: "AsyncButton",
 };
 
 const Template = (args) => <AsyncButton {...args}>Submit</AsyncButton>;

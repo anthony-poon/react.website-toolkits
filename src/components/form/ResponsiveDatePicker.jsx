@@ -9,13 +9,13 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    display: "flex"
+    display: "flex",
   },
   label: {
     height: "100%",
     display: "flex",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 export const ResponsiveDatePicker = ({ error, label, subLabel, value, name, onChange, ...rest }) => {
@@ -48,7 +48,7 @@ export const ResponsiveDatePicker = ({ error, label, subLabel, value, name, onCh
                 helperText={isError ? error : subLabel}
                 type={"date"}
                 InputLabelProps={{
-                  shrink: true
+                  shrink: true,
                 }}
                 value={value ? value : ""}
                 margin={"normal"}

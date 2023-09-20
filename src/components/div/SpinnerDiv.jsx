@@ -10,8 +10,8 @@ const useStyle = makeStyles((theme) => ({
     minHeight: 150,
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 }));
 
 const JSImplementation = ({ display, children }) => {
@@ -25,7 +25,7 @@ const CSSImplementation = ({ display, children }) => {
   return (
     <div
       style={{
-        display: display ? "initial" : "none"
+        display: display ? "initial" : "none",
       }}>
       {children}
     </div>
@@ -58,9 +58,9 @@ export const SpinnerDiv = ({ isLoading, isError, children, implementation = "js"
 };
 
 SpinnerDiv.defaultProps = {
-  state: "none"
+  state: "none",
 };
 
 SpinnerDiv.propTypes = {
-  state: PropTypes.oneOf(["none", "loading", "error"])
+  state: PropTypes.oneOf(["none", "loading", "error"]),
 };

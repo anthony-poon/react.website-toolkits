@@ -14,11 +14,11 @@ const useStyle = makeStyles((theme) => ({
   sortBarContainer: {
     display: "flex",
     justifyContent: "flex-end",
-    alignItems: "center"
+    alignItems: "center",
   },
   dropdownContainer: {
-    width: 120
-  }
+    width: 120,
+  },
 }));
 
 export const SortBar = ({ options = [], value, isAsc = false, onChange }) => {
@@ -26,20 +26,20 @@ export const SortBar = ({ options = [], value, isAsc = false, onChange }) => {
   const handleSortByChange = (evt) => {
     onChange({
       value: evt.target.value,
-      isAsc: isAsc
+      isAsc: isAsc,
     });
   };
   const handleAscChange = (evt) => {
     onChange({
       value: value,
-      isAsc: !isAsc
+      isAsc: !isAsc,
     });
   };
   const dropdown = _.isObject(options[0])
     ? options
     : _.map(options, (option) => ({
         display: option,
-        value: option
+        value: option,
       }));
   return (
     <div className={classes.sortBarContainer}>

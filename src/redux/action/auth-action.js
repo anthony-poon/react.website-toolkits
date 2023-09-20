@@ -7,13 +7,13 @@ export const loginAction = ({ expireAt = null, role = null, userInfo = {} }) => 
     payload: {
       expireAt,
       role,
-      userInfo
-    }
+      userInfo,
+    },
   };
 };
 
 export const logoutAction = () => {
   return {
-    type: APP_LOGOUT
+    type: APP_LOGOUT,
   };
 };

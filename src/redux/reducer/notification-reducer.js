@@ -2,18 +2,18 @@ import { SET_NOTIFICATION, UNSET_NOTIFICATION } from "../action";
 
 const initState = Object.freeze({
   message: null,
-  type: "info"
+  type: "info",
 });
 
 export const notificationReducer = (state = { ...initState }, action) => {
   switch (action.type) {
     case SET_NOTIFICATION:
       return {
-        ...action.payload
+        ...action.payload,
       };
     case UNSET_NOTIFICATION:
       return {
-        ...initState
+        ...initState,
       };
     default:
       return state;

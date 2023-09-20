@@ -6,19 +6,19 @@ import { ResponsiveCard } from "./ResponsiveCard";
 
 const useStyle = makeStyles((theme) => ({
   titleText: {
-    textAlign: "center"
+    textAlign: "center",
   },
   helperText: {
     textAlign: "center",
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   iconContainer: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3)
-  }
+    paddingBottom: theme.spacing(3),
+  },
 }));
 
 export const CardWithIcon = ({ icon, title, subtitle, children }) => {

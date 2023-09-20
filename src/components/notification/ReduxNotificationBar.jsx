@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { unsetNotificationAction } from "../../redux";
 
-function Alert(props) {
+const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
@@ -26,7 +26,7 @@ export const ReduxNotificationBar = () => {
     <Snackbar
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left"
+        horizontal: "left",
       }}
       open={Boolean(message)}
       autoHideDuration={6000}

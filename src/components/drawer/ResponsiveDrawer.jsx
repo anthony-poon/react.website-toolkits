@@ -11,15 +11,15 @@ const useStyles = (props) => {
     drawer: {
       [theme.breakpoints.up("md")]: {
         width,
-        flexShrink: 0
-      }
+        flexShrink: 0,
+      },
     },
     drawerPaper: {
-      width
+      width,
     },
     drawerContainer: {
-      overflow: "auto"
-    }
+      overflow: "auto",
+    },
   }));
 };
 
@@ -30,14 +30,14 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
       <Hidden mdUp implementation={"js"}>
         <Drawer
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
           anchor={"left"}
           variant="temporary"
           open={isOpen}
           onClose={onClose}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true, // Better open performance on mobile.
           }}>
           <Toolbar />
           <div>
@@ -50,7 +50,7 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
       <Hidden smDown implementation={"js"}>
         <Drawer
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
           variant="permanent"
           open>
