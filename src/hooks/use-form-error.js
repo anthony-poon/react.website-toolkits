@@ -26,7 +26,7 @@ export const useFormError = (init) => {
       setErrors(newError);
       return _.isEmpty(mapping);
     },
-    [formErrors]
+    [formErrors],
   );
   return { formErrors, handleValidate };
 };

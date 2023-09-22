@@ -25,20 +25,20 @@ export const DualLineLabel = (props) => {
   return (
     <Box className={classes.container}>
       <Box textAlign={textAlign}>
-        <Typography
-          className={outerClasses.title}
-          variant={inverted ? "caption" : "body1"}
-          color={inverted ? "textSecondary" : "inherit"}
-          {...rest}>
-          <Box display={"flex"}>
+        <Box display={"flex"}>
+          <Typography
+            className={outerClasses.title}
+            variant={inverted ? "caption" : "body1"}
+            color={inverted ? "textSecondary" : "inherit"}
+            {...rest}>
             {title}
-            {required && (
-              <Box ml={1} color={"red"}>
-                <span>*</span>
-              </Box>
-            )}
-          </Box>
-        </Typography>
+          </Typography>
+          {required && (
+            <Box ml={1} color={"red"}>
+              <span>*</span>
+            </Box>
+          )}
+        </Box>
       </Box>
       <Box textAlign={textAlign}>
         <Typography

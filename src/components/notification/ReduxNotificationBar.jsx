@@ -9,7 +9,7 @@ import { unsetNotificationAction } from "../../redux";
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
+};
 
 const VALID_TYPE = new Set(["error", "warning", "info", "success"]);
 

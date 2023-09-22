@@ -208,7 +208,7 @@ DefaultCRUDInterface.propTypes = {
       label: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
-    })
+    }),
   ).isRequired,
   countPerPage: PropTypes.number,
   onCreate: PropTypes.func,
@@ -221,7 +221,7 @@ DefaultCRUDInterface.propTypes = {
         display: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
         color: PropTypes.string,
-      })
+      }),
     ),
   }),
   actionOptions: PropTypes.shape({
@@ -230,7 +230,7 @@ DefaultCRUDInterface.propTypes = {
         display: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
         color: PropTypes.string,
-      })
+      }),
     ),
   }),
 };

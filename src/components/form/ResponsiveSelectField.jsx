@@ -29,7 +29,7 @@ export const ResponsiveSelectField = ({
   const handleChange = (evt) => onChange(name, evt.target.value);
   const isError = Boolean(error);
   return (
-    <FormFieldWrapper gutterY={false}>
+    <FormFieldWrapper>
       <div className={classes.container}>
         <Hidden mdUp implementation={"js"}>
           <FormControl error={isError} style={{ width: "100%" }}>
