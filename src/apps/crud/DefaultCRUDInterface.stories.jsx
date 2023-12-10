@@ -1,6 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Add from "@material-ui/icons/Add";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import { LoremIpsum } from "lorem-ipsum";
 import React from "react";
 
