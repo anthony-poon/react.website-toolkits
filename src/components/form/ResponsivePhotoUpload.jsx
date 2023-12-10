@@ -7,7 +7,7 @@ import React, { useRef } from "react";
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles(() => ({
   container: {
     display: "flex",
   },
@@ -25,7 +25,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled, ...rest }) => {
+export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled }) => {
   const classes = useStyle();
   const fileRef = useRef();
   const handleClick = () => {

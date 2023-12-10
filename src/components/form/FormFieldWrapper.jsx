@@ -28,7 +28,6 @@ export const FormFieldWrapper = (props) => {
     leftIndent = false,
     gutter = true,
     children,
-    ref,
     ...rest
   } = props;
   const classes = useStyle({

@@ -6,7 +6,7 @@ import React from "react";
 
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles(() => ({
   container: {
     display: "flex",
     justifyContent: "space-between",

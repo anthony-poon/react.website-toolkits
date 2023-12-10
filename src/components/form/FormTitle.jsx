@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export const FormTitle = ({ borderBottom = false, borderTop = false, title, subtitle }) => {
+export const FormTitle = ({ title, subtitle }) => {
   const classes = useStyle();
   return (
     <FormFieldWrapper>

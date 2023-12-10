@@ -10,7 +10,7 @@ import ArrowUpward from "@material-ui/icons/ArrowUpward";
 import _ from "lodash";
 import React from "react";
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles(() => ({
   sortBarContainer: {
     display: "flex",
     justifyContent: "flex-end",
@@ -29,7 +29,7 @@ export const SortBar = ({ options = [], value, isAsc = false, onChange }) => {
       isAsc: isAsc,
     });
   };
-  const handleAscChange = (evt) => {
+  const handleAscChange = () => {
     onChange({
       value: value,
       isAsc: !isAsc,

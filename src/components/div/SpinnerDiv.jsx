@@ -4,7 +4,7 @@ import ErrorIcon from "@material-ui/icons/Error";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles(() => ({
   spinnerContainer: {
     width: "100%",
     minHeight: 150,
