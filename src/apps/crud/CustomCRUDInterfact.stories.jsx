@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Add from "@material-ui/icons/Add";
 import _ from "lodash";
 import { LoremIpsum } from "lorem-ipsum";
 import React, { useEffect, useRef, useState } from "react";

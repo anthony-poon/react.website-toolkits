@@ -4,9 +4,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-export const DrawerItem = ({ icon, text, url }) => {
+export const DrawerItem = ({ icon, text, url, disabled }) => {
   return (
-    <ListItem button component={RouterLink} to={url}>
+    <ListItem button component={RouterLink} to={url} disabled={disabled}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={text} />
     </ListItem>
