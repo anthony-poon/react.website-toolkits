@@ -15,9 +15,6 @@ function FlagIcon({countryCode = ""}) {
         />
     );
 }
-
-
-const LANGUAGE_SELECTOR_ID = 'language-selector';
 const LANGUAGE = [
     {
         key: 'en-GB',
@@ -35,17 +32,11 @@ const LANGUAGE = [
 export const LanguageSelector = () => {
     const {i18n} = useTranslation();
     const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language);
-
-
-    if (!selectedLanguage) {
-        console.log(i18n.language);
-        return <>bad</>;
-    }
-
     return (
         <Select
             sx={{ width: 130 }}
             defaultValue={selectedLanguage.key}
+            onChange={(value) => i18n.changeLanguage(value)}
             renderValue={(value) => {
                 console.log(value);
                 return (
@@ -58,8 +49,8 @@ export const LanguageSelector = () => {
         >
         {LANGUAGE.map((option) => (
             <MenuItem key={option.key} value={option.key} name={option.name}>
-            <FlagIcon countryCode={option.key.split('-')[0]}/>
-            {option.name}
+            <   FlagIcon countryCode={option.key.split('-')[0]}/>
+                {option.name}
             </MenuItem>
         ))}
         </Select>
