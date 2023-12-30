@@ -130,7 +130,7 @@ export const LanguageSelector = () => {
             return (
               <Box sx={{ display: "flex", gap: 1 }}>
                 <FlagIcon countryCode={selectedLanguage.key.split('-')[0]}/>
-                {option.name}
+                {selectedLanguage.name}
               </Box>
             );
           }}
