@@ -31,7 +31,7 @@ export const LanguageSelector = () => {
     };
 
     useEffect(() => {
-        setLanguages('en');
+        setLanguages(['en', 'fr', 'it']);
     }, []);
 
     useEffect(() => {
