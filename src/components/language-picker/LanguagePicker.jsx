@@ -73,7 +73,7 @@ export const LanguageSelector = () => {
                             aria-haspopup="true"
                             aria-expanded={isOpen}
                         >
-                            <FlagIcon countryCode={selectedLanguage.key}/>
+                            <FlagIcon countryCode={selectedLanguage.key.split('-')[0]}/>
                             {selectedLanguage.name}
                             <svg
                                 className="-mr-1 ml-2 h-5 w-5"
