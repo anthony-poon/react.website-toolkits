@@ -17,21 +17,29 @@ function FlagIcon({countryCode = ""}) {
 
 
 const LANGUAGE_SELECTOR_ID = 'language-selector';
-
+const LANGUAGE = [
+    {
+        key: 'en-GB',
+        name: 'English'
+    },
+    {
+        key: 'fr-FR',
+        name: 'French'
+    },
+    {
+        key: 'it-IT',
+        name: 'Italian'
+    }
+]
 export const LanguageSelector = () => {
     const {i18n} = useTranslation();
-    const [languages, setLanguages] = useState([]);
     const [isOpen, setIsOpen] = useState(true);
-    const selectedLanguage = languages.find(language => language.key === i18n.language);
+    const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language);
 
     const handleLanguageChange = async (language) => {
         await i18n.changeLanguage(language.key);
         setIsOpen(false);
     };
-
-    useEffect(() => {
-        setLanguages(['en-GB', 'fr-FR', 'it-IT']);
-    }, []);
 
     useEffect(() => {
         const handleWindowClick = (event) => {
@@ -89,7 +97,7 @@ export const LanguageSelector = () => {
                         aria-labelledby="language-selector"
                     >
                         <div className="py-1 grid grid-cols-2 gap-2" role="none">
-                            {languages.map((language, index) => {
+                            {LANGUAGE.map((language, index) => {
                                 return (
                                     <button
                                         key={language.key}
