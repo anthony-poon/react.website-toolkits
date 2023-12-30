@@ -30,7 +30,7 @@ export const LanguageSelector = () => {
     };
 
     useEffect(() => {
-        setLanguages(['en', 'fr', 'it']);
+        setLanguages(['en-GB', 'fr-FR', 'it-IT']);
     }, []);
 
     useEffect(() => {

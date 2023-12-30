@@ -14,7 +14,7 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: 'en', // default language
+    fallbackLng: 'en-GB', // default language
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
       escapeValue: false // react already safes from xss
