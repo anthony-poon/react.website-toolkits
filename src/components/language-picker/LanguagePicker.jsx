@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useTranslation} from "react-i18next";
 import {Select, MenuItem, Box} from "@material-ui/core";
 import './languagePicker.css';
@@ -43,27 +43,25 @@ export const LanguageSelector = () => {
     }
 
     return (
-        <Box>
-            <Select
-                sx={{ width: 130 }}
-                defaultValue={selectedLanguage.key}
-                renderValue={(value) => {
-                    console.log(value);
-                    return (
-                    <Box sx={{ display: "flex", gap: 1 }}>
-                        <FlagIcon countryCode={selectedLanguage.key.split('-')[0]}/>
-                        {selectedLanguage.name}
-                    </Box>
-                    );
-                }}
-            >
-            {LANGUAGE.map((option) => (
-                <MenuItem key={option.key} value={option.key} name={option.name}>
-                <FlagIcon countryCode={option.key.split('-')[0]}/>
-                {option.name}
-                </MenuItem>
-            ))}
-            </Select>
-      </Box>
+        <Select
+            sx={{ width: 130 }}
+            defaultValue={selectedLanguage.key}
+            renderValue={(value) => {
+                console.log(value);
+                return (
+                <Box sx={{ display: "flex", gap: 1 }}>
+                    <FlagIcon countryCode={selectedLanguage.key.split('-')[0]}/>
+                    {selectedLanguage.name}
+                </Box>
+                );
+            }}
+        >
+        {LANGUAGE.map((option) => (
+            <MenuItem key={option.key} value={option.key} name={option.name}>
+            <FlagIcon countryCode={option.key.split('-')[0]}/>
+            {option.name}
+            </MenuItem>
+        ))}
+        </Select>
     );
 };
