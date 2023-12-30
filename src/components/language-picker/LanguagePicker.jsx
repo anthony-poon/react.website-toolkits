@@ -31,11 +31,7 @@ export const LanguageSelector = () => {
     };
 
     useEffect(() => {
-        const setupLanguages = async () => {
-            // const appLanguages = await fetch(`${cdnBaseUrl}/${projectToken}/${environment}/_languages`).then(response => response.json());
-            setLanguages(appLanguages);
-        };
-        setupLanguages();
+        setLanguages('en');
     }, []);
 
     useEffect(() => {
