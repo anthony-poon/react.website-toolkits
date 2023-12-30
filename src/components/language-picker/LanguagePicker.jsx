@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import styles from "./LanguagePicker.module.scss";
+import '.LanguagePicker.module.scss';
 
 function FlagIcon({countryCode = ""}) {
 
@@ -10,7 +10,7 @@ function FlagIcon({countryCode = ""}) {
 
     return (
         <span
-            className={`fi fis ${styles.fiCircle} inline-block mr-2 fi-${countryCode}`}
+            className={`fi fis fiCircle inline-block mr-2 fi-${countryCode}`}
         />
     );
 }
