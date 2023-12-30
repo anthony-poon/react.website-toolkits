@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import {Select, MenuItem} from "@material-ui/core";
 import './languagePicker.css';
 
 function FlagIcon({countryCode = ""}) {
