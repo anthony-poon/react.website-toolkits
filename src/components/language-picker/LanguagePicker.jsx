@@ -48,6 +48,7 @@ export const LanguageSelector = () => {
     }, []);
 
     if (!selectedLanguage) {
+        console.log(i18n.language);
         return <>bad</>;
     }
 
