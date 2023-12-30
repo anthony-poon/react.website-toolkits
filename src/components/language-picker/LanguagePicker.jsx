@@ -5,7 +5,7 @@ import './languagePicker.css';
 function FlagIcon({countryCode = ""}) {
 
     if (countryCode === "en") {
-        countryCode = "gb";
+        countryCode = "gb-eng";
     }
 
     return (
@@ -109,7 +109,7 @@ export const LanguageSelector = () => {
                                         } block px-4 py-2 text-sm text-left items-center inline-flex hover:bg-gray-100 ${index % 2 === 0 ? 'rounded-r' : 'rounded-l'}`}
                                         role="menuitem"
                                     >
-                                        <FlagIcon countryCode={language.key}/>
+                                        <FlagIcon countryCode={language.key.split('-')[0]}/>
                                         <span className="truncate">{language.name}</span>
                                     </button>
                                 );
