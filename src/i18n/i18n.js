@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import translationsEN from './locales/en.json'
 
 const resources = {
-  en: {
+  'en-GB': {
     translation: translationsEN
   },
 };
@@ -14,7 +14,7 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: 'en-GB', // default language
+    fallbackLng: 'en', // default language
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
       escapeValue: false // react already safes from xss
