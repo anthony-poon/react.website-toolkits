@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styles from "./LanguagePicker.module.scss";
-// import {cdnBaseUrl, environment, projectToken} from "../../i18n";
 
 function FlagIcon({countryCode = ""}) {
 
@@ -49,7 +48,7 @@ export const LanguageSelector = () => {
     }, []);
 
     if (!selectedLanguage) {
-        return null;
+        return <>bad</>;
     }
 
     return (
