@@ -33,72 +33,72 @@ const LANGUAGE = [
         name: 'English'
     },
     {
-        key: 'sa-ar',
+        key: 'ar-AR',
         flag: 'ar',
         name: 'العربية',
     },
     {
-        key: 'hk-hk',
+        key: 'zh_tw-hk',
         flag: 'hk',
         name: '繁體',
     },
     {
-        key: 'cn-cn',
+        key: 'zh_cn-cn',
         flag: 'cn',
         name: '简体'
     },
     {
-        key: 'es-es',
+        key: 'es-ES',
         flag: 'es',
         name: 'Español'
     },
     {
         key: 'fr-FR',
-        flag: 'FR',
+        flag: 'fr',
         name: 'Français'
     },
     {
-        key: 'el-gr',
+        key: 'el-EL',
         flag: 'gr',
         name: 'Ελληνικά'
     },
     {
-        key: 'id-id',
+        key: 'id-ID',
         flag: 'id',
         name: 'Bahasa'
     },
     {
-        key: 'jp-jp',
+        key: 'ja-JA',
         flag: 'jp',
         name: '日本語'
     },
     {
-        key: 'kr-kr',
+        key: 'kr-KR',
         flag: 'kr',
         name: '한국인'
     },
     {
-        key: 'pt-pt',
+        key: 'pt-PT',
         flag: 'pt',
         name: 'Português'
     },
     {
-        key: 'ru-ru',
+        key: 'ru-RU',
         flag: 'ru',
         name: 'Русский'
     },
     {
-        key: 'th-th',
+        key: 'th-TH',
         flag: 'th',
         name: 'แบบไทย'
     },
     {
-        key: 'tr-tr',
+        key: 'tr-TR',
         flag: 'tr',
         name: 'Türkçe'
     },
     {
-        key: 'vi-vn',
+        key: 'vi-VI',
         flag: 'vn',
         name: 'Tiếng Việt'
     }
@@ -108,6 +108,7 @@ export const LanguageSelector = () => {
     const classes = useStyle();
     const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language) || {
         key: 'en-gb',
+        name: 'English',
         flag: 'gb',
     };
     return (
@@ -121,7 +122,7 @@ export const LanguageSelector = () => {
                 console.log(selectedLanguage);
                 return (
                 <Box sx={{ display: "flex", gap: 1 }}>
-                    <FlagIcon countryCode={selectedLanguage?.flag || 'gb'}/>
+                    <FlagIcon countryCode={selectedLanguage?.flag}/>
                     <div className={classes.textBox}>
                         {selectedLanguage.name}
                     </div>
@@ -141,8 +142,8 @@ export const LanguageSelector = () => {
               }}
         >
         {LANGUAGE.map((option) => (
-            <MenuItem key={option.key} value={option.key} name={option.name}>
-                <FlagIcon countryCode={option?.flag}/>
+            <MenuItem key={option.key} value={option.key} name={option.name} flag={option.flag}>
+                <FlagIcon countryCode={LANGUAGE.find(item => item.key === option.key)?.flag}/>
                 <div className={classes.textBox}>
                     {option.name}
                 </div>

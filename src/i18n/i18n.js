@@ -24,43 +24,43 @@ const resources = {
   'fr-FR':{
     translation: fr
   },
-  'sa-ar':{
+  'ar-AR':{
     translaton: ar
   },
-  'hk-hk':{
+  'zh_tw-hk':{
     translation: zh_tw
   },
-  'cn-cn':{
+  'zh_cn-cn':{
     translaton: zh_cn
   },
-  'es-es':{
+  'es-ES':{
     translaton: es
   },
-  'el-gr':{
+  'el-EL':{
     translaton: el
   },
-  'id-id':{
+  'id-ID':{
     translaton: id
   },
-  'ja-jp':{
+  'ja-JA':{
     translaton: ja
   },
-  'kr-kr':{
+  'kr-KR':{
     translaton: ko
   },
-  'pt-pt':{
+  'pt-PT':{
     translaton: pt
   },
-  'ru-ru':{
+  'ru-RU':{
     translaton: ru
   },
-  'th-th':{
+  'th-TH':{
     translaton: th
   },
-  'tr-tr':{
+  'tr-TR':{
     translaton: tr
   },
-  'vi-vn':{
+  'vi-VI':{
     translaton: vi
   },
 };
