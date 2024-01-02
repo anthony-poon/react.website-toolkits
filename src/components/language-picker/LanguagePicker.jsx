@@ -53,8 +53,8 @@ const LANGUAGE = [
         name: 'Español'
     },
     {
-        key: 'fr-fr',
-        flag: 'fr',
+        key: 'fr-FR',
+        flag: 'FR',
         name: 'Français'
     },
     {
@@ -118,7 +118,7 @@ export const LanguageSelector = () => {
             disableUnderline
             onChange={(e) => i18n.changeLanguage(e.target.value)}
             renderValue={(value) => {
-                console.log(value);
+                console.log(selectedLanguage);
                 return (
                 <Box sx={{ display: "flex", gap: 1 }}>
                     <FlagIcon countryCode={selectedLanguage?.flag || 'gb'}/>
