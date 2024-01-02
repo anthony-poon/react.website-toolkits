@@ -9,6 +9,8 @@ import { Link as RouterLink } from "react-router-dom";
 import { AsyncButton, CardWithIcon, FormContent, FormFieldWrapper } from "../../components";
 import { makeFormData } from "../../hooks";
 
+import { useTranslation } from 'react-i18next';
+
 const useStyle = makeStyles((theme) => ({
   errors: {},
   content: {
@@ -30,14 +32,15 @@ const useFormData = makeFormData({
 
 export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {
   const classes = useStyle();
+  const { t } = useTranslation();
   const { formData, handleFormChange } = useFormData();
   const { username, password } = formData;
   const handleSubmit = () => onSubmit({ username, password });
   return (
     <CardWithIcon
       icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
-      title={"LOGIN"}
-      subtitle={"Using your email and password"}>
+      title={t('login.title')}
+      subtitle={t('login.subtitle')}>
       <form>
         {error && (
           <Typography className={classes.errors} color={"error"} key={error}>
@@ -82,12 +85,12 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
       <div className={classes.links}>
         {forgotPasswordLink && (
           <Link component={RouterLink} to={forgotPasswordLink}>
-            Forgot password?
+            {t('login.forget')}
           </Link>
         )}
         {signUpLink && (
           <Link component={RouterLink} to={signUpLink}>
-            Create Account
+            {t('login.create')}
           </Link>
         )}
       </div>
