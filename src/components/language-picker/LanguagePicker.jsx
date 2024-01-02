@@ -28,7 +28,7 @@ function FlagIcon({countryCode = ""}) {
 }
 const LANGUAGE = [
     {
-        key: 'en-GB',
+        key: 'gb-EN',
         name: 'English'
     },
     {
@@ -96,14 +96,14 @@ export const LanguageSelector = () => {
         <Select
             className={classes.select}
             sx={{ width: 130 }}
-            defaultValue={'en-GB'}
+            defaultValue={'gb-EN'}
             disableUnderline
             onChange={(e) => i18n.changeLanguage(e.target.value)}
             renderValue={(value) => {
                 console.log(value);
                 return (
                 <Box sx={{ display: "flex", gap: 1 }}>
-                    <FlagIcon countryCode={selectedLanguage.key.split('-')[0]}/>
+                    <FlagIcon countryCode={selectedLanguage.key?.split('-')[0] || 'en'}/>
                     <div className={classes.textBox}>
                         {selectedLanguage.name}
                     </div>
@@ -124,7 +124,7 @@ export const LanguageSelector = () => {
         >
         {LANGUAGE.map((option) => (
             <MenuItem key={option.key} value={option.key} name={option.name}>
-                <FlagIcon countryCode={option.key.split('-')[0]}/>
+                <FlagIcon countryCode={option.key?.split('-')[0]}/>
                 <div className={classes.textBox}>
                     {option.name}
                 </div>

@@ -18,7 +18,7 @@ import zh_cn from './locales/zh_cn.json'
 import zh_tw from './locales/zh_tw.json'
 
 const resources = {
-  'en-GB': {
+  'gb-EN': {
     translation: en
   },
   'fr-FR':{
