@@ -60,7 +60,7 @@ const LANGUAGE = [
         name: 'Bahasa'
     },
     {
-        key: 'jp-ja',
+        key: 'jp-jp',
         name: '日本語'
     },
     {
@@ -92,13 +92,13 @@ export const LanguageSelector = () => {
     const {i18n} = useTranslation();
     const classes = useStyle();
     const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language) || {
-        key: 'en-GB'
+        key: 'en-gb'
     };
     return (
         <Select
             className={classes.select}
             sx={{ width: 130 }}
-            defaultValue={'gb-EN'}
+            defaultValue={'en-gb'}
             disableUnderline
             onChange={(e) => i18n.changeLanguage(e.target.value)}
             renderValue={(value) => {

@@ -42,7 +42,7 @@ const resources = {
   'id-id':{
     translaton: id
   },
-  'ja-ja':{
+  'ja-jp':{
     translaton: ja
   },
   'kr-kr':{
