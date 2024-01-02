@@ -36,7 +36,7 @@ const resources = {
   'es-ES':{
     translaton: es
   },
-  'gr-el':{
+  'el-gr':{
     translaton: el
   },
   'id-ID':{
@@ -60,7 +60,7 @@ const resources = {
   'tr-TR':{
     translaton: tr
   },
-  'vn-VN':{
+  'vi-VN':{
     translaton: vi
   },
 };
@@ -70,7 +70,7 @@ i18n
   .use(LanguageDetector)
   .init({
     resources,
-    fallbackLng: 'en-GB', // default language
+    fallbackLng: 'en-gb', // default language
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
       escapeValue: false // react already safes from xss

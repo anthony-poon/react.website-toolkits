@@ -28,7 +28,7 @@ function FlagIcon({countryCode = ""}) {
 }
 const LANGUAGE = [
     {
-        key: 'gb-EN',
+        key: 'en-gb',
         name: 'English'
     },
     {
@@ -52,7 +52,7 @@ const LANGUAGE = [
         name: 'Français'
     },
     {
-        key: 'gr-el',
+        key: 'el-gr',
         name: 'Ελληνικά'
     },
     {
@@ -84,14 +84,16 @@ const LANGUAGE = [
         name: 'Türkçe'
     },
     {
-        key: 'vn-VN',
+        key: 'vi-VN',
         name: 'Tiếng Việt'
     }
 ]
 export const LanguageSelector = () => {
     const {i18n} = useTranslation();
     const classes = useStyle();
-    const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language) || 'gb-EN';
+    const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language) || {
+        key: 'en-GB'
+    };
     return (
         <Select
             className={classes.select}
@@ -103,7 +105,7 @@ export const LanguageSelector = () => {
                 console.log(value);
                 return (
                 <Box sx={{ display: "flex", gap: 1 }}>
-                    <FlagIcon countryCode={selectedLanguage?.key.split('-')[0] || 'en'}/>
+                    <FlagIcon countryCode={selectedLanguage?.key.split('-')[1] || 'gb'}/>
                     <div className={classes.textBox}>
                         {selectedLanguage.name}
                     </div>
@@ -124,7 +126,7 @@ export const LanguageSelector = () => {
         >
         {LANGUAGE.map((option) => (
             <MenuItem key={option.key} value={option.key} name={option.name}>
-                <FlagIcon countryCode={option?.key.split('-')[0]}/>
+                <FlagIcon countryCode={option?.key.split('-')[1]}/>
                 <div className={classes.textBox}>
                     {option.name}
                 </div>
