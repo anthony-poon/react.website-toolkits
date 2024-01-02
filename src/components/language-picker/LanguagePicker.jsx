@@ -32,23 +32,23 @@ const LANGUAGE = [
         name: 'English'
     },
     {
-        key: 'sa-AR',
+        key: 'sa-ar',
         name: 'العربية',
     },
     {
-        key: 'hk-HK',
+        key: 'hk-hk',
         name: '繁體',
     },
     {
-        key: 'cn-CN',
+        key: 'cn-cn',
         name: '简体'
     },
     {
-        key: 'es-ES',
+        key: 'es-es',
         name: 'Español'
     },
     {
-        key: 'fr-FR',
+        key: 'fr-fr',
         name: 'Français'
     },
     {
@@ -56,35 +56,35 @@ const LANGUAGE = [
         name: 'Ελληνικά'
     },
     {
-        key: 'id-ID',
+        key: 'id-id',
         name: 'Bahasa'
     },
     {
-        key: 'jp-JA',
+        key: 'jp-ja',
         name: '日本語'
     },
     {
-        key: 'kr-KR',
+        key: 'kr-kr',
         name: '한국인'
     },
     {
-        key: 'pt-PT',
+        key: 'pt-pt',
         name: 'Português'
     },
     {
-        key: 'ru-RU',
+        key: 'ru-ru',
         name: 'Русский'
     },
     {
-        key: 'th-TH',
+        key: 'th-th',
         name: 'แบบไทย'
     },
     {
-        key: 'tr-TR',
+        key: 'tr-tr',
         name: 'Türkçe'
     },
     {
-        key: 'vi-VN',
+        key: 'vi-vn',
         name: 'Tiếng Việt'
     }
 ]

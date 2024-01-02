@@ -18,49 +18,49 @@ import zh_cn from './locales/zh_cn.json'
 import zh_tw from './locales/zh_tw.json'
 
 const resources = {
-  'gb-EN': {
+  'gb-en': {
     translation: en
   },
-  'fr-FR':{
+  'fr-fr':{
     translation: fr
   },
-  'sa-AR':{
+  'sa-ar':{
     translaton: ar
   },
-  'hk-HK':{
+  'hk-hk':{
     translation: zh_tw
   },
-  'cn-CN':{
+  'cn-cn':{
     translaton: zh_cn
   },
-  'es-ES':{
+  'es-es':{
     translaton: es
   },
   'el-gr':{
     translaton: el
   },
-  'id-ID':{
+  'id-id':{
     translaton: id
   },
-  'ja-JA':{
+  'ja-ja':{
     translaton: ja
   },
-  'kr-KR':{
+  'kr-kr':{
     translaton: ko
   },
-  'pt-PT':{
+  'pt-pt':{
     translaton: pt
   },
-  'ru-RU':{
+  'ru-ru':{
     translaton: ru
   },
-  'th-TH':{
+  'th-th':{
     translaton: th
   },
-  'tr-TR':{
+  'tr-tr':{
     translaton: tr
   },
-  'vi-VN':{
+  'vi-vn':{
     translaton: vi
   },
 };
