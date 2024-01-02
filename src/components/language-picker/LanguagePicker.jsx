@@ -33,11 +33,19 @@ const LANGUAGE = [
     },
     {
         key: 'fr-FR',
-        name: 'French'
+        name: 'Français'
     },
     {
-        key: 'it-IT',
-        name: 'Italian'
+        key: 'ar-AR',
+        name: 'العربية',
+    },
+    {
+        key: 'hk-HK',
+        name: '繁體',
+    },
+    {
+        key: 'cn-CN',
+        name: '简体'
     }
 ]
 export const LanguageSelector = () => {
