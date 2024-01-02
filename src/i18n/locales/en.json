@@ -5,6 +5,9 @@
     "confirm": "Confirm",
     "submit": "Submit",
     "upload": "Upload",
+    "password": "Password",
+    "email": "Email",
+    "repeat.password": "Repeat Password",
     "login.title": "Login",
     "login.subtitle": "Using your email and password",
     "login.forget": "Forgot password?",
@@ -12,6 +15,38 @@
     
     "recovery.password.recovery":"Password Recovery",
     "recovery.password.recover.password.with.email": "Recover your password with email",
-    "recovery.email.address": "Email Address"
+    "recovery.email.address": "Email Address",
+
+    "change.password.app.this.value.cannot.be.empty": "This value cannot be empty",
+    "change.password.app.this.value.must.match.new.password": "This value must match 'New password'",
+    "change.password.app.password.updated": "Password updated.",
+    "change.password.app.reset.password": "Reset Password",
+    "change.password.app.current.password": "Current password",
+    "change.password.app.new.password": "New password",
+    "change.password.app.repeat.password": "Repeat password",
+
+    "forget.password.reset.email.sent": "Password reset email sent.",
+    "forget.password.token.prompt": "If you have an account with us, a password reset email has been sent to you.",
+
+    "login.app.account.not.confirm.prompt": "Your email is not verified yet.",
+    "logout.app.prompt": "Logging out",
+    
+    "resend.confirmation.app.prompt": "You account have not been confirmed yet. If you did not get any email, press the button below to resend the email",
+    "resend.confirmation.app.resend.email": "Resend Email",
+    "resend.confirmation.app.resend.without.confirmation.prompt": " If you did not receive your email confirmation letter, enter your email below, and it will be resent",
+
+    "setup.password.app.not.match.repeated.password": "Password does not match Repeat Password",
+    "setup.password.app.first.time.setup": "First Time Setup",
+    "setup.password.app.password.is.set": "Password is set!",
+    "setup.password.prompt": "Your account is almost ready. Please login in the next screen to continue",
+
+    "email.confirmation.app.email.confirmed.prompt": "Email confirmed. Please login.",
+     "email.confirm.success.prompt": "Your email have been confirmed. Please login in the next screen to continue",
+     "signup.app.not.matching.prompt": "Password doest not match repeat password.",
+     "signup.app.create.account": "Create Account",
+     "signup.app.using.your.email": "Using your email",
+     "signup.app.prompt": "Your account has been created. Please check your email and use the provided link to activate your account."
+     
+
 
 }
