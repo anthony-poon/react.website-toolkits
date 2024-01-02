@@ -33,22 +33,22 @@ const LANGUAGE = [
         name: 'English'
     },
     {
-        key: 'ar-AR',
-        flag: 'ar',
+        key: 'ar',
+        flag: 'sa',
         name: 'العربية',
     },
     {
-        key: 'zh_tw-hk',
+        key: 'zh-HK',
         flag: 'hk',
         name: '繁體',
     },
     {
-        key: 'zh_cn-cn',
+        key: 'zh-SC',
         flag: 'cn',
         name: '简体'
     },
     {
-        key: 'es-ES',
+        key: 'es',
         flag: 'es',
         name: 'Español'
     },
