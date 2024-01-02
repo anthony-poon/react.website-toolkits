@@ -3,6 +3,19 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import en from './locales/en.json'
 import fr from './locales/fr.json'
+import ar from './locales/ar-arabic.json'
+import el from './locales/el-greek.json'
+import es from './locales/es.json'
+import id from './locales/id-indonesian.json'
+import ja from './locales/ja-japanese.json'
+import ko from './locales/ko-korean.json'
+import pt from './locales/pt-portuguese.json'
+import ru from './locales/ru-russian.json'
+import th from './locales/th-thai.json'
+import tr from './locales/tr-turkish.json'
+import vi from './locales/vi-vietnamese.json'
+import zh_cn from './locales/zh_cn.json'
+import zh_tw from './locales/zh_tw.json'
 
 const resources = {
   'en-GB': {
@@ -10,7 +23,46 @@ const resources = {
   },
   'fr-FR':{
     translation: fr
-  }
+  },
+  'sa-AR':{
+    translaton: ar
+  },
+  'hk-HK':{
+    translation: zh_tw
+  },
+  'cn-CN':{
+    translaton: zh_cn
+  },
+  'es-ES':{
+    translaton: es
+  },
+  'gr-el':{
+    translaton: el
+  },
+  'id-ID':{
+    translaton: id
+  },
+  'ja-JA':{
+    translaton: ja
+  },
+  'kr-KR':{
+    translaton: ko
+  },
+  'pt-PT':{
+    translaton: pt
+  },
+  'ru-RU':{
+    translaton: ru
+  },
+  'th-TH':{
+    translaton: th
+  },
+  'tr-TR':{
+    translaton: tr
+  },
+  'vn-VN':{
+    translaton: vi
+  },
 };
 
 i18n

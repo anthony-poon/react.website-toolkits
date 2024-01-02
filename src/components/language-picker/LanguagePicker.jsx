@@ -32,11 +32,7 @@ const LANGUAGE = [
         name: 'English'
     },
     {
-        key: 'fr-FR',
-        name: 'Français'
-    },
-    {
-        key: 'ar-AR',
+        key: 'sa-AR',
         name: 'العربية',
     },
     {
@@ -46,6 +42,50 @@ const LANGUAGE = [
     {
         key: 'cn-CN',
         name: '简体'
+    },
+    {
+        key: 'es-ES',
+        name: 'Español'
+    },
+    {
+        key: 'fr-FR',
+        name: 'Français'
+    },
+    {
+        key: 'gr-el',
+        name: 'Ελληνικά'
+    },
+    {
+        key: 'id-ID',
+        name: 'Bahasa'
+    },
+    {
+        key: 'jp-JA',
+        name: '日本語'
+    },
+    {
+        key: 'kr-KR',
+        name: '한국인'
+    },
+    {
+        key: 'pt-PT',
+        name: 'Português'
+    },
+    {
+        key: 'ru-RU',
+        name: 'Русский'
+    },
+    {
+        key: 'th-TH',
+        name: 'แบบไทย'
+    },
+    {
+        key: 'tr-TR',
+        name: 'Türkçe'
+    },
+    {
+        key: 'vn-VN',
+        name: 'Tiếng Việt'
     }
 ]
 export const LanguageSelector = () => {
