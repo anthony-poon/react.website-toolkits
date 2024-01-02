@@ -91,7 +91,7 @@ const LANGUAGE = [
 export const LanguageSelector = () => {
     const {i18n} = useTranslation();
     const classes = useStyle();
-    const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language);
+    const selectedLanguage = LANGUAGE.find(language => language.key === i18n.language) || 'gb-EN';
     return (
         <Select
             className={classes.select}
@@ -103,7 +103,7 @@ export const LanguageSelector = () => {
                 console.log(value);
                 return (
                 <Box sx={{ display: "flex", gap: 1 }}>
-                    <FlagIcon countryCode={selectedLanguage.key?.split('-')[0] || 'en'}/>
+                    <FlagIcon countryCode={selectedLanguage?.key.split('-')[0] || 'en'}/>
                     <div className={classes.textBox}>
                         {selectedLanguage.name}
                     </div>
@@ -124,7 +124,7 @@ export const LanguageSelector = () => {
         >
         {LANGUAGE.map((option) => (
             <MenuItem key={option.key} value={option.key} name={option.name}>
-                <FlagIcon countryCode={option.key?.split('-')[0]}/>
+                <FlagIcon countryCode={option?.key.split('-')[0]}/>
                 <div className={classes.textBox}>
                     {option.name}
                 </div>
