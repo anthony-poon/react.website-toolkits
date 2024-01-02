@@ -1,6 +1,17 @@
 {
+    "email.address": "Email Address",
+    "cancel": "Cancel",
+    "recover": "Recover",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "upload": "Upload",
     "login.title": "Login",
     "login.subtitle": "Using your email and password",
     "login.forget": "Forgot password?",
-    "login.create": "Create Account"
+    "login.create": "Create Account",
+    
+    "recovery.password.recovery":"Password Recovery",
+    "recovery.password.recover.password.with.email": "Recover your password with email",
+    "recovery.email.address": "Email Address"
+
 }

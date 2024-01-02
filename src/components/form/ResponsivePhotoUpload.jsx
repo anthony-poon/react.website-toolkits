@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
-
+import { useTranslation } from 'react-i18next';
 const useStyle = makeStyles(() => ({
   container: {
     display: "flex",
@@ -28,6 +28,7 @@ const useStyle = makeStyles(() => ({
 export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled }) => {
   const classes = useStyle();
   const fileRef = useRef();
+  const { t } = useTranslation();
   const handleClick = () => {
     fileRef.current.click();
   };
@@ -58,7 +59,7 @@ export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled
             <Grid item>
               <Box pt={2}>
                 <Button disabled={disabled} color={"primary"} variant={"contained"} onClick={handleClick}>
-                  Upload
+                  {t('upload')}
                 </Button>
               </Box>
             </Grid>
