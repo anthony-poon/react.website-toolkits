@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import CloseIcon from "@material-ui/icons/Close";
 import PropTypes from "prop-types";
 import React from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -35,7 +35,7 @@ export const FullScreenDialog = ({ title, isOpen = false, onClose, onSubmit, chi
             {title}
           </Typography>
           <Button autoFocus color="inherit" onClick={onSubmit}>
-            {t('submit')}
+            {t("submit")}
           </Button>
         </Toolbar>
       </AppBar>

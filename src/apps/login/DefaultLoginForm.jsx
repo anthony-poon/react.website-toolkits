@@ -4,12 +4,11 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
 import { AsyncButton, CardWithIcon, FormContent, FormFieldWrapper } from "../../components";
 import { makeFormData } from "../../hooks";
-
-import { useTranslation } from 'react-i18next';
 
 const useStyle = makeStyles((theme) => ({
   errors: {},
@@ -39,8 +38,8 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
   return (
     <CardWithIcon
       icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
-      title={t('login.title')}
-      subtitle={t('login.subtitle')}>
+      title={t("login.title")}
+      subtitle={t("login.subtitle")}>
       <form>
         {error && (
           <Typography className={classes.errors} color={"error"} key={error}>
@@ -85,12 +84,12 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
       <div className={classes.links}>
         {forgotPasswordLink && (
           <Link component={RouterLink} to={forgotPasswordLink}>
-            {t('login.forget')}
+            {t("login.forget")}
           </Link>
         )}
         {signUpLink && (
           <Link component={RouterLink} to={signUpLink}>
-            {t('login.create')}
+            {t("login.create")}
           </Link>
         )}
       </div>

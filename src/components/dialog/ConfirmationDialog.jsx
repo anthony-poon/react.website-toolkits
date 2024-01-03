@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const ConfirmationDialog = ({ onClose, isOpen, title, children, ...rest }) => {
   const { t } = useTranslation();
@@ -13,10 +13,10 @@ const ConfirmationDialog = ({ onClose, isOpen, title, children, ...rest }) => {
       </DialogContent>
       <DialogActions>
         <Button type={"button"} color={"primary"}>
-          {t('cancel')}
+          {t("cancel")}
         </Button>
         <Button type={"button"} color={"primary"}>
-          {t('confirm')}
+          {t("confirm")}
         </Button>
       </DialogActions>
     </Dialog>

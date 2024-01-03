@@ -4,11 +4,10 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import HelpIcon from "@material-ui/icons/Help";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { AsyncButton, CardWithIcon } from "../../components";
 import { makeFormData } from "../../hooks";
-import { useTranslation } from 'react-i18next';
-
 
 const useStyle = makeStyles((theme) => ({
   contentContainer: {
@@ -39,8 +38,8 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
   return (
     <CardWithIcon
       icon={<HelpIcon style={{ fontSize: 60 }} color={"primary"} />}
-      title={t('recovery.password.recovery')}
-      subtitle={t('recovery.password.recover.password.with.email')}>
+      title={t("recovery.password.recovery")}
+      subtitle={t("recovery.password.recover.password.with.email")}>
       <form onSubmit={handleSubmit}>
         {errors && (
           <Typography className={classes.errors} color={"error"}>
@@ -53,7 +52,7 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
         )}
         <div className={classes.contentContainer}>
           <TextField
-            label={t('email.address')}
+            label={t("email.address")}
             fullWidth
             margin="normal"
             value={email}
@@ -66,12 +65,12 @@ export const DefaultForgotPasswordForm = ({ errors, onSubmit, onCancel }) => {
           <Grid container spacing={1}>
             <Grid item xs={6}>
               <Button fullWidth size={"large"} type={"button"} variant={"outlined"} onClick={handleCancel}>
-                {t('cancel')}
+                {t("cancel")}
               </Button>
             </Grid>
             <Grid item xs={6}>
               <AsyncButton fullWidth size={"large"} type={"submit"} onClick={handleSubmit}>
-                {t('recover')}
+                {t("recover")}
               </AsyncButton>
             </Grid>
           </Grid>

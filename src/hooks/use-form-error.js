@@ -26,7 +26,9 @@ export const useFormError = (init) => {
       setErrors(newError);
       return _.isEmpty(mapping);
     },
-    [formErrors],
+    // defaultErrors should be used only on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
   return { formErrors, handleValidate };
 };
