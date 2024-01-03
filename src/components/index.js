@@ -7,3 +7,4 @@ export * from "./drawer";
 export * from "./cards";
 export * from "./form";
 export * from "./notification";
+export * from "./language-picker";

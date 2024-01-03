@@ -27,7 +27,8 @@ export const makeAsyncFetch = (onFetch, onError) => {
       }
     };
     useEffect(() => {
-      refresh();
+      (async () => await refresh())();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...args]);
     return { payload, isLoading, isError, refresh };
   };

@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
@@ -28,6 +29,7 @@ const useStyle = makeStyles(() => ({
 export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled }) => {
   const classes = useStyle();
   const fileRef = useRef();
+  const { t } = useTranslation();
   const handleClick = () => {
     fileRef.current.click();
   };
@@ -58,7 +60,7 @@ export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled
             <Grid item>
               <Box pt={2}>
                 <Button disabled={disabled} color={"primary"} variant={"contained"} onClick={handleClick}>
-                  Upload
+                  {t("upload")}
                 </Button>
               </Box>
             </Grid>

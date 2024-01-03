@@ -29,6 +29,7 @@ export const makeFormData = (init) => {
         ...prev,
         ...update,
       }));
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...Object.values(update)]);
     const isEqual = _.isEqual(update, formData);
     useEffect(() => {

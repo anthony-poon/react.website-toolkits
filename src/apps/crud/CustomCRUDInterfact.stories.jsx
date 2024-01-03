@@ -49,7 +49,7 @@ const lorem = new LoremIpsum({
   },
 });
 
-const Template = ({ items, render, countPerPage = 5, schema, toolbarOptions, sortOptions, actionOptions, ...rest }) => {
+const Template = ({ items, render, countPerPage = 5, schema, toolbarOptions, sortOptions, actionOptions }) => {
   const [sortBy, setSortBy] = useState("");
   const [isSortAsc, setSortAsc] = useState(false);
   const [query, setQuery] = useState("");
@@ -64,7 +64,7 @@ const Template = ({ items, render, countPerPage = 5, schema, toolbarOptions, sor
     const sortBy = sortOptions[0].value;
     setSortBy(sortBy);
     items.forEach((item, index) => {
-      _.forEach(item, (value, key) => {
+      _.forEach(item, (value) => {
         searchIndex.add(index, value);
       });
     });
