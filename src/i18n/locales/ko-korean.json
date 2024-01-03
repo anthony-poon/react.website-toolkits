@@ -28,6 +28,8 @@
   "test.name": "테스트 이름",
   "rank": "계급",
   "result": "결과",
+  "result.is.pass": "부적격",
+  "result.is.not.pass": "자격 있는",
   "score": "점수",
   "exam": "시험",
   "invalid.exam": "유효하지 않은 시험",

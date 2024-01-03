@@ -28,6 +28,8 @@
   "test.name": "Nom du test",
   "rank": "Rang",
   "result": "Résultat",
+  "result.is.pass": "qualifié",
+  "result.is.not.pass": "Sans réserve",
   "score": "Score",
   "exam": "Examen",
   "invalid.exam": "Examen invalide",

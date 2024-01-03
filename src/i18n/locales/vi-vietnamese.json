@@ -28,6 +28,8 @@
   "test.name": "Tên bài kiểm tra",
   "rank": "Thứ hạng",
   "result": "Kết quả",
+  "result.is.pass": "合格",
+  "result.is.not.pass": "不合格",
   "score": "Điểm",
   "exam": "Bài thi",
   "invalid.exam": "Kỳ thi không hợp lệ",

@@ -28,6 +28,8 @@
   "test.name": "Όνομα δοκιμής",
   "rank": "Τάξη",
   "result": "Αποτέλεσμα",
+  "result.is.pass": "αρμόδιος",
+  "result.is.not.pass": "Απόλυτος",
   "score": "Σκορ",
   "exam": "Εξέταση",
   "invalid.exam": "Άκυρη εξέταση",

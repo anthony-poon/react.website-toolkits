@@ -28,6 +28,8 @@
   "test.name": "Nama Tes",
   "rank": "Pangkat",
   "result": "Hasil",
+  "result.is.pass": "memenuhi syarat",
+  "result.is.not.pass": "Tidak memenuhi syarat",
   "score": "Skor",
   "exam": "Ujian",
   "invalid.exam": "Ujian tidak valid",

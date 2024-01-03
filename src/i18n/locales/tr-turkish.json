@@ -28,6 +28,8 @@
   "test.name": "Test Adı",
   "rank": "Rütbe",
   "result": "Sonuç",
+  "result.is.pass": "nitelikli",
+  "result.is.not.pass": "Niteliksiz",
   "score": "Gol",
   "exam": "Sınav",
   "invalid.exam": "Geçersiz sınav",
