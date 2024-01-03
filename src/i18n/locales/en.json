@@ -28,6 +28,8 @@
   "test.name": "Test Name",
   "rank": "Rank",
   "result": "Result",
+  "result.is.pass": "Passed",
+  "result.is.not.pass": "Not Passed",
   "score": "Score",
   "exam": "Exam",
   "invalid.exam": "Invalid exam",

@@ -28,6 +28,8 @@
   "test.name": "اسم الاختبار",
   "rank": "رتبة",
   "result": "نتيجة",
+  "result.is.pass": "مؤهَل",
+  "result.is.not.pass": "غير مؤهل",
   "score": "نتيجة",
   "exam": "امتحان",
   "invalid.exam": "امتحان غير صالح",

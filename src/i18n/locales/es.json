@@ -28,6 +28,8 @@
   "test.name": "Nombre de la prueba",
   "rank": "Rango",
   "result": "Resultado",
+  "result.is.pass": "calificado",
+  "result.is.not.pass": "No cualificado",
   "score": "Puntaje",
   "exam": "Examen",
   "invalid.exam": "examen no válido",

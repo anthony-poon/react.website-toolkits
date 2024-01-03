@@ -28,6 +28,8 @@
   "test.name": "テスト名",
   "rank": "ランク",
   "result": "結果",
+  "result.is.pass": "資格のある",
+  "result.is.not.pass": "不適格",
   "score": "スコア",
   "exam": "テスト",
   "invalid.exam": "無効な試験",

@@ -28,6 +28,8 @@
   "test.name": "ชื่อการทดสอบ",
   "rank": "อันดับ",
   "result": "ผลลัพธ์",
+  "result.is.pass": "ผ่านการรับรอง",
+  "result.is.not.pass": "ไม่มีคุณสมบัติ",
   "score": "คะแนน",
   "exam": "การสอบ",
   "invalid.exam": "ข้อสอบไม่ถูกต้อง",
