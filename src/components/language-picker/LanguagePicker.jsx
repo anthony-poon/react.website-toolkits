@@ -30,9 +30,19 @@ const LANGUAGE = [
     name: "English",
   },
   {
+    key: "en-gb",
+    flag: "gb",
+    name: "*",
+  },
+  {
     key: "ar",
     flag: "sa",
     name: "العربية",
+  },
+  {
+    key: "zh-SC",
+    flag: "cn",
+    name: "简体",
   },
   {
     key: "zh-HK",
@@ -40,9 +50,9 @@ const LANGUAGE = [
     name: "繁體",
   },
   {
-    key: "zh-SC",
-    flag: "cn",
-    name: "简体",
+    key: "zh-TW",
+    flag: "tw",
+    name: "繁體",
   },
   {
     key: "es",
@@ -134,9 +144,12 @@ export const LanguageSelector = () => {
         },
         getContentAnchorEl: null,
       }}>
-      {LANGUAGE.map((option) => (
+      {LANGUAGE.map((option) => (option.name !== "*" ? 
         <MenuItem key={option.key} value={option.key} name={option.name} flag={option.flag}>
           <FlagIcon countryCode={LANGUAGE.find((item) => item.key === option.key)?.flag} />
+          <div className={classes.textBox}>{option.name}</div>
+        </MenuItem> :
+        <MenuItem disabled>
           <div className={classes.textBox}>{option.name}</div>
         </MenuItem>
       ))}
