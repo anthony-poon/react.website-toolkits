@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select, makeStyles } from "@material-ui/core";
+import { Box, MenuItem, Select, makeStyles, Divider } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -28,11 +28,6 @@ const LANGUAGE = [
     key: "en-gb",
     flag: "gb",
     name: "English",
-  },
-  {
-    key: "",
-    flag: "",
-    name: "*",
   },
   {
     key: "ar",
@@ -144,12 +139,9 @@ export const LanguageSelector = () => {
         },
         getContentAnchorEl: null,
       }}>
-      {LANGUAGE.map((option) => (option.name !== "*" ? 
-        <MenuItem key={option.key} value={option.key} name={option.name} flag={option.flag}>
+      {LANGUAGE.map((option) => (
+        <MenuItem key={option.key} value={option.key} name={option.name} flag={option.flag} divider={option.key === 'en-gb' && true}>
           <FlagIcon countryCode={LANGUAGE.find((item) => item.key === option.key)?.flag} />
-          <div className={classes.textBox}>{option.name}</div>
-        </MenuItem> :
-        <MenuItem disabled>
           <div className={classes.textBox}>{option.name}</div>
         </MenuItem>
       ))}
