@@ -30,8 +30,8 @@ const LANGUAGE = [
     name: "English",
   },
   {
-    key: "ar",
-    flag: "sa",
+    key: "ae",
+    flag: "ae",
     name: "العربية",
   },
   {

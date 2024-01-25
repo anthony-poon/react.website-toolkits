@@ -2,7 +2,7 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
-import ar from "./locales/ar-arabic.json";
+import ae from "./locales/ar-arabic.json";
 import el from "./locales/el-greek.json";
 import en from "./locales/en.json";
 import es from "./locales/es.json";
@@ -25,8 +25,8 @@ const resources = {
   "fr-FR": {
     translation: fr,
   },
-  ar: {
-    translation: ar,
+  ae: {
+    translation: ae,
   },
   "zh-HK": {
     translation: zh_tw,
