@@ -153,14 +153,6 @@
   "edit.profile.app.upcoming.appointments": "Upcoming Appointment(s)",
 
   "redict.trial.exam.prompt": "You are being directed to the Testing Site in",
-
-  "list.trial.exam.app.error.prompt": "Based on our record, you have taken the selected trial test previously.",
-  "list.trial.exam.app.error.prompt.attempt.another.test": "You may attempt another available test.",
-  "list.trial.exam.app.error.prompt.continue.click": "You may continue by clicking",
-  "list.trial.exam.app.error.prompt.here": "here.",
-  "list.trial.exam.app.title": "Book a trial test",
-  "list.trial.exam.app.subtitle": "Select an available test",
-
   "list.test.center.exam.app.step.select.test": "Select Test",
   "list.test.center.exam.app.step.select.test.centre": "Select Test Centre",
   "list.test.center.exam.app.step.select.date.time": "Select Date and Time",
