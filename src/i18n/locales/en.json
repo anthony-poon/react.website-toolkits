@@ -199,18 +199,6 @@
   "test.time.selection.time.slot": "Time Slot",
   "test.time.selection.subtitle": "Select an available time slot",
 
-  "setup.profile.form.validation.max.20.char": "capital letters, max 20 characters",
-  "setup.profile.form.validation.max.30.char": "capital letters, max 30 characters",
-  "setup.profile.form.validation.id.sublabel": "First 4 digit only (This ID document shall be valid and be available for verification by the invigilator during test)",
-  "setup.profile.form.validation.phone.number.subtitle": "Ability to receive messages",
-
-  "setup.profile.app.account.created": "Account created.",
-  "setup.profile.app.personal.details": "Personal Details",
-  "setup.profile.app.subtitle": "Kindly complete. Blanks with * are mandatory fields",
-
-  "setup.profile.title": "Account Setup",
-  "setup.profile.prompt": "Please complete your account details in order to register for a test.",
-
   "layout.home": "Home (Profile)",
   "layout.register.test": "Register Test",
   "layout.experience.trial.test": "Experience Trial Test",
