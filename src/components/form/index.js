@@ -6,3 +6,4 @@ export * from "./RedirectField";
 export * from "./FormFieldWrapper";
 export * from "./FormTitle";
 export * from "./FormContent";
+export * from "./ResponsivePasswordField";
