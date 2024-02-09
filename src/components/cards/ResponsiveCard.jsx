@@ -1,21 +1,19 @@
-import { Container } from "@material-ui/core";
+import { Container, useTheme } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import { makeStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import React from "react";
 
-const useStyle = makeStyles((theme) => ({
-  card: {
-    width: "100%",
-    padding: theme.spacing(4),
-  },
-}));
-
 export const ResponsiveCard = ({ variant = "sm", children }) => {
-  const classes = useStyle({ variant });
+  const theme = useTheme();
   return (
     <Container maxWidth={variant} disableGutters>
-      <Card className={classes.card}>{children}</Card>
+      <Card
+        style={{
+          width: "100%",
+          padding: theme.spacing(4),
+        }}>
+        {children}
+      </Card>
     </Container>
   );
 };

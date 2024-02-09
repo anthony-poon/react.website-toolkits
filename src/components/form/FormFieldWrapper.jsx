@@ -1,24 +1,5 @@
-import { Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Box, useTheme } from "@material-ui/core";
 import React from "react";
-
-const useStyle = makeStyles((theme) => ({
-  container: {
-    borderTop: ({ borderTop }) => (borderTop ? `1px solid ${theme.palette.divider}` : 0),
-    borderBottom: ({ borderBottom }) => (borderBottom ? `1px solid ${theme.palette.divider}` : 0),
-    display: "flex",
-    alignItems: "center",
-  },
-  lhs: {
-    height: 48,
-    width: 48,
-    display: "flex",
-    alignItems: "center",
-  },
-  rhs: {
-    flexGrow: 1,
-  },
-}));
 
 export const FormFieldWrapper = (props) => {
   const {
@@ -30,21 +11,24 @@ export const FormFieldWrapper = (props) => {
     children,
     ...rest
   } = props;
-  const classes = useStyle({
-    borderBottom,
-    borderTop,
-    gutter,
-  });
+  const theme = useTheme();
   return (
     <Box
-      className={classes.container}
+      display={"flex"}
+      alignItems={"center"}
+      borderTop={borderTop ? `1px solid ${theme.palette.divider}` : 0}
+      borderBottom={borderBottom ? `1px solid ${theme.palette.divider}` : 0}
       pl={gutter ? 2 : 0}
       pr={gutter ? 2 : 0}
       mt={borderTop ? 3 : 0}
       mb={borderBottom ? 3 : 0}
       {...rest}>
-      {(leftIndent || icon) && <Box className={classes.lhs}>{icon}</Box>}
-      <Box className={classes.rhs}>{children}</Box>
+      {(leftIndent || icon) && (
+        <Box height={48} width={48} display={"flex"} alignItems={"center"}>
+          {icon}
+        </Box>
+      )}
+      <Box flexGrow={1}>{children}</Box>
     </Box>
   );
 };

@@ -1,33 +1,13 @@
 import { Grid } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const useStyle = makeStyles(() => ({
-  container: {
-    display: "flex",
-  },
-  label: {
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-  },
-  input: {
-    display: "none",
-  },
-  image: {
-    maxWidth: 300,
-    maxHeight: 300,
-  },
-}));
-
 export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled }) => {
-  const classes = useStyle();
   const fileRef = useRef();
   const { t } = useTranslation();
   const handleClick = () => {
@@ -42,8 +22,15 @@ export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled
   };
   return (
     <FormFieldWrapper>
-      <input type={"file"} className={classes.input} ref={fileRef} onChange={handleFileChange} />
-      <div className={classes.container}>
+      <input
+        type={"file"}
+        style={{
+          display: "none",
+        }}
+        ref={fileRef}
+        onChange={handleFileChange}
+      />
+      <Box display={"flex"}>
         <Grid container>
           <Grid item sm={3}>
             <Box pr={2} pt={2}>
@@ -53,7 +40,14 @@ export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled
           {src ? (
             <Grid item>
               <Box pt={2}>
-                <img src={src} alt={"upload"} className={classes.image} />
+                <img
+                  src={src}
+                  alt={"upload"}
+                  style={{
+                    maxWidth: 300,
+                    maxHeight: 300,
+                  }}
+                />
               </Box>
             </Grid>
           ) : (
@@ -66,7 +60,7 @@ export const ResponsivePhotoUpload = ({ src, label, subLabel, onUpload, disabled
             </Grid>
           )}
         </Grid>
-      </div>
+      </Box>
     </FormFieldWrapper>
   );
 };

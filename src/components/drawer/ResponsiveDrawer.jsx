@@ -1,36 +1,29 @@
+import { Box, useMediaQuery, useTheme } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import List from "@material-ui/core/List";
 import Toolbar from "@material-ui/core/Toolbar";
-import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
-const useStyles = (props) => {
-  const { width = 240 } = props;
-  return makeStyles((theme) => ({
-    drawer: {
-      [theme.breakpoints.up("md")]: {
-        width,
-        flexShrink: 0,
-      },
-    },
-    drawerPaper: {
-      width,
-    },
-    drawerContainer: {
-      overflow: "auto",
-    },
-  }));
-};
-
-export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
-  const classes = useStyles({ width })();
+export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => {
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <nav className={classes.drawer}>
+    <nav
+      style={
+        isDesktop
+          ? {
+              width,
+              flexShrink: 0,
+            }
+          : {}
+      }>
       <Hidden mdUp implementation={"js"}>
         <Drawer
           classes={{
-            paper: classes.drawerPaper,
+            paper: {
+              width,
+            },
           }}
           anchor={"left"}
           variant="temporary"
@@ -42,7 +35,7 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
           <Toolbar />
           <div>
             <List>
-              <div className={classes.drawerContainer}>{children}</div>
+              <Box overflow={"auto"}>{children}</Box>
             </List>
           </div>
         </Drawer>
@@ -50,14 +43,16 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width }) => {
       <Hidden smDown implementation={"js"}>
         <Drawer
           classes={{
-            paper: classes.drawerPaper,
+            paper: {
+              width,
+            },
           }}
           variant="permanent"
           open>
           <Toolbar />
           <div>
             <List>
-              <div className={classes.drawerContainer}>{children}</div>
+              <Box overflow={"auto"}>{children}</Box>
             </List>
           </div>
         </Drawer>

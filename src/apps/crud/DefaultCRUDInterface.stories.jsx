@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
 import { LoremIpsum } from "lorem-ipsum";
 import React from "react";
 
@@ -22,22 +22,12 @@ export default {
   argTypes: { onCreate: { action: "clicked" } },
 };
 
-const useStyle = makeStyles((theme) => ({
-  container: {
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 800,
-    },
-  },
-}));
-
 const Template = (args) => {
-  const classes = useStyle();
   return (
     <ResponsiveCardContainer>
-      <div className={classes.container}>
+      <Box>
         <DefaultCRUDInterface {...args} />
-      </div>
+      </Box>
     </ResponsiveCardContainer>
   );
 };

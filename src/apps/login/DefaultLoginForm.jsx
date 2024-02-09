@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -10,27 +10,12 @@ import { Link as RouterLink } from "react-router-dom";
 import { AsyncButton, CardWithIcon, FormContent, FormFieldWrapper } from "../../components";
 import { makeFormData } from "../../hooks";
 
-const useStyle = makeStyles((theme) => ({
-  errors: {},
-  content: {
-    paddingBottom: theme.spacing(4),
-  },
-  buttons: {
-    marginBottom: theme.spacing(2),
-  },
-  links: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-}));
-
 const useFormData = makeFormData({
   username: "",
   password: "",
 });
 
 export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {
-  const classes = useStyle();
   const { t } = useTranslation();
   const { formData, handleFormChange } = useFormData();
   const { username, password } = formData;
@@ -42,7 +27,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
       subtitle={t("login.subtitle")}>
       <form>
         {error && (
-          <Typography className={classes.errors} color={"error"} key={error}>
+          <Typography color={"error"} key={error}>
             {error}
           </Typography>
         )}
@@ -70,7 +55,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             />
           </FormFieldWrapper>
         </FormContent>
-        <div className={classes.buttons}>
+        <Box mb={2}>
           <AsyncButton
             fullWidth
             size={"large"}
@@ -79,9 +64,9 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             style={{ textTransform: "none" }}>
             Login
           </AsyncButton>
-        </div>
+        </Box>
       </form>
-      <div className={classes.links}>
+      <Box display={"flex"} justifyContent={"space-between"}>
         {forgotPasswordLink && (
           <Link component={RouterLink} to={forgotPasswordLink}>
             {t("login.forget")}
@@ -92,7 +77,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             {t("login.create")}
           </Link>
         )}
-      </div>
+      </Box>
     </CardWithIcon>
   );
 };

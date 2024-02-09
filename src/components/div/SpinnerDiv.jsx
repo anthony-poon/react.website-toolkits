@@ -1,18 +1,7 @@
-import { CircularProgress } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Box, CircularProgress } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/Error";
 import PropTypes from "prop-types";
 import React from "react";
-
-const useStyle = makeStyles(() => ({
-  spinnerContainer: {
-    width: "100%",
-    minHeight: 150,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-}));
 
 const JSImplementation = ({ display, children }) => {
   if (!display) {
@@ -33,7 +22,6 @@ const CSSImplementation = ({ display, children }) => {
 };
 
 export const SpinnerDiv = ({ isLoading, isError, children, implementation = "js" }) => {
-  const classes = useStyle();
   const display =
     implementation === "js" ? (
       <JSImplementation display={!isLoading && !isError}>{children}</JSImplementation>
@@ -41,13 +29,27 @@ export const SpinnerDiv = ({ isLoading, isError, children, implementation = "js"
       <CSSImplementation display={!isLoading && !isError}>{children}</CSSImplementation>
     ) : null;
   const spinner = isError ? (
-    <div className={classes.spinnerContainer}>
+    <Box
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      style={{
+        minHeight: 150,
+        width: "100%",
+      }}>
       <ErrorIcon />
-    </div>
+    </Box>
   ) : isLoading ? (
-    <div className={classes.spinnerContainer}>
+    <Box
+      display={"flex"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      style={{
+        minHeight: 150,
+        width: "100%",
+      }}>
       <CircularProgress />
-    </div>
+    </Box>
   ) : null;
   return (
     <>

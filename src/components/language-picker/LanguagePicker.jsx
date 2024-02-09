@@ -1,27 +1,27 @@
-import { Box, MenuItem, Select, makeStyles } from "@material-ui/core";
+import { Box, MenuItem, Select, useTheme } from "@material-ui/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import "./languagePicker.css";
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
-const useStyle = makeStyles((theme) => ({
-  select: {
-    color: "#FFF !important",
-  },
-  textBox: {
-    display: "flex",
-    justifyContent: "center",
-    alignContent: "center",
-    flexDirection: "column",
-    paddingLeft: theme.spacing(1),
-  },
-}));
 const FlagIcon = ({ countryCode = "" }) => {
   if (countryCode === "en") {
     countryCode = "gb-eng";
   }
 
-  return <span className={`fi fis fiCircle inline-block mr-2 fi-${countryCode}`} />;
+  return (
+    <span
+      className={`fi fis inline-block mr-2 fi-${countryCode}`}
+      style={{
+        width: "24px !important",
+        height: "24px !important",
+        fontSize: "24px !important",
+        borderRadius: "100%",
+        border: "none",
+        boxShadow: "inset 0 0 0 2px rgba(0, 0, 0, 0.06)",
+      }}
+    />
+  );
 };
 const LANGUAGE = [
   {
@@ -107,15 +107,24 @@ const LANGUAGE = [
 ];
 export const LanguageSelector = () => {
   const { i18n } = useTranslation();
-  const classes = useStyle();
+  const theme = useTheme();
   const selectedLanguage = LANGUAGE.find((language) => language.key === i18n.language) || {
     key: "en-gb",
     name: "English",
     flag: "gb",
   };
+  const style = {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    flexDirection: "column",
+    paddingLeft: theme.spacing(1),
+  };
   return (
     <Select
-      className={classes.select}
+      style={{
+        color: "white",
+      }}
       sx={{ width: 130 }}
       defaultValue={"en-gb"}
       disableUnderline
@@ -124,7 +133,7 @@ export const LanguageSelector = () => {
         return (
           <Box sx={{ display: "flex", gap: 1 }}>
             <FlagIcon countryCode={selectedLanguage?.flag} />
-            <div className={classes.textBox}>{selectedLanguage.name}</div>
+            <Box style={style}>{selectedLanguage.name}</Box>
           </Box>
         );
       }}
@@ -147,7 +156,7 @@ export const LanguageSelector = () => {
           flag={option.flag}
           divider={option.key === "en-gb" && true}>
           <FlagIcon countryCode={LANGUAGE.find((item) => item.key === option.key)?.flag} />
-          <div className={classes.textBox}>{option.name}</div>
+          <Box style={style}>{option.name}</Box>
         </MenuItem>
       ))}
     </Select>

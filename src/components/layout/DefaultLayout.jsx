@@ -1,35 +1,24 @@
-import { makeStyles } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import React from "react";
 
-const useStyle = makeStyles(() => ({
-  root: {
-    minHeight: "100vh",
-    display: "flex",
-  },
-  rhs: {
-    flexGrow: 1,
-    display: "flex",
-    flexDirection: "column",
-  },
-  content: {
-    flexGrow: 1,
-    overflow: "auto",
-  },
-}));
-
 export const DefaultLayout = ({ appBar, drawer, children }) => {
-  const classes = useStyle();
   return (
-    <div className={classes.root}>
+    <Box
+      display={"flex"}
+      style={{
+        minHeight: "100vh",
+      }}>
       <CssBaseline />
       {appBar}
       {drawer}
-      <div className={classes.rhs}>
+      <Box flexGrow={1} display={"flex"} flexDirection={"column"}>
         <Toolbar />
-        <div className={classes.content}>{children}</div>
-      </div>
-    </div>
+        <Box flexGrow={1} overflow={"auto"}>
+          {children}
+        </Box>
+      </Box>
+    </Box>
   );
 };

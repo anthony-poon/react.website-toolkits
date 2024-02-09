@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -11,27 +11,25 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    position: "relative",
-  },
-  title: {
-    marginLeft: theme.spacing(2),
-    flex: 1,
-  },
-}));
-
 export const FullScreenDialog = ({ title, isOpen = false, onClose, onSubmit, children, containerSize = "md" }) => {
-  const classes = useStyles();
   const { t } = useTranslation();
+  const theme = useTheme();
   return (
     <Dialog fullScreen open={isOpen} onClose={onClose}>
-      <AppBar className={classes.appBar}>
+      <AppBar
+        style={{
+          position: "relative",
+        }}>
         <Toolbar>
           <IconButton edge="start" color="inherit" onClick={onClose} aria-label="close">
             <CloseIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            variant="h6"
+            style={{
+              marginLeft: theme.spacing(2),
+              flex: 1,
+            }}>
             {title}
           </Typography>
           <Button autoFocus color="inherit" onClick={onSubmit}>

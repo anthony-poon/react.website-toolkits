@@ -1,21 +1,21 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core";
 import React from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const useStyle = makeStyles((theme) => ({
-  title: {
-    color: theme.palette.primary.main,
-    ...theme.typography.h5,
-  },
-}));
-
 export const FormTitle = ({ title, subtitle }) => {
-  const classes = useStyle();
+  const theme = useTheme();
   return (
     <FormFieldWrapper>
-      <DualLineLabel classes={classes} title={title} subtitle={subtitle} />
+      <DualLineLabel
+        variant={"h5"}
+        title={title}
+        subtitle={subtitle}
+        style={{
+          color: theme.palette.primary.main,
+        }}
+      />
     </FormFieldWrapper>
   );
 };

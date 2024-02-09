@@ -1,22 +1,13 @@
+import { useMediaQuery, useTheme } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from "@material-ui/core/styles";
 import Pagination from "@material-ui/lab/Pagination";
 import React from "react";
 
-const useStyle = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    justifyContent: "space-around",
-    [theme.breakpoints.up("md")]: {
-      justifyContent: "flex-end",
-    },
-  },
-}));
-
 export const PaginationBar = ({ pageCount, currPage, onChange }) => {
-  const classes = useStyle();
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   return (
-    <Box py={2} className={classes.container}>
+    <Box py={2} display={"flex"} justifyContent={isDesktop ? "flex-end" : "space-around"}>
       <Pagination count={pageCount} page={currPage} onChange={onChange} />
     </Box>
   );

@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { Box } from "@material-ui/core";
 import _ from "lodash";
 import { LoremIpsum } from "lorem-ipsum";
 import React, { useEffect, useRef, useState } from "react";
@@ -10,15 +10,6 @@ export default {
   component: CustomCRUDInterface,
   title: "CustomCRUDInterface",
 };
-
-const useStyle = makeStyles((theme) => ({
-  container: {
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: 800,
-    },
-  },
-}));
 
 // TODO: consider caching this. If use _.momoize, need to figure out how to override resolver func
 const sortItems = (items, sortBy, isAsc) => {
@@ -89,10 +80,9 @@ const Template = ({ items, countPerPage = 5, schema, toolbarOptions, sortOptions
   const sorted = sortItems(filtered, sortBy, isSortAsc);
   const { currItems, pageCount } = paginateItems(sorted, countPerPage, currPage);
 
-  const classes = useStyle();
   return (
     <ResponsiveCardContainer>
-      <div className={classes.container}>
+      <Box>
         <CustomCRUDInterface
           items={currItems}
           schema={schema}
@@ -110,7 +100,7 @@ const Template = ({ items, countPerPage = 5, schema, toolbarOptions, sortOptions
           onEntityAction={console.log}
           onToolbarAction={console.log}
         />
-      </div>
+      </Box>
     </ResponsiveCardContainer>
   );
 };

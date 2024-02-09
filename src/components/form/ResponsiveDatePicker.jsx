@@ -1,30 +1,17 @@
 import { Grid, TextField } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const useStyle = makeStyles(() => ({
-  container: {
-    display: "flex",
-  },
-  label: {
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-  },
-}));
-
 export const ResponsiveDatePicker = ({ error, label, subLabel, value, name, onChange, required, ...rest }) => {
-  const classes = useStyle();
   const isError = Boolean(error);
   const handleChange = (evt) => onChange(name, evt.target.value);
   return (
     <FormFieldWrapper>
-      <div className={classes.container}>
+      <Box display={"flex"}>
         <Hidden mdUp implementation={"js"}>
           <TextField
             error={isError}
@@ -58,7 +45,7 @@ export const ResponsiveDatePicker = ({ error, label, subLabel, value, name, onCh
             </Grid>
           </Grid>
         </Hidden>
-      </div>
+      </Box>
     </FormFieldWrapper>
   );
 };
