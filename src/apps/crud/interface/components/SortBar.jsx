@@ -1,11 +1,11 @@
-import { MenuItem } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import FormControl from "@material-ui/core/FormControl";
-import IconButton from "@material-ui/core/IconButton";
-import Select from "@material-ui/core/Select";
-import Typography from "@material-ui/core/Typography";
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import ArrowDownward from "@mui/icons-material/ArrowDownward";
+import ArrowUpward from "@mui/icons-material/ArrowUpward";
+import { MenuItem } from "@mui/material";
+import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import IconButton from "@mui/material/IconButton";
+import Select from "@mui/material/Select";
+import Typography from "@mui/material/Typography";
 import _ from "lodash";
 import React from "react";
 

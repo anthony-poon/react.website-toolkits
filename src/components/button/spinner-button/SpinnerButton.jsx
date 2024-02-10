@@ -1,5 +1,5 @@
-import { Box, Button } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
+import { Box, Button } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import PropTypes from "prop-types";
 import React from "react";
 

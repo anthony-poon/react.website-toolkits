@@ -1,6 +1,6 @@
-import { Grid, TextField, useMediaQuery, useTheme } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Checkbox from "@material-ui/core/Checkbox";
+import { Grid, TextField, useMediaQuery, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
 import React from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
@@ -26,6 +26,7 @@ const CompactTextField = (props) => {
       <Grid item xs>
         <TextField
           fullWidth
+          variant={"standard"}
           error={isError}
           helperText={isError ? error : subLabel}
           label={label}
@@ -76,6 +77,7 @@ const ExpandedTextField = (props) => {
       </Grid>
       <Grid item xs>
         <TextField
+          variant={"standard"}
           error={isError}
           fullWidth
           margin={"normal"}

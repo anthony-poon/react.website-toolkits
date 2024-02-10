@@ -1,13 +1,20 @@
-import { Box } from "@material-ui/core";
-import Link from "@material-ui/core/Link";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import { Box } from "@mui/material";
+import Link from "@mui/material/Link";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
-import { AsyncButton, CardWithIcon, FormContent, FormFieldWrapper } from "../../components";
+import {
+  AsyncButton,
+  CardWithIcon,
+  FormContent,
+  FormFieldWrapper,
+  ResponsivePasswordField,
+  ResponsiveTextField,
+} from "../../components";
 import { makeFormData } from "../../hooks";
 
 const useFormData = makeFormData({
@@ -31,30 +38,25 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             {error}
           </Typography>
         )}
-        <FormContent>
-          <FormFieldWrapper>
-            <TextField
-              label="Email Address"
-              fullWidth
-              margin="normal"
-              value={username}
-              name={"username"}
-              type={"email"}
-              onChange={handleFormChange}
-            />
-          </FormFieldWrapper>
-          <FormFieldWrapper>
-            <TextField
-              label="Password"
-              fullWidth
-              type={"password"}
-              value={password}
-              name={"password"}
-              onChange={handleFormChange}
-              margin="normal"
-            />
-          </FormFieldWrapper>
-        </FormContent>
+        <Box mb={2}>
+          <ResponsiveTextField
+            compact={true}
+            gutter={false}
+            label={"Email Address"}
+            value={username}
+            name={"username"}
+            type={"email"}
+            onChange={handleFormChange}
+          />
+          <ResponsivePasswordField
+            compact={true}
+            gutter={false}
+            label={"Password"}
+            value={password}
+            name={"password"}
+            onChange={handleFormChange}
+          />
+        </Box>
         <Box mb={2}>
           <AsyncButton
             fullWidth

@@ -1,5 +1,5 @@
-import { Container, useTheme } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
+import { Container, useTheme } from "@mui/material";
+import Card from "@mui/material/Card";
 import PropTypes from "prop-types";
 import React from "react";
 

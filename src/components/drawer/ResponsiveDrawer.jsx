@@ -1,8 +1,8 @@
-import { Box, useMediaQuery, useTheme } from "@material-ui/core";
-import Drawer from "@material-ui/core/Drawer";
-import Hidden from "@material-ui/core/Hidden";
-import List from "@material-ui/core/List";
-import Toolbar from "@material-ui/core/Toolbar";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
+import Drawer from "@mui/material/Drawer";
+import Hidden from "@mui/material/Hidden";
+import List from "@mui/material/List";
+import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 
 export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => {

@@ -1,9 +1,9 @@
-import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { DualLineLabel } from "../../../components";
+import { DualLineLabel } from "../../../../components";
 
 const SIZE_MAPPING = {
   small: {

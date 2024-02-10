@@ -1,6 +1,6 @@
-import InputAdornment from "@material-ui/core/InputAdornment";
-import TextField from "@material-ui/core/TextField";
-import Search from "@material-ui/icons/Search";
+import Search from "@mui/icons-material/Search";
+import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
 import React from "react";
 
 export const SearchBar = ({ value, onChange }) => {
@@ -10,6 +10,7 @@ export const SearchBar = ({ value, onChange }) => {
   return (
     <TextField
       fullWidth
+      variant={"standard"}
       value={value}
       onChange={handleChange}
       InputProps={{

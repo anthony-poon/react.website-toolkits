@@ -1,5 +1,5 @@
-import { Menu, MenuItem } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
+import { Menu, MenuItem } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 

@@ -1,6 +1,6 @@
-import { Box, MenuItem } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Box, MenuItem } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import React from "react";
 
 import { FormFieldWrapper } from "./FormFieldWrapper";

@@ -1,5 +1,5 @@
-import { Box, useTheme } from "@material-ui/core";
-import Typography from "@material-ui/core/Typography";
+import { Box, useTheme } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import React from "react";
 
 import { ResponsiveCard } from "./ResponsiveCard";

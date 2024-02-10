@@ -1,14 +1,14 @@
-import { Snackbar } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
-import CloseIcon from "@material-ui/icons/Close";
-import MuiAlert from "@material-ui/lab/Alert";
+import CloseIcon from "@mui/icons-material/Close";
+import { Alert } from "@mui/material";
+import { Snackbar } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { unsetNotificationAction } from "../../redux";
 
-const Alert = (props) => {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
+const AlertImpl = (props) => {
+  return <Alert elevation={6} variant="filled" {...props} />;
 };
 
 const VALID_TYPE = new Set(["error", "warning", "info", "success"]);
@@ -38,7 +38,7 @@ export const ReduxNotificationBar = () => {
           </IconButton>
         </React.Fragment>
       }>
-      <Alert severity={severity}>{message}</Alert>
+      <AlertImpl severity={severity}>{message}</AlertImpl>
     </Snackbar>
   );
 };

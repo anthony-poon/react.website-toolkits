@@ -1,1 +1,2 @@
-export * from "./DefaultCRUDInterface";
+export * from "./interface";
+export * from "./table";

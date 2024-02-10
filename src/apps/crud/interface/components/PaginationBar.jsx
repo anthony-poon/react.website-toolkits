@@ -1,6 +1,5 @@
-import { useMediaQuery, useTheme } from "@material-ui/core";
-import Box from "@material-ui/core/Box";
-import Pagination from "@material-ui/lab/Pagination";
+import { Pagination, useMediaQuery, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 import React from "react";
 
 export const PaginationBar = ({ pageCount, currPage, onChange }) => {

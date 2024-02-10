@@ -1,4 +1,4 @@
-import { Box, MenuItem, Select, useTheme } from "@material-ui/core";
+import { Box, MenuItem, Select, useTheme } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -125,6 +125,7 @@ export const LanguageSelector = () => {
       style={{
         color: "white",
       }}
+      variant={"standard"}
       sx={{ width: 130 }}
       defaultValue={"en-gb"}
       disableUnderline

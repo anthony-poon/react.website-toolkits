@@ -1,5 +1,5 @@
-import { Box, CircularProgress } from "@material-ui/core";
-import ErrorIcon from "@material-ui/icons/Error";
+import ErrorIcon from "@mui/icons-material/Error";
+import { Box, CircularProgress } from "@mui/material";
 import PropTypes from "prop-types";
 import React from "react";
 

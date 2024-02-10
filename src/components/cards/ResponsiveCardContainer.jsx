@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from "@material-ui/core";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 
 export const ResponsiveCardContainer = ({ isCentered = false, noGutter = false, children }) => {

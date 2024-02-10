@@ -1,6 +1,6 @@
-import { Box } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
+import { Box } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 
 export const DefaultLayout = ({ appBar, drawer, children }) => {

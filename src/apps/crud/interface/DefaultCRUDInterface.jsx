@@ -1,7 +1,4 @@
-import Add from "@material-ui/icons/Add";
-import Delete from "@material-ui/icons/Delete";
-import Edit from "@material-ui/icons/Edit";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import { Add, Delete, Edit, Visibility } from "@mui/icons-material";
 import _ from "lodash";
 import lunr from "lunr";
 import PropTypes from "prop-types";
@@ -56,7 +53,7 @@ const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [
     rtn.push({
       display: "View",
       value: "read",
-      icon: <VisibilityIcon color={"primary"} />,
+      icon: <Visibility color={"primary"} />,
     });
   }
   if (hasUpdate) {
@@ -70,8 +67,8 @@ const getActionColumnAction = ({ hasRead, hasUpdate, hasDelete, extraButtons = [
     rtn.push({
       display: "Delete",
       value: "delete",
-      icon: <Delete color={"secondary"} />,
-      color: "secondary",
+      icon: <Delete color={"error"} />,
+      color: "error",
     });
   }
 
@@ -215,6 +212,7 @@ DefaultCRUDInterface.propTypes = {
   onRead: PropTypes.func,
   onUpdate: PropTypes.func,
   onDelete: PropTypes.func,
+  onOtherAction: PropTypes.func,
   toolbarOptions: PropTypes.shape({
     buttons: PropTypes.arrayOf(
       PropTypes.shape({

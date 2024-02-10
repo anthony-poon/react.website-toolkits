@@ -1,5 +1,5 @@
-import { Box, FormHelperText, Grid, InputLabel, Select, useMediaQuery, useTheme } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
+import { Box, FormHelperText, Grid, InputLabel, Select, useMediaQuery, useTheme } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
 import React from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
@@ -16,6 +16,7 @@ const CompactSelectField = (props) => {
         {label && <InputLabel shrink>{label}</InputLabel>}
         <Select
           fullWidth
+          variant={"standard"}
           value={value ? value : ""}
           name={name}
           onChange={onChange}
@@ -43,7 +44,7 @@ const ExpandedSelectField = (props) => {
       <Grid item sm={9}>
         <Box mt={2} mb={1}>
           <FormControl error={isError} style={{ width: "100%" }}>
-            <Select fullWidth value={value ? value : ""} name={name} onChange={onChange} {...rest}>
+            <Select variant={"standard"} fullWidth value={value ? value : ""} name={name} onChange={onChange} {...rest}>
               {children}
             </Select>
             {error && <FormHelperText>{error}</FormHelperText>}
