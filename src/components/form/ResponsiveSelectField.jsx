@@ -12,7 +12,7 @@ const CompactSelectField = (props) => {
   // TODO: Fix label position when label is empty
   return (
     <Box mt={2}>
-      <FormControl error={isError} style={{ width: "100%" }}>
+      <FormControl variant={"standard"} error={isError} style={{ width: "100%" }}>
         {label && <InputLabel shrink>{label}</InputLabel>}
         <Select
           fullWidth
@@ -20,6 +20,7 @@ const CompactSelectField = (props) => {
           value={value ? value : ""}
           name={name}
           onChange={onChange}
+          label={label}
           {...rest}
           style={{
             marginTop: theme.spacing(2),
@@ -43,7 +44,7 @@ const ExpandedSelectField = (props) => {
       </Grid>
       <Grid item sm={9}>
         <Box mt={2} mb={1}>
-          <FormControl error={isError} style={{ width: "100%" }}>
+          <FormControl variant={"standard"} error={isError} style={{ width: "100%" }}>
             <Select variant={"standard"} fullWidth value={value ? value : ""} name={name} onChange={onChange} {...rest}>
               {children}
             </Select>
