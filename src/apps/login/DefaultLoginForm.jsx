@@ -1,20 +1,12 @@
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
-import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
-import {
-  AsyncButton,
-  CardWithIcon,
-  FormContent,
-  FormFieldWrapper,
-  ResponsivePasswordField,
-  ResponsiveTextField,
-} from "../../components";
+import { AsyncButton, CardWithIcon, ResponsivePasswordField, ResponsiveTextField } from "../../components";
 import { makeFormData } from "../../hooks";
 
 const useFormData = makeFormData({
