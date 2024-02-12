@@ -1,4 +1,3 @@
-import CloseIcon from "@mui/icons-material/Close";
 import { Alert } from "@mui/material";
 import { Snackbar } from "@mui/material";
 import React from "react";
