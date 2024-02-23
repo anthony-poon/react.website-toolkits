@@ -135,8 +135,11 @@ export const DefaultCRUDTable = (props) => {
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
           slots={{toolbar:GridToolbar}}
+          checkboxSelection ={props.checkboxSelection}
+          disableRowSelectionOnClick={props.disableRowSelectionOnClick}
         />
       </Box>
+
     </Box>
   );
 };
