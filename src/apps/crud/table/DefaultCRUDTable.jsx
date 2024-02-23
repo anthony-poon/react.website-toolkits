@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import { DataGrid, useGridApiRef } from "@mui/x-data-grid";
+import { DataGrid, useGridApiRef,GridToolbar } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
@@ -134,6 +134,7 @@ export const DefaultCRUDTable = (props) => {
           rows={getRolDef(props)}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
+          slots={{toolbar:GridToolbar}}
         />
       </Box>
     </Box>
