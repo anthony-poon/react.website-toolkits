@@ -3,12 +3,63 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import { DataGrid, useGridApiRef,GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, useGridApiRef, GridToolbar } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
 import { ActionBar } from "./components/ActionBar";
+
+import { styled, alpha } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'right',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  '& .MuiPaper-root': {
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+    minWidth: 180,
+    color:
+      theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+    boxShadow:
+      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+    '& .MuiMenu-list': {
+      padding: '4px 0',
+    },
+    '& .MuiMenuItem-root': {
+      '& .MuiSvgIcon-root': {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      '&:active': {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity,
+        ),
+      },
+    },
+  },
+}));
 
 const WIDTH_MAPPING = {
   small: 50,
@@ -18,7 +69,7 @@ const WIDTH_MAPPING = {
 };
 
 const getColDef = (props) => {
-  const columns = props.schema?.map(({ size, label, key, sortable }) => {
+  const columns = props.schema?.map(({ size, label, key, sortable, renderCell }) => {
     let widthProps;
     if (size === "flex") {
       widthProps = {
@@ -35,6 +86,7 @@ const getColDef = (props) => {
       field: key,
       headerName: label,
       sortable,
+      renderCell
     };
   });
   if (props.onUpdate || props.onDelete) {
@@ -49,6 +101,20 @@ const getColDef = (props) => {
         const handleEdit = props.onUpdate ? () => props.onUpdate(item.row) : null;
         const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
         return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} />;
+      },
+    });
+  }
+  if (props.onOtherAction) {
+    columns?.push({
+      minWidth: 200,
+      field: "_action",
+      headerName: "Action",
+      sortable: false,
+      disableColumnMenu: true,
+      disableExport: true,
+      renderCell: (item) => {
+        const handleOtherAction = props.onOtherAction ? () => props.onOtherAction(item.row) : null;
+        return <CustomizedMenus onOtherAction={handleOtherAction} actionOptions={props.actionOptions}/>;
       },
     });
   }
@@ -112,6 +178,50 @@ const useOnMount = (props) => {
   return { ref };
 };
 
+const CustomizedMenus = (props) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = (action) => {
+    setAnchorEl(null);
+    props.onOtherAction(action)
+  };
+  return (
+    <div>
+      <Button
+        id="demo-customized-button"
+        aria-controls={open ? 'demo-customized-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        variant="contained"
+        disableElevation
+        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+      >
+        Options
+      </Button>
+      <StyledMenu
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button',
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        {props.actionOptions?.buttons.map((button,idx) => 
+          
+        <MenuItem onClick={()=>handleClose(button.value)} disableRipple key={idx}>
+          <EditIcon />
+          {button.display}
+        </MenuItem>)}
+      </StyledMenu>
+    </div>
+  );
+}
+
 export const DefaultCRUDTable = (props) => {
   const { ref } = useOnMount(props);
   const handleAction = (action) => {
@@ -134,8 +244,8 @@ export const DefaultCRUDTable = (props) => {
           rows={getRolDef(props)}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
-          slots={{toolbar:GridToolbar}}
-          checkboxSelection ={props.checkboxSelection}
+          slots={{ toolbar: GridToolbar }}
+          checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
         />
       </Box>
