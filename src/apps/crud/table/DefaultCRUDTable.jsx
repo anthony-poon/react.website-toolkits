@@ -66,10 +66,11 @@ const WIDTH_MAPPING = {
   medium: 100,
   large: 150,
   xlarge: 200,
+  xxlarge: 250,
 };
 
 const getColDef = (props) => {
-  const columns = props.schema?.map(({ size, label, key, sortable, renderCell }) => {
+  const columns = props.schema?.map(({ size, label, key, sortable, renderCell, disableColumnMenu }) => {
     let widthProps;
     if (size === "flex") {
       widthProps = {
@@ -86,7 +87,8 @@ const getColDef = (props) => {
       field: key,
       headerName: label,
       sortable,
-      renderCell
+      renderCell,
+      disableColumnMenu
     };
   });
   if (props.onUpdate || props.onDelete) {
@@ -113,8 +115,8 @@ const getColDef = (props) => {
       disableColumnMenu: true,
       disableExport: true,
       renderCell: (item) => {
-        const handleOtherAction = props.onOtherAction ? () => props.onOtherAction(item.row) : null;
-        return <CustomizedMenus onOtherAction={handleOtherAction} actionOptions={props.actionOptions}/>;
+        const handleOtherAction = props.onOtherAction ? (action) => props.onOtherAction(action, item.row) : null;
+        return <CustomizedMenus onOtherAction={handleOtherAction} actionOptions={props.actionOptions} />;
       },
     });
   }
@@ -181,12 +183,17 @@ const useOnMount = (props) => {
 const CustomizedMenus = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (action) => {
     setAnchorEl(null);
-    props.onOtherAction(action)
+  };
+  const handleActionClick = (action, item) => {
+    setAnchorEl(null);
+    if (props.onOtherAction != null) {
+      props.onOtherAction(action, item);
+    }
   };
   return (
     <div>
@@ -197,7 +204,7 @@ const CustomizedMenus = (props) => {
         aria-expanded={open ? 'true' : undefined}
         variant="contained"
         disableElevation
-        onClick={handleClick}
+        onClick={handleMenuClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
         Options
@@ -211,12 +218,12 @@ const CustomizedMenus = (props) => {
         open={open}
         onClose={handleClose}
       >
-        {props.actionOptions?.buttons.map((button,idx) => 
-          
-        <MenuItem onClick={()=>handleClose(button.value)} disableRipple key={idx}>
-          <EditIcon />
-          {button.display}
-        </MenuItem>)}
+        {props.actionOptions?.buttons.map((button, idx) =>
+
+          <MenuItem onClick={() => handleActionClick(button.value)} disableRipple key={idx} disabled={button.isDisabled}>
+            <EditIcon />
+            {button.display}
+          </MenuItem>)}
       </StyledMenu>
     </div>
   );
@@ -244,7 +251,7 @@ export const DefaultCRUDTable = (props) => {
           rows={getRolDef(props)}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
-          slots={{ toolbar: GridToolbar }}
+          slots={props.disableToolbar ? null : { toolbar: GridToolbar }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
         />
@@ -268,7 +275,7 @@ DefaultCRUDTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   schema: PropTypes.arrayOf(
     PropTypes.shape({
-      size: PropTypes.oneOf(["small", "medium", "large", "xlarge", "flex"]).isRequired,
+      size: PropTypes.oneOf(["small", "medium", "large", "xlarge","xxlarge", "flex"]).isRequired,
       label: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
@@ -295,6 +302,7 @@ DefaultCRUDTable.propTypes = {
         display: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
         color: PropTypes.string,
+        isDisabled: PropTypes.bool
       }),
     ),
   }),
