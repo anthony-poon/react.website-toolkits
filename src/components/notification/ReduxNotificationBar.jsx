@@ -25,7 +25,9 @@ export const ReduxNotificationBar = () => {
       open={Boolean(message)}
       autoHideDuration={6000}
       onClose={handleNotificationClose}>
-      <Alert elevation={6} variant={"filled"}  severity={severity} onClose={handleNotificationClose}>{message}</Alert>
+      <Alert elevation={6} variant={"filled"} severity={severity} onClose={handleNotificationClose}>
+        {message}
+      </Alert>
     </Snackbar>
   );
 };
