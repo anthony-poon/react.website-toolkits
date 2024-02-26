@@ -14,10 +14,6 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const StyledMenu = styled((props) => (
@@ -94,8 +90,8 @@ const getColDef = (props) => {
   if (props.onUpdate || props.onDelete) {
     columns?.push({
       minWidth: 25,
-      field: "_action",
-      headerName: "Action",
+      field: "_action1",
+      headerName: "Action1",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
@@ -109,8 +105,8 @@ const getColDef = (props) => {
   if (props.onOtherAction) {
     columns?.push({
       minWidth: 200,
-      field: "_action",
-      headerName: "Action",
+      field: "_action2",
+      headerName: "Action2",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
