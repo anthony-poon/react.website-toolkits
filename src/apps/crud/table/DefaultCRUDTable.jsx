@@ -57,7 +57,7 @@ const WIDTH_MAPPING = {
   medium: 100,
   large: 150,
   xlarge: 200,
-  xxlarge: 250,
+  xxlarge: 300,
 };
 
 const getColDef = (props) => {
