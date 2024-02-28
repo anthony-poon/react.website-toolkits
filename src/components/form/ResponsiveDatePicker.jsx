@@ -57,7 +57,7 @@ const CompactDatePicker = (props) => {
 };
 
 export const ResponsiveDatePicker = (props) => {
-  const dt = props.value ? DateTime.fromISO(props.value, { setZone: true }).startOf("date") : null;
+  const dt = props.value ? DateTime.fromISO(props.value, { setZone: true }).startOf("day") : null;
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const handleChange = (value) => {

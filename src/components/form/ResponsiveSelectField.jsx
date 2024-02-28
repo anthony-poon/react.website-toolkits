@@ -21,10 +21,7 @@ const CompactSelectField = (props) => {
           name={name}
           onChange={onChange}
           label={label}
-          {...rest}
-          style={{
-            marginTop: theme.spacing(2),
-          }}>
+          {...rest}>
           {children}
         </Select>
         {error && <FormHelperText>{error}</FormHelperText>}
