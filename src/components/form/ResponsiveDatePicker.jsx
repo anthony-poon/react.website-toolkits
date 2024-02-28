@@ -62,7 +62,7 @@ export const ResponsiveDatePicker = (props) => {
   const handleChange = (value) => {
     if (props.onChange) {
       const dt = DateTime.fromISO(value).startOf("day");
-      props.onChange(props.name, dt.toISO());
+      props.onChange(props.name, dt.toISODate());
     }
   };
   const { compact = false, gutter = true } = props;

@@ -86,7 +86,7 @@ const getColDef = (props) => {
     columns?.push({
       minWidth: 25,
       field: "_action1",
-      headerName: "Action1",
+      headerName: "",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
@@ -101,7 +101,7 @@ const getColDef = (props) => {
     columns?.push({
       minWidth: 200,
       field: "_action2",
-      headerName: "Action2",
+      headerName: "",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
@@ -198,7 +198,6 @@ const CustomizedMenus = (props) => {
             disableRipple
             key={idx}
             disabled={button.isDisabled}>
-            <EditIcon />
             {button.display}
           </MenuItem>
         ))}
@@ -245,6 +244,7 @@ DefaultCRUDTable.defaultProps = {
   countPerPage: 10,
   toolbarOptions: {},
   actionOptions: {},
+  disableToolbar: false,
 };
 
 DefaultCRUDTable.propTypes = {
@@ -283,4 +283,5 @@ DefaultCRUDTable.propTypes = {
       }),
     ),
   }),
+  disableToolbar: PropTypes.bool,
 };
