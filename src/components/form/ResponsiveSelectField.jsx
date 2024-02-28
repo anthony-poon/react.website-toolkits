@@ -6,12 +6,12 @@ import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
 const CompactSelectField = (props) => {
-  const { isError, error, children, label, value, name, onChange, ...rest } = props;
+  const { isError, error, children, label, value, name, onChange, required, ...rest } = props;
   // TODO: implement required and subLabel
   // TODO: Fix label position when label is empty
   return (
     <Box mt={2}>
-      <FormControl variant={"standard"} error={isError} style={{ width: "100%" }}>
+      <FormControl variant={"standard"} error={isError} style={{ width: "100%" }} required={required}>
         {label && <InputLabel shrink>{label}</InputLabel>}
         <Select
           fullWidth

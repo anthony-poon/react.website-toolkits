@@ -7,7 +7,7 @@ import { unsetNotificationAction } from "../../redux";
 
 const VALID_TYPE = new Set(["error", "warning", "info", "success"]);
 
-export const ReduxNotificationBar = () => {
+export const ReduxNotificationBar = ({ duration = 6000 }) => {
   const dispatch = useDispatch();
   const notification = useSelector((state) => state.notification);
   const { message, type } = notification;
@@ -23,7 +23,7 @@ export const ReduxNotificationBar = () => {
         horizontal: "left",
       }}
       open={Boolean(message)}
-      autoHideDuration={6000}
+      autoHideDuration={duration}
       onClose={handleNotificationClose}>
       <Alert elevation={6} variant={"filled"} severity={severity} onClose={handleNotificationClose}>
         {message}

@@ -1,3 +1,5 @@
+import "./index.css";
+
 export * from "./ResponsiveTextField";
 export * from "./ResponsiveSelectField";
 export * from "./ResponsiveDatePicker";
