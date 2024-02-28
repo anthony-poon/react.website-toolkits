@@ -9,3 +9,4 @@ export * from "./FormFieldWrapper";
 export * from "./FormTitle";
 export * from "./FormContent";
 export * from "./ResponsivePasswordField";
+export * from "./ResponsiveDateRangePicker";
