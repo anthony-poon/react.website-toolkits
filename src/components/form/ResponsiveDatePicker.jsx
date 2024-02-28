@@ -57,13 +57,13 @@ const CompactDatePicker = (props) => {
 };
 
 export const ResponsiveDatePicker = (props) => {
-  const dt = props.value ? DateTime.fromISO(props.value, { setZone: true }) : null;
+  const dt = props.value ? DateTime.fromISO(props.value, { setZone: true }).startOf("date") : null;
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const handleChange = (value) => {
     if (props.onChange) {
-      const dt = DateTime.fromISO(value);
-      props.onChange(props.name, dt.toISODate());
+      const dt = DateTime.fromISO(value).startOf("day");
+      props.onChange(props.name, dt.toISO());
     }
   };
   const { compact = false, gutter = true } = props;
