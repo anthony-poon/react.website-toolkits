@@ -7,7 +7,6 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 
 const CompactSelectField = (props) => {
   const { isError, error, children, label, value, name, onChange, ...rest } = props;
-  const theme = useTheme();
   // TODO: implement required and subLabel
   // TODO: Fix label position when label is empty
   return (
