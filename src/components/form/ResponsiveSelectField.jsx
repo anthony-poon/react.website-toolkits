@@ -104,8 +104,8 @@ ResponsiveSelectField.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       display: PropTypes.any,
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number.isRequired]),
-      key: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
   ),
   onChange: PropTypes.func,
