@@ -84,8 +84,11 @@ const getColDef = (props) => {
     };
   });
   if (props.onUpdate || props.onDelete || props.onView) {
+    console.log(props)
+
+
     columns?.push({
-      minWidth: 150,
+      minWidth: (Object.keys(props).filter(key => key.startsWith('on')).length) * 40,
       field: "_action1",
       headerName: "",
       sortable: false,
