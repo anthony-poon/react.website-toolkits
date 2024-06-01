@@ -15,6 +15,7 @@ export const SpinnerButton = ({
   isError,
   isLoading,
   onClick,
+  style,
   isIcon,
   ...rest
 }) => {
@@ -27,6 +28,14 @@ export const SpinnerButton = ({
       onClick={onClick}
       type={type}
       variant={variant}
+      style={
+        isDisabled || isError || isLoading
+          ? {
+              borderColor: "grey",
+              color: "grey",
+            }
+          : style
+      }
       {...rest}>
       {indicator}
       <Box

@@ -67,6 +67,7 @@ AsyncButton.propTypes = {
   onError: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   variant: PropTypes.oneOf(["contained", "outlined", "text"]),
+  style: PropTypes.object,
 };
 
 export { AsyncButton };

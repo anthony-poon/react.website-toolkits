@@ -10,9 +10,10 @@ export const ClippedAppBar = ({ children, onDrawerToggle }) => {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <AppBar
+      elevation={0}
       position="fixed"
       style={{
-        zIndex: 1201,
+        zIndex: 3,
       }}>
       <Toolbar>
         {!isDesktop && onDrawerToggle && (
