@@ -14,9 +14,10 @@ export const ClippedAppBar = ({ children, onDrawerToggle }) => {
       style={{
         zIndex: 1201,
       }}>
-      <Toolbar style={{
-        justifyContent: "space-between"
-      }}>
+      <Toolbar
+        style={{
+          justifyContent: "space-between",
+        }}>
         {!isDesktop && onDrawerToggle && (
           <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={onDrawerToggle}>
             <MenuIcon />

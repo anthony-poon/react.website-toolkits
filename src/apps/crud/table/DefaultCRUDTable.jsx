@@ -1,8 +1,8 @@
 import { Add } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -84,11 +84,8 @@ const getColDef = (props) => {
     };
   });
   if (props.onUpdate || props.onDelete || props.onView) {
-    console.log(props)
-
-
     columns?.push({
-      minWidth: (Object.keys(props).filter(key => key.startsWith('on')).length) * 40,
+      minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -233,7 +230,7 @@ export const DefaultCRUDTable = (props) => {
   return (
     <Box>
       <ActionBar options={getActionBarOptions(props)} onClick={handleAction} />
-      <Box height={props.height} >
+      <Box height={props.height}>
         <DataGrid
           apiRef={ref}
           columns={getColDef(props)}
@@ -245,9 +242,10 @@ export const DefaultCRUDTable = (props) => {
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
           density="compact"
           sx={{
-            '.MuiDataGrid-columnHeaders ': {
-              backgroundColor: 'lightgrey',
-            }, '.MuiDataGrid-columnHeaderTitle': { fontWeight: 'bold' }
+            ".MuiDataGrid-columnHeaders ": {
+              backgroundColor: "lightgrey",
+            },
+            ".MuiDataGrid-columnHeaderTitle": { fontWeight: "bold" },
           }}
         />
       </Box>

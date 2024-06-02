@@ -8,7 +8,7 @@ export const DrawerItem = ({ icon, text, url, disabled }) => {
   return (
     <ListItem button component={RouterLink} to={url} disabled={disabled} sx={{ pl: 0 }}>
       <ListItemIcon>{icon}</ListItemIcon>
-      <ListItemText primary={text}  />
+      <ListItemText primary={text} />
     </ListItem>
   );
 };
