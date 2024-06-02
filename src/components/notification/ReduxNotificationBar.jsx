@@ -20,7 +20,7 @@ export const ReduxNotificationBar = ({ duration = 6000 }) => {
     <Snackbar
       anchorOrigin={{
         vertical: "bottom",
-        horizontal: "left",
+        horizontal: "center",
       }}
       open={Boolean(message)}
       autoHideDuration={duration}

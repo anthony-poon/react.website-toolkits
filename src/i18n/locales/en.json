@@ -95,7 +95,7 @@
   "login.app.account.not.confirm.prompt": "Your email is not verified yet.",
   "logout.app.prompt": "Logging out",
 
-  "resend.confirmation.app.prompt": "You account have not been confirmed yet. If you did not get any email, press the button below to resend the email",
+  "resend.confirmation.app.prompt": "Your account has not been confirmed yet. If you did not receive an email, press the button below and we will resend the email.",
   "resend.confirmation.app.resend.email": "Resend Email",
   "resend.confirmation.app.resend.without.confirmation.prompt": " If you did not receive your email confirmation letter, enter your email below, and it will be resent",
 
@@ -105,7 +105,7 @@
   "setup.password.prompt": "Your account is almost ready. Please login in the next screen to continue",
 
   "email.confirmation.app.email.confirmed.prompt": "Email confirmed. Please login.",
-  "email.confirm.success.prompt": "Your email have been confirmed. Please login in the next screen to continue",
+  "email.confirm.success.prompt": "Your email has been confirmed. Please login on the next screen to continue.",
   "signup.app.not.matching.prompt": "Password doest not match repeat password.",
   "signup.app.create.account": "Create Account",
   "signup.app.using.your.email": "Using your email",
