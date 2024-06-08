@@ -61,7 +61,6 @@ export const ResponsiveTimePicker = (props) => {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const handleChange = (value) => {
     if (props.onChange) {
-      console.log(value);
       props.onChange(
         props.name,
         value.toISOTime({

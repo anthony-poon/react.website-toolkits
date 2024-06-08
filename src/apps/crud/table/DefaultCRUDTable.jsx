@@ -2,6 +2,7 @@ import { Add } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -82,9 +83,9 @@ const getColDef = (props) => {
       disableColumnMenu,
     };
   });
-  if (props.onUpdate || props.onDelete) {
+  if (props.onUpdate || props.onDelete || props.onView) {
     columns?.push({
-      minWidth: 25,
+      minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -93,13 +94,14 @@ const getColDef = (props) => {
       renderCell: (item) => {
         const handleEdit = props.onUpdate ? () => props.onUpdate(item.row) : null;
         const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
-        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} />;
+        const handleView = props.onView ? () => props.onView(item.row) : null;
+        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} />;
       },
     });
   }
   if (props.onOtherAction) {
     columns?.push({
-      minWidth: 200,
+      minWidth: 300,
       field: "_action2",
       headerName: "",
       sortable: false,
@@ -114,7 +116,7 @@ const getColDef = (props) => {
   return !_.isEmpty(columns) ? columns : [];
 };
 
-const RowActionButtons = ({ onUpdate, onDelete, ...rest }) => {
+const RowActionButtons = ({ onUpdate, onDelete, onView, ...rest }) => {
   return (
     <Box display={"flex"}>
       {onUpdate && (
@@ -131,12 +133,19 @@ const RowActionButtons = ({ onUpdate, onDelete, ...rest }) => {
           </IconButton>
         </Box>
       )}
+      {onView && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onView}>
+            <RemoveRedEyeOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}
     </Box>
   );
 };
 
 const getRolDef = (props) => {
-  if (props.onUpdate || props.onDelete) {
+  if (props.onUpdate || props.onDelete || props.onView) {
     return props.items.map((item) => {
       return {
         ...item,
@@ -231,6 +240,13 @@ export const DefaultCRUDTable = (props) => {
           slots={props.disableToolbar ? null : { toolbar: GridToolbar }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
+          density="compact"
+          sx={{
+            ".MuiDataGrid-columnHeaders ": {
+              backgroundColor: "lightgrey",
+            },
+            ".MuiDataGrid-columnHeaderTitle": { fontWeight: "bold" },
+          }}
         />
       </Box>
     </Box>
@@ -263,6 +279,7 @@ DefaultCRUDTable.propTypes = {
   onRead: PropTypes.func,
   onUpdate: PropTypes.func,
   onDelete: PropTypes.func,
+  onView: PropTypes.func,
   onOtherAction: PropTypes.func,
   toolbarOptions: PropTypes.shape({
     buttons: PropTypes.arrayOf(
