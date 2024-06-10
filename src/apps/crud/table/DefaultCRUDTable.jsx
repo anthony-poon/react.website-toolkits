@@ -1,8 +1,13 @@
-import { Add } from "@mui/icons-material";
+import { Add, PropaneSharp } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
+
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -83,7 +88,7 @@ const getColDef = (props) => {
       disableColumnMenu,
     };
   });
-  if (props.onUpdate || props.onDelete || props.onView) {
+  if (props.onUpdate || props.onDelete || props.onView || props.onStart || props.onDownload || props.onCopy) {
     columns?.push({
       minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
@@ -95,7 +100,10 @@ const getColDef = (props) => {
         const handleEdit = props.onUpdate ? () => props.onUpdate(item.row) : null;
         const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
         const handleView = props.onView ? () => props.onView(item.row) : null;
-        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} />;
+        const handleStart = props.onStart ? () => props.onStart(item.row) : null;
+        const handleDownload = props.onDownload ? () => props.onDownload(item.row) : null;
+        const handleCopy = props.onCopy ? () => props.onCopy(item.row) : null;
+        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} onStart={handleStart} onDownload={handleDownload} onCopy={handleCopy} />;
       },
     });
   }
@@ -116,7 +124,7 @@ const getColDef = (props) => {
   return !_.isEmpty(columns) ? columns : [];
 };
 
-const RowActionButtons = ({ onUpdate, onDelete, onView, ...rest }) => {
+const RowActionButtons = ({ onUpdate, onDelete, onView, onStart, onDownload, onCopy, ...rest }) => {
   return (
     <Box display={"flex"}>
       {onUpdate && (
@@ -137,6 +145,25 @@ const RowActionButtons = ({ onUpdate, onDelete, onView, ...rest }) => {
         <Box mr={2}>
           <IconButton {...rest} size={"small"} onClick={onView}>
             <RemoveRedEyeOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}
+      {onStart && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onStart}>
+            <PlayCircleOutlineOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )} {onDownload && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onDownload}>
+            <FileDownloadOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}{onCopy && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onCopy}>
+            <ContentCopyOutlinedIcon fontSize="inherit" />
           </IconButton>
         </Box>
       )}
@@ -163,6 +190,21 @@ const getActionBarOptions = (props) => {
       display: "Add",
       value: "create",
       startIcon: <Add color={"primary"} />,
+    });
+  }
+  if (props.onUpload) {
+    rtn.push({
+      display: "Upload",
+      value: "upload",
+      startIcon: <DriveFolderUploadOutlinedIcon />,
+    });
+  }
+  if (props.onDeleteAll) {
+    rtn.push({
+      display: "Delete All",
+      value: "delete_all",
+      color: "error",
+      startIcon: <DeleteIcon />,
     });
   }
   if (!_.isEmpty(props.extraButtons)) {
@@ -216,11 +258,18 @@ const CustomizedMenus = (props) => {
 };
 
 export const DefaultCRUDTable = (props) => {
+  console.log("props",props)
   const { ref } = useOnMount(props);
   const handleAction = (action) => {
     switch (action) {
       case "create":
         props.onCreate && props.onCreate();
+        break;
+      case "upload":
+        props.onUpload && props.onUpload();
+        break;
+      case "delete_all":
+        props.onDeleteAll && props.onDeleteAll();
         break;
       default:
         props.onOtherAction(action);
