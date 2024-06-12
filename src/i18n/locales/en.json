@@ -142,7 +142,7 @@
   "test.data.grid.header": "PERIOD (Test date)",
   "test.data.grid.outstanding.tests": "Outstandings Tests",
 
-  "list.exam.result.app.header": "Previous Test Results",
+  "list.exam.result.app.header": "Completed Test Results",
   "list.exam.result.download.prompt": "Choose a test to download the Analytics Report and the Certificate (where applicable).",
   "list.exam.result.download.view.cert": "View Certificate",
 
@@ -202,7 +202,7 @@
   "layout.home": "Home (Profile)",
   "layout.register.test": "Register Test",
   "layout.experience.trial.test": "Experience Trial Test",
-  "layout.previous.test.results": "Previous Test Results",
+  "layout.previous.test.results": "Completed Test Results",
   "layout.staff": "Staff",
   "layout.product.admin": "Product Administration",
   "layout.test.centre": "Test Centres",
