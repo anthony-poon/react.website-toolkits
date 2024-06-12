@@ -3,7 +3,10 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -84,7 +87,7 @@ const getColDef = (props) => {
       disableColumnMenu,
     };
   });
-  if (props.onUpdate || props.onDelete || props.onView || props.onLogin) {
+  if (props.onUpdate || props.onDelete || props.onView || props.onLogin|| props.onStart || props.onDownload || props.onCopy) {
     columns?.push({
       minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
@@ -98,7 +101,10 @@ const getColDef = (props) => {
         const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
         const handleView = props.onView ? () => props.onView(item.row) : null;
         const handleLogin = props.onLogin ? () => props.onLogin(item.row) : null;
-        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} onLogin={handleLogin} />;
+        const handleStart = props.onStart ? () => props.onStart(item.row) : null;
+        const handleDownload = props.onDownload ? () => props.onDownload(item.row) : null;
+        const handleCopy = props.onCopy ? () => props.onCopy(item.row) : null;
+        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} onLogin={handleLogin} onStart={handleStart} onDownload={handleDownload} onCopy={handleCopy} />;
       },
     });
   }
@@ -119,7 +125,7 @@ const getColDef = (props) => {
   return !_.isEmpty(columns) ? columns : [];
 };
 
-const RowActionButtons = ({ onUpdate, onDelete, onView, onLogin, ...rest }) => {
+const RowActionButtons = ({ onUpdate, onDelete, onView, onLogin, onStart, onDownload ,onCopy ,...rest }) => {
   return (
     <Box display={"flex"}>
       {onUpdate && (
@@ -147,6 +153,25 @@ const RowActionButtons = ({ onUpdate, onDelete, onView, onLogin, ...rest }) => {
         <Box mr={2}>
           <IconButton {...rest} size={"small"} onClick={onLogin}>
             <LoginOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}
+            {onStart && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onStart}>
+            <PlayCircleOutlineOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )} {onDownload && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onDownload}>
+            <FileDownloadOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}{onCopy && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onCopy}>
+            <ContentCopyOutlinedIcon fontSize="inherit" />
           </IconButton>
         </Box>
       )}
