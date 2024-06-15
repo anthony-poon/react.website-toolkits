@@ -3,6 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -83,7 +84,7 @@ const getColDef = (props) => {
       disableColumnMenu,
     };
   });
-  if (props.onUpdate || props.onDelete || props.onView) {
+  if (props.onUpdate || props.onDelete || props.onView || props.onLogin) {
     columns?.push({
       minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
@@ -92,10 +93,12 @@ const getColDef = (props) => {
       disableColumnMenu: true,
       disableExport: true,
       renderCell: (item) => {
+        console.log("item",item)
         const handleEdit = props.onUpdate ? () => props.onUpdate(item.row) : null;
         const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
         const handleView = props.onView ? () => props.onView(item.row) : null;
-        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} />;
+        const handleLogin = props.onLogin ? () => props.onLogin(item.row) : null;
+        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} onLogin={handleLogin} />;
       },
     });
   }
@@ -116,7 +119,7 @@ const getColDef = (props) => {
   return !_.isEmpty(columns) ? columns : [];
 };
 
-const RowActionButtons = ({ onUpdate, onDelete, onView, ...rest }) => {
+const RowActionButtons = ({ onUpdate, onDelete, onView, onLogin, ...rest }) => {
   return (
     <Box display={"flex"}>
       {onUpdate && (
@@ -137,6 +140,13 @@ const RowActionButtons = ({ onUpdate, onDelete, onView, ...rest }) => {
         <Box mr={2}>
           <IconButton {...rest} size={"small"} onClick={onView}>
             <RemoveRedEyeOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Box>
+      )}
+      {onLogin && (
+        <Box mr={2}>
+          <IconButton {...rest} size={"small"} onClick={onLogin}>
+            <LoginOutlinedIcon fontSize="inherit" />
           </IconButton>
         </Box>
       )}
