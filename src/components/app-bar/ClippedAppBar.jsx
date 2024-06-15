@@ -13,7 +13,7 @@ export const ClippedAppBar = ({ children, onDrawerToggle }) => {
       elevation={0}
       position="fixed"
       style={{
-        zIndex: 3,
+        zIndex: 1201,
       }}>
       <Toolbar
         style={{
