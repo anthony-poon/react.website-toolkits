@@ -3,10 +3,6 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import PlayCircleOutlineOutlinedIcon from '@mui/icons-material/PlayCircleOutlineOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
-import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -87,28 +83,34 @@ const getColDef = (props) => {
       disableColumnMenu,
     };
   });
-  if (props.onUpdate || props.onDelete || props.onView || props.onLogin|| props.onStart || props.onDownload || props.onCopy) {
+  const buttons = [];
+  if (props.onUpdate) {
+    buttons.push({ icon: EditIcon, onClick: props.onUpdate });
+  }
+  if (props.onDelete) {
+    buttons.push({ icon: DeleteIcon, onClick: props.onDelete });
+  }
+  if (props.onView) {
+    buttons.push({ icon: RemoveRedEyeOutlinedIcon, onClick: props.onView });
+  }
+  if (!_.isEmpty(props.actionOptions.buttons)) {
+    props.actionOptions.buttons.forEach(({ icon, onClick }) => {
+      buttons.push({ icon, onClick });
+    });
+  }
+  if (!_.isEmpty(buttons)) {
     columns?.push({
-      minWidth: Object.keys(props).filter((key) => key.startsWith("on")).length * 40,
       field: "_action1",
       headerName: "",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
       renderCell: (item) => {
-        console.log("item",item)
-        const handleEdit = props.onUpdate ? () => props.onUpdate(item.row) : null;
-        const handleDelete = props.onDelete ? () => props.onDelete(item.row) : null;
-        const handleView = props.onView ? () => props.onView(item.row) : null;
-        const handleLogin = props.onLogin ? () => props.onLogin(item.row) : null;
-        const handleStart = props.onStart ? () => props.onStart(item.row) : null;
-        const handleDownload = props.onDownload ? () => props.onDownload(item.row) : null;
-        const handleCopy = props.onCopy ? () => props.onCopy(item.row) : null;
-        return <RowActionButtons onUpdate={handleEdit} onDelete={handleDelete} onView={handleView} onLogin={handleLogin} onStart={handleStart} onDownload={handleDownload} onCopy={handleCopy} />;
+        return <RowActionButtons buttons={buttons} row={item.row} />;
       },
     });
   }
-  if (props.onOtherAction) {
+  if (!_.isEmpty(props.actionOptions.dropdowns)) {
     columns?.push({
       minWidth: 300,
       field: "_action2",
@@ -117,64 +119,30 @@ const getColDef = (props) => {
       disableColumnMenu: true,
       disableExport: true,
       renderCell: (item) => {
-        const handleOtherAction = props.onOtherAction ? (action) => props.onOtherAction(action, item.row) : null;
-        return <CustomizedMenus onOtherAction={handleOtherAction} actionOptions={props.actionOptions} />;
+        return <CustomizedMenus item={item} actionOptions={props.actionOptions} />;
       },
     });
   }
   return !_.isEmpty(columns) ? columns : [];
 };
 
-const RowActionButtons = ({ onUpdate, onDelete, onView, onLogin, onStart, onDownload ,onCopy ,...rest }) => {
+const RowActionButtons = ({ buttons, row }) => {
   return (
     <Box display={"flex"}>
-      {onUpdate && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onUpdate}>
-            <EditIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}
-      {onDelete && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} color={"error"} onClick={onDelete}>
-            <DeleteIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}
-      {onView && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onView}>
-            <RemoveRedEyeOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}
-      {onLogin && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onLogin}>
-            <LoginOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}
-            {onStart && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onStart}>
-            <PlayCircleOutlineOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )} {onDownload && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onDownload}>
-            <FileDownloadOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}{onCopy && (
-        <Box mr={2}>
-          <IconButton {...rest} size={"small"} onClick={onCopy}>
-            <ContentCopyOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Box>
-      )}
+      {buttons.map(({ icon, onClick }, index) => (
+        <RowActionButton key={index} icon={icon} onClick={onClick ? () => onClick(row) : null} />
+      ))}
+    </Box>
+  );
+};
+
+const RowActionButton = ({ icon, onClick }) => {
+  const Icon = icon;
+  return (
+    <Box mr={2}>
+      <IconButton size={"small"} onClick={onClick}>
+        <Icon fontSize="inherit" />
+      </IconButton>
     </Box>
   );
 };
@@ -224,21 +192,20 @@ const CustomizedMenus = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleActionClick = (action, item) => {
-    setAnchorEl(null);
-    if (props.onOtherAction != null) {
-      props.onOtherAction(action, item);
-    }
-  };
   return (
     <div>
       <Button variant="contained" disableElevation onClick={handleMenuClick} endIcon={<KeyboardArrowDownIcon />}>
         Options
       </Button>
       <StyledMenu anchorEl={anchorEl} open={isOpened} onClose={handleClose}>
-        {props.actionOptions?.buttons.map((button, idx) => (
+        {props.actionOptions?.dropdowns.map((button, idx) => (
           <MenuItem
-            onClick={() => handleActionClick(button.value)}
+            onClick={() => {
+              setAnchorEl(null);
+              if (button.onClick) {
+                button.onClick(props.item);
+              }
+            }}
             disableRipple
             key={idx}
             disabled={button.isDisabled}>
@@ -256,9 +223,6 @@ export const DefaultCRUDTable = (props) => {
     switch (action) {
       case "create":
         props.onCreate && props.onCreate();
-        break;
-      default:
-        props.onOtherAction(action);
         break;
     }
   };
@@ -293,8 +257,10 @@ DefaultCRUDTable.defaultProps = {
   items: [],
   schema: [],
   countPerPage: 10,
-  toolbarOptions: {},
-  actionOptions: {},
+  actionOptions: {
+    dropdowns: [],
+    buttons: [],
+  },
   disableToolbar: false,
 };
 
@@ -315,23 +281,19 @@ DefaultCRUDTable.propTypes = {
   onUpdate: PropTypes.func,
   onDelete: PropTypes.func,
   onView: PropTypes.func,
-  onOtherAction: PropTypes.func,
-  toolbarOptions: PropTypes.shape({
-    buttons: PropTypes.arrayOf(
+  actionOptions: PropTypes.shape({
+    dropdowns: PropTypes.arrayOf(
       PropTypes.shape({
         display: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
         color: PropTypes.string,
+        onClick: PropTypes.func,
+        isDisabled: PropTypes.bool,
       }),
     ),
-  }),
-  actionOptions: PropTypes.shape({
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
-        display: PropTypes.string.isRequired,
-        value: PropTypes.string.isRequired,
-        color: PropTypes.string,
-        isDisabled: PropTypes.bool,
+        icon: PropTypes.elementType.isRequired,
+        onClick: PropTypes.func.isRequired,
       }),
     ),
   }),
