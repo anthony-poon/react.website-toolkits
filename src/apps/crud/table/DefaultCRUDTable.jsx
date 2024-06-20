@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -62,10 +62,8 @@ const WIDTH_MAPPING = {
 };
 
 const DefaultCellComponent = ({ value }) => {
-  return (
-    <>{ value }</>
-  )
-}
+  return <>{value}</>;
+};
 
 const getColDef = (props) => {
   const columns = props.schema?.map(({ size, label, key, sortable, component, disableColumnMenu }) => {
@@ -87,9 +85,7 @@ const getColDef = (props) => {
       headerName: label,
       sortable,
       disableColumnMenu,
-      renderCell: ({value}) => (
-        <Component value={value}/>
-      )
+      renderCell: ({ value }) => <Component value={value} />,
     };
   });
   const buttons = [];
@@ -164,7 +160,7 @@ const getActionBarOptions = (props) => {
       display: "Add",
       value: "create",
       icon: <Add color={"primary"} />,
-      onClick: props.onCreate
+      onClick: props.onCreate,
     });
   }
   if (!_.isEmpty(props.actionOptions.toolbars)) {
@@ -175,8 +171,7 @@ const getActionBarOptions = (props) => {
         onClick,
         isDisabled,
       });
-    })
-
+    });
   }
   return rtn;
 };
