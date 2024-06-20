@@ -18,13 +18,13 @@ export const ActionButton = (props) => {
   );
 };
 
-export const ActionBar = ({ options, onClick }) => {
+export const ActionBar = ({ options }) => {
   return (
     <Box pb={2} display={"flex"} justifyContent={"flex-end"}>
       {options.map((option) => {
-        const { value, icon, display, ...rest } = option;
+        const { icon, display, onClick, color } = option;
         return (
-          <ActionButton key={value} onClick={() => onClick(value)} startIcon={icon} {...rest}>
+          <ActionButton key={display} onClick={() => onClick()} startIcon={icon} color={color}>
             {display}
           </ActionButton>
         );

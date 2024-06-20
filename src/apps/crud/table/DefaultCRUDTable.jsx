@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { Box } from "@mui/material";
+import {Box} from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -61,8 +61,14 @@ const WIDTH_MAPPING = {
   xxlarge: 300,
 };
 
+const DefaultCellComponent = ({ value }) => {
+  return (
+    <>{ value }</>
+  )
+}
+
 const getColDef = (props) => {
-  const columns = props.schema?.map(({ size, label, key, sortable, renderCell, disableColumnMenu }) => {
+  const columns = props.schema?.map(({ size, label, key, sortable, component, disableColumnMenu }) => {
     let widthProps;
     if (size === "flex") {
       widthProps = {
@@ -74,13 +80,16 @@ const getColDef = (props) => {
         minWidth: WIDTH_MAPPING[size] || 50,
       };
     }
+    const Component = component ? component : DefaultCellComponent;
     return {
       ...widthProps,
       field: key,
       headerName: label,
       sortable,
-      renderCell,
       disableColumnMenu,
+      renderCell: ({value}) => (
+        <Component value={value}/>
+      )
     };
   });
   const buttons = [];
@@ -100,6 +109,7 @@ const getColDef = (props) => {
   }
   if (!_.isEmpty(buttons)) {
     columns?.push({
+      minWidth: buttons.length * 40,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -147,29 +157,26 @@ const RowActionButton = ({ icon, onClick }) => {
   );
 };
 
-const getRolDef = (props) => {
-  if (props.onUpdate || props.onDelete || props.onView) {
-    return props.items.map((item) => {
-      return {
-        ...item,
-      };
-    });
-  } else {
-    return props.items;
-  }
-};
-
 const getActionBarOptions = (props) => {
   const rtn = [];
   if (props.onCreate) {
     rtn.push({
       display: "Add",
       value: "create",
-      startIcon: <Add color={"primary"} />,
+      icon: <Add color={"primary"} />,
+      onClick: props.onCreate
     });
   }
-  if (!_.isEmpty(props.extraButtons)) {
-    rtn.push(props.extraButtons);
+  if (!_.isEmpty(props.actionOptions.toolbars)) {
+    props.actionOptions.toolbars.forEach(({ display, onClick, color, isDisabled }) => {
+      rtn.push({
+        display: display,
+        color,
+        onClick,
+        isDisabled,
+      });
+    })
+
   }
   return rtn;
 };
@@ -219,21 +226,14 @@ const CustomizedMenus = (props) => {
 
 export const DefaultCRUDTable = (props) => {
   const { ref } = useOnMount(props);
-  const handleAction = (action) => {
-    switch (action) {
-      case "create":
-        props.onCreate && props.onCreate();
-        break;
-    }
-  };
   return (
     <Box>
-      <ActionBar options={getActionBarOptions(props)} onClick={handleAction} />
+      <ActionBar options={getActionBarOptions(props)} />
       <Box height={props.height}>
         <DataGrid
           apiRef={ref}
           columns={getColDef(props)}
-          rows={getRolDef(props)}
+          rows={props.items}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
           slots={props.disableToolbar ? null : { toolbar: GridToolbar }}
@@ -260,6 +260,7 @@ DefaultCRUDTable.defaultProps = {
   actionOptions: {
     dropdowns: [],
     buttons: [],
+    toolbars: [],
   },
   disableToolbar: false,
 };
@@ -294,6 +295,15 @@ DefaultCRUDTable.propTypes = {
       PropTypes.shape({
         icon: PropTypes.elementType.isRequired,
         onClick: PropTypes.func.isRequired,
+      }),
+    ),
+    toolbars: PropTypes.arrayOf(
+      PropTypes.shape({
+        display: PropTypes.string.isRequired,
+        onClick: PropTypes.func,
+        icon: PropTypes.element,
+        color: PropTypes.string,
+        isDisabled: PropTypes.bool,
       }),
     ),
   }),
