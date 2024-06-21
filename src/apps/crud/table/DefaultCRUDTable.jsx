@@ -9,11 +9,12 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { DataGrid, GridToolbar, useGridApiRef } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
+import { DefaultTableCell } from "./CRUDTableCell";
 import { ActionBar } from "./components/ActionBar";
 
 const StyledMenu = styled((props) => (
@@ -61,32 +62,31 @@ const WIDTH_MAPPING = {
   xxlarge: 300,
 };
 
-const DefaultCellComponent = ({ value }) => {
-  return <>{value}</>;
-};
-
 const getColDef = (props) => {
-  const columns = props.schema?.map(({ size, label, key, sortable, component, disableColumnMenu }) => {
-    let widthProps;
-    if (size === "flex") {
-      widthProps = {
+  const columns = props.schema?.map((prop) => {
+    const Component = prop.component ? prop.component : DefaultTableCell;
+    const def = {
+      sortingOrder: ["desc", "asc"],
+      field: prop.key,
+      headerName: prop.label,
+      sortable: prop.sortable,
+      disableColumnMenu: prop.disableColumnMenu,
+      renderCell: ({ value }) => <Component value={value} />,
+    };
+    if (prop.size === "flex") {
+      def.widthProps = {
         minWidth: 50,
         flex: 1,
       };
     } else {
-      widthProps = {
-        minWidth: WIDTH_MAPPING[size] || 50,
+      def.widthProps = {
+        minWidth: WIDTH_MAPPING[prop.size] || 50,
       };
     }
-    const Component = component ? component : DefaultCellComponent;
-    return {
-      ...widthProps,
-      field: key,
-      headerName: label,
-      sortable,
-      disableColumnMenu,
-      renderCell: ({ value }) => <Component value={value} />,
-    };
+    if (props.isDateTime) {
+      def.sortComparator = gridDateComparator;
+    }
+    return def;
   });
   const buttons = [];
   if (props.onUpdate) {
@@ -269,6 +269,7 @@ DefaultCRUDTable.propTypes = {
       label: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
+      component: PropTypes.elementType,
     }),
   ).isRequired,
   countPerPage: PropTypes.number,
