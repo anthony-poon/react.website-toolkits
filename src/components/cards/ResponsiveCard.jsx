@@ -10,8 +10,7 @@ export const ResponsiveCard = ({ variant = "sm", children }) => {
       <Card
         style={{
           width: "100%",
-          padding: theme.spacing(1),
-          ...customStyle,
+          padding: theme.spacing(4),
         }}>
         {children}
       </Card>

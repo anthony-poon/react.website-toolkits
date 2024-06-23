@@ -188,7 +188,6 @@
   "layout.profile": "Профиль",
   "layout.logout.prompt": "Вы действительно хотите выйти?",
   "layout.header": "Кандидатский портал",
-  "layout.menu.admins": "Персонал центра",
   "birthdat.input.title": "Дата рождения",
   "file.upload.field.button": "Загрузить файл"
 }

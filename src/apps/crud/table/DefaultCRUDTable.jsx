@@ -67,24 +67,26 @@ const WIDTH_MAPPING = {
 };
 
 const getColDef = (props) => {
-  const columns = props.schema?.map((prop) => {
-    const Component = prop.component ? prop.component : DefaultTableCell;
-    const def = {
-      sortingOrder: ["desc", "asc"],
-      field: prop.key,
-      headerName: prop.label,
-      sortable: prop.sortable,
-      disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) => <Component value={value} />,
-      width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
-      flex: prop.size === "flex" ? 1 : undefined,
-      minWidth: 50,
-    };
-
-    if (props.isDateTime) {
-      def.sortComparator = gridDateComparator;
+  const columns = props.schema?.map(({ size, label, key, sortable, renderCell, disableColumnMenu }) => {
+    let widthProps;
+    if (size === "flex") {
+      widthProps = {
+        minWidth: 50,
+        flex: 1,
+      };
+    } else {
+      widthProps = {
+        minWidth: WIDTH_MAPPING[size] || 50,
+      };
     }
-    return def;
+    return {
+      ...widthProps,
+      field: key,
+      headerName: label,
+      sortable,
+      renderCell,
+      disableColumnMenu,
+    };
   });
   if (props.onUpdate || props.onDelete || props.onView || props.onStart || props.onDownload || props.onCopy) {
     columns?.push({
