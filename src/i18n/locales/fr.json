@@ -188,6 +188,7 @@
   "layout.profile": "Profil",
   "layout.logout.prompt": "Êtes-vous sûr de vouloir vous déconnecter?",
   "layout.header": "Portail des candidats",
+  "layout.menu.admins": "Personnel du Centre",
   "birthdat.input.title": "Date de naissance",
   "file.upload.field.button": "Téléverser un fichier"
 }

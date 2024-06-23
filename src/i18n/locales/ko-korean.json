@@ -188,6 +188,7 @@
   "layout.profile": "프로필",
   "layout.logout.prompt": "정말로 로그아웃하시겠습니까?",
   "layout.header": "후보자 포털",
+  "layout.menu.admins": "센터 직원",
   "birthdat.input.title": "생일",
   "file.upload.field.button": "파일 업로드"
 }

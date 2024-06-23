@@ -72,17 +72,11 @@ const getColDef = (props) => {
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
       renderCell: ({ value }) => <Component value={value} />,
+      width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
+      flex: prop.size === "flex" ? 1 : undefined,
+      minWidth: 50,
     };
-    if (prop.size === "flex") {
-      def.widthProps = {
-        minWidth: 50,
-        flex: 1,
-      };
-    } else {
-      def.widthProps = {
-        minWidth: WIDTH_MAPPING[prop.size] || 50,
-      };
-    }
+
     if (props.isDateTime) {
       def.sortComparator = gridDateComparator;
     }
