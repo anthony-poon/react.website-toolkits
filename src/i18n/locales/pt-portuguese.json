@@ -188,6 +188,7 @@
   "layout.profile": "Perfil",
   "layout.logout.prompt": "Tem certeza que deseja sair?",
   "layout.header": "Portal do Candidato",
+  "layout.menu.admins": "Pessoal do Centro",
   "birthdat.input.title": "Data de nascimento",
   "file.upload.field.button": "Subir arquivo"
 }
