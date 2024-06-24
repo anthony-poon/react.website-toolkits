@@ -185,6 +185,8 @@
   "layout.logout.prompt": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "layout.header": "بوابة المرشح",
   "layout.menu.admins": "موظفي المركز",
+  "layout.test.schedules" : "جدول الاختبارات",
+  "layout.release.results" : "إصدار النتائج",
   "birthdat.input.title": "تاريخ الميلاد",
   "file.upload.field.button": "رفع ملف"
 }

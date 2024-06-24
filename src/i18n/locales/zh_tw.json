@@ -187,6 +187,8 @@
   "layout.logout.prompt": "您確定要退出嗎？",
   "layout.header": "考生網站",
   "layout.menu.admins": "中心人員",
+  "layout.test.schedules" : "測試日程",
+  "layout.release.results" : "發布結果",
   "birthdat.input.title": "出生日期",
   "file.upload.field.button": "上傳文件"
 }

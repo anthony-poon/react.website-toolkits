@@ -71,7 +71,7 @@ const getColDef = (props) => {
       headerName: prop.label,
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) => <Component value={value} />,
+      renderCell: prop.renderCell ? prop.renderCell : ({ value }) => <Component value={value} />,
       width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
       flex: prop.size === "flex" ? 1 : undefined,
       minWidth: 50,
@@ -242,7 +242,7 @@ export const DefaultCRUDTable = (props) => {
 };
 
 DefaultCRUDTable.defaultProps = {
-  height: 350,
+  height: 800,
   items: [],
   schema: [],
   countPerPage: 10,
