@@ -3,6 +3,8 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -92,6 +94,13 @@ const getColDef = (props) => {
   if (props.onView) {
     buttons.push({ icon: RemoveRedEyeOutlinedIcon, onClick: props.onView });
   }
+  if (props.onDownload) {
+    buttons.push({ icon: FileDownloadOutlinedIcon, onClick: props.onDownload });
+  }
+  if (props.onCopy) {
+    buttons.push({ icon: ContentCopyOutlinedIcon, onClick: props.onCopy });
+  }
+
   if (!_.isEmpty(props.actionOptions.buttons)) {
     props.actionOptions.buttons.forEach(({ icon, onClick }) => {
       buttons.push({ icon, onClick });
@@ -99,7 +108,7 @@ const getColDef = (props) => {
   }
   if (!_.isEmpty(buttons)) {
     columns?.push({
-      minWidth: buttons.length * 40,
+      minWidth: buttons.length * 45,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -158,12 +167,13 @@ const getActionBarOptions = (props) => {
     });
   }
   if (!_.isEmpty(props.actionOptions.toolbars)) {
-    props.actionOptions.toolbars.forEach(({ display, onClick, color, isDisabled }) => {
+    props.actionOptions.toolbars.forEach(({ display, onClick, color, isDisabled,icon }) => {
       rtn.push({
         display: display,
         color,
         onClick,
         isDisabled,
+        icon
       });
     });
   }
