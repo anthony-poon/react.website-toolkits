@@ -1,11 +1,9 @@
 import { Add } from "@mui/icons-material";
-import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { Box } from "@mui/material";
+import {Box, Tooltip} from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -96,8 +94,8 @@ const getColDef = (props) => {
   }
 
   if (!_.isEmpty(props.actionOptions.buttons)) {
-    props.actionOptions.buttons.forEach(({ icon, onClick }) => {
-      buttons.push({ icon, onClick });
+    props.actionOptions.buttons.forEach(({ icon, onClick, tooltips }) => {
+      buttons.push({ icon, onClick, tooltips });
     });
   }
   if (!_.isEmpty(buttons)) {
@@ -130,21 +128,34 @@ const getColDef = (props) => {
 };
 
 const RowActionButtons = ({ buttons, row }) => {
+  console.log(buttons);
   return (
     <Box display={"flex"}>
-      {buttons.map(({ icon, onClick }, index) => (
-        <RowActionButton key={index} icon={icon} onClick={onClick ? () => onClick(row) : null} />
+      {buttons.map(({ icon, onClick, tooltips }, index) => (
+        <RowActionButton key={index} tooltips={tooltips} icon={icon} onClick={onClick ? () => onClick(row) : null} />
       ))}
     </Box>
   );
 };
 
-const RowActionButton = ({ icon, onClick }) => {
+const RowActionButton = ({ icon, onClick, tooltips }) => {
   const Icon = icon;
+  let content;
+  if (tooltips) {
+    content = (
+      <Tooltip id="button-report" title={tooltips}>
+        <Icon fontSize="inherit" />
+      </Tooltip>
+    )
+  } else {
+    content = (
+      <Icon fontSize="inherit" />
+    )
+  }
   return (
     <Box mr={2}>
       <IconButton size={"small"} onClick={onClick}>
-        <Icon fontSize="inherit" />
+        { content }
       </IconButton>
     </Box>
   );
@@ -289,6 +300,7 @@ DefaultCRUDTable.propTypes = {
       PropTypes.shape({
         icon: PropTypes.elementType.isRequired,
         onClick: PropTypes.func.isRequired,
+        tooltips: PropTypes.string,
       }),
     ),
     toolbars: PropTypes.arrayOf(
