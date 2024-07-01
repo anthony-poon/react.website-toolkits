@@ -1,6 +1,8 @@
 import { Add } from "@mui/icons-material";
+import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
+import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { Box } from "@mui/material";
@@ -72,17 +74,11 @@ const getColDef = (props) => {
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
       renderCell: ({ value }) => <Component value={value} />,
+      width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
+      flex: prop.size === "flex" ? 1 : undefined,
+      minWidth: 50,
     };
-    if (prop.size === "flex") {
-      def.widthProps = {
-        minWidth: 50,
-        flex: 1,
-      };
-    } else {
-      def.widthProps = {
-        minWidth: WIDTH_MAPPING[prop.size] || 50,
-      };
-    }
+
     if (props.isDateTime) {
       def.sortComparator = gridDateComparator;
     }
@@ -98,6 +94,7 @@ const getColDef = (props) => {
   if (props.onView) {
     buttons.push({ icon: RemoveRedEyeOutlinedIcon, onClick: props.onView });
   }
+
   if (!_.isEmpty(props.actionOptions.buttons)) {
     props.actionOptions.buttons.forEach(({ icon, onClick }) => {
       buttons.push({ icon, onClick });
@@ -105,7 +102,7 @@ const getColDef = (props) => {
   }
   if (!_.isEmpty(buttons)) {
     columns?.push({
-      minWidth: buttons.length * 40,
+      minWidth: buttons.length * 45,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -164,12 +161,13 @@ const getActionBarOptions = (props) => {
     });
   }
   if (!_.isEmpty(props.actionOptions.toolbars)) {
-    props.actionOptions.toolbars.forEach(({ display, onClick, color, isDisabled }) => {
+    props.actionOptions.toolbars.forEach(({ display, onClick, color, isDisabled, icon }) => {
       rtn.push({
         display: display,
         color,
         onClick,
         isDisabled,
+        icon,
       });
     });
   }
@@ -248,7 +246,7 @@ export const DefaultCRUDTable = (props) => {
 };
 
 DefaultCRUDTable.defaultProps = {
-  height: 350,
+  height: 800,
   items: [],
   schema: [],
   countPerPage: 10,

@@ -188,6 +188,9 @@
   "layout.profile": "Hồ sơ",
   "layout.logout.prompt": "Bạn có chắc chắn bạn muốn thoát?",
   "layout.header": "Cổng thông tin ứng viên",
+  "layout.menu.admins": "Nhân viên trung tâm",
+  "layout.test.schedules" : "Lịch Kiểm Tra",
+  "layout.release.results" : "Phát hành kết quả",
   "birthdat.input.title": "Ngày sinh",
   "file.upload.field.button": "Cập nhật dử liệu"
 }

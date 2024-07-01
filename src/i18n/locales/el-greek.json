@@ -188,6 +188,9 @@
   "layout.profile": "Προφίλ",
   "layout.logout.prompt": "Είστε βέβαιοι ότι θέλετε να αποσυνδεθείτε?",
   "layout.header": "Πύλη υποψηφίων",
+  "layout.menu.admins": "Προσωπικό Κέντρου",
+  "layout.test.schedules" : "Προγράμματα Δοκιμών",
+  "layout.release.results" : "Αποτελέσματα Κυκλοφορίας",
   "birthdat.input.title": "Ημερομηνια γεννησης",
   "file.upload.field.button": "Ανέβασμα αρχείου"
 }

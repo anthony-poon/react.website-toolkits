@@ -188,6 +188,9 @@
   "layout.profile": "Profil",
   "layout.logout.prompt": "Oturumu kapatmak istediğinizden emin misiniz?",
   "layout.header": "Aday Portalı",
+  "layout.menu.admins": "Merkez Personeli",
+  "layout.test.schedules" : "Test Takvimi",
+  "layout.release.results" : "Sonuçları Yayımla",
   "birthdat.input.title": "Doğum tarihi",
   "file.upload.field.button": "Dosya yükleme"
 }
