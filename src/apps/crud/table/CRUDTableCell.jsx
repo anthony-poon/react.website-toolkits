@@ -6,11 +6,11 @@ export const DefaultTableCell = ({ value }) => {
 };
 
 export const DateTableCell = ({ value }) => {
-  const str = DateTime.fromISO(value, { setZone: true }).toFormat("dd/MM/yy");
+  const str = value ? DateTime.fromISO(value, { setZone: true }).toFormat("dd/MM/yy") : "-";
   return <>{str}</>;
 };
 
 export const DateTimeTableCell = ({ value }) => {
-  const str = DateTime.fromISO(value, { setZone: true }).toFormat("dd/MM/yy HH:mm a");
+  const str = value ? DateTime.fromISO(value, { setZone: true }).toFormat("dd/MM/yy HH:mm a") : "-";
   return <>{str}</>;
 };
