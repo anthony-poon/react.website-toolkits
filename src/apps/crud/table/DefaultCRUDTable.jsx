@@ -128,7 +128,6 @@ const getColDef = (props) => {
 };
 
 const RowActionButtons = ({ buttons, row }) => {
-  console.log(buttons);
   return (
     <Box display={"flex"}>
       {buttons.map(({ icon, onClick, tooltips }, index) => (
