@@ -20,6 +20,7 @@ const ExpandedDatePicker = (props) => {
       <Grid item xs>
         <Box pt={2} pb={1}>
           <DatePicker
+            format="dd/MM/yy"
             value={props.value}
             onChange={props.onChange}
             slotProps={{
@@ -40,6 +41,7 @@ const CompactDatePicker = (props) => {
     <Grid container>
       <Grid item xs>
         <DatePicker
+          format="dd/MM/yy"
           value={props.value}
           label={props.label}
           onChange={props.onChange}

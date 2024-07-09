@@ -13,9 +13,9 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => 
       style={
         isDesktop
           ? {
-              width,
-              flexShrink: 0,
-            }
+            width,
+            flexShrink: 0,
+          }
           : {}
       }>
       <Hidden mdUp implementation={"js"}>
@@ -34,7 +34,7 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => 
           }}>
           <Toolbar />
           <div>
-            <List>
+            <List >
               <Box overflow={"auto"}>{children}</Box>
             </List>
           </div>
@@ -51,8 +51,8 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => 
           open>
           <Toolbar />
           <div>
-            <List>
-              <Box overflow={"auto"}>{children}</Box>
+            <List >
+              <Box overflow={"auto"} >{children}</Box>
             </List>
           </div>
         </Drawer>
