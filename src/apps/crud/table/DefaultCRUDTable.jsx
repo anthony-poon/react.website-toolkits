@@ -94,13 +94,16 @@ const getColDef = (props) => {
   }
 
   if (!_.isEmpty(props.actionOptions.buttons)) {
-    props.actionOptions.buttons.forEach(({ icon, onClick, tooltips }) => {
-      buttons.push({ icon, onClick, tooltips });
+    props.actionOptions.buttons.forEach(({ text, icon, onClick, tooltips, isDisabled }) => {
+      buttons.push({ text, icon, onClick, tooltips, isDisabled });
     });
   }
   if (!_.isEmpty(buttons)) {
+    const minWidth = buttons.reduce((acc, button) => {
+      return acc + (button.text ? 100 : 45);
+    }, 0);
     columns?.push({
-      minWidth: buttons.length * 45,
+      minWidth,
       field: "_action1",
       headerName: "",
       sortable: false,
@@ -130,30 +133,37 @@ const getColDef = (props) => {
 const RowActionButtons = ({ buttons, row }) => {
   return (
     <Box display={"flex"}>
-      {buttons.map(({ icon, onClick, tooltips }, index) => (
-        <RowActionButton key={index} tooltips={tooltips} icon={icon} onClick={onClick ? () => onClick(row) : null} />
-      ))}
+      {buttons.map(({ onClick, isDisabled, ...rest }, index) => {
+        const disabled = typeof isDisabled === "function" ? isDisabled(row) : isDisabled;
+        return (
+          <RowActionButton key={index} isDisabled={disabled} onClick={onClick ? () => onClick(row) : null} {...rest} />
+        );
+      })}
     </Box>
   );
 };
 
-const RowActionButton = ({ icon, onClick, tooltips }) => {
+const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled }) => {
   const Icon = icon;
   let content;
+  if (icon) {
+    content = <Icon fontSize="inherit" />;
+  } else {
+    content = <>{text}</>;
+  }
   if (tooltips) {
     content = (
       <Tooltip id="button-report" title={tooltips}>
-        <Icon fontSize="inherit" />
+        {content}
       </Tooltip>
     );
-  } else {
-    content = <Icon fontSize="inherit" />;
   }
+  const ButtonWrapper = text ? Button : IconButton;
   return (
     <Box mr={2}>
-      <IconButton size={"small"} onClick={onClick}>
+      <ButtonWrapper size={"small"} onClick={onClick} disabled={isDisabled}>
         {content}
-      </IconButton>
+      </ButtonWrapper>
     </Box>
   );
 };
@@ -295,7 +305,9 @@ DefaultCRUDTable.propTypes = {
     ),
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
-        icon: PropTypes.elementType.isRequired,
+        isDisabled: PropTypes.oneOf([PropTypes.bool, PropTypes.func]),
+        text: PropTypes.string,
+        icon: PropTypes.elementType,
         onClick: PropTypes.func.isRequired,
         tooltips: PropTypes.string,
       }),
