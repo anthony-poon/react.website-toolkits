@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import {Box, Tooltip} from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -145,16 +145,14 @@ const RowActionButton = ({ icon, onClick, tooltips }) => {
       <Tooltip id="button-report" title={tooltips}>
         <Icon fontSize="inherit" />
       </Tooltip>
-    )
+    );
   } else {
-    content = (
-      <Icon fontSize="inherit" />
-    )
+    content = <Icon fontSize="inherit" />;
   }
   return (
     <Box mr={2}>
       <IconButton size={"small"} onClick={onClick}>
-        { content }
+        {content}
       </IconButton>
     </Box>
   );

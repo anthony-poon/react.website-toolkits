@@ -189,8 +189,8 @@
   "layout.logout.prompt": "Apakah Anda yakin ingin logout?",
   "layout.header": "Portal Kandidat",
   "layout.menu.admins": "Personil Pusat",
-  "layout.test.schedules" : "Jadwal Tes",
-  "layout.release.results" : "Rilis hasil",
+  "layout.test.schedules": "Jadwal Tes",
+  "layout.release.results": "Rilis hasil",
   "birthdat.input.title": "Tanggal lahir",
   "file.upload.field.button": "Unggah data"
 }
