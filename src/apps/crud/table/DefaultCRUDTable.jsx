@@ -242,6 +242,11 @@ export const DefaultCRUDTable = (props) => {
       <ActionBar options={getActionBarOptions(props)} />
       <Box height={props.height}>
         <DataGrid
+          initialState={{
+            sorting: {
+              sortModel: [{ field: 'id', sort: 'asc' }],
+            },
+          }}
           apiRef={ref}
           columns={getColDef(props)}
           rows={props.items}
