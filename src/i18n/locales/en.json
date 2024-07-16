@@ -215,8 +215,8 @@
   "layout.logout.prompt": "Are you sure you want to logout?",
   "layout.header": "Candidate Portal",
   "layout.menu.admins": "Centre Personnel",
-  "layout.test.schedules" : "Test Schedules",
-  "layout.release.results" : "Release results",
+  "layout.test.schedules": "Test Schedules",
+  "layout.release.results": "Release results",
   "birthdat.input.title": "Date of Birth",
   "file.upload.field.button": "Upload File"
 }

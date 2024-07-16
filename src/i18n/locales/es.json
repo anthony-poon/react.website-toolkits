@@ -189,8 +189,8 @@
   "layout.logout.prompt": "¿Está seguro de que desea cerrar sesión?",
   "layout.header": "Portal de candidatos",
   "layout.menu.admins": "Personal del Centro",
-  "layout.test.schedules" : "Horarios de Pruebas",
-  "layout.release.results" : "Liberar resultados",
+  "layout.test.schedules": "Horarios de Pruebas",
+  "layout.release.results": "Liberar resultados",
   "birthdat.input.title": "Fecha de nacimiento",
   "file.upload.field.button": "Subir archivo"
 }

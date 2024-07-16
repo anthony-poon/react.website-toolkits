@@ -189,8 +189,8 @@
   "layout.logout.prompt": "ログアウトしてもよろしいですか?",
   "layout.header": "候補者ポータル",
   "layout.menu.admins": "センター職員",
-  "layout.test.schedules" : "テストスケジュール",
-  "layout.release.results" : "結果をリリース",
+  "layout.test.schedules": "テストスケジュール",
+  "layout.release.results": "結果をリリース",
   "birthdat.input.title": "生年月日",
   "file.upload.field.button": "ファイルをアップロードする"
 }

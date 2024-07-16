@@ -3,13 +3,13 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import {Box, Tooltip} from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { DataGrid, GridToolbar, gridDateComparator, useGridApiRef,GridPagination } from "@mui/x-data-grid";
+import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
@@ -17,15 +17,9 @@ import React, { useEffect } from "react";
 import { DefaultTableCell } from "./CRUDTableCell";
 import { ActionBar } from "./components/ActionBar";
 
-
-const CustomToolbar = ({disableToolbar},props) => {
+const CustomToolbar = ({ disableToolbar }, props) => {
   return (
-    <Box
-      display="flex"
-      justifyContent={disableToolbar ? "flex-end": "space-between"}
-      alignItems="center"
-      width="100%"
-    >
+    <Box display="flex" justifyContent={disableToolbar ? "flex-end" : "space-between"} alignItems="center" width="100%">
       {disableToolbar ? (
         <GridPagination {...props} />
       ) : (
@@ -166,16 +160,14 @@ const RowActionButton = ({ icon, onClick, tooltips }) => {
       <Tooltip id="button-report" title={tooltips}>
         <Icon fontSize="inherit" />
       </Tooltip>
-    )
+    );
   } else {
-    content = (
-      <Icon fontSize="inherit" />
-    )
+    content = <Icon fontSize="inherit" />;
   }
   return (
     <Box mr={2}>
       <IconButton size={"small"} onClick={onClick}>
-        { content }
+        {content}
       </IconButton>
     </Box>
   );
@@ -255,6 +247,11 @@ export const DefaultCRUDTable = (props) => {
       <ActionBar options={getActionBarOptions(props)} />
       <Box height={props.height}>
         <DataGrid
+          initialState={{
+            sorting: {
+              sortModel: [{ field: "id", sort: "asc" }],
+            },
+          }}
           apiRef={ref}
           columns={getColDef(props)}
           rows={props.items}
@@ -270,7 +267,6 @@ export const DefaultCRUDTable = (props) => {
             },
             ".MuiDataGrid-columnHeaderTitle": { fontWeight: "bold" },
           }}
-
         />
       </Box>
     </Box>
