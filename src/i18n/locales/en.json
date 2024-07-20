@@ -127,7 +127,7 @@
 
   "invigilation.data.grid.test.time": "Test time",
   "invigilation.data.grid.test.conduct": "Test Conduct",
-  "list.completed.test.app.completed.test": "Completed Test",
+  "list.completed.test.app.completed.test": "Completed Tests",
   "list.completed.test.app.completed.batch": "Completed Batch",
 
   "list.staff.app.add.slots": "Add slots",
@@ -204,9 +204,9 @@
   "layout.experience.trial.test": "Experience Trial Test",
   "layout.previous.test.results": "Completed Test Results",
   "layout.staff": "Profile and centre personnel",
-  "layout.product.admin": "Product Administration",
+  "layout.product.admin": "Product Admin",
   "layout.test.centre": "Test Centres",
-  "layout.candidate.admin": "Candidate Administration",
+  "layout.candidate.admin": "Candidate Admin",
   "layout.batch.registration": "Batch Registration",
   "layout.promotion": "Promotion",
   "layout.sales.records": "Sales Records",

@@ -9,7 +9,7 @@ export const ResponsiveCardContainer = ({ isCentered = false, noGutter = false, 
     display: "flex",
     justifyContent: "center",
     alignItems: isCentered ? "center" : "start",
-    paddingTop: isDesktop && noGutter ? 0 : theme.spacing(1),
+    paddingTop: isDesktop && noGutter ? 0 : theme.spacing(0),
     paddingBottom: isDesktop && noGutter ? 0 : theme.spacing(5),
   };
   return <Box style={style}>{children}</Box>;

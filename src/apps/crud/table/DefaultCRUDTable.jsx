@@ -9,13 +9,28 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { DataGrid, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
+import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
 import { DefaultTableCell } from "./CRUDTableCell";
 import { ActionBar } from "./components/ActionBar";
+
+const CustomToolbar = ({ disableToolbar }, props) => {
+  return (
+    <Box display="flex" justifyContent={disableToolbar ? "flex-end" : "space-between"} alignItems="center" width="100%">
+      {disableToolbar ? (
+        <GridPagination {...props} />
+      ) : (
+        <>
+          <GridToolbar />
+          <GridPagination {...props} />
+        </>
+      )}
+    </Box>
+  );
+};
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -242,12 +257,17 @@ export const DefaultCRUDTable = (props) => {
       <ActionBar options={getActionBarOptions(props)} />
       <Box height={props.height}>
         <DataGrid
+          initialState={{
+            sorting: {
+              sortModel: [{ field: "id", sort: "asc" }],
+            },
+          }}
           apiRef={ref}
           columns={getColDef(props)}
           rows={props.items}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
-          slots={props.disableToolbar ? null : { toolbar: GridToolbar }}
+          slots={{ toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} /> }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
           density="compact"
@@ -267,7 +287,7 @@ DefaultCRUDTable.defaultProps = {
   height: 800,
   items: [],
   schema: [],
-  countPerPage: 10,
+  countPerPage: 20,
   actionOptions: {
     dropdowns: [],
     buttons: [],
