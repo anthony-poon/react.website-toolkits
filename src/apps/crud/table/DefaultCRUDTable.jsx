@@ -70,7 +70,7 @@ const StyledMenu = styled((props) => (
 }));
 
 const WIDTH_MAPPING = {
-  small: 50,
+  small: 60,
   medium: 100,
   large: 150,
   xlarge: 200,
