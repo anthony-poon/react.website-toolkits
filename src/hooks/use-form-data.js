@@ -10,7 +10,6 @@ const merge = (target, input) => {
 export const makeFormData = (init) => {
   return (update = {}) => {
     const [formData, setFormData] = useState({ ...init });
-    const [hasChange, setHasChange] = useState(false);
     const handleFormChange = (...args) => {
       if (args[0].target) {
         const { name, value } = args[0].target;
@@ -31,10 +30,7 @@ export const makeFormData = (init) => {
       }));
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...Object.values(update)]);
-    const isEqual = _.isEqual(update, formData);
-    useEffect(() => {
-      setHasChange(!isEqual);
-    }, [isEqual]);
+    const hasChange = !_.isEqual(update, formData);
     const resetFormData = () => setFormData({ ...init });
     return { formData, handleFormChange, setFormData, resetFormData, hasChange };
   };

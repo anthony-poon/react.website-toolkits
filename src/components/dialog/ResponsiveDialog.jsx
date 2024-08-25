@@ -4,7 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import * as React from "react";
 
-export const ResponsiveDialog = ({ isOpen = false, onClose, children }) => {
+export const ResponsiveDialog = ({ isOpen = false, onClose, children, ...rest }) => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -14,7 +14,9 @@ export const ResponsiveDialog = ({ isOpen = false, onClose, children }) => {
       maxWidth="md"
       open={isOpen}
       onClose={onClose}
-      aria-labelledby="responsive-dialog-title">
+      aria-labelledby="responsive-dialog-title"
+      {...rest}
+    >
       <DialogContent>{children}</DialogContent>
     </Dialog>
   );
