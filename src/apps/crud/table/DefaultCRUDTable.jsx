@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
 import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
-import PropTypes from "prop-types";
+import PropTypes, { oneOfType } from "prop-types";
 import React, { useEffect } from "react";
 
 import { DefaultTableCell } from "./CRUDTableCell";
@@ -325,7 +325,7 @@ DefaultCRUDTable.propTypes = {
     ),
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
-        isDisabled: PropTypes.oneOf([PropTypes.bool, PropTypes.func]),
+        isDisabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
         text: PropTypes.string,
         icon: PropTypes.elementType,
         onClick: PropTypes.func.isRequired,
