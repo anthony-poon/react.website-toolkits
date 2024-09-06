@@ -17,7 +17,7 @@ const initState = Object.freeze({
   expireAt: null,
   userInfo: {},
   isTesting: false,
-  testCenterId: null
+  testCenterId: null,
 });
 
 export const testCenterReducer = (state = {}, action) => {
@@ -31,7 +31,7 @@ export const testCenterReducer = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export const authReducer = (state = { ...initState }, action) => {
   switch (action.type) {

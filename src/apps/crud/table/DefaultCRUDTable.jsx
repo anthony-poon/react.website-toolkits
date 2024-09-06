@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
 import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
-import PropTypes, { oneOfType } from "prop-types";
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
 import { DefaultTableCell } from "./CRUDTableCell";
@@ -250,7 +250,7 @@ const CustomizedMenus = (props) => {
   );
 };
 
-export const DefaultCRUDTable = ({sortModel = [{ field: 'id', sort: 'asc' }],...props}) => {
+export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], ...props }) => {
   const { ref } = useOnMount(props);
   return (
     <Box>

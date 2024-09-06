@@ -15,8 +15,7 @@ export const ResponsiveDialog = ({ isOpen = false, onClose, children, ...rest })
       open={isOpen}
       onClose={onClose}
       aria-labelledby="responsive-dialog-title"
-      {...rest}
-    >
+      {...rest}>
       <DialogContent>{children}</DialogContent>
     </Dialog>
   );

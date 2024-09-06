@@ -19,11 +19,11 @@ export const logoutAction = () => {
   };
 };
 
-export const getTestCenterAction = ( testCenter = {}) => {
+export const getTestCenterAction = (testCenter = {}) => {
   return {
     type: APP_TEST_CENTER,
     payload: {
-      testCenter
+      testCenter,
     },
   };
 };
