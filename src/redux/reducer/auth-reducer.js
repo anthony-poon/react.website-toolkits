@@ -1,7 +1,7 @@
 import Joi from "joi";
 import { REHYDRATE } from "redux-persist";
 
-import { APP_LOGIN, APP_LOGOUT } from "../action";
+import { APP_LOGIN, APP_LOGOUT, APP_TEST_CENTER } from "../action";
 
 const schema = Joi.object().keys({
   isLoggedIn: Joi.boolean().optional(),
@@ -17,7 +17,21 @@ const initState = Object.freeze({
   expireAt: null,
   userInfo: {},
   isTesting: false,
+  testCenterId: null
 });
+
+export const testCenterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case APP_TEST_CENTER:
+      return {
+        ...action.payload.testCenter,
+      };
+    case APP_LOGOUT:
+      return {}; // Reset test center state to null on logout
+    default:
+      return state;
+  }
+}
 
 export const authReducer = (state = { ...initState }, action) => {
   switch (action.type) {

@@ -70,7 +70,7 @@ const StyledMenu = styled((props) => (
 }));
 
 const WIDTH_MAPPING = {
-  small: 60,
+  small: 80,
   medium: 100,
   large: 150,
   xlarge: 200,
@@ -250,7 +250,7 @@ const CustomizedMenus = (props) => {
   );
 };
 
-export const DefaultCRUDTable = (props) => {
+export const DefaultCRUDTable = ({sortModel = [{ field: 'id', sort: 'asc' }],...props}) => {
   const { ref } = useOnMount(props);
   return (
     <Box>
@@ -258,9 +258,7 @@ export const DefaultCRUDTable = (props) => {
       <Box height={props.height}>
         <DataGrid
           initialState={{
-            sorting: {
-              sortModel: [{ field: "id", sort: "asc" }],
-            },
+            sorting: { sortModel },
           }}
           apiRef={ref}
           columns={getColDef(props)}
