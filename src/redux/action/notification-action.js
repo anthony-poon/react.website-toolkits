@@ -37,7 +37,7 @@ export const setErrorMsg = (error) => {
   return {
     type: SET_NOTIFICATION,
     payload: {
-      message,
+      message: error?.message ? error.message : error,
       type: "error",
     },
   };
