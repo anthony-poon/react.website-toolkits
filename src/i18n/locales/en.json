@@ -18,7 +18,7 @@
   "test.centre": "Test Centre",
   "test.centre.name": "Test Centre Name",
   "agreement.expiry": "Agreement Expiry",
-  "upcoming.tests": "Upcoming Tests",
+  "upcoming.tests": "Outstandings",
   "upcoming.schedule": "Upcoming Schedule",
   "register.date": "Register Date",
   "transaction.number": "Transaction No.",
@@ -115,7 +115,7 @@
   "batch.change.app.available.slots": "Available slots",
 
   "completed.batch.data.grid.test.date": "Test date",
-  "completed.batch.data.grid.register.date": "Registration",
+  "completed.batch.data.grid.register.date": "Registered",
   "completed.batch.data.grid.invigilator.name": "Invigilator Name",
   "completed.batch.data.grid.no.of.learners": "No. of learners",
   "completed.batch.data.grid.status": "Status",
