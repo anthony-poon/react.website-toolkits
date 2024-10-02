@@ -31,6 +31,9 @@ const resources = {
   "zh-HK": {
     translation: zh_tw,
   },
+  "zh-TW": {
+    translation: zh_tw,
+  },
   "zh-SC": {
     translation: zh_cn,
   },

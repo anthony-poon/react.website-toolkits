@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { Box, Tooltip } from "@mui/material";
+import { Box, Stack, Tooltip, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -31,6 +31,24 @@ const CustomToolbar = ({ disableToolbar }, props) => {
     </Box>
   );
 };
+
+function NoRowsOverlay() {
+  return (
+    <Stack height="100%" alignItems="center" justifyContent="center">
+      <Typography variant="h6" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+        No rows in DataGrid
+      </Typography>
+    </Stack>
+  );
+}
+
+function NoResultsOverlay() {
+  return (
+    <Stack height="100%" alignItems="center" justifyContent="center">
+      No results in DataGrid
+    </Stack>
+  );
+}
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -255,7 +273,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
   return (
     <Box>
       <ActionBar options={getActionBarOptions(props)} />
-      <Box height={props.height}>
+      <Box height={props.items > 0 ?props.height : 400}>
         <DataGrid
           initialState={{
             sorting: { sortModel },
@@ -265,7 +283,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           rows={props.items}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
-          slots={{ toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} /> }}
+          slots={{ toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} />, noRowsOverlay: NoRowsOverlay}}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
           density="compact"
