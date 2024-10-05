@@ -32,23 +32,15 @@ const CustomToolbar = ({ disableToolbar }, props) => {
   );
 };
 
-function NoRowsOverlay() {
+const NoRowsOverlay = () => {
   return (
     <Stack height="100%" alignItems="center" justifyContent="center">
-      <Typography variant="h6" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+      <Typography variant="h6" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
         No rows in DataGrid
       </Typography>
     </Stack>
   );
-}
-
-function NoResultsOverlay() {
-  return (
-    <Stack height="100%" alignItems="center" justifyContent="center">
-      No results in DataGrid
-    </Stack>
-  );
-}
+};
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -273,7 +265,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
   return (
     <Box>
       <ActionBar options={getActionBarOptions(props)} />
-      <Box height={props.items > 0 ?props.height : 400}>
+      <Box height={props.items > 0 ? props.height : 400}>
         <DataGrid
           initialState={{
             sorting: { sortModel },
@@ -283,7 +275,10 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           rows={props.items}
           hideFooter={props.items?.length <= props.countPerPage}
           pageSizeOptions={[props.countPerPage]}
-          slots={{ toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} />, noRowsOverlay: NoRowsOverlay}}
+          slots={{
+            toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} />,
+            noRowsOverlay: NoRowsOverlay,
+          }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
           density="compact"

@@ -1,15 +1,27 @@
-import * as React from 'react';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import { DualLineLabel } from './DualLineLabel';
-import { Box, Grid } from '@mui/material';
-import { FormFieldWrapper } from './FormFieldWrapper';
+import { Box, Grid } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import * as React from "react";
 
-export default function RowRadioButtonsGroup({ label, name, options, disabledOption, defaultValue,
-  onChange, gutter = true, spacing = 4 }) {
+import { DualLineLabel } from "./DualLineLabel";
+import { FormFieldWrapper } from "./FormFieldWrapper";
+
+export const RowRadioButtonsGroup = ({
+  label,
+  name,
+  options,
+  disabledOption,
+  value,
+  onChange,
+  gutter = true,
+  spacing = 4,
+}) => {
+  const handleChange = (evt) => {
+    onChange(name, evt.target.value);
+  };
+
   return (
     <FormFieldWrapper gutter={gutter}>
       <Grid container>
@@ -27,10 +39,9 @@ export default function RowRadioButtonsGroup({ label, name, options, disabledOpt
                 row
                 aria-labelledby={`${name}-label`}
                 name={name}
-                defaultValue={defaultValue}
-                onChange={onChange}
-                style={{ gap: `${spacing * 8}px` }}
-              >
+                value={value}
+                onChange={handleChange}
+                style={{ gap: `${spacing * 8}px` }}>
                 {options.map((option, index) => (
                   <FormControlLabel
                     key={index}
@@ -47,4 +58,4 @@ export default function RowRadioButtonsGroup({ label, name, options, disabledOpt
       </Grid>
     </FormFieldWrapper>
   );
-}
+};
