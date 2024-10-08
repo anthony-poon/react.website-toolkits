@@ -33,6 +33,7 @@ export const SpinnerButton = ({
           ? {
               borderColor: "grey",
               color: "grey",
+              borderWidth: 2,
             }
           : style
       }
