@@ -42,12 +42,12 @@ const LANGUAGE = [
   {
     key: "zh-HK",
     flag: "hk",
-    name: "繁體",
+    name: "繁體 (港)",
   },
   {
     key: "zh-TW",
     flag: "tw",
-    name: "繁體",
+    name: "正體 (台)",
   },
   {
     key: "es",

@@ -28,10 +28,16 @@ export const setSuccessMsg = (message) => {
 };
 
 export const setErrorMsg = (error) => {
+  let message;
+  if (typeof message === "string") {
+    message = error;
+  } else if (error instanceof Error) {
+    message = error.response?.data?.message || error.message;
+  }
   return {
     type: SET_NOTIFICATION,
     payload: {
-      message: error instanceof Error ? error.message : error,
+      message: error?.message ? error.message : error,
       type: "error",
     },
   };
