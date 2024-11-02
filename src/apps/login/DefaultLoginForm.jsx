@@ -39,7 +39,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             name={"username"}
             type={"email"}
             onChange={handleFormChange}
-            subLabel={"Email is case sensitive (all tip to be italic)"}
+            subLabel={<Typography variant="body2" sx={{ fontStyle: "italic" }} style={{ fontStyle: "italic" }}>Email is case sensitive</Typography>}
           />
           <ResponsivePasswordField
             compact={true}
