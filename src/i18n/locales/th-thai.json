@@ -191,6 +191,7 @@
   "layout.header": "พอร์ทัลผู้สมัคร",
   "layout.menu.admins": "บุคลากรศูนย์",
   "layout.test.schedules": "กำหนดการทดสอบ",
+  "layout.test.pastSchedules": "ตารางเวลาในอดีต",
   "layout.release.results": "เผยแพร่ผลลัพธ์",
   "birthdat.input.title": "วันเกิด",
   "file.upload.field.button": "อัพโหลดไฟล์"

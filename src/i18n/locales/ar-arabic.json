@@ -187,6 +187,7 @@
   "layout.header": "بوابة المرشح",
   "layout.menu.admins": "موظفي المركز",
   "layout.test.schedules": "جدول الاختبارات",
+  "layout.test.pastSchedules": "جدول المواعيد السابقة" ,
   "layout.release.results": "إصدار النتائج",
   "birthdat.input.title": "تاريخ الميلاد",
   "file.upload.field.button": "رفع ملف"

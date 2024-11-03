@@ -219,6 +219,7 @@
   "layout.header": "Candidate Portal",
   "layout.menu.admins": "Centre Personnel",
   "layout.test.schedules": "Test Schedules",
+  "layout.test.pastSchedules": "Past Schedules",
   "layout.release.results": "Release results",
   "birthdat.input.title": "Date of birth",
   "file.upload.field.button": "Upload File"
