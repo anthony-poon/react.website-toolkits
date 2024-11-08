@@ -36,6 +36,7 @@ const CompactTextField = (props) => {
           disabled={isNA}
           onChange={onChange}
           {...rest}
+          style={{ marginTop: 0 }}
         />
       </Grid>
       {hasNA && (
