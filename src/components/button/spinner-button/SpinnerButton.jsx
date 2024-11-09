@@ -31,9 +31,8 @@ export const SpinnerButton = ({
       style={
         isDisabled || isError || isLoading
           ? {
-              borderColor: "grey",
               color: "grey",
-              borderWidth: 2,
+              background: isLoading ? "white" : "#D3D3D3",
             }
           : style
       }
