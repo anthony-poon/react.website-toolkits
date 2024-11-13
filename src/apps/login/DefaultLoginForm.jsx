@@ -26,23 +26,23 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
       icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
       title={t("login.title")}
       subtitle={t("login.subtitle")}
-    >
-      {ENV.IS_DEV && (
+      message={ENV.IS_DEV && (
         <Alert
           severity="error"
           sx={{
             display: "flex",
-            "& .MuiAlert-message": { padding: 0 }
+            alignItems: "center",
+            gap: "5px"
           }}
         >
-          <Typography variant="h6" >Warning: This is a Staging Site</Typography>
-          <Typography variant="body2">Access is restricted.</Typography>
-          <Typography variant="body2" >
-            This site is not intended for public use and may contain incomplete or sensitive information.
+          <Typography variant="h6" textAlign={"center"}>Warning: This is a Staging Site</Typography>
+          <Typography variant="body1" textAlign={"center"}>Access is restricted.</Typography>
+          <Typography variant="body2" textAlign={"center"}>
+            This site is not intended for public use and may contain incomplete or sensitive information. Please do not share this link publicly.
           </Typography>
-          <Typography variant="body2" >Please do not share this link publicly.</Typography>
         </Alert>
       )}
+    >
       <form>
         {error && (
           <Typography color={"error"} key={error}>
