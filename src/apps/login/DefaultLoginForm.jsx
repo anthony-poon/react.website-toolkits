@@ -1,5 +1,5 @@
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import React from "react";
@@ -8,6 +8,8 @@ import { Link as RouterLink } from "react-router-dom";
 
 import { AsyncButton, CardWithIcon, ResponsivePasswordField, ResponsiveTextField } from "../../components";
 import { makeFormData } from "../../hooks";
+import ENV from "../../../../ENV"
+
 
 const useFormData = makeFormData({
   username: "",
@@ -23,7 +25,24 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
     <CardWithIcon
       icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
       title={t("login.title")}
-      subtitle={t("login.subtitle")}>
+      subtitle={t("login.subtitle")}
+    >
+      {ENV.IS_DEV && (
+        <Alert
+          severity="error"
+          sx={{
+            display: "flex",
+            "& .MuiAlert-message": { padding: 0 }
+          }}
+        >
+          <Typography variant="h6" >Warning: This is a Staging Site</Typography>
+          <Typography variant="body2">Access is restricted.</Typography>
+          <Typography variant="body2" >
+            This site is not intended for public use and may contain incomplete or sensitive information.
+          </Typography>
+          <Typography variant="body2" >Please do not share this link publicly.</Typography>
+        </Alert>
+      )}
       <form>
         {error && (
           <Typography color={"error"} key={error}>
