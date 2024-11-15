@@ -5,9 +5,9 @@ import React from "react";
 
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const DefaultLink = ({ to, children, className }) => {
+const DefaultLink = ({ to, children, ...rest }) => {
   return (
-    <a href={to} className={className}>
+    <a href={to} {...rest}>
       {children}
     </a>
   );
@@ -19,12 +19,13 @@ export const RedirectField = ({
   title,
   subtitle,
   to = "#",
+  onClick,
   component = DefaultLink,
 }) => {
   return (
     <Box my={3}>
       <FormFieldWrapper gutter={false} borderBottom={borderBottom} borderTop={borderTop}>
-        <MenuItem component={component} to={to}>
+        <MenuItem component={component} to={to} onClick={onClick}>
           <Box display={"flex"} flexGrow={1}>
             <Box py={1} flexGrow={1}>
               <Typography variant={"h6"}>{title}</Typography>
