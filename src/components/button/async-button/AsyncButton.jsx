@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { SpinnerButton } from "../spinner-button";
 
-const AsyncButton = ({ onClick, onFinish, onError, duration, children, ...rest }) => {
+const AsyncButton = ({ onClick, onFinish, onError, duration, children, callback, ...rest }) => {
   const [isLoading, setLoading] = useState(false);
   const [isUnhandledError, setIsUnhandledError] = useState(false);
 
@@ -30,6 +30,7 @@ const AsyncButton = ({ onClick, onFinish, onError, duration, children, ...rest }
       onFinish && onFinish(rtn[0]);
       if (mountRef.current) {
         setLoading(false);
+        callback && callback();
       }
     } catch (e) {
       if (onError) {
