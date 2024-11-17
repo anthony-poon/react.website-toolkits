@@ -18,12 +18,12 @@ const CompactTextField = (props) => {
     onNAChange,
     naLabel = "N/A",
     isNA,
-    noGutter = false,
+    gutter = true,
     isError,
     ...rest
   } = props;
   const style = {};
-  if (noGutter) {
+  if (!gutter) {
     style.marginTop = 0;
   }
   return (
@@ -136,7 +136,13 @@ export const ResponsiveTextField = (props) => {
         {!compact && isDesktop ? (
           <ExpandedTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
         ) : (
-          <CompactTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
+          <CompactTextField
+            {...passProps}
+            onChange={handleChange}
+            onNAChange={handeNAChecked}
+            isError={isError}
+            gutter={gutter}
+          />
         )}
       </Box>
     </FormFieldWrapper>
