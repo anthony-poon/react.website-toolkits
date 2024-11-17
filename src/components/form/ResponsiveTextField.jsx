@@ -18,14 +18,9 @@ const CompactTextField = (props) => {
     onNAChange,
     naLabel = "N/A",
     isNA,
-    gutter = true,
     isError,
     ...rest
   } = props;
-  const style = {};
-  if (!gutter) {
-    style.marginTop = 0;
-  }
   return (
     <Grid container>
       <Grid item xs>
@@ -41,7 +36,6 @@ const CompactTextField = (props) => {
           disabled={isNA}
           onChange={onChange}
           {...rest}
-          style={style}
         />
       </Grid>
       {hasNA && (
