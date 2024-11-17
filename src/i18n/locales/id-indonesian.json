@@ -191,6 +191,7 @@
   "layout.header": "Portal Kandidat",
   "layout.menu.admins": "Personil Pusat",
   "layout.test.schedules": "Jadwal Tes",
+  "layout.test.pastSchedules": "Jadwal Sebelumnya",
   "layout.release.results": "Rilis hasil",
   "birthdat.input.title": "Tanggal lahir",
   "file.upload.field.button": "Unggah data"

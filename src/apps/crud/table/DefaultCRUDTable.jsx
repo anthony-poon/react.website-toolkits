@@ -3,7 +3,7 @@ import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import { Box, Stack, Tooltip, Typography } from "@mui/material";
+import { Box, Card, Stack, Tooltip, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
@@ -263,9 +263,19 @@ const CustomizedMenus = (props) => {
 export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], ...props }) => {
   const { ref } = useOnMount(props);
   return (
-    <Box>
+    <Box >
       <ActionBar options={getActionBarOptions(props)} />
-      <Box height={props.items > 0 ? props.height : 400}>
+      <Card
+        sx={{
+          width: "100%",
+          height: props.items.length > 0 ? props.height : 400, 
+          boxShadow: 2, 
+          borderRadius: "8px", 
+          padding: 2,
+          backgroundColor: "white", 
+          overflow: "hidden",
+        }}
+      >
         <DataGrid
           initialState={{
             sorting: { sortModel },
@@ -283,13 +293,32 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
           density="compact"
           sx={{
-            ".MuiDataGrid-columnHeaders ": {
-              backgroundColor: "lightgrey",
+            // Set the grid background color to white
+            backgroundColor: "white",
+            border: "none",
+            // Column headers with light gray background and bold text
+            ".MuiDataGrid-columnHeaders": {
+              color: "#333",
+              borderBottom: "2px solid #eee", 
+
             },
-            ".MuiDataGrid-columnHeaderTitle": { fontWeight: "bold" },
+            ".MuiDataGrid-columnHeaderTitle": {
+              fontWeight: "bold",
+              borderBottom: "2px solid #eee", 
+            },
+            // Cells with a light border and hover effect
+            ".MuiDataGrid-cell": {
+              color: "#555",
+              "&:hover": {
+                backgroundColor: "#f9f9f9", 
+              },
+            },
+            ".MuiDataGrid-row.Mui-selected": {
+              backgroundColor: "#f9f9f9 !important",
+            },
           }}
         />
-      </Box>
+        </Card>
     </Box>
   );
 };

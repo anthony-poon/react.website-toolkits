@@ -7,14 +7,14 @@ export const ResponsiveCard = ({ variant = "sm", children, customStyle }) => {
   const theme = useTheme();
   return (
     <Container maxWidth={variant} disableGutters>
-      <Card
+      {variant == "sm" ? <Card
         style={{
           width: "100%",
           padding: theme.spacing(2),
           ...customStyle,
         }}>
         {children}
-      </Card>
+      </Card> : children}
     </Container>
   );
 };

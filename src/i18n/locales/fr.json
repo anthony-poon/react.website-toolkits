@@ -191,6 +191,7 @@
   "layout.header": "Portail des candidats",
   "layout.menu.admins": "Personnel du Centre",
   "layout.test.schedules": "Calendriers des tests",
+  "layout.test.pastSchedules": "Horaires Passés",
   "layout.release.results": "Publier les résultats",
   "birthdat.input.title": "Date de naissance",
   "file.upload.field.button": "Téléverser un fichier"

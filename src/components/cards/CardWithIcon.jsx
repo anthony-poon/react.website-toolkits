@@ -4,7 +4,7 @@ import React from "react";
 
 import { ResponsiveCard } from "./ResponsiveCard";
 
-export const CardWithIcon = ({ icon, title, subtitle, children }) => {
+export const CardWithIcon = ({ icon, title, subtitle, children, message }) => {
   const theme = useTheme();
   return (
     <ResponsiveCard>
@@ -12,6 +12,7 @@ export const CardWithIcon = ({ icon, title, subtitle, children }) => {
         <Box display={"flex"} alignItems={"center"} justifyContent={"center"} my={3}>
           {icon}
         </Box>
+        {message}
         {title && (
           <Typography
             variant={"h5"}

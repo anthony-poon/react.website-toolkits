@@ -1,11 +1,12 @@
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
+import ENV from "../../../../ENV";
 import { AsyncButton, CardWithIcon, ResponsivePasswordField, ResponsiveTextField } from "../../components";
 import { makeFormData } from "../../hooks";
 
@@ -14,7 +15,7 @@ const useFormData = makeFormData({
   password: "",
 });
 
-export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit }) => {
+export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit, message }) => {
   const { t } = useTranslation();
   const { formData, handleFormChange } = useFormData();
   const { username, password } = formData;
@@ -23,7 +24,8 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
     <CardWithIcon
       icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
       title={t("login.title")}
-      subtitle={t("login.subtitle")}>
+      subtitle={t("login.subtitle")}
+      message={message}>
       <form>
         {error && (
           <Typography color={"error"} key={error}>
@@ -39,7 +41,11 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             name={"username"}
             type={"email"}
             onChange={handleFormChange}
-            subLabel={"Email is case sensitive (all tip to be italic)"}
+            subLabel={
+              <Typography variant="body2" sx={{ fontStyle: "italic" }} style={{ fontStyle: "italic" }}>
+                Email is case sensitive
+              </Typography>
+            }
           />
           <ResponsivePasswordField
             compact={true}
