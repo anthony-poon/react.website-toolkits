@@ -13,9 +13,9 @@ export const DefaultLayout = ({ appBar, drawer, children }) => {
       <CssBaseline />
       {appBar}
       {drawer}
-      <Box flexGrow={1} display={"flex"} flexDirection={"column"} sx={{backgroundColor:"#f9f9f9"}} marginTop={2}>
+      <Box flexGrow={1} display={"flex"} flexDirection={"column"} sx={{ backgroundColor: "#f9f9f9" }} marginTop={2}>
         <Toolbar />
-        <Box flexGrow={1} overflow={"auto"} >
+        <Box flexGrow={1} overflow={"auto"}>
           {children}
         </Box>
       </Box>

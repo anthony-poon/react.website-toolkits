@@ -7,9 +7,12 @@ import { Link as RouterLink } from "react-router-dom";
 export const DrawerItem = ({ icon, text, url, disabled }) => {
   return (
     <ListItem button component={RouterLink} to={url} disabled={disabled} sx={{ pl: 0, py: 0.5 }}>
-      <ListItemIcon sx={{
-        justifyContent: 'center',
-      }}>{icon}</ListItemIcon>
+      <ListItemIcon
+        sx={{
+          justifyContent: "center",
+        }}>
+        {icon}
+      </ListItemIcon>
       <ListItemText primary={text} />
     </ListItem>
   );

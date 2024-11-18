@@ -1,12 +1,11 @@
 import LockOpenIcon from "@mui/icons-material/LockOpen";
-import { Alert, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
-import ENV from "../../../../ENV";
 import { AsyncButton, CardWithIcon, ResponsivePasswordField, ResponsiveTextField } from "../../components";
 import { makeFormData } from "../../hooks";
 

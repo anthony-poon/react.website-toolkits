@@ -263,19 +263,18 @@ const CustomizedMenus = (props) => {
 export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], ...props }) => {
   const { ref } = useOnMount(props);
   return (
-    <Box >
+    <Box>
       <ActionBar options={getActionBarOptions(props)} />
       <Card
         sx={{
           width: "100%",
-          height: props.items.length > 0 ? props.height : 400, 
-          boxShadow: 2, 
-          borderRadius: "8px", 
+          height: props.items.length > 0 ? props.height : 400,
+          boxShadow: 2,
+          borderRadius: "8px",
           padding: 2,
-          backgroundColor: "white", 
+          backgroundColor: "white",
           overflow: "hidden",
-        }}
-      >
+        }}>
         <DataGrid
           initialState={{
             sorting: { sortModel },
@@ -299,18 +298,17 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
             // Column headers with light gray background and bold text
             ".MuiDataGrid-columnHeaders": {
               color: "#333",
-              borderBottom: "2px solid #eee", 
-
+              borderBottom: "2px solid #eee",
             },
             ".MuiDataGrid-columnHeaderTitle": {
               fontWeight: "bold",
-              borderBottom: "2px solid #eee", 
+              borderBottom: "2px solid #eee",
             },
             // Cells with a light border and hover effect
             ".MuiDataGrid-cell": {
               color: "#555",
               "&:hover": {
-                backgroundColor: "#f9f9f9", 
+                backgroundColor: "#f9f9f9",
               },
             },
             ".MuiDataGrid-row.Mui-selected": {
@@ -318,7 +316,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
             },
           }}
         />
-        </Card>
+      </Card>
     </Box>
   );
 };
