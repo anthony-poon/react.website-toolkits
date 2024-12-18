@@ -14,14 +14,16 @@ const useFormData = makeFormData({
   password: "",
 });
 
-export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit, message }) => {
+export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubmit, message, showIcon }) => {
   const { t } = useTranslation();
   const { formData, handleFormChange } = useFormData();
   const { username, password } = formData;
   const handleSubmit = () => onSubmit({ username, password });
   return (
     <CardWithIcon
-      icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
+    icon={
+      showIcon ? <LockOpenIcon sx={{ fontSize: 60, color: "primary.main" }} /> : null
+    }
       title={t("login.title")}
       subtitle={t("login.subtitle")}
       message={message}>
