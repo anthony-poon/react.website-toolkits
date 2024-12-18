@@ -5,33 +5,30 @@ import List from "@mui/material/List";
 import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 
-export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => {
+export const ResponsiveDrawer = ({ children, isOpen, onClose, sx = {}}) => {
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
+  const drawerStyles = {
+    width: "auto", // Automatically adjust width based on content
+    flexShrink: 0,
+    ...sx, // Allow custom styles via sx prop
+  };
+
   return (
-    <nav
-      style={
-        isDesktop
-          ? {
-              width,
-              flexShrink: 0,
-            }
-          : {}
-      }>
+    <nav>
       <Hidden mdUp implementation={"js"}>
         <Drawer
-          classes={{
-            paper: {
-              width,
-            },
-          }}
           anchor={"left"}
           variant="temporary"
           open={isOpen}
           onClose={onClose}
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
-          }}>
+          }}
+          PaperProps={{
+            sx: drawerStyles, // Apply dynamic width here
+          }}
+          >
           <Toolbar />
           <div>
             <List>
@@ -42,11 +39,9 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => 
       </Hidden>
       <Hidden smDown implementation={"js"}>
         <Drawer
-          classes={{
-            paper: {
-              width,
-            },
-          }}
+              PaperProps={{
+                sx: drawerStyles, // Apply dynamic width here
+              }}
           variant="permanent"
           open>
           <Toolbar />
