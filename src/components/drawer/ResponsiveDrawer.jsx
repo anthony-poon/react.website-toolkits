@@ -11,6 +11,7 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, sx = {}}) => {
   const drawerStyles = {
     width: "auto", // Automatically adjust width based on content
     flexShrink: 0,
+    position: "relative",
     ...sx, // Allow custom styles via sx prop
   };
 
