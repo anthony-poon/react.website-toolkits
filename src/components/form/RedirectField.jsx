@@ -5,13 +5,15 @@ import React from "react";
 
 import { FormFieldWrapper } from "./FormFieldWrapper";
 
-const DefaultLink = ({ to, children, ...rest }) => {
+const DefaultLink = React.forwardRef(({ to, children, ...rest }, ref) => {
   return (
-    <a href={to} {...rest}>
+    <a href={to} ref={ref} {...rest}>
       {children}
     </a>
   );
-};
+});
+
+DefaultLink.displayName = "DefaultLink";
 
 export const RedirectField = ({
   borderBottom = false,

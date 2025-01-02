@@ -19,6 +19,7 @@ const CompactTextField = (props) => {
     naLabel = "N/A",
     isNA,
     isError,
+    isDisabled,
     ...rest
   } = props;
   return (
@@ -33,7 +34,7 @@ const CompactTextField = (props) => {
           value={value === undefined || value === null ? "" : value}
           margin={"normal"}
           name={name}
-          disabled={isNA}
+          disabled={isDisabled || isNA}
           onChange={onChange}
           {...rest}
         />
@@ -41,7 +42,7 @@ const CompactTextField = (props) => {
       {hasNA && (
         <Grid item xs={4}>
           <Box display={"flex"} alignItems={"center"} style={{ height: "100%" }} pt={2}>
-            <Checkbox checked={isNA} onChange={onNAChange} />
+            <Checkbox checked={isNA} onChange={onNAChange} disabled={isDisabled} />
             <Box flex={1}>{naLabel}</Box>
           </Box>
         </Grid>
@@ -64,6 +65,7 @@ const ExpandedTextField = (props) => {
     naLabel = "N/A",
     isNA,
     isError,
+    isDisabled,
     ...rest
   } = props;
   return (
@@ -84,7 +86,7 @@ const ExpandedTextField = (props) => {
           value={value === undefined || value === null ? "" : value}
           helperText={error}
           name={name}
-          disabled={isNA}
+          disabled={isDisabled || isNA}
           onChange={onChange}
           {...rest}
         />
@@ -92,7 +94,7 @@ const ExpandedTextField = (props) => {
       {hasNA && (
         <Grid item xs={2}>
           <Box display={"flex"} alignItems={"center"} style={{ height: "100%" }} pt={2} ml={2}>
-            <Checkbox checked={isNA} onChange={onNAChange} />
+            <Checkbox checked={isNA} onChange={onNAChange} disabled={isDisabled} />
             <Box flex={1}>{naLabel}</Box>
           </Box>
         </Grid>
@@ -101,8 +103,17 @@ const ExpandedTextField = (props) => {
   );
 };
 
-export const ResponsiveTextField = (props) => {
-  const { gutter = true, compact = false, error, value, hasNA, name, onChange, naValue = "N/A", ...rest } = props;
+export const ResponsiveTextField = ({
+  gutter = true,
+  compact = false,
+  error,
+  value,
+  hasNA,
+  name,
+  onChange,
+  naValue = "N/A",
+  ...rest
+}) => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const isError = Boolean(error);
@@ -115,6 +126,9 @@ export const ResponsiveTextField = (props) => {
     }
   };
   const handleChange = (evt) => {
+    if (!onChange) {
+      return;
+    }
     onChange(name, evt.target.value);
   };
   const passProps = {
@@ -130,13 +144,7 @@ export const ResponsiveTextField = (props) => {
         {!compact && isDesktop ? (
           <ExpandedTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
         ) : (
-          <CompactTextField
-            {...passProps}
-            onChange={handleChange}
-            onNAChange={handeNAChecked}
-            isError={isError}
-            gutter={gutter}
-          />
+          <CompactTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
         )}
       </Box>
     </FormFieldWrapper>

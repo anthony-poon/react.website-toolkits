@@ -1,19 +1,25 @@
-export const APP_LOGIN = "APP_LOGIN";
-export const APP_LOGOUT = "APP_LOGOUT";
+export const AUTH_LOGIN = "AUTH_LOGIN";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
+export const AUTH_REAUTHENTICATE = "AUTH_REAUTHENTICATE";
 
-export const loginAction = ({ expireAt = null, role = null, userInfo = {} }) => {
+export const loginAction = ({ role, accessToken, refreshToken, userInfo }) => {
   return {
-    type: APP_LOGIN,
-    payload: {
-      expireAt,
-      role,
-      userInfo,
-    },
+    type: AUTH_LOGIN,
+    payload: { role, accessToken, refreshToken, userInfo },
   };
 };
 
 export const logoutAction = () => {
   return {
-    type: APP_LOGOUT,
+    type: AUTH_LOGOUT,
+  };
+};
+
+export const reauthenticateAction = (token) => {
+  return {
+    type: AUTH_REAUTHENTICATE,
+    payload: {
+      token,
+    },
   };
 };
