@@ -1,62 +1,48 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
-import Hidden from "@mui/material/Hidden";
-import List from "@mui/material/List";
-import Toolbar from "@mui/material/Toolbar";
 import React from "react";
+
+const MobileDrawer = (props) => {
+  return (
+    <Drawer
+      open={props.open}
+      onClose={props.onClose}
+      sx={{
+        "& .MuiDrawer-paper": { boxSizing: "border-box", width: props.width },
+      }}>
+      {props.children}
+    </Drawer>
+  );
+};
+
+const DesktopDrawer = (props) => {
+  return (
+    <Drawer
+      variant={"permanent"}
+      sx={{
+        width: props.width,
+        [`& .MuiDrawer-paper`]: { width: props.width, boxSizing: "border-box" },
+      }}>
+      {props.children}
+    </Drawer>
+  );
+};
 
 export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const DrawerImpl = isDesktop ? DesktopDrawer : MobileDrawer;
   return (
-    <nav
-      style={
-        isDesktop
-          ? {
-              width,
-              flexShrink: 0,
-            }
-          : {}
-      }>
-      <Hidden mdUp implementation={"js"}>
-        <Drawer
-          classes={{
-            paper: {
-              width,
-            },
+    <Box width={isDesktop ? width : 0}>
+      <DrawerImpl width={width} open={isOpen} onClose={onClose}>
+        <Box
+          height={80}
+          style={{
+            flexShrink: 0,
           }}
-          anchor={"left"}
-          variant="temporary"
-          open={isOpen}
-          onClose={onClose}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}>
-          <Toolbar />
-          <div>
-            <List>
-              <Box overflow={"auto"}>{children}</Box>
-            </List>
-          </div>
-        </Drawer>
-      </Hidden>
-      <Hidden smDown implementation={"js"}>
-        <Drawer
-          classes={{
-            paper: {
-              width,
-            },
-          }}
-          variant="permanent"
-          open>
-          <Toolbar />
-          <div>
-            <List>
-              <Box overflow={"auto"}>{children}</Box>
-            </List>
-          </div>
-        </Drawer>
-      </Hidden>
-    </nav>
+        />
+        {children}
+      </DrawerImpl>
+    </Box>
   );
 };
