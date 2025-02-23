@@ -56,7 +56,7 @@ SpinnerButton.defaultProps = {
 
 SpinnerButton.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(["success", "primary", "secondary"]),
+  color: PropTypes.oneOf(["success", "primary", "secondary", "error"]),
   type: PropTypes.oneOf(["button", "submit"]),
   onClick: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
