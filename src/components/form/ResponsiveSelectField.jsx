@@ -38,6 +38,7 @@ const CompactSelectField = (props) => {
         {label && <InputLabel shrink>{label}</InputLabel>}
         <Select
           fullWidth
+          displayEmpty={true}
           variant={"standard"}
           value={value ? value : ""}
           name={name}
@@ -64,7 +65,14 @@ const ExpandedSelectField = (props) => {
       <Grid item sm={9}>
         <Box mt={2} mb={1}>
           <FormControl variant={"standard"} error={isError} style={{ width: "100%" }}>
-            <Select variant={"standard"} fullWidth value={value ? value : ""} name={name} onChange={onChange} {...rest}>
+            <Select
+              displayEmpty={true}
+              variant={"standard"}
+              fullWidth
+              value={value ? value : ""}
+              name={name}
+              onChange={onChange}
+              {...rest}>
               {renderChildrenOrOptions(children, options, required)}
             </Select>
             {error && <FormHelperText>{error}</FormHelperText>}

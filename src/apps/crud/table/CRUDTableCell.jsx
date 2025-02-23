@@ -14,3 +14,8 @@ export const DateTimeTableCell = ({ value }) => {
   const str = value ? DateTime.fromISO(value, { setZone: true }).toFormat("dd/MM/yy HH:mm a") : "-";
   return <>{str}</>;
 };
+
+export const TimeTableCell = ({ value }) => {
+  const str = value ? DateTime.fromISO(value, { setZone: true }).toFormat("hh:mm a") : "-";
+  return <>{str}</>;
+};
