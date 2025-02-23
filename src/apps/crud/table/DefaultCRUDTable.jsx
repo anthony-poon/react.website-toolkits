@@ -119,8 +119,8 @@ const getColDef = (props) => {
   }
 
   if (!_.isEmpty(props.actionOptions.buttons)) {
-    props.actionOptions.buttons.forEach(({ text, icon, onClick, tooltips, isDisabled }) => {
-      buttons.push({ text, icon, onClick, tooltips, isDisabled });
+    props.actionOptions.buttons.forEach(({ text, icon, onClick, tooltips, isDisabled, iconColor }) => {
+      buttons.push({ text, icon, onClick, tooltips, isDisabled, iconColor });
     });
   }
   if (!_.isEmpty(buttons)) {
@@ -168,11 +168,11 @@ const RowActionButtons = ({ buttons, row }) => {
   );
 };
 
-const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled }) => {
+const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled, iconColor = "inherit" }) => {
   const Icon = icon;
   let content;
   if (icon) {
-    content = <Icon fontSize="inherit" />;
+    content = <Icon fontSize="inherit" color={iconColor} />;
   } else {
     content = <>{text}</>;
   }
