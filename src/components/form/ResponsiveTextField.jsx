@@ -1,7 +1,7 @@
 import { Grid, TextField, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { DualLineLabel } from "./DualLineLabel";
 import { FormFieldWrapper } from "./FormFieldWrapper";
@@ -142,9 +142,21 @@ export const ResponsiveTextField = ({
     <FormFieldWrapper gutter={gutter}>
       <Box display={"flex"}>
         {!compact && isDesktop ? (
-          <ExpandedTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
+          <ExpandedTextField
+            {...passProps}
+            onChange={handleChange}
+            onNAChange={handeNAChecked}
+            isError={isError}
+            isNA={isNA}
+          />
         ) : (
-          <CompactTextField {...passProps} onChange={handleChange} onNAChange={handeNAChecked} isError={isError} />
+          <CompactTextField
+            {...passProps}
+            onChange={handleChange}
+            onNAChange={handeNAChecked}
+            isError={isError}
+            isNA={isNA}
+          />
         )}
       </Box>
     </FormFieldWrapper>
