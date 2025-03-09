@@ -3,8 +3,17 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const ConfirmationDialog = ({ onClose, isOpen, title, children, ...rest }) => {
+const ConfirmationDialog = ({ onClose, isOpen, title, children, onCancel, onConfirm, hasCancel = true, ...rest }) => {
   const { t } = useTranslation();
+  const handleCancel = () => {
+    onCancel && onCancel();
+    onClose();
+  };
+
+  const handleConfirm = () => {
+    onConfirm && onConfirm();
+    onClose();
+  };
   return (
     <Dialog fullWidth={true} maxWidth={"sm"} onClose={onClose} open={isOpen} {...rest}>
       {title && <DialogTitle>{title}</DialogTitle>}
@@ -12,10 +21,12 @@ const ConfirmationDialog = ({ onClose, isOpen, title, children, ...rest }) => {
         <DialogContentText>{children}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button type={"button"} color={"primary"}>
-          {t("cancel")}
-        </Button>
-        <Button type={"button"} color={"primary"}>
+        {hasCancel && (
+          <Button type={"button"} color={"primary"} onClick={handleCancel}>
+            {t("cancel")}
+          </Button>
+        )}
+        <Button type={"button"} color={"primary"} onClick={handleConfirm}>
           {t("confirm")}
         </Button>
       </DialogActions>
