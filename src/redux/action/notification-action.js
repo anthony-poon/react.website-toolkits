@@ -29,7 +29,7 @@ export const setSuccessMsg = (message) => {
 
 export const setErrorMsg = (error) => {
   let message;
-  if (typeof message === "string") {
+  if (typeof error === "string") {
     message = error;
   } else if (error instanceof Error) {
     message = error.response?.data?.message || error.message;
