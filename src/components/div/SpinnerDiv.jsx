@@ -1,6 +1,5 @@
 import ErrorIcon from "@mui/icons-material/Error";
 import { Box, CircularProgress } from "@mui/material";
-import PropTypes from "prop-types";
 import React from "react";
 
 const JSImplementation = ({ display, children }) => {
@@ -57,12 +56,4 @@ export const SpinnerDiv = ({ isLoading, isError, children, implementation = "js"
       {spinner}
     </>
   );
-};
-
-SpinnerDiv.defaultProps = {
-  state: "none",
-};
-
-SpinnerDiv.propTypes = {
-  state: PropTypes.oneOf(["none", "loading", "error"]),
 };

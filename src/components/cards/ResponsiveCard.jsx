@@ -3,7 +3,8 @@ import Card from "@mui/material/Card";
 import PropTypes from "prop-types";
 import React from "react";
 
-export const ResponsiveCard = ({ variant = "sm", children, customStyle }) => {
+// TODO: Remove the custom style
+export const ResponsiveCard = ({ variant = "sm", children, customStyle = {} }) => {
   const theme = useTheme();
   return (
     <Container maxWidth={variant} disableGutters>
