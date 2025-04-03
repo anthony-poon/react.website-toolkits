@@ -1,19 +1,16 @@
-import ListItem from "@mui/material/ListItem";
+import { ListItemButton } from "@mui/material";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-export const DrawerItem = ({ icon, text, url, disabled }) => {
+export const DrawerItem = ({ icon, text, url, disabled, children }) => {
+  const history = useHistory();
+  const render = children ? <>{children}</> : <ListItemText primary={text} />;
   return (
-    <ListItem button component={RouterLink} to={url} disabled={disabled} sx={{ pl: 0, py: 0.5 }}>
-      <ListItemIcon
-        sx={{
-          justifyContent: "center",
-        }}>
-        {icon}
-      </ListItemIcon>
-      <ListItemText primary={text} />
-    </ListItem>
+    <ListItemButton disabled={disabled} onClick={() => history.push(url)}>
+      <ListItemIcon>{icon}</ListItemIcon>
+      {render}
+    </ListItemButton>
   );
 };

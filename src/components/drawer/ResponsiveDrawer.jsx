@@ -1,31 +1,17 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
+import { Box, List, useMediaQuery, useTheme } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
 import React from "react";
 
 const MobileDrawer = (props) => {
   return (
-    <Drawer
-      open={props.open}
-      onClose={props.onClose}
-      sx={{
-        "& .MuiDrawer-paper": { boxSizing: "border-box", width: props.width },
-      }}>
+    <Drawer open={props.open} onClose={props.onClose}>
       {props.children}
     </Drawer>
   );
 };
 
 const DesktopDrawer = (props) => {
-  return (
-    <Drawer
-      variant={"permanent"}
-      sx={{
-        width: props.width,
-        [`& .MuiDrawer-paper`]: { width: props.width, boxSizing: "border-box" },
-      }}>
-      {props.children}
-    </Drawer>
-  );
+  return <Drawer variant={"permanent"}>{props.children}</Drawer>;
 };
 
 export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => {
@@ -41,7 +27,7 @@ export const ResponsiveDrawer = ({ children, isOpen, onClose, width = 240 }) => 
             flexShrink: 0,
           }}
         />
-        {children}
+        <List>{children}</List>
       </DrawerImpl>
     </Box>
   );
