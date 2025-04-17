@@ -29,7 +29,6 @@ export const setSuccessMsg = (message) => {
 
 export const setErrorMsg = (error) => {
   let message;
-  console.log(error.response);
   if (typeof message === "string") {
     message = error;
   } else {

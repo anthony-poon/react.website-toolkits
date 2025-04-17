@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import Toolbar from "@mui/material/Toolbar";
 import React from "react";
 
 export const DefaultLayout = ({ appBar, drawer, children }) => {
@@ -12,10 +11,9 @@ export const DefaultLayout = ({ appBar, drawer, children }) => {
       }}>
       <CssBaseline />
       {appBar}
-      {drawer}
-      <Box flexGrow={1} display={"flex"} flexDirection={"column"} sx={{ backgroundColor: "#f9f9f9" }} marginTop={2}>
-        <Toolbar />
-        <Box flexGrow={1} overflow={"auto"}>
+      <Box flexGrow={1} display={"flex"} sx={{ backgroundColor: "#f9f9f9", marginTop: "64px" }}>
+        <Box>{drawer}</Box>
+        <Box flexGrow={1} flexShrink={1} overflow={"auto"} pt={4} pl={1}>
           {children}
         </Box>
       </Box>

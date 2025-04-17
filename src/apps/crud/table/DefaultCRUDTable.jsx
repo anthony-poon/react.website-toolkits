@@ -119,8 +119,8 @@ const getColDef = (props) => {
   }
 
   if (!_.isEmpty(props.actionOptions.buttons)) {
-    props.actionOptions.buttons.forEach(({ text, icon, onClick, tooltips, isDisabled, iconColor }) => {
-      buttons.push({ text, icon, onClick, tooltips, isDisabled, iconColor });
+    props.actionOptions.buttons.forEach((button) => {
+      buttons.push(button);
     });
   }
   if (!_.isEmpty(buttons)) {
@@ -158,10 +158,18 @@ const getColDef = (props) => {
 const RowActionButtons = ({ buttons, row }) => {
   return (
     <Box display={"flex"}>
-      {buttons.map(({ onClick, isDisabled, ...rest }, index) => {
+      {buttons.map(({ onClick, isHidden, isDisabled, ...rest }, index) => {
+        const hidden = typeof isHidden === "function" ? isHidden(row) : isHidden;
         const disabled = typeof isDisabled === "function" ? isDisabled(row) : isDisabled;
         return (
-          <RowActionButton key={index} isDisabled={disabled} onClick={onClick ? () => onClick(row) : null} {...rest} />
+          <span style={{ visibility: hidden ? "hidden" : undefined }}>
+            <RowActionButton
+              key={index}
+              isDisabled={disabled}
+              onClick={!hidden && onClick ? () => onClick(row) : null}
+              {...rest}
+            />
+          </span>
         );
       })}
     </Box>
@@ -364,6 +372,7 @@ DefaultCRUDTable.propTypes = {
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         isDisabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+        isHidden: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
         text: PropTypes.string,
         icon: PropTypes.elementType,
         onClick: PropTypes.func.isRequired,
