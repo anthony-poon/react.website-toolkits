@@ -162,9 +162,8 @@ const RowActionButtons = ({ buttons, row }) => {
         const hidden = typeof isHidden === "function" ? isHidden(row) : isHidden;
         const disabled = typeof isDisabled === "function" ? isDisabled(row) : isDisabled;
         return (
-          <span style={{ visibility: hidden ? "hidden" : undefined }}>
+          <span key={index} style={{ visibility: hidden ? "hidden" : undefined }}>
             <RowActionButton
-              key={index}
               isDisabled={disabled}
               onClick={!hidden && onClick ? () => onClick(row) : null}
               {...rest}
