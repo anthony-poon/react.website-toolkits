@@ -163,11 +163,7 @@ const RowActionButtons = ({ buttons, row }) => {
         const disabled = typeof isDisabled === "function" ? isDisabled(row) : isDisabled;
         return (
           <span key={index} style={{ visibility: hidden ? "hidden" : undefined }}>
-            <RowActionButton
-              isDisabled={disabled}
-              onClick={!hidden && onClick ? () => onClick(row) : null}
-              {...rest}
-            />
+            <RowActionButton isDisabled={disabled} onClick={!hidden && onClick ? () => onClick(row) : null} {...rest} />
           </span>
         );
       })}
@@ -244,7 +240,7 @@ const CustomizedMenus = (props) => {
   };
   return (
     <div>
-      <Button variant="contained" disableElevation onClick={handleMenuClick} endIcon={<KeyboardArrowDownIcon />}>
+      <Button variant="contained" disableElevation onClick={handleMenuClick}>
         Options
       </Button>
       <StyledMenu anchorEl={anchorEl} open={isOpened} onClose={handleClose}>
