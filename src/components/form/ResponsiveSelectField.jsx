@@ -108,6 +108,7 @@ export const ResponsiveSelectField = (props) => {
 };
 
 ResponsiveSelectField.propTypes = {
+  label: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -117,4 +118,5 @@ ResponsiveSelectField.propTypes = {
     }),
   ),
   onChange: PropTypes.func,
+  name: PropTypes.string,
 };
