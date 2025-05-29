@@ -7,7 +7,6 @@ interface AsyncDivProps {
   onError?: (error: unknown) => void;
   children?: React.ReactNode;
   duration?: number;
-  implementation?: "js" | "css";
 }
 
 export const AsyncDiv: React.FC<AsyncDivProps> = (props) => {
@@ -42,7 +41,6 @@ export const AsyncDiv: React.FC<AsyncDivProps> = (props) => {
   }, []);
   return (
     <SpinnerDiv
-      implementation={props.implementation}
       isLoading={isLoading}
       isError={isError}
     >
