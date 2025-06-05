@@ -17,6 +17,7 @@ interface AsyncButtonProps {
   onError?: (error: unknown) => void;
   duration?: number;
   fullWidth?: boolean;
+  isDisabled?: boolean;
 }
 
 export const AsyncButton: React.FC<AsyncButtonProps> = ({
@@ -31,6 +32,7 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
                                                           onError,
                                                           duration = 1500,
                                                           fullWidth = false,
+                                                          isDisabled,
                                                         }) => {
   const [isLoading, setLoading] = useState(false);
   const [isUnhandledError, setIsUnhandledError] = useState(false);
@@ -79,6 +81,7 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
       isIcon={isIcon}
       isLoading={isLoading}
       isError={isUnhandledError}
+      isDisabled={isDisabled}
       onClick={handleClick}
     >
       {children}

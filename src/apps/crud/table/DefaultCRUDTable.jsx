@@ -171,11 +171,11 @@ const RowActionButtons = ({ buttons, row }) => {
   );
 };
 
-const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled, iconColor = "inherit" }) => {
+const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled, color }) => {
   const Icon = icon;
   let content;
   if (icon) {
-    content = <Icon fontSize="inherit" color={iconColor} />;
+    content = <Icon fontSize="inherit" color={color} />;
   } else {
     content = <>{text}</>;
   }
@@ -189,7 +189,7 @@ const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled, iconColor 
   const ButtonWrapper = text ? Button : IconButton;
   return (
     <Box mr={2}>
-      <ButtonWrapper size={"small"} onClick={onClick} disabled={isDisabled}>
+      <ButtonWrapper size={"small"} onClick={onClick} disabled={isDisabled} color={color}>
         {content}
       </ButtonWrapper>
     </Box>
@@ -372,6 +372,7 @@ DefaultCRUDTable.propTypes = {
         icon: PropTypes.elementType,
         onClick: PropTypes.func.isRequired,
         tooltips: PropTypes.string,
+        color: PropTypes.string,
       }),
     ),
     toolbars: PropTypes.arrayOf(
