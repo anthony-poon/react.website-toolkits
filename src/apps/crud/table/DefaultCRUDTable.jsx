@@ -158,7 +158,11 @@ const getColDef = (props) => {
 const RowActionButtons = ({ buttons, row }) => {
   return (
     <Box display={"flex"}>
-      {buttons.map(({ onClick, isHidden, isDisabled, ...rest }, index) => {
+      {buttons.map(({ onClick, isDisplayed, isHidden, isDisabled, ...rest }, index) => {
+        const display = isDisplayed === undefined || (typeof isDisplayed === "function" ? isDisplayed(row) : isDisplayed);
+        if (!display) {
+          return null;
+        }
         const hidden = typeof isHidden === "function" ? isHidden(row) : isHidden;
         const disabled = typeof isDisabled === "function" ? isDisabled(row) : isDisabled;
         return (
@@ -368,6 +372,7 @@ DefaultCRUDTable.propTypes = {
       PropTypes.shape({
         isDisabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
         isHidden: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
+        isDisplayed: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
         text: PropTypes.string,
         icon: PropTypes.elementType,
         onClick: PropTypes.func.isRequired,
