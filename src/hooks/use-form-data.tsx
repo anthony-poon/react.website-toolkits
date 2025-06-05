@@ -37,6 +37,6 @@ export const makeFormData = <T extends Record<string, unknown>>(init: T) => {
       }
     };
 
-    return { formData, handleFormChange, resetFormData, hasChange, setFormValue }
+    return { formData, handleFormChange, resetFormData, setFormData, hasChange, setFormValue }
   }
 }
