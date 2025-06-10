@@ -1,10 +1,4 @@
-import {
-  Grid,
-  TextField,
-  useMediaQuery,
-  useTheme,
-  TextFieldProps,
-} from "@mui/material";
+import { Grid, TextField, TextFieldProps, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import React from "react";
@@ -32,20 +26,20 @@ interface CommonFieldProps extends Omit<TextFieldProps, "error" | "onChange" | "
 }
 
 const CompactTextField: React.FC<CommonFieldProps> = ({
-                                                        error,
-                                                        label,
-                                                        subLabel,
-                                                        value,
-                                                        hasNA,
-                                                        name,
-                                                        onChange,
-                                                        onNAChange,
-                                                        naLabel = "N/A",
-                                                        isNA,
-                                                        isError,
-                                                        isDisabled,
-                                                        ...rest
-                                                      }) => {
+  error,
+  label,
+  subLabel,
+  value,
+  hasNA,
+  name,
+  onChange,
+  onNAChange,
+  naLabel = "N/A",
+  isNA,
+  isError,
+  isDisabled,
+  ...rest
+}) => {
   return (
     <Grid container>
       <Grid item xs>
@@ -76,21 +70,21 @@ const CompactTextField: React.FC<CommonFieldProps> = ({
 };
 
 const ExpandedTextField: React.FC<CommonFieldProps> = ({
-                                                         error,
-                                                         label,
-                                                         subLabel,
-                                                         value,
-                                                         hasNA,
-                                                         name,
-                                                         onChange,
-                                                         onNAChange,
-                                                         naLabel = "N/A",
-                                                         isNA,
-                                                         isError,
-                                                         isDisabled,
-                                                         required,
-                                                         ...rest
-                                                       }) => {
+  error,
+  label,
+  subLabel,
+  value,
+  hasNA,
+  name,
+  onChange,
+  onNAChange,
+  naLabel = "N/A",
+  isNA,
+  isError,
+  isDisabled,
+  required,
+  ...rest
+}) => {
   return (
     <Grid container>
       <Grid item xs={3}>
@@ -134,30 +128,30 @@ interface ResponsiveTextFieldProps extends Omit<CommonFieldProps, "onChange" | "
 }
 
 export const ResponsiveTextField: React.FC<ResponsiveTextFieldProps> = ({
-                                                                          gutter = true,
-                                                                          compact = false,
-                                                                          error,
-                                                                          value,
-                                                                          hasNA,
-                                                                          name,
-                                                                          onChange,
-                                                                          naValue = "N/A",
-                                                                          ...rest
-                                                                        }) => {
+  gutter = true,
+  compact = false,
+  error,
+  value,
+  hasNA,
+  name,
+  onChange,
+  naValue = "N/A",
+  ...rest
+}) => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const isError = Boolean(error);
   const isNA = hasNA && value === naValue;
 
   const handleNAChecked = () => {
-    if (!name || !onChange) {
+    if (!onChange) {
       return;
     }
     onChange(name, isNA ? "" : naValue);
   };
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (!name || !onChange) {
+    if (!onChange) {
       return;
     }
     onChange(name, evt.target.value);
