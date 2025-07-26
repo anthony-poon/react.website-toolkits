@@ -12,6 +12,8 @@ export const ResponsiveCard = ({ variant = "sm", children, customStyle = {} }) =
         style={{
           width: "100%",
           padding: theme.spacing(2),
+          border: "none",
+          boxShadow: "none",
           ...customStyle,
         }}>
         {children}

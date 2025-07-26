@@ -21,10 +21,11 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
   const handleSubmit = () => onSubmit({ username, password });
   return (
     <CardWithIcon
-      icon={<LockOpenIcon style={{ fontSize: 60 }} color={"primary"} />}
+      icon={<LockOpenIcon style={{ fontSize: 32 }} color={"primary"} />}
       title={t("login.title")}
       subtitle={t("login.subtitle")}
-      message={message}>
+      message={message}
+      >
       <form>
         {error && (
           <Typography color={"error"} key={error}>

@@ -9,7 +9,7 @@ export const CardWithIcon = ({ icon, title, subtitle, children, message }) => {
   return (
     <ResponsiveCard>
       <div>
-        <Box display={"flex"} alignItems={"center"} justifyContent={"center"} my={3}>
+        <Box display={"flex"} alignItems={"center"} justifyContent={"center"} my={1}>
           {icon}
         </Box>
         {message}
