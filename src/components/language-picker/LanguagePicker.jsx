@@ -123,21 +123,24 @@ export const LanguageSelector = () => {
   return (
     <Select
       style={{
-        color: "white",
+        color: "#222",
+        background: "transparent",
       }}
       variant={"standard"}
-      sx={{ width: 130 }}
+      sx={{
+        minWidth: 120,
+        borderRadius: 99, 
+        px: 0, 
+      }}
       defaultValue={"en-gb"}
       disableUnderline
       onChange={(e) => i18n.changeLanguage(e.target.value)}
-      renderValue={() => {
-        return (
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <FlagIcon countryCode={selectedLanguage?.flag} />
-            <Box style={style}>{selectedLanguage.name}</Box>
-          </Box>
-        );
-      }}
+      renderValue={() => (
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <FlagIcon countryCode={selectedLanguage?.flag} />
+          <Box style={style}>{selectedLanguage.name}</Box>
+        </Box>
+      )}
       MenuProps={{
         anchorOrigin: {
           vertical: "bottom",
