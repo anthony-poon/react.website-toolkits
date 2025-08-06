@@ -11,14 +11,17 @@ const FlagIcon = ({ countryCode = "" }) => {
 
   return (
     <span
-      className={`fi fis inline-block mr-2 fi-${countryCode}`}
+      className={`fi fis inline-block mx-13 fi-${countryCode}`}
       style={{
-        width: "24px !important",
-        height: "24px !important",
-        fontSize: "24px !important",
+        display: "inline-block",
+        width: "20px",
+        height: "20px",
+        fontSize: "20px",
         borderRadius: "100%",
         border: "none",
         boxShadow: "inset 0 0 0 2px rgba(0, 0, 0, 0.06)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     />
   );
@@ -136,7 +139,7 @@ export const LanguageSelector = () => {
       disableUnderline
       onChange={(e) => i18n.changeLanguage(e.target.value)}
       renderValue={() => (
-        <Box sx={{ display: "flex", gap: 1 }}>
+        <Box sx={{ display: "flex", gap: 3, pr:2 }}>
           <FlagIcon countryCode={selectedLanguage?.flag} />
           <Box style={style}>{selectedLanguage.name}</Box>
         </Box>
