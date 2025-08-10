@@ -11,6 +11,12 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
   const render = children ? <>{children}</> :
    <ListItemText primary={text} 
          sx={active ? { color: theme.palette.primary.main, fontWeight: 600 } : { color: "#222" }}
+         primaryTypographyProps={{
+          sx: {
+            overflowWrap: 'anywhere', lineHeight: 1.2, 
+            display: 'block', maxWidth: '150px'
+          }
+      }}
    />;
   return (
     <ListItemButton
@@ -28,7 +34,8 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
           : undefined
       }
     >
-      <ListItemIcon>{icon}</ListItemIcon>
+      {icon? <ListItemIcon>{icon}</ListItemIcon> : ""}
+
       {render}
     </ListItemButton>
   );
