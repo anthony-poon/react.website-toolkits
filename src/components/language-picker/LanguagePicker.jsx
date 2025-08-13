@@ -108,7 +108,7 @@ const LANGUAGE = [
     name: "Tiếng Việt",
   },
 ];
-export const LanguageSelector = () => {
+export const LanguageSelector = ({ textColor = "#222" }) => {
   const { i18n } = useTranslation();
   const theme = useTheme();
   const selectedLanguage = LANGUAGE.find((language) => language.key === i18n.language) || {
@@ -126,7 +126,7 @@ export const LanguageSelector = () => {
   return (
     <Select
       style={{
-        color: "#222",
+        color: textColor,
         background: "transparent",
       }}
       variant={"standard"}
