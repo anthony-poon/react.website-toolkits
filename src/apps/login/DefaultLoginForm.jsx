@@ -23,7 +23,6 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
     if (!recaptcha) {
       return;
     }
-    console.log(recaptcha);
     // eslint-disable-next-line no-undef
     grecaptcha.render(document.getElementById("recaptcha"), {
       sitekey: recaptcha,
@@ -35,7 +34,8 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
       icon={<LockOpenIcon style={{ fontSize: 32 }} color={"primary"} />}
       title={t("login.title")}
       subtitle={t("login.subtitle")}
-      message={message}>
+      message={message}
+      >
       <form>
         {error && (
           <Typography color={"error"} key={error}>
