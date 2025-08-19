@@ -23,7 +23,7 @@
   "register.date": "Register Date",
   "transaction.number": "Transaction No.",
   "completed": "Completed tests",
-  "coming.soon": "Comming soon",
+  "coming.soon": "Coming soon",
   "standard": "Standard",
   "test.name": "Test Name",
   "rank": "Rank",
@@ -185,7 +185,7 @@
   "checkout.app.registration.completed": "Registration completed.",
   "checkout.app.payment.cancelled": "Payment cancelled",
 
-  "payment.tab.order.summary": "Order Summary",
+  "payment.tab.order.summary": "Payment Summary",
   "payment.tab.subtotal": "Subtotal",
   "payment.tab.total": "Total",
 
