@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import { SpinnerButton } from "../spinner-button";
 
 type ButtonVariant = "contained" | "outlined";
@@ -8,7 +9,7 @@ type ButtonType = "button" | "submit";
 interface AsyncButtonProps {
   type?: ButtonType;
   variant?: ButtonVariant;
-  greyVariant?: boolean; 
+  greyVariant?: boolean;
   color?: ButtonColor;
   style?: React.CSSProperties; // TODO: Remove style props
   title?: string;
@@ -21,33 +22,38 @@ interface AsyncButtonProps {
   isDisabled?: boolean;
 }
 
-export const AsyncButton: React.FC<AsyncButtonProps> = ({
-                                                          type = "button",
-                                                          variant = "contained",
-                                                          greyVariant = false,
-                                                          color = "primary",
-                                                          style,
-                                                          title,
-                                                          isIcon,
-                                                          children,
-                                                          onClick,
-                                                          onError,
-                                                          duration = 1500,
-                                                          fullWidth = false,
-                                                          isDisabled,
-                                                        }) => {
+const resolveStyle = (props: AsyncButtonProps) => {
+  if (props.greyVariant) {
+    return {
+      backgroundColor: "#f8f8f8ff",
+      color: "#212121",
+      "&:hover": {
+        backgroundColor: "#b8b8b8ff",
+      },
+      ...props.style,
+    };
+  }
+  return props.style;
+};
+
+export const AsyncButton: React.FC<AsyncButtonProps> = (props: AsyncButtonProps) => {
+  const {
+    type = "button",
+    variant = "contained",
+    color = "primary",
+    title,
+    isIcon,
+    children,
+    onClick,
+    onError,
+    duration = 1500,
+    fullWidth = false,
+    isDisabled,
+  } = props;
   const [isLoading, setLoading] = useState(false);
   const [isUnhandledError, setIsUnhandledError] = useState(false);
   const mountRef = useRef(true);
-
-  const style_var = greyVariant ? {
-    backgroundColor: '#f8f8f8ff',
-    color: '#212121',
-    '&:hover': {
-      backgroundColor: '#b8b8b8ff'
-    },
-    ...style
-  } : style;
+  const style = resolveStyle(props);
 
   useEffect(() => {
     return () => {
@@ -61,10 +67,7 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
     setLoading(true);
 
     try {
-      await Promise.all([
-        onClick?.() ?? Promise.resolve(),
-        new Promise((resolve) => setTimeout(resolve, duration)),
-      ]);
+      await Promise.all([onClick?.() ?? Promise.resolve(), new Promise((resolve) => setTimeout(resolve, duration))]);
 
       if (mountRef.current) {
         setLoading(false);
@@ -87,14 +90,13 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
       type={type}
       variant={variant}
       color={color}
-      style={style_var}
+      style={style}
       title={title}
       isIcon={isIcon}
       isLoading={isLoading}
       isError={isUnhandledError}
       isDisabled={isDisabled}
-      onClick={handleClick}
-    >
+      onClick={handleClick}>
       {children}
     </SpinnerButton>
   );
