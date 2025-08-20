@@ -8,6 +8,7 @@ type ButtonType = "button" | "submit";
 interface AsyncButtonProps {
   type?: ButtonType;
   variant?: ButtonVariant;
+  greyVariant?: boolean; 
   color?: ButtonColor;
   style?: React.CSSProperties; // TODO: Remove style props
   title?: string;
@@ -23,6 +24,7 @@ interface AsyncButtonProps {
 export const AsyncButton: React.FC<AsyncButtonProps> = ({
                                                           type = "button",
                                                           variant = "contained",
+                                                          greyVariant = false,
                                                           color = "primary",
                                                           style,
                                                           title,
@@ -37,6 +39,15 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
   const [isLoading, setLoading] = useState(false);
   const [isUnhandledError, setIsUnhandledError] = useState(false);
   const mountRef = useRef(true);
+
+  const style_var = greyVariant ? {
+    backgroundColor: '#f8f8f8ff',
+    color: '#212121',
+    '&:hover': {
+      backgroundColor: '#b8b8b8ff'
+    },
+    ...style
+  } : style;
 
   useEffect(() => {
     return () => {
@@ -76,7 +87,7 @@ export const AsyncButton: React.FC<AsyncButtonProps> = ({
       type={type}
       variant={variant}
       color={color}
-      style={style}
+      style={style_var}
       title={title}
       isIcon={isIcon}
       isLoading={isLoading}
