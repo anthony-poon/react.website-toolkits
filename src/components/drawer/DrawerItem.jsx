@@ -1,4 +1,4 @@
-import { ListItemButton } from "@mui/material";
+import { ListItemButton, Box } from "@mui/material";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import React from "react";
@@ -10,11 +10,14 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
   const theme = useTheme();
   const render = children ? <>{children}</> :
    <ListItemText primary={text} 
-         sx={active ? { color: theme.palette.primary.main, fontWeight: 600 } : { color: "#222" }}
+         sx={{
+            ...(active ? { color: theme.palette.primary.main, fontWeight: 600 } : { color: "#222" }),
+            ...((!icon) && { ml: 2 })
+         }}
          primaryTypographyProps={{
           sx: {
             overflowWrap: 'anywhere', lineHeight: 1.2, 
-            display: 'block', maxWidth: '150px'
+            display: 'block', maxWidth: '180px'
           }
       }}
    />;
@@ -35,7 +38,6 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
       }
     >
       {icon? <ListItemIcon>{icon}</ListItemIcon> : ""}
-
       {render}
     </ListItemButton>
   );
