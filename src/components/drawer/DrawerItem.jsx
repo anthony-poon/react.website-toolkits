@@ -14,7 +14,7 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
          primaryTypographyProps={{
           sx: {
             overflowWrap: 'anywhere', lineHeight: 1.2, 
-            display: 'block', maxWidth: '150px'
+            display: 'block', maxWidth: '180px'
           }
       }}
    />;
