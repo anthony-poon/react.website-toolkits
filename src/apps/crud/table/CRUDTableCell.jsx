@@ -21,15 +21,7 @@ export const TimeTableCell = ({ value }) => {
 };
 
 export const RelativeDateTableCell = ({ value }) => {
-  const priorityToRelativeDate = {
-    1: "Today",
-    2: "These 3 Days",
-    3: "This Week",
-    4: "This Month",
-    5: "This Year",
-    6: "More than a Year",
-  };
-
-  const str = priorityToRelativeDate[value] || "-";
+  //{ setZone: true } does not support zone, only locale
+  const str = value ? DateTime.fromISO(value).setLocale('en').toRelativeCalendar() : "-";
   return <>{str}</>;
 };
