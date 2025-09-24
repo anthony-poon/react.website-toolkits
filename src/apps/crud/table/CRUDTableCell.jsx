@@ -19,3 +19,9 @@ export const TimeTableCell = ({ value }) => {
   const str = value ? DateTime.fromISO(value, { setZone: true }).toFormat("hh:mm a") : "-";
   return <>{str}</>;
 };
+
+export const RelativeDateTableCell = ({ value }) => {
+  //{ setZone: true } does not support zone, only locale
+  const str = value ? DateTime.fromISO(value).setLocale('en').toRelativeCalendar() : "-";
+  return <>{str}</>;
+};
