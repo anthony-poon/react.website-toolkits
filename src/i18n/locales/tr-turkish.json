@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Zaman aralığı",
   "test.time.selection.subtitle": "Uygun bir zaman aralığını seçin",
   "layout.home": "Anasayfa (Profil)",
-  "layout.register.test": "Testi Kaydet",
+  "test.registration": "Testi Kaydet",
   "layout.experience.trial.test": "Deneyim Deneme Testi",
   "layout.test.appointments": "Test Randevusu",
   "layout.previous.test.results": "Önceki Test Sonuçları",

@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "タイムスロット",
   "test.time.selection.subtitle": "利用可能な時間帯を選択してください",
   "layout.home": "ホーム (プロフィール)",
-  "layout.register.test": "登録テスト",
+  "test.registration": "登録テスト",
   "layout.experience.trial.test": "体験トライアルテスト",
   "layout.test.appointments": "テストの予約",
   "layout.previous.test.results": "前回のテスト結果",

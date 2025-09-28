@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Créneau horaire",
   "test.time.selection.subtitle": "Sélectionnez un créneau horaire disponible",
   "layout.home": "Accueil (Profil)",
-  "layout.register.test": "S'inscrire",
+  "test.registration": "S'inscrire",
   "layout.experience.trial.test": "Test d'essai d'expérience",
   "layout.test.appointments": "Rendez-vous de Test",
   "layout.previous.test.results": "Résultats des tests précédents",

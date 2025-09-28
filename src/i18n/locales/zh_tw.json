@@ -173,7 +173,7 @@
   "test.time.selection.time.slot": "時間",
   "test.time.selection.subtitle": "選擇時間",
   "layout.home": "主頁（簡介）",
-  "layout.register.test": "註冊測驗",
+  "test.registration": "註冊測驗",
   "layout.experience.trial.test": "體驗試用版測驗",
   "layout.test.appointments": "測驗預約",
   "layout.previous.test.results": "測驗成績",

@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "时隙",
   "test.time.selection.subtitle": "选择可用时段",
   "layout.home": "主页（简介）",
-  "layout.register.test": "注册测试",
+  "test.registration": "注册测试",
   "layout.experience.trial.test": "体验试用测试",
   "layout.test.appointments": "测试预约",
   "layout.previous.test.results": "之前的测试结果",
