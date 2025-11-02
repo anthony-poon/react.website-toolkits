@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Временной интервал",
   "test.time.selection.subtitle": "Выберите доступный временной интервал",
   "layout.home": "Главная (Профиль)",
-  "layout.register.test": "Зарегистрировать тест",
+  "test.registration": "Зарегистрировать тест",
   "layout.experience.trial.test": "Опыт пробного теста",
   "layout.test.appointments": "Тестовая Запись",
   "layout.previous.test.results": "Результаты предыдущих испытаний",

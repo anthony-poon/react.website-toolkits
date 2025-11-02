@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Franja horaria",
   "test.time.selection.subtitle": "Seleccione una franja horaria disponible",
   "layout.home": "Inicio (Perfil)",
-  "layout.register.test": "Registrarse Prueba",
+  "test.registration": "Registrarse Prueba",
   "layout.experience.trial.test": "Prueba de experiencia",
   "layout.test.appointments": "Cita(s) de Prueba",
   "layout.previous.test.results": "Resultados de pruebas anteriores",

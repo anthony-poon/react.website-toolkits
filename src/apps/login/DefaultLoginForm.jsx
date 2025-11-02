@@ -46,7 +46,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
           <ResponsiveTextField
             compact={true}
             gutter={false}
-            label={"Email Address"}
+            label={t("email.address")}
             value={username}
             name={"username"}
             type={"email"}
@@ -56,7 +56,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
           <ResponsivePasswordField
             compact={true}
             gutter={false}
-            label={"Password"}
+            label={t("password")}
             value={password}
             name={"password"}
             onChange={handleFormChange}
@@ -70,7 +70,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             type={"submit"}
             onClick={handleSubmit}
             style={{ textTransform: "none" }}>
-            Login
+            {t("login.title")}
           </AsyncButton>
         </Box>
       </form>
