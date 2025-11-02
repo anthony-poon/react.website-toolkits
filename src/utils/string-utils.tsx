@@ -33,7 +33,7 @@ export const StringUtils = {
         case "LEVEL_C":
           return "Level 3";
         default:
-          return level;
+          return level.replace(/LEVEL_(\d+)/, "Level $1");
       }
     },
   },
