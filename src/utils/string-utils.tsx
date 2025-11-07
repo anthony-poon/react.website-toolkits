@@ -1,6 +1,7 @@
 export const StringUtils = {
   Level: {
     toFullName: (level: string) => {
+      if (!level) return "";
       switch (level) {
         case "M":
         case "LEVEL_M":
@@ -15,10 +16,11 @@ export const StringUtils = {
         case "LEVEL_C":
           return "Level 3 Expert – Mock Test";
         default:
-          return "Level 1 Practitioner – Mock Test";
+          return level.toUpperCase().replace(/(LEVEL_)?(\w)/, "Level $1");
       }
     },
     toShortName: (level: string) => {
+      if (!level) return "";
       switch (level) {
         case "M":
         case "LEVEL_M":
@@ -33,7 +35,7 @@ export const StringUtils = {
         case "LEVEL_C":
           return "Level 3";
         default:
-          return level.replace(/LEVEL_(\d+)/, "Level $1");
+          return level.toUpperCase().replace(/LEVEL_(\w)/, "Level $1");
       }
     },
   },
