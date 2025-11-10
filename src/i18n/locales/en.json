@@ -221,7 +221,7 @@
   "layout.logout.prompt": "Are you sure you want to logout?",
   "layout.header": "Candidate Portal",
   "layout.menu.admins": "Centre Personnel",
-  "layout.test.schedules": "Test Schedules",
+  "layout.test.schedules": "Test Sessions",
   "layout.test.pastSchedules": "Completed Sessions",
   "layout.release.results": "Release results",
   "birthdat.input.title": "Date of birth",
