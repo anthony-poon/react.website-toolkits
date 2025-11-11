@@ -33,7 +33,7 @@ const CompactSelectField = (props) => {
   // TODO: implement required and subLabel
   // TODO: Fix label position when label is empty
   return (
-    <Box mt={2}>
+    <Box mt={1}>
       <FormControl variant={"standard"} error={isError} style={{ width: "100%" }} required={required}>
         {label && <InputLabel shrink>{label}</InputLabel>}
         <Select
