@@ -28,8 +28,8 @@ export const ResponsiveDateRangePicker = (props) => {
     [],
   );
   return (
-    <Grid container>
-      <Grid item xs={6}>
+    <Grid container alignItems="center">
+      <Grid item xs={5.25}>
         <ResponsiveDatePicker
           compact={true}
           label={t("start.date")}
@@ -38,7 +38,10 @@ export const ResponsiveDateRangePicker = (props) => {
           onChange={handleChange}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={0.5}>
+        —
+      </Grid>
+      <Grid item xs={5.25}>
         <ResponsiveDatePicker
           compact={true}
           label={t("end.date")}
