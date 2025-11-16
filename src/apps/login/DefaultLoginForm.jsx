@@ -46,17 +46,17 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
           <ResponsiveTextField
             compact={true}
             gutter={false}
-            label={"Email Address"}
+            label={t("email.address")}
             value={username}
             name={"username"}
             type={"email"}
             onChange={handleFormChange}
-            subLabel={<span style={{ fontStyle: "italic" }}>Email is case sensitive</span>}
+            subLabel={<span style={{ fontStyle: "italic" }}>{t("email.case.sensitive")}</span>}
           />
           <ResponsivePasswordField
             compact={true}
             gutter={false}
-            label={"Password"}
+            label={t("password")}
             value={password}
             name={"password"}
             onChange={handleFormChange}
@@ -70,7 +70,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             type={"submit"}
             onClick={handleSubmit}
             style={{ textTransform: "none" }}>
-            Login
+            {t("login.title")}
           </AsyncButton>
         </Box>
       </form>

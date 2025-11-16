@@ -100,31 +100,36 @@
 
   "resend.confirmation.app.prompt": "Your account has not been confirmed yet. If you did not receive an email, press the button below and we will resend the email.",
   "resend.confirmation.app.resend.email": "Resend Email",
-  "resend.confirmation.app.resend.without.confirmation.prompt": " If you did not receive your email confirmation letter, enter your email below, and it will be resent",
+  "resend.confirmation.app.resend.without.confirmation.prompt": "If you did not receive your email confirmation letter, enter your email below, and it will be resent",
 
   "setup.password.app.not.match.repeated.password": "Password does not match Repeat Password",
   "setup.password.app.first.time.setup": "First Time Setup",
   "setup.password.app.password.is.set": "Password is set!",
   "setup.password.prompt": "Your account is almost ready. Please login in the next screen to continue",
+  "button.next": "NEXT",
 
   "email.confirmation.app.email.confirmed.prompt": "Email confirmed. Please login.",
   "email.confirm.success.prompt": "Your email has been successfully verified. Please proceed to log in on the following screen to continue.",
   "signup.app.not.matching.prompt": "Passwords do not match. Please verify.",
   "signup.app.create.account": "Create account",
   "signup.app.using.your.email": "Using your email",
-  "signup.app.prompt": "Your account has been successfully created. Kindly check your email for further instructions on activating your account using the provided link.",
+  "signup.app.prompt": "Your account has been successfully created. Kindly check your email for instructions on activating your account using the provided link.",
 
   "batch.change.app.batch.change": "Batch Change",
   "batch.change.app.available.slots": "Available slots",
 
-  "completed.batch.data.grid.test.date": "Test date",
+  "completed.batch.data.grid.test.date": "Test Date",
   "completed.batch.data.grid.register.date": "Registered",
   "completed.batch.data.grid.invigilator.name": "Invigilator Name",
   "completed.batch.data.grid.no.of.learners": "No. of learners",
+  "completed.batch.data.grid.language": "Language",
+  "completed.batch.data.grid.transaction.no": "Transaction No.",
   "completed.batch.data.grid.status": "Status",
-  "completed.batch.data.grid.completion.date": "Completion date",
+  "completed.batch.data.grid.completion.date": "Completion Date",
   "completed.batch.data.grid.completed.batches": "Completed batches",
-  "completed.test.data.grid.test.code": "Test code",
+  "completed.test.data.grid.test.code": "Test Code",
+  "completed.test.data.grid.cert": "CERTIFICATE",
+  "completed.test.data.grid.report": "REPORT",
   "completed.test.data.grid.id.verified": "ID verified",
   "completed.test.data.grid.behavior": "Behaviour",
   "completed.test.data.grid.completed.tests": "Completed Tests",
@@ -152,7 +157,7 @@
 
   "list.appointment.app.test.date.updated": "Test Date updated",
   "list.appointment.app.no.upcoming.appointment": "No upcoming Mock Test or Test appointment",
-
+  "list.appointment.app.try.free.trial": "Experience a Free Trial Test",
   "edit.profile.app.change.password": "Change Password",
   "edit.profile.app.upcoming.appointments": "Upcoming Appointment(s)",
 
@@ -169,9 +174,6 @@
   "list.test.center.exam.app.appointment.booked": "Appointment Booked.",
   "list.test.center.exam.app.title": "Book a Test with a Test Centre",
   "list.test.center.exam.app.subtitle": "Select an available test",
-
-  "list.online.exam.app.title": "Book an online exam",
-  "list.online.exam.app.subtitle": "Select an available exam",
 
   "trial.exam.selection.resume.exam": "Resume Exam",
   "trial.exam.selection.book.now": "Book now",
@@ -206,10 +208,18 @@
 
   "layout.home": "Home",
   "layout.register.test": "Test Registration",
-  "layout.register.mock.test": "Mock Test Registration",
+  "layout.free.trial.test": "Free Trial Test",
+  "layout.mock.test": "Mock Test",
+  "layout.test.centre.test": "Test Centre Test",
+  "layout.test": "Test",
+  "layout.settings": "Settings",
   "layout.experience.trial.test": "Experience Trial Test",
   "layout.test.appointments": "Test Appointments",
   "layout.previous.test.results": "Test Results",
+  "layout.tooltip.free.trial": "A short, sample test, to experience the type of questions, the ISTO test platform, and the A C C U R A T E analytics. You will receive a sample Analytics Report.",
+  "layout.tooltip.mock.test": "A half-sized mock test for you to practice the ISTO Test. You will receive a detailed Analytics Report with rankings and a question-by-question breakdown of your performance.",
+  "layout.tooltip.test": "The test to be taken to gain the ISTO recognition of their level of understanding of the respective ISO management systems standards. The candidate will receive an Analytics Report with rankings and a Certificate of Achievement if they meet the passing criteria.",
+  "layout.tooltip.disabled.test": "Level 2 Test of Understanding will be available in Q4 2025",
   "layout.staff": "Profile and centre personnel",
   "layout.product.admin": "Product Admin",
   "layout.test.centre": "Test Centres",
@@ -226,5 +236,8 @@
   "layout.test.pastSchedules": "Completed Sessions",
   "layout.release.results": "Release results",
   "birthdat.input.title": "Date of birth",
-  "file.upload.field.button": "Upload File"
+  "file.upload.field.button": "Upload File",
+
+  "exam.pop.up.notice": "To ensure you access all features of the ISTO Test Portal, please allow pop-ups from our site. If you don't see a pop-up, please check your browser settings and enable pop-ups for this site.",
+  "email.case.sensitive": "Email is case sensitive"
 }
