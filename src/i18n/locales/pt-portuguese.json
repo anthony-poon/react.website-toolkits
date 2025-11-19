@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Horário",
   "test.time.selection.subtitle": "Selecione um horário disponível",
   "layout.home": "Página inicial (perfil)",
-  "layout.register.test": "Registrar teste",
+  "test.registration": "Registrar teste",
   "layout.experience.trial.test": "Teste de experiência",
   "layout.test.appointments": "Compromisso(s) de Teste",
   "layout.previous.test.results": "Resultados de testes anteriores",
