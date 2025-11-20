@@ -5,6 +5,7 @@ export * from "./layout";
 export * from "./app-bar";
 export * from "./drawer";
 export * from "./cards";
+export * from "./chip";
 export * from "./form";
 export * from "./notification";
 export * from "./language-picker";

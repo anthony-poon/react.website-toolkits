@@ -38,6 +38,8 @@
   "exam.mode": "Exam Mode",
   "exam.mode.online": "Online Test",
   "exam.mode.on_site": "On-site Test",
+  "mode.of.test": "Mode of Test",
+  "location" : "Location",
   "reset": "Reset",
   "back": "Back",
   "exclusive.offer.code": "Exclusive Offer Code",
@@ -160,6 +162,7 @@
   "redict.test-center.exam.prompt": "Safe Exam Browser Configuration File are being generated in",
   "list.test.center.exam.app.step.select.test": "Select Test",
   "list.test.center.exam.app.step.select.test.centre": "Select Test centre",
+  "select.timeslot": "Select Time Slot",
   "list.test.center.exam.app.step.select.date.time": "Select Date and time",
   "list.test.center.exam.app.is.booked": "You have already booked this exam.",
   "list.test.center.exam.app.here": "here",
@@ -226,8 +229,6 @@
   "layout.test.pastSchedules": "Completed Sessions",
   "layout.release.results": "Release results",
   "birthdat.input.title": "Date of birth",
-  "file.upload.field.button": "Upload File",
-
 
   "isto.test": "ISTO Test",
   "time.allowed": "Time allowed",
@@ -259,4 +260,8 @@
   "continue.to.survey": "Continue to survey",
   "thank.you.for.taking.the.free.trial.test.your.trial.test.results.will.be.delivered.to.your.email.inbox.within.the.next.few.minutes.please.note.that.the.trial.test.does.not.have.a.pass.or.fail.outcome.and.no.certificate.will.be.issued.you.may.now.close.this.window": "Thank you for taking the free trial test. Your trial test results will be delivered to your email inbox within the next few minutes. Please note that the trial test does not have a pass or fail outcome, and no certificate will be issued. You may now close this window."
 
+  "file.upload.field.button": "Upload File",
+
+  "all": "All",
+  "please.select.a.time.slot": "Please select a time slot"
 }
