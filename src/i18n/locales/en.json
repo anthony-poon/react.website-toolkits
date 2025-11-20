@@ -38,6 +38,8 @@
   "exam.mode": "Exam Mode",
   "exam.mode.online": "Online Test",
   "exam.mode.on_site": "On-site Test",
+  "mode.of.test": "Mode of Test",
+  "location" : "Location",
   "reset": "Reset",
   "back": "Back",
   "exclusive.offer.code": "Exclusive Offer Code",
@@ -165,6 +167,7 @@
   "redict.test-center.exam.prompt": "Safe Exam Browser Configuration File are being generated in",
   "list.test.center.exam.app.step.select.test": "Select Test",
   "list.test.center.exam.app.step.select.test.centre": "Select Test centre",
+  "select.timeslot": "Select Time Slot",
   "list.test.center.exam.app.step.select.date.time": "Select Date and time",
   "list.test.center.exam.app.is.booked": "You have already booked this exam.",
   "list.test.center.exam.app.here": "here",
@@ -239,5 +242,8 @@
   "file.upload.field.button": "Upload File",
 
   "exam.pop.up.notice": "To ensure you access all features of the ISTO Test Portal, please allow pop-ups from our site. If you don't see a pop-up, please check your browser settings and enable pop-ups for this site.",
-  "email.case.sensitive": "Email is case sensitive"
+  "email.case.sensitive": "Email is case sensitive",
+
+  "all": "All",
+  "please.select.a.time.slot": "Please select a time slot"
 }
