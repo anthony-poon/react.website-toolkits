@@ -23,15 +23,19 @@ export const StringUtils = {
       if (!level) return "";
       switch (level) {
         case "M":
+        case "LEVEL M":
         case "LEVEL_M":
           return "Level 0";
         case "A":
+        case "LEVEL A":
         case "LEVEL_A":
           return "Level 1";
         case "B":
+        case "LEVEL B":
         case "LEVEL_B":
           return "Level 2";
         case "C":
+        case "LEVEL C":
         case "LEVEL_C":
           return "Level 3";
         default:
