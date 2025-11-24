@@ -193,6 +193,6 @@
   "layout.test.schedules": "กำหนดการทดสอบ",
   "layout.test.pastSchedules": "ตารางเวลาในอดีต",
   "layout.release.results": "เผยแพร่ผลลัพธ์",
-  "birthdat.input.title": "วันเกิด",
+  "birthday.input.title": "วันเกิด",
   "file.upload.field.button": "อัพโหลดไฟล์"
 }

@@ -193,6 +193,6 @@
   "layout.test.schedules": "Horarios de Pruebas",
   "layout.test.pastSchedules": "Horarios Pasados",
   "layout.release.results": "Liberar resultados",
-  "birthdat.input.title": "Fecha de nacimiento",
+  "birthday.input.title": "Fecha de nacimiento",
   "file.upload.field.button": "Subir archivo"
 }

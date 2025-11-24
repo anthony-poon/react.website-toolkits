@@ -58,8 +58,8 @@ export const authReducer = (state = { ...initState }, action) => {
         }
         // If refresh token expired, discard old state and require login
         const now = new Date().getTime() / 1000;
-        const { reauthTokenExpireAt } = action.payload.authorization;
-        if (now > reauthTokenExpireAt) {
+        const { refreshTokenExpireAt } = action.payload.authorization;
+        if (now > refreshTokenExpireAt) {
           console.log("refreshToken expired");
           return {
             ...initState,

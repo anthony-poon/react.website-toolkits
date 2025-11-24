@@ -193,6 +193,6 @@
   "layout.test.schedules": "Lịch Kiểm Tra",
   "layout.test.pastSchedules": "Lịch Trình Cũ",
   "layout.release.results": "Phát hành kết quả",
-  "birthdat.input.title": "Ngày sinh",
+  "birthday.input.title": "Ngày sinh",
   "file.upload.field.button": "Cập nhật dử liệu"
 }

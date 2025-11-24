@@ -189,6 +189,6 @@
   "layout.test.schedules": "جدول الاختبارات",
   "layout.test.pastSchedules": "جدول المواعيد السابقة",
   "layout.release.results": "إصدار النتائج",
-  "birthdat.input.title": "تاريخ الميلاد",
+  "birthday.input.title": "تاريخ الميلاد",
   "file.upload.field.button": "رفع ملف"
 }

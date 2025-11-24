@@ -193,6 +193,6 @@
   "layout.test.schedules": "测试日程",
   "layout.test.pastSchedules": "过去的时间表",
   "layout.release.results": "发布结果",
-  "birthdat.input.title": "出生日期",
+  "birthday.input.title": "出生日期",
   "file.upload.field.button": "上传文件"
 }
