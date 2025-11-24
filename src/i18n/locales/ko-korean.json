@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "시간대",
   "test.time.selection.subtitle": "이용 가능한 시간대를 선택하세요.",
   "layout.home": "홈(프로필)",
-  "layout.register.test": "테스트 등록",
+  "test.registration": "테스트 등록",
   "layout.experience.trial.test": "체험 테스트",
   "layout.test.appointments": "테스트 약속",
   "layout.previous.test.results": "이전 테스트 결과",

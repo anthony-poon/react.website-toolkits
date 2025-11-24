@@ -174,7 +174,7 @@
   "test.time.selection.time.slot": "Χρονοθήκη",
   "test.time.selection.subtitle": "Επιλέξτε ένα διαθέσιμο χρονικό διάστημα",
   "layout.home": "Αρχική σελίδα (Προφίλ)",
-  "layout.register.test": "Εγγραφή δοκιμής",
+  "test.registration": "Εγγραφή δοκιμής",
   "layout.experience.trial.test": "Δοκιμαστική δοκιμή εμπειρίας",
   "layout.test.appointments": "Δοκιμαστικό Ραντεβού",
   "layout.previous.test.results": "Προηγούμενα Αποτελέσματα Δοκιμών",
