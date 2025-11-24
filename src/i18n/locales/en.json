@@ -294,9 +294,9 @@
   "change.name.detail.and.etc": "Change name, detail and etc",
 
   "all": "All",
-  "please.select.a.time.slot": "Please select a time slot"
+  "please.select.a.time.slot": "Please select a time slot",
   "file.upload.field.button": "Upload File",
 
   "exam.pop.up.notice": "To ensure you access all features of the ISTO Test Portal, please allow pop-ups from our site. If you don't see a pop-up, please check your browser settings and enable pop-ups for this site.",
-  "email.case.sensitive": "Email is case sensitive",
+  "email.case.sensitive": "Email is case sensitive"
 }
