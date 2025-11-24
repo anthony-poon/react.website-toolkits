@@ -193,6 +193,6 @@
   "layout.test.schedules": "Test Takvimi",
   "layout.test.pastSchedules": "Geçmiş Programlar",
   "layout.release.results": "Sonuçları Yayımla",
-  "birthdat.input.title": "Doğum tarihi",
+  "birthday.input.title": "Doğum tarihi",
   "file.upload.field.button": "Dosya yükleme"
 }

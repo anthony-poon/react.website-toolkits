@@ -193,6 +193,6 @@
   "layout.test.schedules": "Προγράμματα Δοκιμών",
   "layout.test.pastSchedules": "Προηγούμενα Προγράμματα",
   "layout.release.results": "Αποτελέσματα Κυκλοφορίας",
-  "birthdat.input.title": "Ημερομηνια γεννησης",
+  "birthday.input.title": "Ημερομηνια γεννησης",
   "file.upload.field.button": "Ανέβασμα αρχείου"
 }

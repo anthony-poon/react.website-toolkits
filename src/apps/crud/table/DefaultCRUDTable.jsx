@@ -36,7 +36,7 @@ const NoRowsOverlay = () => {
   return (
     <Stack height="100%" alignItems="center" justifyContent="center">
       <Typography variant="h6" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-        There are currently no data available
+        {t("no.data.available")}
       </Typography>
     </Stack>
   );

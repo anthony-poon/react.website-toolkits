@@ -193,6 +193,6 @@
   "layout.test.schedules": "Расписание тестов",
   "layout.test.pastSchedules": "Прошлые Расписания",
   "layout.release.results": "Выпуск результатов",
-  "birthdat.input.title": "Дата рождения",
+  "birthday.input.title": "Дата рождения",
   "file.upload.field.button": "Загрузить файл"
 }

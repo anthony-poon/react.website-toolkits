@@ -193,6 +193,6 @@
   "layout.test.schedules": "Jadwal Tes",
   "layout.test.pastSchedules": "Jadwal Sebelumnya",
   "layout.release.results": "Rilis hasil",
-  "birthdat.input.title": "Tanggal lahir",
+  "birthday.input.title": "Tanggal lahir",
   "file.upload.field.button": "Unggah data"
 }
