@@ -1,7 +1,6 @@
 import { Add } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import { Box, Card, Stack, Tooltip, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
@@ -13,6 +12,7 @@ import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRe
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import { DefaultTableCell } from "./CRUDTableCell";
 import { ActionBar } from "./components/ActionBar";
@@ -33,6 +33,7 @@ const CustomToolbar = ({ disableToolbar }, props) => {
 };
 
 const NoRowsOverlay = () => {
+  const { t } = useTranslation();
   return (
     <Stack height="100%" alignItems="center" justifyContent="center">
       <Typography variant="h6" style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
@@ -155,7 +156,8 @@ const RowActionButtons = ({ buttons, row }) => {
   return (
     <Box display={"flex"}>
       {buttons.map(({ onClick, isDisplayed, isHidden, isDisabled, ...rest }, index) => {
-        const display = isDisplayed === undefined || (typeof isDisplayed === "function" ? isDisplayed(row) : isDisplayed);
+        const display =
+          isDisplayed === undefined || (typeof isDisplayed === "function" ? isDisplayed(row) : isDisplayed);
         if (!display) {
           return null;
         }
