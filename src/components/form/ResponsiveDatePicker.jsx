@@ -41,7 +41,7 @@ const CompactDatePicker = (props) => {
     <Grid container>
       <Grid item xs>
         <DatePicker
-          format="dd/MM/yy"
+          format="dd/MM/yyyy"
           value={props.value}
           label={props.label}
           onChange={props.onChange}
