@@ -1,10 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type UseLongPollOptions = {
   interval?: number;
 };
 
 export const useLongPoll = (fn: () => Promise<unknown>, option?: UseLongPollOptions) => {
+  // loaded refer only to initial load
+  const [loaded, setLoaded] = useState<boolean>(false);
   const fnRef = useRef(fn);
   useEffect(() => {
     fnRef.current = fn;
@@ -17,6 +19,7 @@ export const useLongPoll = (fn: () => Promise<unknown>, option?: UseLongPollOpti
       try {
         if (canceled) return;
         await fnRef.current();
+        setLoaded(true);
         timeout = setTimeout(poll, option?.interval || 5000);
       } catch (e) {
         canceled = true;
@@ -26,4 +29,6 @@ export const useLongPoll = (fn: () => Promise<unknown>, option?: UseLongPollOpti
     return () => clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  return { loaded };
 };

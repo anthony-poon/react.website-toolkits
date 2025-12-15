@@ -70,6 +70,12 @@ export const StringUtils = {
       if (!(lang in LANG_MAP)) return toTitleCase(lang);
       return LANG_MAP[lang as keyof typeof LANG_MAP];
     },
+    options: () => {
+      return Object.entries(LANG_MAP).map(([key, value]) => ({
+        display: value,
+        value: key,
+      }));
+    },
   },
   abbreviate: (text: string, length: number = 100) => {
     if (!text) {
