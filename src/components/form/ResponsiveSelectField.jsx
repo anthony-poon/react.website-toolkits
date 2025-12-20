@@ -29,7 +29,7 @@ const renderChildrenOrOptions = (children, options = [], required = false) => {
 };
 
 const CompactSelectField = (props) => {
-  const { isError, error, children, label, value, name, onChange, required, options, ...rest } = props;
+  const { isError, error, children, label, value, name, onChange, required, options, isDisabled, ...rest } = props;
   // TODO: implement required and subLabel
   // TODO: Fix label position when label is empty
   return (
@@ -44,6 +44,7 @@ const CompactSelectField = (props) => {
           name={name}
           onChange={onChange}
           label={label}
+          disabled={isDisabled}
           {...rest}>
           {renderChildrenOrOptions(children, options, required)}
         </Select>
@@ -54,7 +55,7 @@ const CompactSelectField = (props) => {
 };
 
 const ExpandedSelectField = (props) => {
-  const { isError, required, error, children, label, subLabel, value, name, onChange, options, ...rest } = props;
+  const { isError, required, error, children, label, subLabel, value, name, onChange, isDisabled, options, ...rest } = props;
   return (
     <Grid container>
       <Grid item sm={3}>
@@ -72,6 +73,7 @@ const ExpandedSelectField = (props) => {
               value={value ? value : ""}
               name={name}
               onChange={onChange}
+              disabled={isDisabled}
               {...rest}>
               {renderChildrenOrOptions(children, options, required)}
             </Select>
@@ -119,4 +121,5 @@ ResponsiveSelectField.propTypes = {
   ),
   onChange: PropTypes.func,
   name: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
