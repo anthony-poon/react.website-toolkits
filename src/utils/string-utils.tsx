@@ -18,6 +18,7 @@ const LANG_MAP = {
 } as const;
 
 const toTitleCase = (input: string) => {
+  if (!input) return "";
   return input
     .replace(/[_-]/g, " ")
     .toLowerCase()
