@@ -273,7 +273,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
       <Card
         sx={{
           width: "100%",
-          height: props.items.length > 0 ? props.height : 400,
+          height: props.items.length > 0 ? props.height : 250,
           boxShadow: "none",
           borderRadius: "8px",
           padding: 2,
