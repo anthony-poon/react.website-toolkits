@@ -190,7 +190,7 @@
   "layout.logout.prompt": "Tem certeza que deseja sair?",
   "layout.header": "Portal do Candidato",
   "layout.menu.admins": "Pessoal do Centro",
-  "layout.test.schedules": "Programações de Testes",
+  "layout.test.sessions": "Programações de Testes",
   "layout.test.pastSchedules": "Horários Passados",
   "layout.release.results": "Liberar Resultadoss",
   "birthday.input.title": "Data de nascimento",

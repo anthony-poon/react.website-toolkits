@@ -190,7 +190,7 @@
   "layout.logout.prompt": "ログアウトしてもよろしいですか?",
   "layout.header": "候補者ポータル",
   "layout.menu.admins": "センター職員",
-  "layout.test.schedules": "テストスケジュール",
+  "layout.test.sessions": "テストスケジュール",
   "layout.test.pastSchedules": "過去のスケジュール",
   "layout.release.results": "結果をリリース",
   "birthday.input.title": "生年月日",

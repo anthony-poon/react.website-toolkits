@@ -190,7 +190,7 @@
   "layout.logout.prompt": "Είστε βέβαιοι ότι θέλετε να αποσυνδεθείτε?",
   "layout.header": "Πύλη υποψηφίων",
   "layout.menu.admins": "Προσωπικό Κέντρου",
-  "layout.test.schedules": "Προγράμματα Δοκιμών",
+  "layout.test.sessions": "Προγράμματα Δοκιμών",
   "layout.test.pastSchedules": "Προηγούμενα Προγράμματα",
   "layout.release.results": "Αποτελέσματα Κυκλοφορίας",
   "birthday.input.title": "Ημερομηνια γεννησης",

@@ -190,7 +190,7 @@
   "layout.logout.prompt": "Вы действительно хотите выйти?",
   "layout.header": "Кандидатский портал",
   "layout.menu.admins": "Персонал центра",
-  "layout.test.schedules": "Расписание тестов",
+  "layout.test.sessions": "Расписание тестов",
   "layout.test.pastSchedules": "Прошлые Расписания",
   "layout.release.results": "Выпуск результатов",
   "birthday.input.title": "Дата рождения",

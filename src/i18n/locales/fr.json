@@ -190,7 +190,7 @@
   "layout.logout.prompt": "Êtes-vous sûr de vouloir vous déconnecter?",
   "layout.header": "Portail des candidats",
   "layout.menu.admins": "Personnel du Centre",
-  "layout.test.schedules": "Calendriers des tests",
+  "layout.test.sessions": "Calendriers des tests",
   "layout.test.pastSchedules": "Horaires Passés",
   "layout.release.results": "Publier les résultats",
   "birthday.input.title": "Date de naissance",

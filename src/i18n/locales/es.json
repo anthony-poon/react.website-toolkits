@@ -190,7 +190,7 @@
   "layout.logout.prompt": "¿Está seguro de que desea cerrar sesión?",
   "layout.header": "Portal de candidatos",
   "layout.menu.admins": "Personal del Centro",
-  "layout.test.schedules": "Horarios de Pruebas",
+  "layout.test.sessions": "Horarios de Pruebas",
   "layout.test.pastSchedules": "Horarios Pasados",
   "layout.release.results": "Liberar resultados",
   "birthday.input.title": "Fecha de nacimiento",

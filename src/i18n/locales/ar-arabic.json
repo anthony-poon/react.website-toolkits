@@ -186,7 +186,7 @@
   "layout.logout.prompt": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "layout.header": "بوابة المرشح",
   "layout.menu.admins": "موظفي المركز",
-  "layout.test.schedules": "جدول الاختبارات",
+  "layout.test.sessions": "جدول الاختبارات",
   "layout.test.pastSchedules": "جدول المواعيد السابقة",
   "layout.release.results": "إصدار النتائج",
   "birthday.input.title": "تاريخ الميلاد",
