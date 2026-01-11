@@ -1,6 +1,8 @@
 import { DateTime } from "luxon";
 import React from "react";
 
+import { StringUtils } from "../../../utils";
+
 export const DefaultTableCell = ({ value }) => {
   return <>{value}</>;
 };
@@ -21,7 +23,8 @@ export const TimeTableCell = ({ value }) => {
 };
 
 export const RelativeDateTableCell = ({ value }) => {
-  //{ setZone: true } does not support zone, only locale
-  const str = value ? DateTime.fromISO(value).setLocale('en').toRelativeCalendar() : "-";
+  const str = value
+    ? StringUtils.toTitleCase(DateTime.fromISO(value, { setZone: true }).setLocale("en").toRelativeCalendar())
+    : "-";
   return <>{str}</>;
 };

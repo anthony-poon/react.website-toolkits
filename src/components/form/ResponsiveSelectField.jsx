@@ -9,14 +9,11 @@ import { FormFieldWrapper } from "./FormFieldWrapper";
 // Ugly work around because Select expect <MenuItem/> as immediate children, React.Fragment will brake it
 // Render children if it is provided, this is for backward compatibility
 // Should use options
-const renderChildrenOrOptions = (children, options = [], required = false) => {
+const renderChildrenOrOptions = (children, options = []) => {
   if (children) {
     return children;
   }
   const rtn = [];
-  if (!required) {
-    rtn.push(<MenuItem value={""} key={""} disabled={true} />);
-  }
   options.forEach(({ display, value, key = null }) =>
     rtn.push(
       <MenuItem value={value} key={key || value}>
@@ -55,7 +52,8 @@ const CompactSelectField = (props) => {
 };
 
 const ExpandedSelectField = (props) => {
-  const { isError, required, error, children, label, subLabel, value, name, onChange, isDisabled, options, ...rest } = props;
+  const { isError, required, error, children, label, subLabel, value, name, onChange, isDisabled, options, ...rest } =
+    props;
   return (
     <Grid container>
       <Grid item sm={3}>
