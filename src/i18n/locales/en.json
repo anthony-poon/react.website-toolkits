@@ -19,7 +19,7 @@
   "test.centre.name": "Test Centre Name",
   "agreement.expiry": "Agreement Expiry",
   "upcoming.tests": "Upcoming Tests",
-  "upcoming.schedule": "Upcoming Schedule",
+  "upcoming.schedule": "Upcoming Test Sessions",
   "register.date": "Register Date",
   "transaction.number": "Transaction No.",
   "completed": "Completed tests",
@@ -151,7 +151,7 @@
   "schedules.data.grid.remaining": "Remaining",
 
   "test.data.grid.header": "PERIOD (Test date)",
-  "test.data.grid.outstanding.tests": "Outstandings Tests",
+  "test.data.grid.outstanding.tests": "Outstandings Tests:",
 
   "list.exam.result.app.header": "Completed Test Results",
   "list.exam.result.download.prompt": "Choose a test to download the Analytics Report and the Certificate (where applicable).",
