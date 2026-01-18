@@ -17,47 +17,43 @@ const LANG_MAP = {
   VIETNAMESE: "Tiếng Việt",
 } as const;
 
-const toTitleCase = (input: string, keepHyphen: boolean = false) => {
+const toTitleCase = (input: string) => {
   if (!input) return "";
-  if (keepHyphen)
-    input = input.replace(/_/g, "-");
-  else
-    input = input.replace(/-_/g, " ");
   return input
+    .replace(/[_-]/g, " ")
     .toLowerCase()
     .replace(/\b\w/g, (c) => c.toUpperCase());
 };
 
+
 export const StringUtils = {
   Level: {
-    toFullName: (level: string, isMock: boolean = true) => {
+    toFullName: (level: string) => {
       if (!level) return "";
-      let desc;
       switch (level) {
         case "M":
         case "LEVEL_M":
+          return "Level 0 Trial – Mock Test";
         case "LEVEL_0":
-          desc= "Level 0 Trial";
-          break;
+          return "Level 0 Trial";
         case "A":
         case "LEVEL_A":
+          return "Level 1 Practitioner – Mock Test";
         case "LEVEL_1":
-          desc= "Level 1 Practitioner";
-          break;
+          return "Level 1 Practitioner";
         case "B":
         case "LEVEL_B":
+          return "Level 2 Professional – Mock Test";
         case "LEVEL_2":
-          desc= "Level 2 Professional";
-          break;
+          return "Level 2 Professional";
         case "C":
         case "LEVEL_C":
+          return "Level 3 Expert – Mock Test";
         case "LEVEL_3":
-          desc= "Level 3 Expert";
-          break;
+          return "Level 3 Expert";
         default:
-          desc= level.toUpperCase().replace(/(LEVEL_)?(\w)/, "Level $1");
+          return level.toUpperCase().replace(/(LEVEL_)?(\w)/, "Level $1");
       }
-      return desc + (isMock ? " – Mock Test" : "");
     },
     toShortName: (level: string) => {
       if (!level) return "";
