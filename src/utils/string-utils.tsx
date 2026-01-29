@@ -25,6 +25,7 @@ const toTitleCase = (input: string) => {
     .replace(/\b\w/g, (c) => c.toUpperCase());
 };
 
+
 export const StringUtils = {
   Level: {
     toFullName: (level: string) => {
@@ -33,15 +34,23 @@ export const StringUtils = {
         case "M":
         case "LEVEL_M":
           return "Level 0 Trial – Mock Test";
+        case "LEVEL_0":
+          return "Level 0 Trial";
         case "A":
         case "LEVEL_A":
           return "Level 1 Practitioner – Mock Test";
+        case "LEVEL_1":
+          return "Level 1 Practitioner";
         case "B":
         case "LEVEL_B":
           return "Level 2 Professional – Mock Test";
+        case "LEVEL_2":
+          return "Level 2 Professional";
         case "C":
         case "LEVEL_C":
           return "Level 3 Expert – Mock Test";
+        case "LEVEL_3":
+          return "Level 3 Expert";
         default:
           return level.toUpperCase().replace(/(LEVEL_)?(\w)/, "Level $1");
       }
