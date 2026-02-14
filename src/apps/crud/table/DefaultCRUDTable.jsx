@@ -77,6 +77,7 @@ const StyledMenu = styled((props) => (
 }));
 
 const WIDTH_MAPPING = {
+  xsmall: 50,
   small: 80,
   medium: 100,
   large: 150,
@@ -93,7 +94,13 @@ const getColDef = (props) => {
       headerName: prop.label,
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) => <Component value={value} />,
+      renderCell: ({ value }) => (
+        <Tooltip title={value != null ? String(value) : ""} disableInteractive enterDelay={500}>
+          <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <Component value={value} />
+          </Box>
+        </Tooltip>
+      ),
       width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
       flex: prop.size === "flex" ? 1 : undefined,
       minWidth: 50,
@@ -295,6 +302,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
+          disableDensitySelector
           density="compact"
           sx={{
             // Set the grid background color to white
@@ -344,7 +352,7 @@ DefaultCRUDTable.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object).isRequired,
   schema: PropTypes.arrayOf(
     PropTypes.shape({
-      size: PropTypes.oneOf(["small", "medium", "large", "xlarge", "xxlarge", "flex"]).isRequired,
+      size: PropTypes.oneOf(["xsmall", "small", "medium", "large", "xlarge", "xxlarge", "flex"]).isRequired,
       label: PropTypes.string.isRequired,
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
