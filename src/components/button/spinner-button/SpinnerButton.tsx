@@ -46,11 +46,12 @@ export const SpinnerButton: React.FC<SpinnerButtonProps> = (props) => {
       onClick={onClick}
       title={title}
       disabled={isDisabled || isError || isLoading}
-      style={
-        isDisabled || isError || isLoading
+      style={{
+        ...(style || {}),
+        ...(isDisabled || isError || isLoading
           ? { color: "grey", background: isLoading ? "white" : "#D3D3D3" }
-          : style
-      }
+          : {}),
+      }}
     >
       {indicator}
       <Box style={{ zIndex: 1 }}>{children}</Box>
@@ -64,11 +65,12 @@ export const SpinnerButton: React.FC<SpinnerButtonProps> = (props) => {
       onClick={onClick}
       title={title}
       disabled={isDisabled || isError || isLoading}
-      style={
-        isDisabled || isError || isLoading
+      style={{
+        ...(style || {}),
+        ...(isDisabled || isError || isLoading
           ? { color: "grey", background: isLoading ? "white" : "#D3D3D3" }
-          : style
-      }
+          : {}),
+      }}
     >
       {indicator}
       <Box style={{ zIndex: 1 }}>{children}</Box>
