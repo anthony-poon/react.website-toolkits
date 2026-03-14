@@ -18,16 +18,11 @@ import { DefaultTableCell } from "./CRUDTableCell";
 import { ActionBar } from "./components/ActionBar";
 
 const CustomToolbar = ({ disableToolbar }, props) => {
+  if (disableToolbar) return null;
   return (
-    <Box display="flex" justifyContent={disableToolbar ? "flex-end" : "space-between"} alignItems="center" width="100%">
-      {disableToolbar ? (
-        <GridPagination {...props} />
-      ) : (
-        <>
-          <GridToolbar />
-          <GridPagination {...props} />
-        </>
-      )}
+    <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
+      <GridToolbar />
+      <GridPagination {...props} />
     </Box>
   );
 };
