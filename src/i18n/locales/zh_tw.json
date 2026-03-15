@@ -60,7 +60,6 @@
   "email": "電子郵件",
   "repeat.password": "重複輸入密碼",
   "login.title": "登入",
-  "login.subtitle": "使用您的電子郵件和密碼",
   "login.forget": "忘記密碼？",
   "login.create": "建立賬戶",
   "download": "下載",
@@ -220,6 +219,5 @@
   "checkout.app.coupon.is.already.consumed": "代碼已被使用。",
   "checkout.app.coupon.applied": "代碼已套用。",
   "checkout.app.coupon.is.already.expired": "代碼已過期。",
-  "exam.pop.up.notice": "為確保您能存取ISTO網站的所有功能，請允許來自我們網站的彈出視窗(pop-up window)。如果您沒有看到彈出窗口，請檢查您的瀏覽器設定並為此網站啟用彈出視窗。",
-  "email.case.sensitive": "電子郵件區分大小寫"
+  "exam.pop.up.notice": "為確保您能存取ISTO網站的所有功能，請允許來自我們網站的彈出視窗(pop-up window)。如果您沒有看到彈出窗口，請檢查您的瀏覽器設定並為此網站啟用彈出視窗。"
 }
