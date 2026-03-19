@@ -120,4 +120,6 @@ ResponsiveSelectField.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string,
   isDisabled: PropTypes.bool,
+  compact: PropTypes.bool,
+  gutter: PropTypes.bool,
 };
