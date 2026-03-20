@@ -134,7 +134,7 @@ const getColDef = (props) => {
     columns?.push({
       minWidth,
       field: "_action1",
-      headerName: "",
+      headerName: props.actionOptions.label || "",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
@@ -147,7 +147,7 @@ const getColDef = (props) => {
     columns?.push({
       minWidth: 300,
       field: "_action2",
-      headerName: "",
+      headerName: props.actionOptions.label || "",
       sortable: false,
       disableColumnMenu: true,
       disableExport: true,
