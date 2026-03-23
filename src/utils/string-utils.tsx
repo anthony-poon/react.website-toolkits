@@ -1,20 +1,23 @@
 const LANG_MAP = {
   ENGLISH: "English",
   ARABIC: "Arabic العربية",
+  CANTONESE: "Cantonese 粵語",
+  CHINESE_SIMPLIFIED: "Chinese 简体",
   CHINESE_TRADITIONAL_HK: "Chinese 繁體 (港)",
   CHINESE_TRADITIONAL_TW: "Chinese 正體 (台)",
-  CHINESE_SIMPLIFIED: "Chinese 简体",
   SPANISH: "Española",
   FRENCH: "Français",
   GREEK: "Greek Ελληνικά",
   INDONESIAN: "Indonesian Bahasa",
   JAPANESE: "Japanese 日本語",
   KOREAN: "Korean 한국인",
+  MANDARIN: "Mandarin 國語",
   PORTUGUESE: "Português",
+  PUTONGHUA: "Putonghua 普通话",
   RUSSIAN: "Russian Русский",
   THAI: "Thai แบบไทย",
-  TURKISH: "Türkçe",
   VIETNAMESE: "Tiếng Việt",
+  TURKISH: "Türkçe",
 } as const;
 
 const toTitleCase = (input: string) => {
@@ -85,6 +88,26 @@ export const StringUtils = {
         display: value,
         value: key,
       }));
+    },
+    examOptions: () => {
+      const order = [
+        "ENGLISH", "ARABIC", "CHINESE_SIMPLIFIED", "CHINESE_TRADITIONAL_HK",
+        "CHINESE_TRADITIONAL_TW", "SPANISH", "FRENCH", "GREEK", "INDONESIAN",
+        "JAPANESE", "KOREAN", "PORTUGUESE", "RUSSIAN", "THAI", "VIETNAMESE", "TURKISH"
+      ];
+      return order
+        .filter(key => key in LANG_MAP)
+        .map(key => ({ display: LANG_MAP[key as keyof typeof LANG_MAP], value: key }));
+    },
+    invigilationOptions: () => {
+      const order = [
+        "ENGLISH", "ARABIC", "CANTONESE", "MANDARIN", "PUTONGHUA",
+        "SPANISH", "FRENCH", "GREEK", "INDONESIAN", "JAPANESE",
+        "KOREAN", "PORTUGUESE", "RUSSIAN", "THAI", "VIETNAMESE", "TURKISH"
+      ];
+      return order
+        .filter(key => key in LANG_MAP)
+        .map(key => ({ display: LANG_MAP[key as keyof typeof LANG_MAP], value: key }));
     },
   },
   abbreviate: (text: string, length: number = 100) => {
