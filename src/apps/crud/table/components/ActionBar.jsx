@@ -20,6 +20,7 @@ export const ActionButton = (props) => {
 };
 
 export const ActionBar = ({ options }) => {
+  if (!options || options.length === 0) return null;
   return (
     <Box pb={2} display={"flex"} justifyContent={"flex-end"}>
       {options.map((option) => {

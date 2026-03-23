@@ -276,7 +276,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           height: props.items.length > 0 ? props.height : 250,
           boxShadow: "none",
           borderRadius: "8px",
-          padding: 2,
+          pt: 0, px: 2, pb: 2,
           backgroundColor: "white",
           overflow: "hidden",
         }}>
