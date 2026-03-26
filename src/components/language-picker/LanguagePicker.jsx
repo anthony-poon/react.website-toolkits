@@ -135,7 +135,7 @@ export const LanguageSelector = ({ textColor = "#222" }) => {
         borderRadius: 99, 
         px: 0, 
       }}
-      defaultValue={"en-gb"}
+      value={selectedLanguage.key}
       disableUnderline
       onChange={(e) => i18n.changeLanguage(e.target.value)}
       renderValue={() => (
