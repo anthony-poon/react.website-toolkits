@@ -20,6 +20,44 @@ const LANG_MAP = {
   TURKISH: "Türkçe",
 } as const;
 
+const EXAM_LANG_MAP_ORDERED: (keyof typeof LANG_MAP)[] = [
+  "ENGLISH",
+  "ARABIC",
+  "CHINESE_SIMPLIFIED",
+  "CHINESE_TRADITIONAL_HK",
+  "CHINESE_TRADITIONAL_TW",
+  "SPANISH",
+  "FRENCH",
+  "GREEK",
+  "INDONESIAN",
+  "JAPANESE",
+  "KOREAN",
+  "PORTUGUESE",
+  "RUSSIAN",
+  "THAI",
+  "VIETNAMESE",
+  "TURKISH",
+];
+
+const INVIGILATION_LANG_MAP_ORDERED: (keyof typeof LANG_MAP)[] = [
+  "ENGLISH",
+  "ARABIC",
+  "CANTONESE",
+  "MANDARIN",
+  "PUTONGHUA",
+  "SPANISH",
+  "FRENCH",
+  "GREEK",
+  "INDONESIAN",
+  "JAPANESE",
+  "KOREAN",
+  "PORTUGUESE",
+  "RUSSIAN",
+  "THAI",
+  "VIETNAMESE",
+  "TURKISH",
+];
+
 const toTitleCase = (input: string) => {
   if (!input) return "";
   return input
@@ -27,7 +65,6 @@ const toTitleCase = (input: string) => {
     .toLowerCase()
     .replace(/\b\w/g, (c) => c.toUpperCase());
 };
-
 
 export const StringUtils = {
   Level: {
@@ -83,31 +120,18 @@ export const StringUtils = {
       if (!(lang in LANG_MAP)) return toTitleCase(lang);
       return LANG_MAP[lang as keyof typeof LANG_MAP];
     },
-    options: () => {
-      return Object.entries(LANG_MAP).map(([key, value]) => ({
-        display: value,
-        value: key,
-      }));
-    },
-    examOptions: () => {
-      const order = [
-        "ENGLISH", "ARABIC", "CHINESE_SIMPLIFIED", "CHINESE_TRADITIONAL_HK",
-        "CHINESE_TRADITIONAL_TW", "SPANISH", "FRENCH", "GREEK", "INDONESIAN",
-        "JAPANESE", "KOREAN", "PORTUGUESE", "RUSSIAN", "THAI", "VIETNAMESE", "TURKISH"
-      ];
-      return order
-        .filter(key => key in LANG_MAP)
-        .map(key => ({ display: LANG_MAP[key as keyof typeof LANG_MAP], value: key }));
-    },
-    invigilationOptions: () => {
-      const order = [
-        "ENGLISH", "ARABIC", "CANTONESE", "MANDARIN", "PUTONGHUA",
-        "SPANISH", "FRENCH", "GREEK", "INDONESIAN", "JAPANESE",
-        "KOREAN", "PORTUGUESE", "RUSSIAN", "THAI", "VIETNAMESE", "TURKISH"
-      ];
-      return order
-        .filter(key => key in LANG_MAP)
-        .map(key => ({ display: LANG_MAP[key as keyof typeof LANG_MAP], value: key }));
+    options: (type: "exam" | "invigilation") => {
+      if (type === "exam") {
+        return EXAM_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
+          display: LANG_MAP[key],
+          value: key,
+        }));
+      } else {
+        return INVIGILATION_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
+          display: LANG_MAP[key],
+          value: key,
+        }));
+      }
     },
   },
   abbreviate: (text: string, length: number = 100) => {
