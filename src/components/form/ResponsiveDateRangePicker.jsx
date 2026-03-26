@@ -36,6 +36,7 @@ export const ResponsiveDateRangePicker = (props) => {
           name={"startDate"}
           value={props.value.startDate}
           onChange={handleChange}
+          minDate={props.minDate}
         />
       </Grid>
       <Grid item xs={0.5}>
@@ -48,6 +49,7 @@ export const ResponsiveDateRangePicker = (props) => {
           name={"endDate"}
           value={props.value.endDate}
           onChange={handleChange}
+          minDate={props.minDate}
         />
       </Grid>
     </Grid>

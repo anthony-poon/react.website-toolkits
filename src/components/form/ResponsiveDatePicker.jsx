@@ -23,6 +23,7 @@ const ExpandedDatePicker = (props) => {
             format="dd/MM/yy"
             value={props.value}
             onChange={props.onChange}
+            minDate={props.minDate}
             slotProps={{
               textField: {
                 variant: "standard",
@@ -45,6 +46,7 @@ const CompactDatePicker = (props) => {
           value={props.value}
           label={props.label}
           onChange={props.onChange}
+          minDate={props.minDate}
           slotProps={{
             textField: {
               variant: "standard",
