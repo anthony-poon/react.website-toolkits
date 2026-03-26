@@ -1,21 +1,62 @@
 const LANG_MAP = {
   ENGLISH: "English",
   ARABIC: "Arabic العربية",
+  CANTONESE: "Cantonese 粵語",
+  CHINESE_SIMPLIFIED: "Chinese 简体",
   CHINESE_TRADITIONAL_HK: "Chinese 繁體 (港)",
   CHINESE_TRADITIONAL_TW: "Chinese 正體 (台)",
-  CHINESE_SIMPLIFIED: "Chinese 简体",
   SPANISH: "Española",
   FRENCH: "Français",
   GREEK: "Greek Ελληνικά",
   INDONESIAN: "Indonesian Bahasa",
   JAPANESE: "Japanese 日本語",
   KOREAN: "Korean 한국인",
+  MANDARIN: "Mandarin 國語",
   PORTUGUESE: "Português",
+  PUTONGHUA: "Putonghua 普通话",
   RUSSIAN: "Russian Русский",
   THAI: "Thai แบบไทย",
-  TURKISH: "Türkçe",
   VIETNAMESE: "Tiếng Việt",
+  TURKISH: "Türkçe",
 } as const;
+
+const EXAM_LANG_MAP_ORDERED: (keyof typeof LANG_MAP)[] = [
+  "ENGLISH",
+  "ARABIC",
+  "CHINESE_SIMPLIFIED",
+  "CHINESE_TRADITIONAL_HK",
+  "CHINESE_TRADITIONAL_TW",
+  "SPANISH",
+  "FRENCH",
+  "GREEK",
+  "INDONESIAN",
+  "JAPANESE",
+  "KOREAN",
+  "PORTUGUESE",
+  "RUSSIAN",
+  "THAI",
+  "VIETNAMESE",
+  "TURKISH",
+];
+
+const INVIGILATION_LANG_MAP_ORDERED: (keyof typeof LANG_MAP)[] = [
+  "ENGLISH",
+  "ARABIC",
+  "CANTONESE",
+  "MANDARIN",
+  "PUTONGHUA",
+  "SPANISH",
+  "FRENCH",
+  "GREEK",
+  "INDONESIAN",
+  "JAPANESE",
+  "KOREAN",
+  "PORTUGUESE",
+  "RUSSIAN",
+  "THAI",
+  "VIETNAMESE",
+  "TURKISH",
+];
 
 const toTitleCase = (input: string) => {
   if (!input) return "";
@@ -24,7 +65,6 @@ const toTitleCase = (input: string) => {
     .toLowerCase()
     .replace(/\b\w/g, (c) => c.toUpperCase());
 };
-
 
 export const StringUtils = {
   Level: {
@@ -80,11 +120,18 @@ export const StringUtils = {
       if (!(lang in LANG_MAP)) return toTitleCase(lang);
       return LANG_MAP[lang as keyof typeof LANG_MAP];
     },
-    options: () => {
-      return Object.entries(LANG_MAP).map(([key, value]) => ({
-        display: value,
-        value: key,
-      }));
+    options: (type: "exam" | "invigilation") => {
+      if (type === "exam") {
+        return EXAM_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
+          display: LANG_MAP[key],
+          value: key,
+        }));
+      } else {
+        return INVIGILATION_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
+          display: LANG_MAP[key],
+          value: key,
+        }));
+      }
     },
   },
   abbreviate: (text: string, length: number = 100) => {
