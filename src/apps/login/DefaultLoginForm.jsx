@@ -33,7 +33,6 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
     <CardWithIcon
       icon={<LockOpenIcon style={{ fontSize: 32 }} color={"primary"} />}
       title={t("login.title")}
-      subtitle={t("login.subtitle")}
       message={message}
       >
       <form>
@@ -51,7 +50,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             name={"username"}
             type={"email"}
             onChange={handleFormChange}
-            subLabel={<span style={{ fontStyle: "italic" }}>{t("email.case.sensitive")}</span>}
+
           />
           <ResponsivePasswordField
             compact={true}

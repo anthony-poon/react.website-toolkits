@@ -67,7 +67,7 @@
   "email": "Email",
   "repeat.password": "Repeat Password",
   "login.title": "Login",
-  "login.subtitle": "Using your email and password",
+
   "login.forget": "Forgot password?",
   "login.create": "Create account",
   "download": "Download",
@@ -111,11 +111,11 @@
   "button.next": "NEXT",
 
   "email.confirmation.app.email.confirmed.prompt": "Email confirmed. Please login.",
-  "email.confirm.success.prompt": "Your email has been successfully verified. Please proceed to log in on the following screen to continue.",
+  "email.confirm.success.prompt": "Your email has been verified. Please log in to continue.",
   "signup.app.not.matching.prompt": "Passwords do not match. Please verify.",
   "signup.app.create.account": "Create account",
   "signup.app.using.your.email": "Using your email",
-  "signup.app.prompt": "Your account has been successfully created. Kindly check your email for instructions on activating your account using the provided link.",
+  "signup.app.prompt": "Thank you for registering. Please click on the verification link in your mailbox and complete the setup.",
 
   "batch.change.app.batch.change": "Batch Change",
   "batch.change.app.available.slots": "Available slots",
@@ -298,7 +298,7 @@
   "file.upload.field.button": "Upload File",
 
   "exam.pop.up.notice": "To ensure you access all features of the ISTO Test Portal, please allow pop-ups from our site. If you don't see a pop-up, please check your browser settings and enable pop-ups for this site.",
-  "email.case.sensitive": "Email is case sensitive",
+
   "invigilation.language": "Invigilation Language",
   "create.test.sessions": "Create Test Sessions",
 
