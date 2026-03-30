@@ -95,7 +95,7 @@ const getColDef = (props) => {
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
       renderCell: ({ value }) => (
-        <Tooltip title={value != null ? String(value) : ""} disableInteractive enterDelay={500}>
+        <Tooltip title={value != null ? <Component value={value} /> : ""} disableInteractive enterDelay={500}>
           <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             <Component value={value} />
           </Box>
@@ -183,7 +183,9 @@ const RowActionButtons = ({ buttons, row }) => {
 const RowActionButton = ({ text, icon, onClick, tooltips, isDisabled, color }) => {
   const Icon = icon;
   let content;
-  if (icon) {
+  if (icon && text) {
+    content = <><Icon sx={{ fontSize: "1.5em", verticalAlign: "middle", mr: 0.5 }} color={color} />{text}</>;
+  } else if (icon) {
     content = <Icon fontSize="inherit" color={color} />;
   } else {
     content = <>{text}</>;

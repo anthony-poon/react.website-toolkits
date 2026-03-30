@@ -153,7 +153,7 @@
   "test.data.grid.header": "PERIOD (Test date)",
   "test.data.grid.outstanding.tests": "Outstandings Tests:",
 
-  "list.exam.result.app.header": "Completed Test Results",
+  "list.exam.result.app.header": "Test Results",
   "list.exam.result.download.prompt": "Choose a test to download the Analytics Report and the Certificate (where applicable).",
   "list.exam.result.download.view.cert": "View Certificate",
 
