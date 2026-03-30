@@ -5,7 +5,6 @@ export const AdminTableContainer = ({ children, sx, ...rest }: BoxProps) => (
   <Box
     sx={{
       "& .MuiDataGrid-toolbarContainer": { order: 2 },
-      {/* !important needed to override DataGrid's inline styles */}
       "& .MuiTablePagination-spacer": { display: "none !important" },
       "& .MuiTablePagination-toolbar": { paddingLeft: "0 !important" },
       ...sx,
