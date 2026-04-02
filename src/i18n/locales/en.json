@@ -132,6 +132,7 @@
   "completed.test.data.grid.test.code": "Test Code",
   "completed.test.data.grid.cert": "CERTIFICATE",
   "completed.test.data.grid.report": "REPORT",
+  "completed.test.data.grid.badge": "BADGE",
   "completed.test.data.grid.id.verified": "ID verified",
   "completed.test.data.grid.behavior": "Behaviour",
   "completed.test.data.grid.completed.tests": "Completed Tests",
@@ -153,8 +154,9 @@
   "test.data.grid.header": "PERIOD (Test date)",
   "test.data.grid.outstanding.tests": "Outstandings Tests:",
 
-  "list.exam.result.app.header": "Completed Test Results",
-  "list.exam.result.download.prompt": "Choose a test to download the Analytics Report and the Certificate (where applicable).",
+  "list.exam.result.app.header": "Test Results",
+  "list.exam.result.download.prompt": "Review your test results and download your A·C·C·U·R·A·T·E Analytics Report.",
+  "list.exam.result.download.prompt.certificate": "Candidates who pass the official Test of Understanding may also download their certificate and share their LinkedIn badge.",
   "list.exam.result.download.view.cert": "View Certificate",
 
   "list.appointment.app.test.date.updated": "Test Date updated",
