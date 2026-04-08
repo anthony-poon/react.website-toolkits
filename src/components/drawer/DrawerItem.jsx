@@ -12,11 +12,11 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
    <ListItemText primary={text} 
          sx={{
             ...(active ? { color: theme.palette.primary.main, fontWeight: 600 } : { color: "#222" }),
-            ...((!icon) && { ml: 2 })
+            ...((!icon) && { ml: 4 })
          }}
          primaryTypographyProps={{
           sx: {
-            whiteSpace: 'nowrap', lineHeight: 1.2,
+            whiteSpace: 'nowrap', lineHeight: 1.2, fontSize: '14px',
             display: 'block'
           }
       }}
@@ -37,7 +37,7 @@ export const DrawerItem = ({ icon, text, url, disabled, children, active }) => {
           : undefined
       }
     >
-      {icon? <ListItemIcon>{icon}</ListItemIcon> : ""}
+      {icon? <ListItemIcon sx={{ minWidth: 28, "& svg": { fontSize: 15 } }}>{icon}</ListItemIcon> : ""}
       {render}
     </ListItemButton>
   );

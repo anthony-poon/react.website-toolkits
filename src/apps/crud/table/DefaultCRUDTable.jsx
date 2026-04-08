@@ -282,7 +282,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
       <Card
         sx={{
           width: "100%",
-          height: props.items.length > 0 ? props.height : 250,
+          height: props.items.length > 0 ? props.height : 350,
           boxShadow: "none",
           borderRadius: "8px",
           pt: 0, px: 2, pb: 2,
@@ -300,7 +300,7 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
           pageSizeOptions={[props.countPerPage]}
           slots={{
             toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} />,
-            noRowsOverlay: NoRowsOverlay,
+            noRowsOverlay: props.noRowsOverlay || NoRowsOverlay,
           }}
           checkboxSelection={props.checkboxSelection}
           disableRowSelectionOnClick={props.disableRowSelectionOnClick}
