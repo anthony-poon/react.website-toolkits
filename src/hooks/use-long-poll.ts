@@ -26,7 +26,10 @@ export const useLongPoll = (fn: () => Promise<unknown>, option?: UseLongPollOpti
       }
     };
     poll();
-    return () => clearTimeout(timeout);
+    return () => {
+      canceled = true;
+      clearTimeout(timeout);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
