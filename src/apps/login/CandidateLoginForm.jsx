@@ -2,22 +2,14 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import {
-  Box,
-  Button,
-  IconButton,
-  InputAdornment,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, Link, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
 import { AsyncButton } from "../../components";
 import { makeFormData } from "../../hooks";
-import { ISTO_PRIMARY, ISTO_DARK } from "./colors";
+import { ISTO_DARK, ISTO_PRIMARY } from "./colors";
 
 const useFormData = makeFormData({
   username: "",
@@ -85,7 +77,7 @@ export const CandidateLoginForm = ({
         </Typography>
       )}
 
-      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+      <form onSubmit={handleSubmit}>
         <Box sx={styles.fieldBlock}>
           <Box sx={styles.fieldLabelRow}>
             <Box component="label" htmlFor="login-email" sx={styles.fieldLabel}>
@@ -119,11 +111,7 @@ export const CandidateLoginForm = ({
               {t("password")}
             </Box>
             {forgotPasswordLink && (
-              <Link
-                component={RouterLink}
-                to={forgotPasswordLink}
-                sx={styles.forgotLink}
-              >
+              <Link component={RouterLink} to={forgotPasswordLink} sx={styles.forgotLink}>
                 {t("login.forget")}
               </Link>
             )}
@@ -150,13 +138,8 @@ export const CandidateLoginForm = ({
                     aria-label="toggle password visibility"
                     size="small"
                     onClick={() => setShowPassword((s) => !s)}
-                    edge="end"
-                  >
-                    {showPassword ? (
-                      <VisibilityOff sx={{ fontSize: 18 }} />
-                    ) : (
-                      <Visibility sx={{ fontSize: 18 }} />
-                    )}
+                    edge="end">
+                    {showPassword ? <VisibilityOff sx={{ fontSize: 18 }} /> : <Visibility sx={{ fontSize: 18 }} />}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -168,12 +151,7 @@ export const CandidateLoginForm = ({
         <Box id="recaptcha" sx={styles.recaptcha} />
 
         <Box sx={{ mt: 2 }}>
-          <AsyncButton
-            fullWidth
-            size="large"
-            type="submit"
-            style={{ textTransform: "none" }}
-          >
+          <AsyncButton fullWidth size="large" type="submit" style={{ textTransform: "none" }} onClick={handleSubmit}>
             {t("login.title")}
           </AsyncButton>
         </Box>
@@ -187,13 +165,7 @@ export const CandidateLoginForm = ({
           <Typography component="p" sx={styles.dividerBody}>
             {t("login.newToIsto.body")}
           </Typography>
-          <Button
-            component={RouterLink}
-            to={signUpLink}
-            variant="outlined"
-            fullWidth
-            sx={styles.createButton}
-          >
+          <Button component={RouterLink} to={signUpLink} variant="outlined" fullWidth sx={styles.createButton}>
             {t("login.create")}
           </Button>
         </Box>
