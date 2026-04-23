@@ -202,7 +202,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     flex: 1,
-    minHeight: "100%",
+    minHeight: "100dvh",
   },
   split: {
     display: "flex",
@@ -216,12 +216,12 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    p: "48px",
+    p: { xs: "24px 20px", sm: "32px", md: "48px" },
     bgcolor: "#fff",
   },
   loginFormWrap: {
-    width: 380,
-    maxWidth: "100%",
+    width: "100%",
+    maxWidth: 380,
   },
   ctaSide: {
     width: 560,
