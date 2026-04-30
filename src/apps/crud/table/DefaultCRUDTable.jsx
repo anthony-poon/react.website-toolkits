@@ -94,16 +94,20 @@ const getColDef = (props) => {
       headerName: prop.label,
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) =>
-        prop.disableTooltip ? (
-          <Component value={value} />
+      renderCell: ({ value }) => {
+        const cell = (
+          <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <Component value={value} />
+          </Box>
+        );
+        return prop.disableTooltip ? (
+          cell
         ) : (
           <Tooltip title={value != null ? <Component value={value} /> : ""} disableInteractive enterDelay={500}>
-            <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-              <Component value={value} />
-            </Box>
+            {cell}
           </Tooltip>
-        ),
+        );
+      },
       width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
       flex: prop.size === "flex" ? 1 : undefined,
       minWidth: 50,
