@@ -94,13 +94,16 @@ const getColDef = (props) => {
       headerName: prop.label,
       sortable: prop.sortable,
       disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) => (
-        <Tooltip title={value != null ? <Component value={value} /> : ""} disableInteractive enterDelay={500}>
-          <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            <Component value={value} />
-          </Box>
-        </Tooltip>
-      ),
+      renderCell: ({ value }) =>
+        prop.disableTooltip ? (
+          <Component value={value} />
+        ) : (
+          <Tooltip title={value != null ? <Component value={value} /> : ""} disableInteractive enterDelay={500}>
+            <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <Component value={value} />
+            </Box>
+          </Tooltip>
+        ),
       width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
       flex: prop.size === "flex" ? 1 : undefined,
       minWidth: 50,
@@ -359,6 +362,7 @@ DefaultCRUDTable.propTypes = {
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
       component: PropTypes.elementType,
+      disableTooltip: PropTypes.bool,
     }),
   ).isRequired,
   countPerPage: PropTypes.number,
