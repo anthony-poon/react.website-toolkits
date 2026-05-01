@@ -125,11 +125,13 @@ export const StringUtils = {
         return EXAM_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
           display: LANG_MAP[key],
           value: key,
+          key,
         }));
       } else {
         return INVIGILATION_LANG_MAP_ORDERED.filter((key) => key in LANG_MAP).map((key) => ({
           display: LANG_MAP[key],
           value: key,
+          key,
         }));
       }
     },
