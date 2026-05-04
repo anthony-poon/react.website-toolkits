@@ -2,7 +2,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { Box } from "@mui/material";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -19,15 +19,6 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
   const { formData, handleFormChange } = useFormData();
   const { username, password } = formData;
 
-  useEffect(() => {
-    if (!recaptcha) {
-      return;
-    }
-    // eslint-disable-next-line no-undef
-    grecaptcha.render(document.getElementById("recaptcha"), {
-      sitekey: recaptcha,
-    });
-  }, [recaptcha]);
   const handleSubmit = () => onSubmit({ username, password });
   return (
     <CardWithIcon
@@ -61,7 +52,7 @@ export const DefaultLoginForm = ({ error, forgotPasswordLink, signUpLink, onSubm
             onChange={handleFormChange}
           />
         </Box>
-        <Box mb={2} id={"recaptcha"} display="flex" justifyContent="center" />
+        { recaptcha }
         <Box mb={2}>
           <AsyncButton
             fullWidth
