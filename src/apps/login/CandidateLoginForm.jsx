@@ -3,7 +3,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Box, Button, IconButton, InputAdornment, Link, TextField, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -42,16 +42,6 @@ export const CandidateLoginForm = ({
   const [showPassword, setShowPassword] = useState(false);
 
   const handleInput = (evt) => handleFormChange(evt.target.name, evt.target.value);
-
-  useEffect(() => {
-    if (!recaptcha) {
-      return;
-    }
-    // eslint-disable-next-line no-undef
-    grecaptcha.render(document.getElementById("recaptcha"), {
-      sitekey: recaptcha,
-    });
-  }, [recaptcha]);
 
   const handleSubmit = () => onSubmit({ username, password });
 
@@ -148,8 +138,7 @@ export const CandidateLoginForm = ({
           />
         </Box>
 
-        <Box id="recaptcha" sx={styles.recaptcha} />
-
+        {recaptcha}
         <Box sx={{ mt: 2 }}>
           <AsyncButton fullWidth size="large" type="submit" style={{ textTransform: "none" }} onClick={handleSubmit}>
             {t("login.title")}

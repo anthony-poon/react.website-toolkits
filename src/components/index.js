@@ -9,3 +9,4 @@ export * from "./chip";
 export * from "./form";
 export * from "./notification";
 export * from "./language-picker";
+export * from "./Recaptcha";
