@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { alpha, styled } from "@mui/material/styles";
-import { DataGrid, GridPagination, GridToolbar, gridDateComparator, useGridApiRef } from "@mui/x-data-grid";
+import { DataGrid, GridPagination, GridToolbar, useGridApiRef } from "@mui/x-data-grid";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
@@ -86,28 +86,38 @@ const WIDTH_MAPPING = {
 };
 
 const getColDef = (props) => {
-  const columns = props.schema?.map((prop) => {
-    const Component = prop.component ? prop.component : DefaultTableCell;
+  const columns = props.schema?.map((schema) => {
+    const Component = schema.component ? schema.component : DefaultTableCell;
     const def = {
       sortingOrder: ["desc", "asc"],
-      field: prop.key,
-      headerName: prop.label,
-      sortable: prop.sortable,
-      disableColumnMenu: prop.disableColumnMenu,
-      renderCell: ({ value }) => (
-        <Tooltip title={value != null ? <Component value={value} /> : ""} disableInteractive enterDelay={500}>
-          <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-            <Component value={value} />
-          </Box>
-        </Tooltip>
-      ),
-      width: prop.size === "flex" ? undefined : WIDTH_MAPPING[prop.size] || 50,
-      flex: prop.size === "flex" ? 1 : undefined,
+      field: schema.key,
+      headerName: schema.label,
+      sortable: schema.sortable,
+      disableColumnMenu: schema.disableColumnMenu,
+      renderCell: ({ value }) => {
+        const ttValue = typeof schema.tooltip === "function" ? schema.tooltip(value) : schema.tooltip;
+        if (!ttValue) {
+          return (
+            <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <Component value={value} />
+            </Box>
+          )
+        }
+        return (
+          <Tooltip title={typeof ttValue === "boolean" ? value : ttValue} disableInteractive enterDelay={500}>
+            <Box sx={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <Component value={value} />
+            </Box>
+          </Tooltip>
+        )
+      },
+      width: schema.size === "flex" ? undefined : WIDTH_MAPPING[schema.size] || 50,
+      flex: schema.size === "flex" ? 1 : undefined,
       minWidth: 50,
     };
 
-    if (props.isDateTime) {
-      def.sortComparator = gridDateComparator;
+    if (schema.comparator) {
+      def.sortComparator = schema.comparator;
     }
     return def;
   });
@@ -359,6 +369,8 @@ DefaultCRUDTable.propTypes = {
       key: PropTypes.string.isRequired,
       sortable: PropTypes.bool,
       component: PropTypes.elementType,
+      comparator: PropTypes.func,
+      tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.bool]),
     }),
   ).isRequired,
   countPerPage: PropTypes.number,
