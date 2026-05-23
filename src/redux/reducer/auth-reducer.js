@@ -1,9 +1,11 @@
 import { REHYDRATE } from "redux-persist";
 
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_REAUTHENTICATE } from "../action";
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_REAUTHENTICATE, AUTH_SITE_KEY_SET } from "../action";
 
-const initState = Object.freeze({
+const initState = {
   version: null,
+  siteKey: null,
+  siteKeyExpireAt: null,
   isLoggedIn: false,
   role: null,
   accessToken: null,
@@ -17,7 +19,7 @@ const initState = Object.freeze({
   // redux-thunk or etc, and I dont know how I feels about that
   userInfo: {},
   isTesting: false,
-});
+};
 
 const parseToken = (token) => {
   const claims = JSON.parse(atob(token.split(".")[1]));
@@ -54,21 +56,27 @@ export const authReducer = (state = { ...initState }, action) => {
       try {
         // Invalidate old cache on code update
         if (action.payload.authorization.version !== REHYDRATION_VERSION) {
-          return { ...initState };
+          return Object.assign({}, initState);
         }
+        console.log(action.payload.authorization);
         // If refresh token expired, discard old state and require login
         const now = new Date().getTime() / 1000;
         const { refreshTokenExpireAt } = action.payload.authorization;
+        let newState;
         if (now > refreshTokenExpireAt) {
           console.log("refreshToken expired");
-          return {
-            ...initState,
-          };
+          newState = Object.assign({}, initState);
+        } else {
+          newState = Object.assign({}, action.payload.authorization);
         }
+        console.log(newState, action.payload.authorization);
         // If only accessToken expired, next API call will refresh the token
-        return {
-          ...action.payload.authorization,
-        };
+        const isSiteKeyExpired = now > action.payload.authorization.siteKeyExpireAt;
+        if (isSiteKeyExpired) {
+          newState.siteKey = null;
+          newState.siteKeyExpireAt = null;
+        }
+        return newState;
       } catch (e) {
         console.error(`Schema error when rehydrating authorization. message=${e.message}`);
         return {
@@ -80,6 +88,7 @@ export const authReducer = (state = { ...initState }, action) => {
       const { authorities, expireAt: accessTokenExpireAt } = parseToken(accessToken);
       const { expireAt: refreshTokenExpireAt } = parseToken(refreshToken);
       return {
+        ...state,
         version: REHYDRATION_VERSION,
         isLoggedIn: true,
         role: getEffectiveRole(authorities),
@@ -99,6 +108,14 @@ export const authReducer = (state = { ...initState }, action) => {
         ...state,
         reauthToken: action.payload.token,
         reauthTokenExpireAt: claims.expireAt,
+      };
+    case AUTH_SITE_KEY_SET:
+      const siteKey = action.payload.siteKey;
+      const siteKeyExpireAt = new Date().getTime() / 1000 + 86400; // 1 day
+      return {
+        ...state,
+        siteKey,
+        siteKeyExpireAt,
       };
     default:
       return state;

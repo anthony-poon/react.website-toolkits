@@ -1,6 +1,7 @@
 export const AUTH_LOGIN = "AUTH_LOGIN";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
 export const AUTH_REAUTHENTICATE = "AUTH_REAUTHENTICATE";
+export const AUTH_SITE_KEY_SET = "AUTH_SITE_KEY_SET";
 
 export const loginAction = ({ role, accessToken, refreshToken, userInfo }) => {
   return {
@@ -20,6 +21,15 @@ export const reauthenticateAction = (token) => {
     type: AUTH_REAUTHENTICATE,
     payload: {
       token,
+    },
+  };
+};
+
+export const setSiteKeyAction = (siteKey) => {
+  return {
+    type: AUTH_SITE_KEY_SET,
+    payload: {
+      siteKey,
     },
   };
 };
