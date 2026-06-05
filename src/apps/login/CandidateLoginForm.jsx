@@ -10,6 +10,7 @@ import { Link as RouterLink } from "react-router-dom";
 import { AsyncButton } from "../../components";
 import { makeFormData } from "../../hooks";
 import { ISTO_DARK, ISTO_PRIMARY } from "./colors";
+import { SHORT_VP } from "./SplitLoginLayout";
 
 const useFormData = makeFormData({
   username: "",
@@ -139,7 +140,7 @@ export const CandidateLoginForm = ({
         </Box>
 
         {recaptcha}
-        <Box sx={{ mt: 2 }}>
+        <Box sx={{ mt: 2, [SHORT_VP]: { mt: 1 } }}>
           <AsyncButton fullWidth size="large" type="submit" style={{ textTransform: "none" }} onClick={handleSubmit}>
             {t("login.title")}
           </AsyncButton>
@@ -172,6 +173,7 @@ const styles = {
   },
   fieldBlock: {
     mb: 2,
+    [SHORT_VP]: { mb: 1 },
   },
   fieldLabelRow: {
     display: "flex",
@@ -218,6 +220,7 @@ const styles = {
     py: "5px",
     borderRadius: "2px",
     mb: 2.5,
+    [SHORT_VP]: { mb: 1 },
   },
   title: {
     fontSize: 22,
@@ -231,6 +234,7 @@ const styles = {
     color: "#5F6368",
     m: 0,
     mb: 2.5,
+    [SHORT_VP]: { mb: 1.25 },
   },
   recaptcha: {
     mt: 2,
@@ -247,6 +251,7 @@ const styles = {
     mt: 3,
     pt: 2.5,
     borderTop: "1px solid #F0F1F3",
+    [SHORT_VP]: { mt: 1.5, pt: 1.5 },
   },
   dividerHeading: {
     fontSize: 13,
