@@ -58,7 +58,6 @@ export const authReducer = (state = { ...initState }, action) => {
         if (action.payload.authorization.version !== REHYDRATION_VERSION) {
           return Object.assign({}, initState);
         }
-        console.log(action.payload.authorization);
         // If refresh token expired, discard old state and require login
         const now = new Date().getTime() / 1000;
         const { refreshTokenExpireAt } = action.payload.authorization;
@@ -69,7 +68,6 @@ export const authReducer = (state = { ...initState }, action) => {
         } else {
           newState = Object.assign({}, action.payload.authorization);
         }
-        console.log(newState, action.payload.authorization);
         // If only accessToken expired, next API call will refresh the token
         const isSiteKeyExpired = now > action.payload.authorization.siteKeyExpireAt;
         if (isSiteKeyExpired) {
