@@ -19,15 +19,9 @@ import { ActionBar } from "./components/ActionBar";
 
 const CustomToolbar = ({ disableToolbar }, props) => {
   return (
-    <Box display="flex" justifyContent={disableToolbar ? "flex-end" : "space-between"} alignItems="center" width="100%">
-      {disableToolbar ? (
-        <GridPagination {...props} />
-      ) : (
-        <>
-          <GridToolbar />
-          <GridPagination {...props} />
-        </>
-      )}
+    <Box display="flex" justifyContent={disableToolbar ? "flex-end" : "space-between"} alignItems="center" gap={1} width="100%">
+      <GridPagination {...props} />
+      {!disableToolbar && <GridToolbar />}
     </Box>
   );
 };
@@ -83,6 +77,16 @@ const WIDTH_MAPPING = {
   large: 150,
   xlarge: 200,
   xxlarge: 300,
+};
+
+// Sum of all column widths so the table (and its right-aligned toolbar) can size to
+// its content rather than the viewport. Returns null when any column flexes — then the
+// grid must fill its container and the content width is indeterminate.
+const getContentWidth = (columns) => {
+  if (columns.some((col) => col.flex)) {
+    return null;
+  }
+  return columns.reduce((sum, col) => sum + Math.max(col.width ?? 100, col.minWidth ?? 0), 0);
 };
 
 const getColDef = (props) => {
@@ -286,12 +290,20 @@ const CustomizedMenus = (props) => {
 
 export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], ...props }) => {
   const { ref } = useOnMount(props);
+  const columns = getColDef(props);
+  const contentWidth = getContentWidth(columns);
+  // Card has px: 2 (16px each side) — add it so the grid's content box fits the columns exactly.
+  const cardWidth = contentWidth != null ? contentWidth + 32 : "100%";
   return (
     <Box>
       <ActionBar options={getActionBarOptions(props)} />
       <Card
         sx={{
+          // Cap the table at its content width (sum of columns) so the toolbar tracks the
+          // last column's edge on narrow tables; width:100% keeps wide tables filling the
+          // available area and scrolling internally — the page never scrolls horizontally.
           width: "100%",
+          maxWidth: cardWidth,
           height: props.items.length > 0 ? props.height : 350,
           boxShadow: "none",
           borderRadius: "8px",
@@ -304,9 +316,9 @@ export const DefaultCRUDTable = ({ sortModel = [{ field: "id", sort: "asc" }], .
             sorting: { sortModel },
           }}
           apiRef={ref}
-          columns={getColDef(props)}
+          columns={columns}
           rows={props.items}
-          hideFooter={props.items?.length <= props.countPerPage}
+          hideFooter
           pageSizeOptions={[props.countPerPage]}
           slots={{
             toolbar: (toolbarProps) => <CustomToolbar {...toolbarProps} {...props} />,
