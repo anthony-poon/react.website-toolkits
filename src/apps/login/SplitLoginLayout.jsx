@@ -1,6 +1,6 @@
 import { Box, Link } from "@mui/material";
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import {
   ISTO_PRIMARY,
   CTA_LIGHT_BG,
@@ -9,10 +9,6 @@ import {
   CTA_LIGHT_BORDER,
   RP_TEXT,
   RP_TEXT_SOFT,
-  CHIP_LIGHT_BG,
-  CHIP_LIGHT_BORDER,
-  CHIP_UPGRADING_BG,
-  CHIP_UPGRADING_BORDER,
   CHIP_UPGRADING_TEXT,
   RULE_LIGHT,
   GOLD_BRIGHT,
@@ -24,11 +20,17 @@ import {
 export const SHORT_VP = "@media (max-height:700px)";
 const TALL_VP = "@media (min-height:700px)";
 const SHORT_VP_TALLISH = "@media (max-height:700px) and (min-height:561px)";
+// Compact CTA panel for ~125%+ zoom on laptop screens, so the whole panel
+// fits above the fold in every locale.
+const COMPACT_VP = "@media (max-height:600px)";
+const HEADER_H = 64; // fixed app header (sm+)
+// Footer wraps to 2 lines on narrow md widths in long locales (ru).
+const NARROW_MD = "@media (max-width:1023px)";
 
 /**
  * SplitLoginLayout — two-column login shell with a left-column slot (passed
  * as `children`) and an optional marketing CTA panel on the right (topbar +
- * ISO standards timeline + stats + tagline + footer).
+ * announcement + standards card + stats + tagline + footer).
  *
  * The left column is a slot so callers can pass their own form component —
  * the portal passes <CandidateLoginForm>, but this layout does not reach into
@@ -69,7 +71,8 @@ const CtaPanel = ({ ctaPanel }) => {
     eyebrowKey,
     headlineKey,
     headlineAccentKey,
-    timeline = [],
+    announcement,
+    standardsList,
     stats = [],
     taglineKey,
     taglineAccentKey,
@@ -77,104 +80,89 @@ const CtaPanel = ({ ctaPanel }) => {
 
   return (
     <Box sx={styles.ctaSide}>
-      {eyebrowKey && <Box sx={styles.ctaEyebrow}>{t(eyebrowKey)}</Box>}
-      {headlineKey && (
-        <Box component="h2" sx={styles.ctaHeadline}>
-          {t(headlineKey)}
-          {headlineAccentKey && (
-            <>
-              <br />
-              <Box component="span" sx={styles.headlineAccent}>{t(headlineAccentKey)}</Box>
-            </>
-          )}
-        </Box>
-      )}
+      <Box sx={styles.ctaContent}>
+        {eyebrowKey && <Box sx={styles.ctaEyebrow}>{t(eyebrowKey)}</Box>}
+        {headlineKey && (
+          <Box component="h2" sx={styles.ctaHeadline}>
+            {t(headlineKey)}
+            {headlineAccentKey && (
+              <>
+                <br />
+                <Box component="span" sx={styles.headlineAccent}>{t(headlineAccentKey)}</Box>
+              </>
+            )}
+          </Box>
+        )}
 
-      {timeline.length > 0 && (
-        <Box sx={styles.timeline}>
-          {timeline.map((item, idx) => (
-            <TimelineItem
-              key={item.dateKey}
-              item={item}
-              isLast={idx === timeline.length - 1}
-              t={t}
+        {announcement && (
+          <Box component="p" sx={styles.announcement}>
+            <Trans
+              i18nKey={announcement.textKey}
+              values={announcement.values}
+              components={{ b: <Box component="b" sx={styles.announcementCode} /> }}
             />
-          ))}
-        </Box>
-      )}
+          </Box>
+        )}
 
-      {stats.length > 0 && (
-        <Box sx={styles.proofBar}>
-          {stats.map((stat) => (
-            <Box key={stat.labelKey} sx={styles.proofItem}>
-              <Box sx={styles.proofNum}>{stat.num}</Box>
-              <Box sx={styles.proofLabel}>{t(stat.labelKey)}</Box>
+        {standardsList && (
+          <>
+            <Box sx={styles.spacerSm} />
+            <StandardsCard standardsList={standardsList} t={t} />
+          </>
+        )}
+
+        {stats.length > 0 && (
+          <>
+            <Box sx={styles.spacerMd} />
+            <Box sx={styles.proofBar}>
+              {stats.map((stat) => (
+                <Box key={stat.labelKey} sx={styles.proofItem}>
+                  <Box sx={styles.proofNum}>{stat.num}</Box>
+                  <Box sx={styles.proofLabel}>{t(stat.labelKey)}</Box>
+                </Box>
+              ))}
             </Box>
-          ))}
-        </Box>
-      )}
+          </>
+        )}
 
-      {taglineKey && (
-        <Box sx={styles.ctaTagline}>
-          {t(taglineKey)}
-          {taglineAccentKey && (
-            <>
-              <Box component="span" sx={styles.taglineSep}>·</Box>
-              <Box component="span" sx={styles.taglineAccent}>{t(taglineAccentKey)}</Box>
-            </>
-          )}
-        </Box>
-      )}
+        {taglineKey && (
+          <>
+            <Box sx={styles.spacerLg} />
+            <Box sx={styles.ctaTagline}>
+              {t(taglineKey)}
+              {taglineAccentKey && (
+                <>
+                  <Box component="span" sx={styles.taglineSep}>·</Box>
+                  <Box component="span" sx={styles.taglineAccent}>{t(taglineAccentKey)}</Box>
+                </>
+              )}
+            </Box>
+          </>
+        )}
+      </Box>
     </Box>
   );
 };
 
-const TimelineItem = ({ item, isLast, t }) => {
-  const { status, dateKey, tagKey, tagVariant, standards = [], descriptionKey } = item;
+const StandardsCard = ({ standardsList, t }) => {
+  const { headingKey, newBadgeKey, items = [] } = standardsList;
   return (
-    <Box sx={styles.timelineItem}>
-      <Box sx={styles.timelineDotCol}>
-        <Box sx={[styles.timelineDot, status === "live" ? styles.dotLive : styles.dotSoon]} />
-        {!isLast && <Box sx={styles.timelineLine} />}
-      </Box>
-      <Box sx={styles.timelineContent}>
-        <Box component="h4" sx={[styles.timelineHeading, status !== "live" && styles.timelineHeadingSoon]}>
-          {t(dateKey)}
-          {tagKey && (
-            <Box
-              component="span"
-              sx={[styles.tag, tagVariant === "coming" ? styles.tagComing : styles.tagNew]}
-            >
-              {t(tagKey)}
+    <Box sx={styles.standardsCard}>
+      {headingKey && (
+        <Box component="h4" sx={styles.standardsHeading}>{t(headingKey)}</Box>
+      )}
+      <Box component="ul" sx={styles.standardsRows}>
+        {items.map((item) => (
+          <Box component="li" key={item.code} sx={styles.standardsRow}>
+            <Box component="span" sx={styles.standardsCode}>
+              {item.code}
+              {item.edition}
             </Box>
-          )}
-        </Box>
-        {standards.length > 0 && (
-          <Box sx={styles.stdChips}>
-            {standards.map((std, idx) =>
-              std.break ? (
-                <Box key={idx} sx={{ flexBasis: "100%", height: 0 }} />
-              ) : (
-                <Box
-                  key={idx}
-                  component="span"
-                  sx={[styles.stdChip, std.upgrading && styles.stdChipUpgrading]}
-                >
-                  {std.label}
-                  {std.badgeKey && (
-                    <Box component="span" sx={styles.badgeNew}>{t(std.badgeKey)}</Box>
-                  )}
-                </Box>
-              )
-            )}
-            {descriptionKey && (
-              <Box component="span" sx={styles.stdDescription}>{t(descriptionKey)}</Box>
+            {item.isNew && newBadgeKey && (
+              <Box component="span" sx={styles.newEditionPill}>{t(newBadgeKey)}</Box>
             )}
           </Box>
-        )}
-        {standards.length === 0 && descriptionKey && (
-          <Box component="p" sx={styles.timelineDesc}>{t(descriptionKey)}</Box>
-        )}
+        ))}
       </Box>
     </Box>
   );
@@ -285,129 +273,115 @@ const styles = {
     letterSpacing: "-0.01em",
     mb: "6px",
     m: 0,
+    [COMPACT_VP]: { fontSize: 19 },
     zIndex: 1,
   },
   headlineAccent: { color: ISTO_PRIMARY },
-  timeline: {
+  // Sized to the visible viewport (minus header, footer and ctaSide padding)
+  // so the spacers only grow into on-screen space, never past the fold when
+  // the form column makes the panel taller. min-content keeps it from
+  // squashing the content on short viewports.
+  ctaContent: {
+    "--footer-h": "33px",
+    [NARROW_MD]: { "--footer-h": "52px" },
     display: "flex",
     flexDirection: "column",
-    mt: "16px",
-    mb: "6px",
-    [TALL_VP]: { mt: "42px" },
-    [SHORT_VP]: { mt: "10px" },
+    // viewport − header − footer − ctaSide padding (pt + pb per breakpoint)
+    height: `calc(100dvh - ${HEADER_H}px - var(--footer-h) - 104px)`,
+    [SHORT_VP]: { height: `calc(100dvh - ${HEADER_H}px - var(--footer-h) - 36px)` },
+    [SHORT_VP_TALLISH]: { height: `calc(100dvh - ${HEADER_H}px - var(--footer-h) - 56px)` },
+    minHeight: "min-content",
+  },
+  // Flexible gap between panel sections: grows into free panel height up to
+  // its maxHeight, collapses to 0 when the viewport is tight.
+  spacerSm: { flex: "1 1 0", minHeight: 0, maxHeight: 12 },
+  spacerMd: { flex: "1 1 0", minHeight: 0, maxHeight: 40 },
+  spacerLg: { flex: "1 1 0", minHeight: 0, maxHeight: 48 },
+  announcement: {
+    mt: "12px",
+    mb: 0,
+    [TALL_VP]: { mt: "16px" },
+    [SHORT_VP]: { mt: "6px" },
+    fontSize: 14,
+    [COMPACT_VP]: { fontSize: 13 },
+    fontWeight: 400,
+    lineHeight: 1.4,
+    color: RP_TEXT,
     zIndex: 1,
   },
-  timelineItem: { display: "flex", gap: "14px" },
-  timelineDotCol: { display: "flex", flexDirection: "column", alignItems: "center", alignSelf: "stretch", mb: "-5px" },
-  timelineDot: {
-    width: 10,
-    height: 10,
-    borderRadius: "50%",
-    flexShrink: 0,
-    mt: "5px",
+  announcementCode: {
+    fontWeight: 700,
+    color: ISTO_PRIMARY,
+    whiteSpace: "nowrap",
   },
-  dotLive: {
-    bgcolor: ISTO_PRIMARY,
-    boxShadow: "0 0 0 4px rgba(0,119,59,0.14)",
+  standardsCard: {
+    mt: "12px",
+    width: "fit-content",
+    maxWidth: "100%",
+    boxSizing: "border-box",
+    bgcolor: "#fff",
+    border: "1px solid rgba(12,63,38,0.08)",
+    borderRadius: "8px",
+    boxShadow: "0 1px 2px rgba(12,63,38,0.06), 0 10px 28px -12px rgba(12,63,38,0.22)",
+    px: "14px",
+    py: "12px",
+    [SHORT_VP]: { mt: "8px", py: "8px" },
+    [COMPACT_VP]: { py: "6px" },
+    zIndex: 1,
   },
-  dotSoon: {
-    bgcolor: GOLD_BRIGHT,
-    boxShadow: "0 0 0 4px rgba(236,188,22,0.20)",
-  },
-  timelineLine: {
-    width: "2px",
-    flex: 1,
-    bgcolor: RULE_LIGHT,
-    minHeight: "12px",
-  },
-  timelineContent: { flex: 1, pb: "13px", [SHORT_VP]: { pb: "7px" } },
-  timelineHeading: {
+  standardsHeading: {
     fontSize: 11,
     fontWeight: 700,
     m: 0,
-    mb: "7px",
+    mb: "4px",
+    [COMPACT_VP]: { mb: "2px" },
     textTransform: "uppercase",
     letterSpacing: "0.8px",
     color: ISTO_PRIMARY,
   },
-  timelineHeadingSoon: { color: CHIP_UPGRADING_TEXT },
-  tag: {
-    display: "inline-flex",
+  standardsRows: {
+    listStyle: "none",
+    m: 0,
+    p: 0,
+  },
+  standardsRow: {
+    display: "grid",
+    gridTemplateColumns: "minmax(0,1fr) auto",
+    gap: "0 24px",
     alignItems: "center",
-    gap: "5px",
-    fontSize: 11,
-    fontWeight: 700,
-    ml: "6px",
-    textTransform: "uppercase",
-    letterSpacing: "0.3px",
-    verticalAlign: "middle",
-    "&::before": {
-      content: '""',
-      width: 6,
-      height: 6,
-      borderRadius: "50%",
-      display: "inline-block",
-    },
+    py: "7px",
+    [SHORT_VP]: { py: "3px" },
+    [COMPACT_VP]: { py: "2px" },
+    borderTop: "1px solid rgba(12,63,38,0.12)",
+    "&:first-of-type": { borderTop: 0 },
   },
-  tagNew: {
-    color: ISTO_PRIMARY,
-    "&::before": { bgcolor: ISTO_PRIMARY },
-  },
-  tagComing: {
-    color: GOLD_DEEP,
-    "&::before": { bgcolor: GOLD_DEEP },
-  },
-  // Liquid-glass "New" badge perched on a chip's top-right corner.
-  badgeNew: {
-    position: "absolute",
-    top: "-10px",
-    right: "-22px",
-    px: "5px",
-    py: "2px",
-    borderRadius: "6px",
-    background: "linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.12) 100%)",
-    border: "1px solid rgba(255,255,255,0.7)",
-    fontSize: 8,
-    fontWeight: 700,
-    letterSpacing: "0.12em",
-    textTransform: "uppercase",
+  standardsCode: {
+    fontSize: 13,
+    fontWeight: 500,
     color: RP_TEXT,
-    boxShadow: "0 4px 12px rgba(10,107,62,0.16), inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(10,107,62,0.05)",
+    fontVariantNumeric: "tabular-nums",
+    whiteSpace: "nowrap",
   },
-  stdChips: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "5px",
-    mt: "2px",
-    alignItems: "center",
-  },
-  stdChip: {
-    position: "relative",
-    fontSize: 11,
-    fontWeight: 600,
-    px: "9px",
-    py: "4px",
-    borderRadius: 0,
-    bgcolor: CHIP_LIGHT_BG,
-    border: `1px solid ${CHIP_LIGHT_BORDER}`,
-    color: ISTO_PRIMARY,
-    letterSpacing: "0.2px",
-  },
-  stdChipUpgrading: {
-    bgcolor: CHIP_UPGRADING_BG,
-    border: `1px solid ${CHIP_UPGRADING_BORDER}`,
+  newEditionPill: {
+    fontSize: 10,
+    fontWeight: 700,
+    letterSpacing: "0.3px",
     color: CHIP_UPGRADING_TEXT,
-    fontWeight: 600,
+    bgcolor: "rgba(236,188,22,0.10)",
+    border: "1px solid rgba(176,127,26,0.45)",
+    px: "7px",
+    py: "1px",
+    borderRadius: "999px",
+    whiteSpace: "nowrap",
   },
-  stdDescription: { fontSize: 11, color: RP_TEXT, ml: "4px" },
-  timelineDesc: { fontSize: 11, color: RP_TEXT_SOFT, m: 0 },
   proofBar: {
     display: "flex",
     borderTop: `1px solid ${RULE_LIGHT}`,
     mt: "16px",
     pt: "16px",
-    [TALL_VP]: { mt: "42px" },
+    [TALL_VP]: { mt: "8px" },
     [SHORT_VP]: { mt: "10px", pt: "10px" },
+    [COMPACT_VP]: { mt: "8px", pt: "8px" },
     zIndex: 1,
   },
   proofItem: {
@@ -422,6 +396,7 @@ const styles = {
     fontWeight: 800,
     lineHeight: 1,
     mb: "5px",
+    [COMPACT_VP]: { fontSize: 19, mb: "3px" },
     color: ISTO_PRIMARY,
   },
   proofLabel: {
@@ -433,8 +408,9 @@ const styles = {
   },
   ctaTagline: {
     mt: "14px",
-    [TALL_VP]: { mt: "64px" },
+    [TALL_VP]: { mt: "8px" },
     [SHORT_VP]: { mt: "18px" },
+    [COMPACT_VP]: { mt: "10px" },
     fontSize: 14,
     fontWeight: 600,
     letterSpacing: "0.2px",
